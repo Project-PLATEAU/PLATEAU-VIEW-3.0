@@ -1,0 +1,17 @@
+{
+  "projectName": "cms",
+  "version": "3.1",
+  "frontend": "javascript",
+  "javascript": {
+    "framework": "react",
+    "config": {
+      "SourceDir": "src",
+      "DistributionDir": "dist",
+      "BuildCommand": "yarn build",
+      "StartCommand": "yarn serve"
+    }
+  },
+  "providers": [
+    "awscloudformation"
+  ]
+}

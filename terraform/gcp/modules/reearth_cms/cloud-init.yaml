@@ -1,0 +1,47 @@
+# See details:
+#   - https://cloud.google.com/container-optimized-os/docs/how-to/run-gpus#e2e
+#   - https://cloud.google.com/container-optimized-os/docs/how-to/run-container-instance#using_cloud-init_with
+runcmd:
+  - systemctl daemon-reload
+  - systemctl start install-gpu.service
+  - systemctl start reearth-plateau-tiles.service
+
+users:
+  - name: reearth
+    uid: 2000
+
+write_files:
+  - path: /etc/systemd/system/install-gpu.service
+    permissions: 0644
+    owner: root
+    content: |
+      [Unit]
+      Description=Install GPU drivers
+      Wants=gcr-online.target docker.socket
+      After=gcr-online.target docker.socket
+
+      [Service]
+      User=root
+      Type=oneshot
+      ExecStart=cos-extensions install gpu
+      StandardOutput=journal+console
+      StandardError=journal+console
+
+  - path: /etc/systemd/system/reearth-plateau-tiles.service
+    permissions: 0644
+    owner: root
+    content: |
+      [Unit]
+      Description=Run a Re:Earth Plateau Tiles
+      Requires=install-gpu.service
+      After=install-gpu.service
+
+      [Service]
+      Type=service
+      Environment="HOME=/home/cloudservice"
+      ExecStart=/usr/bin/docker run --rm -u 2000 --name=reearth-plateau-tiles --device /dev/nvidia0:/dev/nvidia0 -p 8888:8888 -e PORT=8888 -e TILE_CACHE_ROOT=gs://${cache_bucket} -e ALLOW_ORIGIN='["https://${reearth_domain}", "https://*.${reearth_domain}"]' eukarya/plateauview-tiles:latest
+      ExecStop=/usr/bin/docker stop reearth-plateau-tiles
+      ExecStopPost=/usr/bin/docker rm reearth-plateau-tiles
+      RemainAfterExit=true
+      StandardOutput=journal+console
+      StandardError=journal+console

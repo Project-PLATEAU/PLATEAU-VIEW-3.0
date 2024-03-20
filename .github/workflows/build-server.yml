@@ -1,0 +1,56 @@
+name: build-server
+on:
+  workflow_call:
+    inputs:
+      local:
+        required: true
+        type: boolean
+jobs:
+  docker:
+    name: Build and push Docker image
+    runs-on: ubuntu-latest
+    env:
+      IMAGE_NAME: ghcr.io/eukarya-inc/plateau-view-3.0/plateauview-api:latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v2
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
+      - name: Download extension artifact
+        uses: dawidd6/action-download-artifact@v2
+        if: ${{ inputs.local != 'true' }}
+        with:
+          workflow_conclusion: ""
+          branch: main
+          name: extension
+          path: server
+          check_artifacts: true
+          search_artifacts: true
+      - name: Download extension artifact from the previous job
+        uses: actions/download-artifact@v2
+        if: ${{ inputs.local == 'true' }}
+        with:
+          name: extension
+          path: server
+
+      - name: Build and load docker image
+        uses: docker/build-push-action@v3
+        with:
+          context: ./server
+          platforms: linux/amd64
+          load: true
+          tags: ${{ env.IMAGE_NAME }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+          push: false
+      - name: Save docker image
+        run: docker save ${{ env.IMAGE_NAME }} | gzip > plateauview-api.tar.gz
+      - name: Save imaged to artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: plateauview-api
+          path: plateauview-api.tar.gz
+          if-no-files-found: error

@@ -1,0 +1,37 @@
+name: build-tiles
+on:
+  workflow_call:
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.workflow_run.head_branch }}
+  cancel-in-progress: true
+jobs:
+  docker:
+    name: Build and push Docker image
+    runs-on: ubuntu-latest
+    env:
+      IMAGE_NAME: ghcr.io/eukarya-inc/plateau-view-3.0/plateauview-tiles:latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+      - name: Build and load docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: ./tiles
+          platforms: linux/amd64
+          load: true
+          tags: ${{ env.IMAGE_NAME }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+          push: false
+      - name: Save docker image
+        run: docker save ${{ env.IMAGE_NAME }} | gzip > plateauview-tiles.tar.gz
+      - name: Save image to artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: plateauview-tiles
+          path: plateauview-tiles.tar.gz
+          if-no-files-found: error

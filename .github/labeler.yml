@@ -1,0 +1,8 @@
+plugin:
+  - web/**/*
+server:
+  - server/**/*
+terraform:
+  - terraform/**/*
+ci:
+  - .github/workflows/**

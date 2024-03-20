@@ -1,0 +1,99 @@
+
+
+name: ⭐️ Deploy reearth dev
+on:
+  workflow_dispatch:
+env:
+  GCS_DEST: gs://plateau-dev-reearth-app-bucket
+  # TODO: allow to specify version of reearth
+  IMAGE_NAME: reearth/reearth:rc
+  IMAGE_NAME_GHCR: ghcr.io/eukarya-inc/plateau-view-3.0/reearth:latest
+  IMAGE_NAME_GCP: asia.gcr.io/reearth-plateau-dev/reearth:latest
+concurrency:
+  group: ${{ github.workflow }}
+jobs:
+  deploy_web:
+    runs-on: ubuntu-latest
+    if: github.event.repository.full_name == 'eukarya-inc/PLATEAU-VIEW-3.0'
+    environment: dev
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: ${{ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.GCP_SERVICE_ACCOUNT }}
+      - name: Set up Cloud SDK
+        uses: google-github-actions/setup-gcloud@v2
+      # TODO: allow to specify which version to release
+      - name: Download reearth-web
+        uses: dsaltares/fetch-gh-release-asset@master
+        with:
+          repo: reearth/reearth
+          version: tags/rc
+          file: reearth-web_rc.tar.gz
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Extract
+        run: mv reearth-web{_rc,}.tar.gz && tar -xvf reearth-web.tar.gz
+      - name: Replace favicon / App name
+        env:
+          PLATEAU_FAVICON: https://www.mlit.go.jp/plateau/assets/img/icons/favicon.svg
+          APP_PATH: reearth-web/index.html
+          PUBLISH_PATH: reearth-web/published.html
+          APP_NAME: PLATEAU VIEW(Ver2.0)
+        run: |
+          SOURCE=$(cat $APP_PATH)
+          SOURCE=${SOURCE/\/static\/favicon*.ico/$PLATEAU_FAVICON}
+          SOURCE=${SOURCE/\<title\>*\<\/title\>/<title>$APP_NAME</title>}
+          echo $SOURCE > $APP_PATH
+          echo $SOURCE > $PUBLISH_PATH
+      - name: Deploy
+        run: gsutil -m -h "Cache-Control:no-store" rsync -x "^cloud/.*$|^reearth_config\\.json$|^extension/.*$" -dr reearth-web/ ${{ env.GCS_DEST }}
+      - name: Pack web
+        run: |
+          rm reearth-web.tar.gz
+          tar -zcvf reearth-web.tar.gz reearth-web
+      - name: Save as artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: reearth-web
+          path: reearth-web.tar.gz
+  deploy_server:
+    runs-on: ubuntu-latest
+    environment: dev
+    permissions:
+      contents: read
+      id-token: write
+      packages: write
+    if: ${{ github.event.repository.full_name == 'eukarya-inc/PLATEAU-VIEW-3.0' }}
+    steps:
+      - uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: ${{ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.GCP_SERVICE_ACCOUNT }}
+      - name: Set up Cloud SDK
+        uses: google-github-actions/setup-gcloud@v2
+      - name: Configure docker
+        run: gcloud auth configure-docker --quiet
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Pull docker images
+        run: docker pull $IMAGE_NAME
+      - name: Tag docker images
+        run: docker tag $IMAGE_NAME $IMAGE_NAME_GHCR && docker tag $IMAGE_NAME $IMAGE_NAME_GCP
+      - name: Push docker images
+        run: docker push $IMAGE_NAME_GHCR && docker push $IMAGE_NAME_GCP
+      - name: Deploy
+        run: |
+          gcloud run deploy reearth-api \
+            --image $IMAGE_NAME_GCP \
+            --region $GCP_REGION \
+            --platform managed \
+            --quiet
+        env:
+          GCP_REGION: ${{ vars.GCP_REGION }}

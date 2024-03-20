@@ -1,0 +1,243 @@
+## data Types: string, number, boolean, date, reference, asset, group, groupField
+
+#basic op: equals, not equals
+#string op: contains, not contains, start with, end with, not start with, not end with
+#number op: greater than, less than, greater than or equal to, less than or equal to
+#boolean op: equals, not equals
+#date op: after, before, of this week, of this month, of this year
+#asset op: (use string op on asset name)
+#reference: not supported
+#group: not supported
+#groupField: not supported
+
+## field options: nullable, multiple
+
+#nullabel op: empty, not empty
+#multiple op: includes any, not includes any, includes all, not includes all
+
+## filtering strategy: both filed value and filter value can be multiple
+
+# field value, filter value,  operators
+#  single       single         [according to field type]
+#  single       multiple       [multiple operators]
+#  multiple     single         (not supported)
+#  multiple     multiple       (not supported)
+
+## sorting strategy:
+
+# single field: normal sorting
+# multiple fields: use the first value to sort on
+
+## NOTE: not supported cases will return an error
+
+enum FieldType {
+  ID
+  CREATION_DATE
+  CREATION_USER
+  MODIFICATION_DATE
+  MODIFICATION_USER
+  STATUS
+
+  FIELD
+  META_FIELD
+}
+
+type FieldSelector{
+  type: FieldType!
+  id: ID
+}
+
+type ItemSort {
+  field: FieldSelector!
+  direction: SortDirection
+}
+
+union Condition =
+  AndCondition
+  | OrCondition
+  | BasicFieldCondition
+  | NullableFieldCondition
+  | MultipleFieldCondition
+  | BoolFieldCondition
+  | StringFieldCondition
+  | NumberFieldCondition
+  | TimeFieldCondition
+
+type AndCondition {
+  conditions: [Condition!]!
+}
+
+type OrCondition {
+  conditions: [Condition!]!
+}
+
+type BasicFieldCondition {
+  fieldId: FieldSelector!
+  operator: BasicOperator!
+  value: Any!
+}
+
+type NullableFieldCondition {
+  fieldId: FieldSelector!
+  operator: NullableOperator!
+}
+
+type MultipleFieldCondition {
+  fieldId: FieldSelector!
+  operator: MultipleOperator!
+  value: [Any!]!
+}
+
+type BoolFieldCondition {
+  fieldId: FieldSelector!
+  operator: BoolOperator!
+  value: Boolean!
+}
+
+type StringFieldCondition {
+  fieldId: FieldSelector!
+  operator: StringOperator!
+  value: String!
+}
+
+type NumberFieldCondition {
+  fieldId: FieldSelector!
+  operator: NumberOperator!
+  value: Float!
+}
+
+type TimeFieldCondition {
+  fieldId: FieldSelector!
+  operator: TimeOperator!
+  value: DateTime!
+}
+
+enum BasicOperator {
+  EQUALS
+  NOT_EQUALS
+}
+
+enum NullableOperator {
+  EMPTY
+  NOT_EMPTY
+}
+
+enum MultipleOperator {
+  INCLUDES_ANY
+  NOT_INCLUDES_ANY
+  INCLUDES_ALL
+  NOT_INCLUDES_ALL
+}
+
+enum BoolOperator {
+  EQUALS
+  NOT_EQUALS
+}
+
+enum StringOperator {
+  CONTAINS
+  NOT_CONTAINS
+  STARTS_WITH
+  ENDS_WITH
+  NOT_STARTS_WITH
+  NOT_ENDS_WITH
+}
+
+enum NumberOperator {
+  GREATER_THAN
+  LESS_THAN
+  GREATER_THAN_OR_EQUAL_TO
+  LESS_THAN_OR_EQUAL_TO
+}
+
+enum TimeOperator {
+  BEFORE
+  AFTER
+  BEFORE_OR_ON
+  AFTER_OR_ON
+  OF_THIS_WEEK
+  OF_THIS_MONTH
+  OF_THIS_YEAR
+}
+
+# inputs
+
+input FieldSelectorInput{
+  id: ID
+  type: FieldType!
+}
+
+input ItemSortInput {
+  field: FieldSelectorInput!
+  direction: SortDirection
+}
+
+input OperatorInput @onlyOne {
+  basic: BasicOperator
+  nullable: NullableOperator
+  bool: BoolOperator
+  string: StringOperator
+  number: NumberOperator
+  time: TimeOperator
+}
+
+input ConditionInput @onlyOne {
+  and: AndConditionInput
+  or: OrConditionInput
+  basic: BasicFieldConditionInput
+  nullable: NullableFieldConditionInput
+  multiple: MultipleFieldConditionInput
+  bool: BoolFieldConditionInput
+  string: StringFieldConditionInput
+  number: NumberFieldConditionInput
+  time: TimeFieldConditionInput
+}
+
+input AndConditionInput {
+  conditions: [ConditionInput!]!
+}
+
+input OrConditionInput {
+  conditions: [ConditionInput!]!
+}
+
+input BasicFieldConditionInput {
+  fieldId: FieldSelectorInput!
+  operator: BasicOperator!
+  value: Any!
+}
+
+input NullableFieldConditionInput {
+  fieldId: FieldSelectorInput!
+  operator: NullableOperator!
+}
+
+input MultipleFieldConditionInput {
+  fieldId: FieldSelectorInput!
+  operator: MultipleOperator!
+  value: [Any!]!
+}
+
+input BoolFieldConditionInput {
+  fieldId: FieldSelectorInput!
+  operator: BoolOperator!
+  value: Boolean!
+}
+
+input StringFieldConditionInput {
+  fieldId: FieldSelectorInput!
+  operator: StringOperator!
+  value: String!
+}
+
+input NumberFieldConditionInput {
+  fieldId: FieldSelectorInput!
+  operator: NumberOperator!
+  value: Float!
+}
+
+input TimeFieldConditionInput {
+  fieldId: FieldSelectorInput!
+  operator: TimeOperator!
+  value: DateTime!
+}

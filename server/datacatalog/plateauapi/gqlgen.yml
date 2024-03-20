@@ -1,0 +1,182 @@
+# Where are all the schema files located? globs are supported eg  src/**/*.graphqls
+schema:
+  - '*.graphql'
+
+# Where should the generated server code go?
+exec:
+  filename: generated.go
+
+# Uncomment to enable federation
+# federation:
+#   filename: graph/generated/federation.go
+#   package: generated
+
+# Where should any generated models go?
+model:
+  filename: models_gen.go
+
+# Where should the resolver implementations go?
+resolver:
+  layout: follow-schema
+  dir: .
+
+# Optional: turn on use ` + "`" + `gqlgen:"fieldName"` + "`" + ` tags in your models
+# struct_tag: json
+
+# Optional: turn on to use []Thing instead of []*Thing
+# omit_slice_element_pointers: false
+
+# Optional: turn off to make struct-type struct fields not use pointers
+# e.g. type Thing struct { FieldA OtherThing } instead of { FieldA *OtherThing }
+# struct_fields_always_pointers: true
+
+# Optional: turn off to make resolvers return values instead of pointers for structs
+# resolvers_always_return_pointers: true
+
+# Optional: set to speed up generation time by not performing a final validation pass.
+# skip_validation: true
+
+# gqlgen will search for any type names in the schema in these go packages
+# if they match it will use them, otherwise it will generate them.
+autobind:
+#  - "github.com/eukarya-inc/reearth-plateauview/server/graph/model"
+
+# This section declares type mapping between the GraphQL and go type systems
+#
+# The first line in each type will be used as defaults for resolver arguments and
+# modelgen, the others will be allowed when binding to fields. Configure them to
+# your liking
+models:
+  ID:
+    model:
+      - github.com/eukarya-inc/reearth-plateauview/server/datacatalog/plateauapi.ID
+  AreaCode:
+    model:
+      - github.com/eukarya-inc/reearth-plateauview/server/datacatalog/plateauapi.AreaCode
+  Int:
+    model:
+      - github.com/99designs/gqlgen/graphql.Int
+      - github.com/99designs/gqlgen/graphql.Int64
+      - github.com/99designs/gqlgen/graphql.Int32
+  Prefecture:
+    fields:
+      cities:
+        resolver: true
+      datasets:
+        resolver: true
+      parent:
+        resolver: true
+  City:
+    fields:
+      prefecture:
+        resolver: true
+      wards:
+        resolver: true
+      datasets:
+        resolver: true
+      parent:
+        resolver: true
+      citygml:
+        resolver: true
+  Ward:
+    fields:
+      prefecture:
+        resolver: true
+      city:
+        resolver: true
+      datasets:
+        resolver: true
+      parent:
+        resolver: true
+  PlateauDataset:
+    fields:
+      prefecture:
+        resolver: true
+      city:
+        resolver: true
+      ward:
+        resolver: true
+      type:
+        resolver: true
+      plateauSpecMinor:
+        resolver: true
+  PlateauDatasetItem:
+    fields:
+      parent:
+        resolver: true
+  PlateauFloodingDataset:
+    fields:
+      prefecture:
+        resolver: true
+      city:
+        resolver: true
+      ward:
+        resolver: true
+      type:
+        resolver: true
+      plateauSpec:
+        resolver: true
+  PlateauFloodingDatasetItem:
+    fields:
+      parent:
+        resolver: true
+  RelatedDataset:
+    fields:
+      prefecture:
+        resolver: true
+      city:
+        resolver: true
+      ward:
+        resolver: true
+      type:
+        resolver: true
+  RelatedDatasetItem:
+    fields:
+      parent:
+        resolver: true
+  GenericDataset:
+    fields:
+      prefecture:
+        resolver: true
+      city:
+        resolver: true
+      ward:
+        resolver: true
+      type:
+        resolver: true
+  GenericDatasetItem:
+    fields:
+      parent:
+        resolver: true
+  PlateauDatasetType:
+    fields:
+      plateauSpec:
+        resolver: true
+      datasets:
+        resolver: true
+  RelatedDatasetType:
+    fields:
+      datasets:
+        resolver: true
+  GenericDatasetType:
+    fields:
+      datasets:
+        resolver: true
+  PlateauSpec:
+    fields:
+      datasetTypes:
+        resolver: true
+  PlateauSpecMinor:
+    fields:
+      parent:
+        resolver: true
+      datasets:
+        resolver: true
+  CityGMLDataset:
+    fields:
+      prefecture:
+        resolver: true
+      city:
+        resolver: true
+      plateauSpecMinor:
+        resolver: true

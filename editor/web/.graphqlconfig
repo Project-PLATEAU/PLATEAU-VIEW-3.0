@@ -1,0 +1,13 @@
+{
+  "schemaPath": "src/services/gql/graphql.schema.json",
+  "documents": [
+    "src/services/**/*.graphql",
+    "src/services/gql/fragments/*.ts",
+    "src/services/gql/queries/*.ts"
+  ],
+  "extensions": {
+    "endpoints": {
+      "dev": "http://localhost:8080/api/graphql"
+    }
+  }
+}

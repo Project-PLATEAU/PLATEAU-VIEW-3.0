@@ -1,0 +1,32 @@
+version: '3'
+services:
+  reearth-cms-server:
+    image: reearth/reearth-cms:nightly
+    environment:
+      REEARTH_DB: mongodb://reearth-cms-mongo
+    ports:
+      - '8080:8080'
+    links:
+      - reearth-cms-mongo
+    depends_on:
+      - reearth-cms-mongo
+    volumes:
+      - ./data:/reearth/data
+    # env_file:
+    #   - ./.env
+  reearth-cms-mongo:
+    image: mongo:6-focal
+    ports:
+      - 27017:27017
+    volumes:
+      - ./mongo:/data/db
+  # reearth-cms-worker:
+  #   image: reearth/reearth-cms-worker:nightly
+  #   environment:
+  #     REEARTH_DB: mongodb://reearth-cms-mongo
+  #   ports:
+  #     - '8080:8080'
+  #   volumes:
+  #     - ./data:/reearth/data
+  #   # env_file:
+  #   #   - ./.env

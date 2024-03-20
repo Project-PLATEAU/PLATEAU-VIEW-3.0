@@ -1,0 +1,57 @@
+{
+  "possibleTypes": {
+    "Condition": [
+      "AndCondition",
+      "BasicFieldCondition",
+      "BoolFieldCondition",
+      "MultipleFieldCondition",
+      "NullableFieldCondition",
+      "NumberFieldCondition",
+      "OrCondition",
+      "StringFieldCondition",
+      "TimeFieldCondition"
+    ],
+    "Node": [
+      "Asset",
+      "Group",
+      "Integration",
+      "Item",
+      "Model",
+      "Project",
+      "Request",
+      "Schema",
+      "User",
+      "View",
+      "Workspace",
+      "WorkspaceSettings"
+    ],
+    "Operator": [
+      "Integration",
+      "User"
+    ],
+    "Resource": [
+      "TerrainResource",
+      "TileResource"
+    ],
+    "SchemaFieldTypeProperty": [
+      "SchemaFieldAsset",
+      "SchemaFieldBool",
+      "SchemaFieldCheckbox",
+      "SchemaFieldDate",
+      "SchemaFieldGroup",
+      "SchemaFieldInteger",
+      "SchemaFieldMarkdown",
+      "SchemaFieldReference",
+      "SchemaFieldRichText",
+      "SchemaFieldSelect",
+      "SchemaFieldTag",
+      "SchemaFieldText",
+      "SchemaFieldTextArea",
+      "SchemaFieldURL"
+    ],
+    "WorkspaceMember": [
+      "WorkspaceIntegrationMember",
+      "WorkspaceUserMember"
+    ]
+  }
+}

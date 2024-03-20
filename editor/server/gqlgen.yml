@@ -1,0 +1,426 @@
+# .gqlgen.yml example
+#
+# Refer to https://gqlgen.com/config/
+# for detailed .gqlgen.yml documentation.
+
+schema: ./gql/*.graphql
+exec:
+  filename: internal/adapter/gql/generated.go
+model:
+  filename: internal/adapter/gql/gqlmodel/models_gen.go
+resolver:
+  filename: internal/adapter/gql/resolver.go
+  type: Resolver
+models:
+  DateTime:
+    model: github.com/99designs/gqlgen/graphql.Time
+  FileSize:
+    model: github.com/99designs/gqlgen/graphql.Int64
+  Cursor:
+    model: github.com/reearth/reearth/server/internal/adapter/gql/gqlmodel.Cursor
+  URL:
+    model: github.com/reearth/reearth/server/internal/adapter/gql/gqlmodel.URL
+  TranslatedString:
+    model: github.com/reearth/reearth/server/internal/adapter/gql/gqlmodel.Map
+  Lang:
+    model: github.com/reearth/reearth/server/internal/adapter/gql/gqlmodel.Lang
+  ID:
+    model: github.com/reearth/reearth/server/internal/adapter/gql/gqlmodel.ID
+  JSON:
+    model: github.com/reearth/reearth/server/internal/adapter/gql/gqlmodel.JSON
+  Array:
+    model: github.com/reearth/reearth/server/internal/adapter/gql/gqlmodel.Array
+  Asset:
+    fields:
+      team:
+        resolver: true
+  Cluster:
+    fields:
+      property:
+        resolver: true
+  Dataset:
+    fields:
+      schema:
+        resolver: true
+      name:
+        resolver: true
+  DatasetSchema:
+    fields:
+      datasets:
+        resolver: true
+      scene:
+        resolver: true
+      representativeField:
+        resolver: true
+      totalCount:
+        resolver: true
+  DatasetField:
+    fields:
+      schema:
+        resolver: true
+      field:
+        resolver: true
+      valueRef:
+        resolver: true
+  DatasetSchemaField:
+    fields:
+      schema:
+        resolver: true
+      ref:
+        resolver: true
+  LayerItem:
+    fields:
+      parent:
+        resolver: true
+      property:
+        resolver: true
+      plugin:
+        resolver: true
+      extension:
+        resolver: true
+      linkedDataset:
+        resolver: true
+      merged:
+        resolver: true
+      scene:
+        resolver: true
+      scenePlugin:
+        resolver: true
+  LayerGroup:
+    fields:
+      parent:
+        resolver: true
+      property:
+        resolver: true
+      plugin:
+        resolver: true
+      extension:
+        resolver: true
+      linkedDatasetSchema:
+        resolver: true
+      layers:
+        resolver: true
+      scene:
+        resolver: true
+      scenePlugin:
+        resolver: true
+  Infobox:
+    fields:
+      layer:
+        resolver: true
+      property:
+        resolver: true
+      linkedDataset:
+        resolver: true
+      merged:
+        resolver: true
+      scene:
+        resolver: true
+  InfoboxField:
+    fields:
+      layer:
+        resolver: true
+      infobox:
+        resolver: true
+      property:
+        resolver: true
+      plugin:
+        resolver: true
+      extension:
+        resolver: true
+      linkedDataset:
+        resolver: true
+      merged:
+        resolver: true
+      scene:
+        resolver: true
+      scenePlugin:
+        resolver: true
+  LayerTagItem:
+    fields:
+      tag:
+        resolver: true
+  LayerTagGroup:
+    fields:
+      tag:
+        resolver: true
+  MergedLayer:
+    fields:
+      original:
+        resolver: true
+      parent:
+        resolver: true
+      scene:
+        resolver: true
+  MergedInfobox:
+    fields:
+      scene:
+        resolver: true
+  MergedInfoboxField:
+    fields:
+      plugin:
+        resolver: true
+      extension:
+        resolver: true
+      scene:
+        resolver: true
+      scenePlugin:
+        resolver: true
+  Plugin:
+    fields:
+      scene:
+        resolver: true
+      translatedName:
+        resolver: true
+      translatedDescription:
+        resolver: true
+      propertySchema:
+        resolver: true
+  PluginExtension:
+    fields:
+      plugin:
+        resolver: true
+      sceneWidget:
+        resolver: true
+      propertySchema:
+        resolver: true
+      translatedName:
+        resolver: true
+      translatedDescription:
+        resolver: true
+  Project:
+    fields:
+      team:
+        resolver: true
+      scene:
+        resolver: true
+  PropertyLinkableFields:
+    fields:
+      latlngField:
+        resolver: true
+      urlField:
+        resolver: true
+      schema:
+        resolver: true
+  PropertySchemaGroup:
+    fields:
+      schema:
+        resolver: true
+      translatedTitle:
+        resolver: true
+  PropertySchemaField:
+    fields:
+      translatedTitle:
+        resolver: true
+      translatedDescription:
+        resolver: true
+  PropertySchemaFieldChoice:
+    fields:
+      translatedTitle:
+        resolver: true
+      translatedDescription:
+        resolver: true
+  Property:
+    fields:
+      schema:
+        resolver: true
+      layer:
+        resolver: true
+      merged:
+        resolver: true
+  PropertyGroup:
+    fields:
+      schema:
+        resolver: true
+      schemaGroup:
+        resolver: true
+  PropertyGroupList:
+    fields:
+      schema:
+        resolver: true
+      schemaGroup:
+        resolver: true
+  PropertyField:
+    fields:
+      parent:
+        resolver: true
+      schema:
+        resolver: true
+      field:
+        resolver: true
+      actualValue:
+        resolver: true
+  PropertyFieldLink:
+    fields:
+      dataset:
+        resolver: true
+      datasetField:
+        resolver: true
+      datasetSchema:
+        resolver: true
+      datasetSchemaField:
+        resolver: true
+  MergedProperty:
+    fields:
+      original:
+        resolver: true
+      parent:
+        resolver: true
+      schema:
+        resolver: true
+      linkedDataset:
+        resolver: true
+      groups:
+        resolver: true
+  MergedPropertyGroup:
+    fields:
+      originalProperty:
+        resolver: true
+      parentProperty:
+        resolver: true
+      original:
+        resolver: true
+      parent:
+        resolver: true
+      schema:
+        resolver: true
+      linkedDataset:
+        resolver: true
+  MergedPropertyField:
+    fields:
+      schema:
+        resolver: true
+      field:
+        resolver: true
+      actualValue:
+        resolver: true
+  Scene:
+    fields:
+      project:
+        resolver: true
+      team:
+        resolver: true
+      property:
+        resolver: true
+      rootLayer:
+        resolver: true
+      newLayers:
+        resolver: true
+      datasetSchemas:
+        resolver: true
+      tags:
+        resolver: true
+      stories:
+        resolver: true
+      styles:
+        resolver: true
+  SceneWidget:
+    fields:
+      plugin:
+        resolver: true
+      extension:
+        resolver: true
+      property:
+        resolver: true
+  ScenePlugin:
+    fields:
+      plugin:
+        resolver: true
+      property:
+        resolver: true
+  Tag:
+    fields:
+      layers:
+        resolver: true
+  TagItem:
+    fields:
+      linkedDatasetSchema:
+        resolver: true
+      linkedDataset:
+        resolver: true
+      linkedDatasetField:
+        resolver: true
+      parent:
+        resolver: true
+      layers:
+        resolver: true
+  TagGroup:
+    fields:
+      tags:
+        resolver: true
+      scene:
+        resolver: true
+      layers:
+        resolver: true
+  Team:
+    fields:
+      policy:
+        resolver: true
+      assets:
+        resolver: true
+      projects:
+        resolver: true
+  TeamMember:
+    fields:
+      user:
+        resolver: true
+  Me:
+    fields:
+      teams:
+        resolver: true
+      myTeam:
+        resolver: true
+  Story:
+    fields:
+      scene:
+        resolver: true
+      property:
+        resolver: true
+  StoryPage:
+    fields:
+      scene:
+        resolver: true
+      property:
+        resolver: true
+      layers:
+        resolver: true
+      swipeableLayers:
+        resolver: true
+  StoryBlock:
+    fields:
+      scene:
+        resolver: true
+      property:
+        resolver: true
+      plugin:
+        resolver: true
+      pluginExtension:
+        resolver: true
+  NLSLayerSimple:
+    fields:
+      scene:
+        resolver: true
+  NLSLayerGroup:
+    fields:
+      scene:
+        resolver: true
+  Style:
+    fields:
+      scene:
+        resolver: true  
+  NLSInfobox:
+    fields:
+      property:
+        resolver: true
+      scene:
+        resolver: true
+  InfoboxBlock:
+    fields:
+      property:
+        resolver: true
+      plugin:
+        resolver: true
+      pluginExtension:
+        resolver: true
+      scene:
+        resolver: true

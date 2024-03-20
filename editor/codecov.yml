@@ -1,0 +1,67 @@
+coverage:
+  status:
+    project:
+      web-classic:
+        target: auto
+        threshold: 0%
+        flags:
+          - web-classic
+      web-beta:
+        target: auto
+        threshold: 10%
+        flags:
+          - web-beta
+      web-utils:
+        target: 80%
+        flags:
+          - web-utils
+      server:
+        target: auto
+        flags:
+          - server
+    patch: off
+comment:
+  layout: "reach, diff, flags, files"
+  behavior: default
+  require_changes: false
+ignore:
+  - server/**/*_gen.go
+  - server/**/*_test.go
+  - server/**/doc.go
+  - server/**/testdata
+  - server/internal/adapter/gql/generated.go
+  - server/main.go
+  - server/tools
+  - server/tools.go
+  - web/**/*.test.ts
+  - web/**/*.test.tsx
+  - web/**/*.stories.ts
+  - web/**/*.stories.tsx
+  - web/.storybook
+  - web/bin
+  - web/src/gql/graphql-client-api.tsx
+
+flags:
+  web:
+    paths:
+      - web
+    carryforward: true
+  web-classic:
+    paths:
+      - web/src/classic
+    carryforward: true
+  web-beta:
+    paths:
+      - web/src/beta
+      - web/src/services
+    carryforward: true
+    ignore:
+      - web/src/beta/utils
+  web-utils:
+    paths:
+      - web/src/beta/utils
+    carryforward: true
+  server:
+    paths:
+      - server
+    carryforward: true

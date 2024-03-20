@@ -1,0 +1,221 @@
+name: ci
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      action_type:
+        description: "Action type"
+        required: true
+        type: choice
+        options:
+          - extension
+          - geo
+          - server
+          - tiles
+          - tools
+          - worker
+
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    outputs:
+      extension: ${{ steps.extension.outputs.any_changed }}
+      geo: ${{ steps.geo.outputs.any_changed }}
+      server: ${{ steps.server.outputs.any_changed }}
+      tiles: ${{ steps.tiles.outputs.any_changed }}
+      tools: ${{ steps.tools.outputs.any_changed }}
+      worker: ${{ steps.worker.outputs.any_changed }}
+      build: ${{ (github.event_name == 'push' || github.event_name == 'workflow_dispatch') && github.ref_name == 'main' }}
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: changed files for extension
+        id: extension
+        uses: tj-actions/changed-files@v36
+        with:
+          files: |
+            extension
+            .github/workflows/ci-extension.yml
+            .github/workflows/ci-extension-version-update.yml
+            .github/workflows/deploy-extension-dev.yml
+            .github/workflows/deploy-extension-prod.yml
+      - name: changed files for server
+        id: server
+        uses: tj-actions/changed-files@v36
+        with:
+          files: |
+            server
+            .github/workflows/ci-server.yml
+            .github/workflows/build-server.yml
+            .github/workflows/deploy-server-dev.yml
+            .github/workflows/deploy-server-prod.yml
+      - name: changed files for tools
+        id: tools
+        uses: tj-actions/changed-files@v36
+        with:
+          files: |
+            tools
+            .github/workflows/ci-tools.yml
+      - name: changed files for geo
+        id: geo
+        uses: tj-actions/changed-files@v36
+        with:
+          files: |
+            geo
+            .github/workflows/ci-geo.yml
+            .github/workflows/build-geo.yml
+            .github/workflows/deploy-geo-dev.yml
+            .github/workflows/deploy-geo-prod.yml
+      - name: changed files for tiles
+        id: tiles
+        uses: tj-actions/changed-files@v36
+        with:
+          files: |
+            tiles
+            .github/workflows/ci-tiles.yml
+            .github/workflows/build-tiles.yml
+            .github/workflows/deploy-tiles-dev.yml
+            .github/workflows/deploy-tiles-prod.yml
+      - name: changed files for worker
+        id: worker
+        uses: tj-actions/changed-files@v36
+        with:
+          since_last_remote_commit: true
+          files: |
+            worker
+            .github/workflows/ci-worker.yml
+            .github/workflows/build-worker.yml
+            .github/workflows/deploy-worker-dev.yml
+            .github/workflows/deploy-worker-prod.yml
+
+  # ci-extension-version-update:
+  #   needs: prepare
+  #   if: ${{ !failure() && needs.prepare.outputs.extension == 'true' && github.event_name == 'push' && github.ref_name == 'main' }}
+  #   uses: ./.github/workflows/ci-extension-version-update.yml
+  #   with:
+  #     commit-sha: ${{ github.sha }}
+
+  ci-extension:
+    needs:
+      - prepare
+      # - ci-extension-version-update
+    if: needs.prepare.outputs.extension == 'true' || github.event.inputs.action_type == 'extension'
+    uses: ./.github/workflows/ci-extension.yml
+
+  ci-tools:
+    needs: prepare
+    if: needs.prepare.outputs.tools == 'true' || github.event.inputs.action_type == 'tools'
+    uses: ./.github/workflows/ci-tools.yml
+    with:
+      release_tools: ${{ github.event_name == 'push' && github.ref_name == 'main' }}
+
+  ci-geo:
+    needs: prepare
+    if: needs.prepare.outputs.geo == 'true' || github.event.inputs.action_type == 'geo'
+    uses: ./.github/workflows/ci-geo.yml
+
+  ci-server:
+    needs: prepare
+    if: needs.prepare.outputs.server == 'true' || github.event.inputs.action_type == 'server'
+    uses: ./.github/workflows/ci-server.yml
+
+  ci-tiles:
+    needs: prepare
+    if: needs.prepare.outputs.tiles == 'true' || github.event.inputs.action_type == 'tiles'
+    uses: ./.github/workflows/ci-tiles.yml
+
+  ci-worker:
+    needs: prepare
+    if: ${{ needs.prepare.outputs.worker == 'true' || github.event.inputs.action_type == 'worker' }}
+    uses: ./.github/workflows/ci-worker.yml
+
+  ci:
+    runs-on: ubuntu-latest
+    needs:
+      - ci-extension
+      - ci-geo
+      - ci-server
+      - ci-tiles
+      - ci-tools
+      - ci-worker
+    if: '!failure()'
+    steps:
+      - run: echo OK
+
+  deploy-extension-dev:
+    needs: [prepare, ci-extension]
+    if: ${{ success() && needs.prepare.outputs.build == 'true' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dispatch deployment
+        uses: peter-evans/repository-dispatch@v2
+        with:
+          event-type: deploy-extension-dev
+
+  build-geo:
+    needs: [prepare, ci-geo]
+    if: ${{ success() && needs.prepare.outputs.build == 'true' }}
+    uses: ./.github/workflows/build-geo.yml
+
+  deploy-geo-dev:
+    needs: build-geo
+    if: ${{ always() && needs.build-geo.result == 'success' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dispatch deployment
+        uses: peter-evans/repository-dispatch@v2
+        with:
+          event-type: deploy-geo-dev
+
+  build-server:
+    needs:
+      - prepare
+      - ci-server
+      - ci-extension
+    if: ${{ !failure() && needs.ci-server.result == 'success' && needs.prepare.outputs.build == 'true' }}
+    uses: ./.github/workflows/build-server.yml
+    with:
+      local: ${{ needs.ci-extension.result == 'success' }}
+
+  deploy-server-dev:
+    needs: build-server
+    if: ${{ always() && needs.build-server.result == 'success' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dispatch deployment
+        uses: peter-evans/repository-dispatch@v2
+        with:
+          event-type: deploy-server-dev
+
+  build-tiles:
+    needs: [prepare, ci-tiles]
+    if: ${{ success() && needs.prepare.outputs.build == 'true' }}
+    uses: ./.github/workflows/build-tiles.yml
+
+  deploy-tiles-dev:
+    needs: build-tiles
+    if: ${{ always() && needs.build-tiles.result == 'success' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dispatch deployment
+        uses: peter-evans/repository-dispatch@v2
+        with:
+          event-type: deploy-tiles-dev
+
+  build-worker:
+    needs: [prepare, ci-worker]
+    if: ${{ success() && needs.prepare.outputs.build == 'true' }}
+    uses: ./.github/workflows/build-worker.yml
+
+  deploy-worker-dev:
+    needs: build-worker
+    if: ${{ always() && needs.build-worker.result == 'success' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dispatch deployment
+        uses: peter-evans/repository-dispatch@v2
+        with:
+          event-type: deploy-worker-dev

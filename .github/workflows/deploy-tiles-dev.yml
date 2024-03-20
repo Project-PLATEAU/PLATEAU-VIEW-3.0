@@ -1,0 +1,49 @@
+name: ⭐️ Deploy PLATEAU Tiles dev
+on:
+  workflow_dispatch:
+  repository_dispatch:
+    types: [deploy-tiles-dev]
+env:
+  IMAGE: ghcr.io/eukarya-inc/plateau-view-3.0/plateauview-tiles:latest
+  IMAGE_GCP: asia.gcr.io/reearth-plateau-dev/plateauview-tiles:latest
+jobs:
+  deploy_tiles:
+    runs-on: ubuntu-latest
+    if: github.event.repository.full_name == 'eukarya-inc/PLATEAU-VIEW-3.0'
+    environment: dev
+    permissions:
+      contents: read
+      id-token: write
+      packages: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: ${{ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.GCP_SERVICE_ACCOUNT }}
+      - name: Set up Cloud SDK
+        uses: google-github-actions/setup-gcloud@v2
+      - name: Configure docker
+        run: gcloud auth configure-docker --quiet
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Download tiles artifacts
+        uses: dawidd6/action-download-artifact@v2
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          workflow: ci.yml
+          workflow_conclusion: success
+          branch: main
+          name: plateauview-tiles
+          check_artifacts: true
+      - name: Unpack docker image
+        run: docker load < plateauview-tiles.tar.gz
+      - name: docker push
+        run: |
+          docker tag $IMAGE $IMAGE_GCP && \
+          docker push $IMAGE &&
+          docker push $IMAGE_GCP

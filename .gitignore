@@ -1,0 +1,9 @@
+.DS_Store
+node_modules
+*.log
+/.idea/
+
+.env*
+/extension/dist
+/server/server
+/tools/*/target

@@ -1,0 +1,52 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Area {
+  code: String!
+  name: String!
+  radius: Float!
+  type: String!
+}
+
+type Areas {
+  address: String!
+  areas: [Area!]!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type EstatArea {
+  address: String!
+  addressComponents: [String!]!
+  bbox: [Float!]!
+  id: ID!
+  municipalityCode: String!
+  name: String!
+  prefectureCode: String!
+}
+
+type EstatAreaGeometry {
+  geometry: JSON!
+  id: String!
+}
+
+type Health {
+  date: DateTime!
+  id: ID!
+}
+
+"""
+The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
+"""
+scalar JSON
+
+type Query {
+  areas(includeRadii: Boolean! = false, latitude: Float!, longitude: Float!): Areas
+  estatAreaGeometry(areaId: ID!): EstatAreaGeometry
+  estatAreas(limit: Float, searchTokens: [String!]!): [EstatArea!]!
+  health(id: ID!): Health!
+}

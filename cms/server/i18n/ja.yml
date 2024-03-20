@@ -1,0 +1,87 @@
+Comment already exist in this thread: コメントはすでにこのスレッドに存在します。
+Comment does not exist in this thread: コメントはこのスレッドに存在しません。
+File is missing: ファイルがありません
+Options could not be empty!: 選択フィールドは空にできません
+already locked: 既にロック済みです。
+already published: 既に公開済みです。
+archived: アーカイブ済み
+auth0 is not set up: Auth0が設定されていません。
+"auth0: domain is not set": Auth0のドメインが設定されていません。
+bucket name is empty: ストレージバケット名が空白です。
+can't delete a group as it's used by some models: いくつかのモデルで使用されているため、グループを削除できません。
+can't update by approve: このメソッドで承認することはできません
+comment already exist in this thread: コメントは既にこのスレッドに存在します。
+comment does not exist in this thread: コメントはこのスレッドに存在しません。
+comment not found: コメントが見つかりませんでした。
+createdBy is required: createdByは必須です。
+duplicated item: アイテムが重複しています。
+duplicated key: キーが重複しています。
+duplicated value: 値が重複しています。
+either model or group should be provided: モデルまたはグループのどちらかを指定してください。
+failed to auth: 認証に失敗しました。
+failed to create asset: アセットの作成に失敗しました。
+failed to delete file: ファイルの削除に失敗しました。
+failed to lock: ロックに失敗しました。
+failed to update user: ユーザー情報の更新に失敗しました。
+failed to upload file: ファイルのアップロードに失敗しました。
+field not found: フィールドが見つかりませんでした。
+field value exist: フィールドの値はすでに存在します。
+file not found: ファイルが見つかりませんでした。
+file not included: ファイルが含まれていません。
+file size cannot be zero: ファイルサイズは0以下にできません。
+file too large: ファイルサイズが大きすぎます。
+internal: 内部
+invalid URL: 無効なURLです。
+invalid alias: 無効なエイリアスです。
+invalid base URL: 無効なベースURLです。
+invalid cursor: 無効なカーソルです。
+invalid default values: 無効なデフォルト値です。
+invalid document: 無効なドキュメントです。
+invalid email address: 無効なEmailアドレスです。
+invalid field: 無効なフィールドです。
+invalid file: 無効なファイルです。
+invalid key: 無効なキーです。
+invalid lang: 無効な言語です。
+invalid object: 無効なオブジェクトです。
+invalid operator: 無効なオペレーターです。
+invalid params: 無効なパラメーターです。
+invalid project: 無効なプロジェクトです。
+invalid smtp url: 無効なSMTP URLです。
+invalid type: 無効な型です。
+invalid type property: 無効な型プロパティです。
+invalid value: 無効な値です。
+invalid values: 無効な値です。
+item field required: このフィールドは必須項目です。
+item has been changed before you change it: このアイテムを保存する前に他のユーザーによってアイテムが変更されています。
+items cannot be empty: アイテムは空にできません。
+items should be on the same model: アイテムは全て同じモデルに対応する必要があります。
+max must be larger then min: 最大値は最小値より大きい必要があります。
+metadata item and schema mismatch: メタデータのアイテムのスキーマが正しくありません。
+metadata schema not found: メタデータのスキーマが見つかりません。
+model key is already used by another model: このキーはすでに別のモデルで使用されています。
+model should have at least one view: モデルには少なくとも 1 つのビューが必要です
+multiple reference is not supported: 複数参照はサポートされていません
+not found: 見つかりませんでした。
+not implemented: 未実装です。
+not implemented yet: 未実装です。
+not locked: ロックされていません。
+nothing is updated: アップデートされた項目はありません。
+one or more items not found: 対象のアイテムが見つかりませんでした。
+only requests with status waiting can be approved: レビュー待ちのリクエストのみ承認可能です。
+only reviewers can approve: レビュワーのみ承認可能です。
+operation denied: 操作が拒否されました。
+project alias is already used by another project: プロジェクトエイリアスはすでに別のプロジェクトで使用されています。
+project alias is not set: プロジェクトエイリアスが設定されていません。
+projectID is required: プロジェクトIDは必須です。
+reference field direction can not be changed: 参照フィールドの方向は変更できません
+reference field model can not be changed: 参照フィールドのモデルは変更できません
+referenced field key exists: 参照フィールドのキーがすでに存在します
+reviewer should be owner or maintainer: レビュワーはオーナーもしくはメインテイナーである必要があります。
+thread is required: スレッドは必須です。
+title cannot be empty: タイトルは必須です。
+unauthorized: 未認証
+unsupported entity: サポートされていないエンティティ
+unsupported operation: サポートされていない処理です。
+uuid is required: UUIDは必須です。
+value is required: 値は必須です。
+workspace id is required: ワークスペースIDは必須です。

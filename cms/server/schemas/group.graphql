@@ -1,0 +1,52 @@
+type Group implements Node {
+    id: ID!
+    schemaId: ID!
+    projectId: ID!
+    name: String!
+    description: String!
+    key: String!
+    schema: Schema!
+    project: Project!
+    fields: [SchemaField!]!
+}
+
+# inputs
+input CreateGroupInput {
+    projectId: ID!
+    name: String!
+    key: String!
+    description: String
+}
+
+input UpdateGroupInput {
+    groupId: ID!
+    name: String
+    description: String
+    key: String
+}
+
+input DeleteGroupInput {
+    groupId: ID!
+}
+
+# Payloads
+type GroupPayload {
+    group: Group!
+}
+
+type DeleteGroupPayload {
+    groupId: ID!
+}
+
+# extend type Query {}
+extend type Query {
+    groups(projectId: ID, modelID: ID): [Group]!
+    modelsByGroup(groupId: ID!):[Model]!
+    checkGroupKeyAvailability(projectId: ID!, key: String!): KeyAvailability!
+}
+
+extend type Mutation {
+    createGroup(input: CreateGroupInput!): GroupPayload
+    updateGroup(input: UpdateGroupInput!): GroupPayload
+    deleteGroup(input: DeleteGroupInput!): DeleteGroupPayload
+}

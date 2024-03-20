@@ -1,0 +1,97 @@
+name: ci-tools
+on:
+  workflow_call:
+    inputs:
+      release_tools:
+        type: string
+jobs:
+  ci-tools:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          components: clippy
+      - uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: tools -> tools/plateau-view-tool/target
+      - uses: giraffate/clippy-action@v1
+        with:
+          reporter: 'github-pr-review'
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          workdir: tools/plateau-view-tool
+      - name: test
+        working-directory: tools/plateau-view-tool
+        run: cargo test --all
+
+  ci-tools-build:
+    needs: ci-tools
+    name: ci-server-build - ${{ matrix.platform.release_for }}
+    strategy:
+      matrix:
+        platform:
+          - release_for: Windows-x86_64
+            os: windows-latest
+            target: x86_64-pc-windows-msvc
+            bin: plateau-view-tool.exe
+            name: plateau-view-tool-Windows-x86_64.zip
+
+          - release_for: macOS-x86_64
+            os: macOS-latest
+            target: x86_64-apple-darwin
+            bin: plateau-view-tool
+            name: plateau-view-tool-Darwin-x86_64.tar.gz
+
+    runs-on: ${{ matrix.platform.os }}
+    steps:
+      - uses: actions/checkout@v3
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: tools -> tools/plateau-view-tool/target
+      - name: Build binary
+        uses: houseabsolute/actions-rust-cross@v0
+        with:
+          target: ${{ matrix.platform.target }}
+          args: "--locked --release"
+          strip: true
+          working-directory: tools/plateau-view-tool
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: ${{ matrix.platform.name }}
+          path: tools/plateau-view-tool/target/${{ matrix.platform.target }}/release/${{ matrix.platform.bin }}
+          if-no-files-found: error
+
+  ci-tools-release:
+    runs-on: ubuntu-latest
+    needs: ci-tools-build
+    if: inputs.release_tools == 'true'
+    steps:
+      - name: Set up git config
+        run: |
+          git config --global user.name "${{ github.actor }}"
+          git config --global user.email "${{ github.actor }}@users.noreply.github.com"
+      - uses: actions/checkout@v3
+      - uses: actions/download-artifact@v3
+        with:
+          path: tools-artifacts
+      - name: Pack tools
+        run: |
+          mkdir -p tools-artifacts/tools
+          tree tools-artifacts
+          tar -czf tools-artifacts/tools/plateau-view-tool-Darwin-x86_64.tar.gz tools-artifacts/plateau-view-tool-Darwin-x86_64.tar.gz/plateau-view-tool
+          zip -r tools-artifacts/tools/plateau-view-tool-Windows-x86_64.zip tools-artifacts/plateau-view-tool-Windows-x86_64.zip/plateau-view-tool.exe
+      - name: Push tools tag
+        run: |
+          git tag -f tools
+          git push -f --tags
+      - run: tree tools-artifacts
+      - name: Update Github Release with artifacts
+        uses: ncipollo/release-action@v1
+        with:
+          artifacts: tools-artifacts/tools/*
+          tag: tools
+          allowUpdates: true
+          artifactErrorsFailBuild: true
+          removeArtifacts: true

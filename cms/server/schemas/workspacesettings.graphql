@@ -1,0 +1,112 @@
+type WorkspaceSettings implements Node {
+    id: ID! # same as workspaceId
+    tiles: ResourceList
+    terrains: ResourceList
+}
+
+type ResourceList {
+    resources: [Resource!]!
+    selectedResource: ID
+    enabled: Boolean
+}
+
+union Resource = TileResource | TerrainResource
+
+type TileResource {
+  id: ID!
+  type: TileType!
+  props: UrlResourceProps
+}
+
+type TerrainResource {
+  id: ID!
+  type: TerrainType!
+  props: CesiumResourceProps
+}
+
+enum TileType {
+  DEFAULT
+  LABELLED
+  ROAD_MAP
+  OPEN_STREET_MAP
+  ESRI_TOPOGRAPHY
+  EARTH_AT_NIGHT
+  JAPAN_GSI_STANDARD_MAP
+  URL
+}
+
+enum TerrainType {
+  CESIUM_WORLD_TERRAIN
+  ARC_GIS_TERRAIN
+  CESIUM_ION
+}
+
+type UrlResourceProps {
+    name: String!
+    url: String!
+    image: String!
+}
+
+type CesiumResourceProps {
+    name: String!
+    url: String!
+    image: String!
+    cesiumIonAssetId: String! 
+    cesiumIonAccessToken: String!
+}
+
+type UpdateWorkspaceSettingsPayload {
+    workspaceSettings: WorkspaceSettings!
+}
+
+# Inputs
+
+input ResourcesListInput {
+    resources: [ResourceInput!]!
+    selectedResource: ID
+    enabled: Boolean
+}
+
+
+input ResourceInput @onlyOne{
+    tile: TileResourceInput
+    terrain: TerrainResourceInput
+}
+
+input TileResourceInput {
+    id: ID!
+    type: TileType!
+    props: UrlResourcePropsInput
+}
+
+input TerrainResourceInput {
+    id: ID!
+    type: TerrainType!
+    props: CesiumResourcePropsInput
+}
+
+input UrlResourcePropsInput {
+    name: String!
+    url: String!
+    image: String!
+}
+
+input CesiumResourcePropsInput {
+    name: String!
+    url: String!
+    image: String!
+    cesiumIonAssetId: String! 
+    cesiumIonAccessToken: String!
+}
+
+input UpdateWorkspaceSettingsInput {
+    id: ID!
+    tiles: ResourcesListInput
+    terrains: ResourcesListInput
+}
+
+# extend type Query { }
+
+extend type Mutation {
+    updateWorkspaceSettings(input: UpdateWorkspaceSettingsInput!): UpdateWorkspaceSettingsPayload
+}

@@ -1,0 +1,12 @@
+web:
+  - changed-files:
+      - any-glob-to-any-file: web/**
+server:
+  - changed-files:
+      - any-glob-to-any-file: server/**
+worker:
+  - changed-files:
+      - any-glob-to-any-file: worker/**
+ci:
+  - changed-files:
+      - any-glob-to-any-file: .github/**

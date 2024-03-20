@@ -1,0 +1,8 @@
+type Schema implements Node {
+  id: ID!
+  projectId: ID!
+  fields: [SchemaField!]!
+  titleFieldId: ID
+  titleField: SchemaField
+  project: Project!
+}

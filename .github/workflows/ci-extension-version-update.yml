@@ -1,0 +1,42 @@
+name: ci-extension-version-update
+# TODO: Considered how to release the extension
+
+on:
+  workflow_call:
+    inputs:
+      commit-sha:
+        description: 'Commit SHA'
+        required: true
+        type: string
+
+jobs:
+  update-version:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up git config
+        run: |
+          git config --global user.name "${{ github.actor }}"
+          git config --global user.email "${{ github.actor }}@users.noreply.github.com"
+          git config --global pull.rebase false
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Update version
+        id: version
+        run: |
+          commit_message=$(git log --format=%B -n 1 ${{ github.event.inputs.commit-sha }})
+          current_version=$(awk '/version: [0-9]+\.[0-9]+\.[0-9]+/{print $2}' plugin/public/reearth.yml)
+          if [[ $commit_message == *"major"* ]]; then
+            new_version=$(awk -F '.' '{print $1 "." $2+1".0"}' <<< $current_version)
+          elif [[ $commit_message == *"minor"* ]]; then
+            new_version=$(awk -F '.' '{print $1 "." $2 "." $3+1}' <<< $current_version)
+          else
+            echo "Plugin related commit message must contain 'major' or 'minor'."
+            exit 1
+          fi
+          sed -i "s/$current_version/$new_version/" plugin/public/reearth.yml
+          echo "::set-output name=new_version::$new_version"
+      - name: Commit and push changes
+        run: |
+          # git add plugin/public/reearth.yml
+          git commit -m "chore(plugin): update plugin version to v${{ steps.version.outputs.new_version }}"
+          git switch main && git push

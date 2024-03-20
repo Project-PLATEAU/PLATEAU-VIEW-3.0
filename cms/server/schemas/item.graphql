@@ -1,0 +1,145 @@
+type Item implements Node {
+  id: ID!
+  schemaId: ID!
+  threadId: ID!
+  modelId: ID!
+  projectId: ID!
+  integrationId: ID
+  updatedByUserId: ID
+  updatedByIntegrationId: ID
+  userId: ID
+  metadataId: ID
+  isMetadata: Boolean!
+  originalId: ID
+  createdBy: Operator
+  schema: Schema!
+  model: Model!
+  status: ItemStatus!
+  project: Project!
+  thread: Thread!
+  fields: [ItemField!]!
+  assets: [Asset]!
+  referencedItems:[Item!]
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  updatedBy: Operator
+  version: String!
+  metadata: Item
+  original: Item
+  title: String
+}
+
+type ItemField {
+  schemaFieldId: ID!
+  itemGroupId: ID
+  type: SchemaFieldType!
+  value: Any
+}
+
+type VersionedItem {
+  version: String!
+  parents: [String!]
+  refs: [String!]!
+  value: Item!
+}
+
+enum ItemStatus {
+  DRAFT
+  PUBLIC
+  REVIEW
+  PUBLIC_REVIEW
+  PUBLIC_DRAFT
+}
+
+# Inputs
+input ItemFieldInput {
+  schemaFieldId: ID!
+  itemGroupId: ID
+  type: SchemaFieldType!
+  value: Any!
+}
+
+input CreateItemInput {
+  schemaId: ID!
+  modelId: ID!
+  metadataId: ID
+  originalId: ID
+  fields: [ItemFieldInput!]!
+}
+
+input UpdateItemInput {
+  itemId: ID!
+  metadataId: ID
+  originalId: ID
+  fields: [ItemFieldInput!]!
+  version: String
+}
+
+input DeleteItemInput {
+  itemId: ID!
+}
+
+input UnpublishItemInput {
+  itemIds: [ID!]!
+}
+
+input PublishItemInput {
+  itemIds: [ID!]!
+}
+
+input ItemQueryInput {
+  project: ID!
+  model: ID!
+  schema: ID
+  q: String
+}
+
+input SearchItemInput {
+  query: ItemQueryInput!
+  sort: ItemSortInput
+  filter: ConditionInput
+  pagination: Pagination
+}
+
+# Payloads
+type ItemPayload {
+  item: Item!
+}
+
+type DeleteItemPayload {
+  itemId: ID!
+}
+
+type UnpublishItemPayload {
+  items: [Item!]!
+}
+
+type PublishItemPayload {
+  items: [Item!]!
+}
+
+type ItemConnection {
+  edges: [ItemEdge!]!
+  nodes: [Item]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+type ItemEdge {
+  cursor: Cursor!
+  node: Item
+}
+
+extend type Query {
+  versionsByItem(itemId: ID!): [VersionedItem!]!
+  searchItem(input: SearchItemInput!): ItemConnection!
+  isItemReferenced(itemId: ID!, correspondingFieldId: ID!): Boolean!
+}
+
+extend type Mutation {
+  createItem(input: CreateItemInput!): ItemPayload
+  updateItem(input: UpdateItemInput!): ItemPayload
+  deleteItem(input: DeleteItemInput!): DeleteItemPayload
+  publishItem(input: PublishItemInput!): PublishItemPayload
+  unpublishItem(input: UnpublishItemInput!): UnpublishItemPayload
+}

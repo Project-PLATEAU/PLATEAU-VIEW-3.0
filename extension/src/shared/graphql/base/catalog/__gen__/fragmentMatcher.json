@@ -1,0 +1,40 @@
+{
+  "possibleTypes": {
+    "Area": [
+      "City",
+      "Prefecture",
+      "Ward"
+    ],
+    "Dataset": [
+      "GenericDataset",
+      "PlateauDataset",
+      "RelatedDataset"
+    ],
+    "DatasetItem": [
+      "GenericDatasetItem",
+      "PlateauDatasetItem",
+      "RelatedDatasetItem"
+    ],
+    "DatasetType": [
+      "GenericDatasetType",
+      "PlateauDatasetType",
+      "RelatedDatasetType"
+    ],
+    "Node": [
+      "City",
+      "GenericDataset",
+      "GenericDatasetItem",
+      "GenericDatasetType",
+      "PlateauDataset",
+      "PlateauDatasetItem",
+      "PlateauDatasetType",
+      "PlateauSpec",
+      "PlateauSpecMinor",
+      "Prefecture",
+      "RelatedDataset",
+      "RelatedDatasetItem",
+      "RelatedDatasetType",
+      "Ward"
+    ]
+  }
+}

@@ -1,0 +1,59 @@
+name: ⭐️ Deploy PLATEAU Tiles production
+on:
+  workflow_dispatch:
+env:
+  IMAGE: ghcr.io/eukarya-inc/plateau-view-3.0/plateauview-tiles:latest
+  IMAGE_GCP: asia.gcr.io/reearth-plateau/plateauview-tiles:latest
+  IMAGE_HUB: eukarya/plateauview-tiles:latest
+jobs:
+  deploy_tiles:
+    runs-on: ubuntu-latest
+    if: github.event.repository.full_name == 'eukarya-inc/PLATEAU-VIEW-3.0'
+    environment: prod
+    permissions:
+      contents: read
+      id-token: write
+      packages: read
+    steps:
+      - uses: actions/checkout@v3
+      - uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: ${{ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.GCP_SERVICE_ACCOUNT }}
+      - name: Set up Cloud SDK
+        uses: google-github-actions/setup-gcloud@v2
+      - name: Configure docker
+        run: gcloud auth configure-docker --quiet
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Pull docker image from GHCR
+        run: docker pull $IMAGE
+      - name: docker push
+        run: |
+          docker tag $IMAGE $IMAGE_GCP
+          docker push $IMAGE_GCP
+
+  push_hub:
+    runs-on: ubuntu-latest
+    permissions:
+      packages: read
+    steps:
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Pull image
+        run: docker pull $IMAGE
+      - name: Log in to DockerHub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKERHUB_USER }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+      - name: Push image
+        run: docker tag $IMAGE $IMAGE_HUB && docker push $IMAGE_HUB

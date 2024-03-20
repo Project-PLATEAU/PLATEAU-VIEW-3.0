@@ -1,0 +1,41 @@
+name: Deploy development
+on:
+  workflow_dispatch:
+  repository_dispatch:
+    types: [deploy-dev]
+
+jobs:
+  deploy_ar:
+    runs-on: ubuntu-latest
+    if: github.event.repository.full_name == 'eukarya-inc/PLATEAU-VIEW-AR'
+    environment: dev
+    permissions:
+      contents: read  # To checkout
+      id-token: write # To authenticate with GCP using OIDC
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download artifacts
+        uses: dawidd6/action-download-artifact@v2
+        with:
+          branch: main
+          workflow: ci.yml
+          name: ar
+          path: dist
+          check_artifacts: true
+          search_artifacts: true
+
+      - uses: google-github-actions/auth@v2
+        with:
+          service_account: ${{ secrets.GCP_SERVICE_ACCOUNT }}
+          workload_identity_provider: ${{ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }}
+
+      - uses: google-github-actions/setup-gcloud@v2
+
+      - run: gsutil -m -h "Cache-Control:no-store" rsync -dr dist gs://${{ vars.GCS_DEST }}
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: ar
+          path: dist/**/*

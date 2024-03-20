@@ -1,0 +1,31 @@
+import {
+  colorMapCividis,
+  colorMapCrest,
+  colorMapFlare,
+  colorMapIcefire,
+  colorMapInferno,
+  colorMapMagma,
+  colorMapMako,
+  colorMapPlasma,
+  colorMapPlateau,
+  colorMapRocket,
+  colorMapTurbo,
+  colorMapViridis,
+  colorMapVlag,
+} from "../../prototypes/color-maps";
+
+export const COLOR_MAPS = [
+  colorMapPlateau,
+  colorMapCividis,
+  colorMapCrest,
+  colorMapFlare,
+  colorMapIcefire,
+  colorMapInferno,
+  colorMapMagma,
+  colorMapMako,
+  colorMapPlasma,
+  colorMapRocket,
+  colorMapTurbo,
+  colorMapViridis,
+  colorMapVlag,
+];

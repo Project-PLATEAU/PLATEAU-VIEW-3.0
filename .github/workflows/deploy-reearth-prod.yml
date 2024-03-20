@@ -1,0 +1,102 @@
+name: ⭐︎ Deploy reearth production
+on:
+  workflow_dispatch:
+    inputs:
+      web_run_id:
+        type: string
+        description: Deploy the specific version of web to specify the run ID. If specified, deployment of the server will be skipped. (Optional)
+        required: false
+env:
+  GCS_DEST: gs://plateau-prod-reearth-app-bucket
+  IMAGE_NAME_GHCR: ghcr.io/eukarya-inc/plateau-view-3.0/reearth:latest
+  IMAGE_NAME_GCP: asia.gcr.io/reearth-plateau/reearth:latest
+  IMAGE_NAME_HUB: eukarya/plateauview2-reearth:latest
+concurrency:
+  group: ${{ github.workflow }}
+jobs:
+  deploy_web:
+    runs-on: ubuntu-latest
+    if: github.event.repository.full_name == 'eukarya-inc/PLATEAU-VIEW-3.0'
+    environment: prod
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: ${{ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.GCP_SERVICE_ACCOUNT }}
+      - name: Set up Cloud SDK
+        uses: google-github-actions/setup-gcloud@v2
+      - name: Download artifact
+        uses: dawidd6/action-download-artifact@v2
+        with:
+          github_token: ${{ secrets.GPT }}
+          workflow: deploy-reearth-dev.yml
+          branch: ${{ !github.event.inputs.web_run_id && 'main' || '' }}
+          name: reearth-web
+          check_artifacts: true
+          search_artifacts: true
+          run_id: ${{ github.event.inputs.web_run_id }}
+      - name: Extract
+        run: tar -xvf reearth-web.tar.gz
+      - name: Deploy
+        run: gsutil -m -h "Cache-Control:no-store" rsync -x "^cloud/.*$|^reearth_config\\.json$|^extension/.*$" -dr reearth-web/ ${{ env.GCS_DEST }}
+      # TODO: purge CDN cache
+  deploy_server:
+    runs-on: ubuntu-latest
+    environment: prod
+    permissions:
+      contents: read
+      id-token: write
+      packages: read
+    if: ${{ !github.event.inputs.web_run_id && github.event.repository.full_name == 'eukarya-inc/PLATEAU-VIEW-3.0' }}
+    steps:
+      - uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: ${{ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.GCP_SERVICE_ACCOUNT }}
+      - name: Set up Cloud SDK
+        uses: google-github-actions/setup-gcloud@v2
+      - name: Configure docker
+        run: gcloud auth configure-docker --quiet
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Pull docker image
+        run: docker pull $IMAGE_NAME_GHCR
+      - name: Push docker image
+        run: docker tag $IMAGE_NAME_GHCR $IMAGE_NAME_GCP && docker push $IMAGE_NAME_GCP
+      - name: Deploy
+        run: |
+          gcloud run deploy reearth-api \
+            --image $IMAGE_NAME_GCP \
+            --region $GCP_REGION \
+            --platform managed \
+            --quiet
+        env:
+          GCP_REGION: ${{ vars.GCP_REGION }}
+  push_hub:
+    runs-on: ubuntu-latest
+    permissions:
+      packages: read
+    if: ${{ github.event.repository.full_name == 'eukarya-inc/PLATEAU-VIEW-3.0' }}
+    steps:
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Pull image
+        run: docker pull $IMAGE_NAME_GHCR
+      - name: Log in to DockerHub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKERHUB_USER }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+      - name: Push image
+        run: docker tag $IMAGE_NAME_GHCR $IMAGE_NAME_HUB && docker push $IMAGE_NAME_HUB
