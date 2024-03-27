@@ -17,6 +17,9 @@ const StyledPaper = styled(Paper, {
   maxHeight: "100%",
   boxShadow: theme.shadows[elevation],
   pointerEvents: "auto",
+  [theme.breakpoints.down("mobile")]: {
+    maxHeight: "50%",
+  },
 }));
 
 const ResizableRoot = styled("div")({

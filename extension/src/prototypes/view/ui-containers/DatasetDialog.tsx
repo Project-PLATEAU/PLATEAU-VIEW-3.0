@@ -59,6 +59,14 @@ const StyledButton = styled(Button, {
   }),
 }));
 
+const StyledDialog = styled(Dialog)(({ theme }) => ({
+  "& .MuiDialog-paper": {
+    [theme.breakpoints.down("mobile")]: {
+      maxHeight: "50%",
+    },
+  },
+}));
+
 export interface DatasetDialogProps extends Omit<DialogProps, "children"> {
   municipalityCode: string;
   dataset: DatasetFragmentFragment;
@@ -106,7 +114,7 @@ export const DatasetDialog: FC<DatasetDialogProps> = ({
   }, [dataset, layer, layerType, addLayer, removeLayer, municipalityCode, settings, templates]);
 
   return (
-    <Dialog maxWidth="mobile" {...props}>
+    <StyledDialog maxWidth="mobile" {...props}>
       <StyledEntityTitle
         iconComponent={datasetTypeIcons[dataset.type.code as PlateauDatasetType] ?? UseCaseIcon}
         title={{
@@ -141,6 +149,6 @@ export const DatasetDialog: FC<DatasetDialogProps> = ({
       <DialogContent>
         <StyledDialogContentText>{dataset.description}</StyledDialogContentText>
       </DialogContent>
-    </Dialog>
+    </StyledDialog>
   );
 };

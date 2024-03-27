@@ -63,7 +63,7 @@ func generatePlateauIndexItem(seed *IndexSeed, name string, size uint64, f fs.FS
 
 func extractFeatureType(name string) string {
 	for _, f := range featureTypes {
-		if strings.Contains("_"+name+"_", f) {
+		if strings.Contains(name, "_"+f+"_") {
 			return f
 		}
 	}
