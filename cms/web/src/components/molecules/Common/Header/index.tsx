@@ -12,9 +12,7 @@ import { useT } from "@reearth-cms/i18n";
 
 import HeaderDropdown from "./Dropdown";
 
-export type { User } from "./types";
-
-export interface Props {
+interface Props {
   username?: string;
   personalWorkspace?: Workspace;
   currentWorkspace?: Workspace;

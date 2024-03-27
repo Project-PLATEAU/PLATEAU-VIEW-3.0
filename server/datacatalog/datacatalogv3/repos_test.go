@@ -112,7 +112,7 @@ func TestRepos(t *testing.T) {
 	assertRes(t, ctx, repo, "foo", "00001", false, nil, false, true, false)
 	assertRes(t, ctx, repo, "bar", "00002", false, nil, false, false, true)
 
-	ctx2 := AdminContext(ctx, true, true)
+	ctx2 := AdminContext(ctx, true, true, false)
 	assertRes(t, ctx2, repo, "PREF", "00", true, lo.ToPtr(string(stageBeta)), true, true, false)
 	assertRes(t, ctx2, repo, "foo", "00001", true, nil, false, true, false)
 	assertRes(t, ctx2, repo, "bar", "00002", true, nil, false, false, true)
@@ -132,6 +132,10 @@ func mockCMS(t *testing.T) {
 	)
 	httpmock.RegisterResponder(
 		"GET", "https://example.com/api/projects/prj/models/plateau-generic/items",
+		httpmock.NewJsonResponderOrPanic(200, empty),
+	)
+	httpmock.RegisterResponder(
+		"GET", "https://example.com/api/projects/prj/models/plateau-sample/items",
 		httpmock.NewJsonResponderOrPanic(200, empty),
 	)
 	httpmock.RegisterResponder(

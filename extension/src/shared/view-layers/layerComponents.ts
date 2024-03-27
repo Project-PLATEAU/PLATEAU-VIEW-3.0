@@ -5,6 +5,7 @@
 import { type LayerComponents } from "../../prototypes/layers";
 import { HeatmapLayer, PedestrianLayer, SketchLayer } from "../../prototypes/view-layers";
 import {
+  AREA_LAYER,
   BORDER_LAYER,
   BRIDGE_LAYER,
   BUILDING_LAYER,
@@ -32,6 +33,7 @@ import {
   URBAN_PLANNING_LAYER,
   USE_CASE_LAYER,
   VEGETATION_LAYER,
+  WATERWAY_LAYER,
 } from "../../prototypes/view-layers/layerTypes";
 
 import { FloodLayer } from "./plateau-3dtiles/FloodLayer";
@@ -59,6 +61,7 @@ export const layerComponents: LayerComponents = {
   [RIVER_FLOODING_RISK_LAYER]: FloodLayer,
   [TSUNAMI_RISK_LAYER]: FloodLayer,
   // General
+  [AREA_LAYER]: GeneralDatasetLayer,
   [BORDER_LAYER]: GeneralDatasetLayer,
   [BRIDGE_LAYER]: GeneralDatasetLayer,
   [CITY_FURNITURE_LAYER]: GeneralDatasetLayer,
@@ -75,5 +78,6 @@ export const layerComponents: LayerComponents = {
   [STATION_LAYER]: GeneralDatasetLayer,
   [URBAN_PLANNING_LAYER]: GeneralDatasetLayer,
   [USE_CASE_LAYER]: GeneralDatasetLayer,
+  [WATERWAY_LAYER]: GeneralDatasetLayer,
   [VEGETATION_LAYER]: GeneralDatasetLayer,
 };

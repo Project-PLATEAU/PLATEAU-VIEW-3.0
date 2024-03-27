@@ -22,3 +22,8 @@ export const FEATURE_PROPERTIES_CONFIG = [
 ];
 
 export const BUILDING_FEATURE_TYPE = "bldg:Building";
+
+// Some area codes are changed due to some goverment reason, but digital data isn't updated yet.
+// Then we can't get the actual area code for each ward from API.
+// But we can get city's code, so we need to show the data for ward as city.
+export const CITY_CODES_FOR_BUILDING_MODEL = ["22130"];

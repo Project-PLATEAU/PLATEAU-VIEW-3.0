@@ -42,14 +42,19 @@ func TestPlateauFeatureItemFrom(t *testing.T) {
 				Group: "item2",
 				Value: []any{"url4"}, // string is ignored
 			},
+			{
+				Key:   "feature_type",
+				Value: "交通（道路）モデル（tran）",
+			},
 		},
 	}
 
 	expected := &PlateauFeatureItem{
-		ID:      "id",
-		Data:    []string{"url1", "url2"},
-		CityGML: "url_citygml",
-		MaxLOD:  "url_maxlod",
+		ID:          "id",
+		Data:        []string{"url1", "url2"},
+		CityGML:     "url_citygml",
+		MaxLOD:      "url_maxlod",
+		FeatureType: "tran",
 		Items: []PlateauFeatureItemDatum{
 			{
 				ID:   "item1",
@@ -61,7 +66,7 @@ func TestPlateauFeatureItemFrom(t *testing.T) {
 		},
 	}
 
-	assert.Equal(t, expected, PlateauFeatureItemFrom(item))
+	assert.Equal(t, expected, PlateauFeatureItemFrom(item, "code"))
 }
 
 func TestGenericItemFrom(t *testing.T) {

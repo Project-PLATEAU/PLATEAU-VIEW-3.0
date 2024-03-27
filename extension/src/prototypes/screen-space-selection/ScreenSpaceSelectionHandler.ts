@@ -14,7 +14,7 @@ import {
   type ScreenSpaceSelectionEventAction,
 } from "./ScreenSpaceSelectionEvent";
 
-type EventType = "point" | "rectangle" | "imagery";
+type EventType = "point" | "rectangle" | "select";
 
 const pointEvent = {
   type: "point",
@@ -38,9 +38,9 @@ const rectangleEvent = {
   features: undefined as PickedFeature[] | undefined,
 } satisfies ScreenSpaceSelectionEvent;
 
-const IMAGERY_LAYER_TYPE: DataType[] = ["mvt", "wms"];
-const imageryEvent = {
-  type: "imagery",
+const MULTIPLA_SELECTABLE_DATA_TYPE: DataType[] = ["3dtiles"];
+const selectedEvent = {
+  type: "select",
   action: "replace" as ScreenSpaceSelectionEventAction,
   object: {},
 } satisfies ScreenSpaceSelectionEvent;
@@ -62,9 +62,9 @@ export class ScreenSpaceSelectionHandler {
   #allowedEvents: { [key in EventType]: boolean } = {
     point: true,
     rectangle: true,
-    imagery: true,
+    select: true,
   };
-  #imageryFound = false;
+  #selectedEventFound = false;
 
   constructor() {
     window.reearth?.on?.("select", this.handleSelect);
@@ -132,29 +132,29 @@ export class ScreenSpaceSelectionHandler {
   private readonly handleSelect = (layerId?: string): void => {
     if (
       (this.disabled && !this.allowClickWhenDisabled) ||
-      !this.#allowedEvents.imagery ||
+      !this.#allowedEvents.select ||
       !layerId
     ) {
       return;
     }
     const l = window.reearth?.layers?.findById?.(layerId);
     const type = l?.type === "simple" ? l.data?.type : undefined;
-    if (!type || !IMAGERY_LAYER_TYPE.includes(type)) return;
+    if (!type || MULTIPLA_SELECTABLE_DATA_TYPE.includes(type) || !!pointEvent.feature) return;
 
     if (window.reearth?.layers?.selectedFeature) {
-      this.#imageryFound = true;
+      this.#selectedEventFound = true;
     }
 
-    imageryEvent.action = "replace";
-    imageryEvent.object = { ...window.reearth?.layers?.selectedFeature, layerId } ?? {};
-    this.change.dispatch(imageryEvent);
+    selectedEvent.action = "replace";
+    selectedEvent.object = { ...window.reearth?.layers?.selectedFeature, layerId } ?? {};
+    this.change.dispatch(selectedEvent);
     requestAnimationFrame(() => {
-      this.#imageryFound = false;
+      this.#selectedEventFound = false;
     });
   };
 
   private readonly handleMouseUp = (event: LayerSelectWithRectEnd): void => {
-    if (this.disabled || this.#imageryFound) {
+    if (this.disabled || this.#selectedEventFound) {
       this.moving = false;
       return;
     }
@@ -177,7 +177,7 @@ export class ScreenSpaceSelectionHandler {
     event: LayerSelectWithRectMove,
     indeterminate = true,
   ): void => {
-    if (this.#imageryFound) return;
+    if (this.#selectedEventFound) return;
     this.moving = true;
     // TODO(ReEarth): Support selecting multiple feature
     rectangleEvent.action = actionForModifier(event.pressedKey);

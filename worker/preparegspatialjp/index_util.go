@@ -77,14 +77,27 @@ func walk(f fs.FS, path, pathsep string, fn walker) (*IndexItem, error) {
 	return items[0], nil
 }
 
-func openZip(path string) (fs.FS, func() error, error) {
+func openZip(path string) (fs.FS, uint64, func() error, error) {
 	if path == "" {
-		return nil, nil, nil
+		return nil, 0, nil, nil
+	}
+
+	size, err := fileSize(path)
+	if err != nil {
+		if os.IsNotExist(err) {
+			return nil, 0, nil, nil
+		}
+
+		return nil, 0, nil, fmt.Errorf("failed to get file size: %w", err)
 	}
 
 	file, err := os.Open(path)
 	if err != nil {
-		return nil, nil, err
+		if os.IsNotExist(err) {
+			return nil, 0, nil, nil
+		}
+
+		return nil, 0, nil, err
 	}
 
 	closer := func() error {
@@ -93,16 +106,16 @@ func openZip(path string) (fs.FS, func() error, error) {
 
 	stat, err := file.Stat()
 	if err != nil {
-		return nil, nil, err
+		return nil, 0, nil, err
 	}
 
 	z, err := zip.NewReader(file, stat.Size())
 	if err != nil {
-		return nil, nil, err
+		return nil, 0, nil, err
 	}
 
 	f := zipfs.New(z)
-	return afero.NewIOFS(f), closer, nil
+	return afero.NewIOFS(f), size, closer, nil
 }
 
 func fileSize(path string) (uint64, error) {

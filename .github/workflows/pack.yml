@@ -1,0 +1,59 @@
+name: Pack
+on:
+  workflow_dispatch:
+jobs:
+  pack:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: plateau
+          path: plateau
+      - name: Clean
+        run: |
+          rm -rf plateau/*
+          rm -rf plateau/{.github,.vscode,.gitkeep,.gitignore,.dockerignore}
+          tree -a
+      - run: git status
+        working-directory: plateau
+      - name: Extract PLATEAU-VIEW-3.0 zip
+        run: |
+          wget https://github.com/eukarya-inc/PLATEAU-VIEW-3.0/archive/refs/heads/main.zip
+          unzip main.zip
+          shopt -s dotglob
+          mv PLATEAU-VIEW-3.0-main/* plateau/
+          rmdir PLATEAU-VIEW-3.0-main
+          rm main.zip
+      - name: Extract PLATEAU-VIEW-AR zip
+        run: |
+          wget https://github.com/eukarya-inc/PLATEAU-VIEW-AR/archive/refs/heads/main.zip
+          unzip main.zip
+          shopt -s dotglob
+          mv PLATEAU-VIEW-AR-main plateau/ar
+          rm main.zip
+      - name: Extract Re:Earth zip
+        run: |
+          wget https://github.com/reearth/reearth/archive/refs/heads/main.zip
+          unzip main.zip
+          shopt -s dotglob
+          mv reearth-main plateau/editor
+          rm main.zip
+      - name: Extract Re:Earth CMS zip
+        run: |
+          wget https://github.com/reearth/reearth-cms/archive/refs/heads/main.zip
+          unzip main.zip
+          shopt -s dotglob
+          mv reearth-cms-main plateau/cms
+          rm main.zip
+      - run: tree -a
+      - name: Commit and push
+        working-directory: plateau
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git status
+          git add .
+          git commit -m "Update"
+          git status
+          git push

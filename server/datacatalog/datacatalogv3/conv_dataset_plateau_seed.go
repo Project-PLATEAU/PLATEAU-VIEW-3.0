@@ -20,6 +20,7 @@ type plateauDatasetSeed struct {
 	TargetArea plateauapi.Area
 	WardID     *plateauapi.ID
 	WardCode   *plateauapi.AreaCode
+	Groups     []string
 	// common
 	DatasetType       *plateauapi.PlateauDatasetType
 	Dic               Dic
@@ -61,6 +62,7 @@ func plateauDatasetSeedsFrom(i *PlateauFeatureItem, opts ToPlateauDatasetsOption
 				{
 					Data:   i.Data,
 					Desc:   i.Desc,
+					Group:  i.Group,
 					Simple: true,
 				},
 			}
@@ -76,8 +78,6 @@ func plateauDatasetSeedsFrom(i *PlateauFeatureItem, opts ToPlateauDatasetsOption
 	// merge seeds with same ID
 	res = mergeDatasetSeeds(res)
 
-	adminExtra := sampleAdmin(i.Sample)
-
 	// common
 	for i := range res {
 		res[i].DatasetType = opts.DatasetType
@@ -90,7 +90,7 @@ func plateauDatasetSeedsFrom(i *PlateauFeatureItem, opts ToPlateauDatasetsOption
 			opts.Area.CityItem.ID,
 			opts.Area.CityItem.PlateauStage(opts.DatasetType.Code),
 			opts.CMSURL,
-			adminExtra,
+			nil,
 		)
 		res[i].LayerNames = opts.LayerNames
 		res[i].Year = year
@@ -158,10 +158,16 @@ func plateauDatasetSeedFromItem(item PlateauFeatureItemDatum, dt *plateauapi.Pla
 		return a.B
 	})
 
+	var groups []string
+	if item.Group != "" {
+		groups = strings.Split(item.Group, "/")
+	}
+
 	res = plateauDatasetSeed{
 		AssetURLs: assetUrls,
 		Assets:    assetNames,
 		Desc:      item.Desc,
+		Groups:    groups,
 	}
 
 	if !item.Simple {
@@ -246,6 +252,11 @@ func plateauDatasetSeedsFromBldg(i *PlateauFeatureItem, dt *plateauapi.PlateauDa
 		return
 	}
 
+	var groups []string
+	if i.Group != "" {
+		groups = strings.Split(i.Group, "/")
+	}
+
 	for _, ward := range wards {
 		wardCode := ward.Code.String()
 		assets := lo.Filter(assets, func(name lo.Tuple2[*AssetName, string], _ int) bool {
@@ -267,6 +278,7 @@ func plateauDatasetSeedsFromBldg(i *PlateauFeatureItem, dt *plateauapi.PlateauDa
 			WardID:     lo.ToPtr(ward.ID),
 			WardCode:   lo.ToPtr(ward.Code),
 			TargetArea: ward,
+			Groups:     groups,
 		})
 	}
 

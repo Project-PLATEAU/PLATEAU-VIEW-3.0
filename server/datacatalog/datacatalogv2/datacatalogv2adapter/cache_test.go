@@ -15,20 +15,20 @@ func TestNewCache(t *testing.T) {
 		Plateau: []datacatalogv2.PlateauItem{
 			{
 				ID:              "plateau1",
-				Prefecture:      "東京都",
-				CityName:        "東京都23区",
+				Prefecture:      "北海道",
+				CityName:        "hoge市",
 				DescriptionBldg: "bldg_desc",
 				Specification:   "第2.3版",
 				CityGML: &cms.PublicAsset{
 					Asset: cms.Asset{
 						ID:  "assetid",
-						URL: "https://example.com/13101_tokyo23ku_2022_citygml_op.zip",
+						URL: "https://example.com/00000_hoge-shi_2022_citygml_op.zip",
 					},
 				},
 				Bldg: []*cms.PublicAsset{
 					{
 						Asset: cms.Asset{
-							URL: "https://example.com/13101_tokyo23ku_2022_3dtiles_0_bldg_lod1.zip",
+							URL: "https://example.com/00000_hoge-shi_2022_3dtiles_0_bldg_lod1.zip",
 						},
 					},
 				},
@@ -46,7 +46,7 @@ func TestNewCache(t *testing.T) {
 	items := map[string]*fetcherPlateauItem2{
 		"plateau1": {
 			ID:             "plateau1",
-			CityGMLURL:     "https://example.com/13101_tokyo23ku_2022_citygml_op_2.zip",
+			CityGMLURL:     "https://example.com/00000_hoge-shi_2022_citygml_op_2.zip",
 			CityGMLAssetID: "assetid2",
 			MaxLODURL:      "maxlod2",
 			FeatureTypes:   []string{"bldg", "dem"},
@@ -59,20 +59,20 @@ func TestNewCache(t *testing.T) {
 			plateauapi.AreaTypePrefecture: []plateauapi.Area{
 				&plateauapi.Prefecture{
 					Type: plateauapi.AreaTypePrefecture,
-					ID:   "p_13",
-					Name: "東京都",
-					Code: plateauapi.AreaCode("13"),
+					ID:   "p_01",
+					Name: "北海道",
+					Code: plateauapi.AreaCode("01"),
 				},
 			},
 			plateauapi.AreaTypeCity: []plateauapi.Area{
 				&plateauapi.City{
 					Type:           plateauapi.AreaTypeCity,
-					ID:             "c_13101",
-					Name:           "東京都23区",
-					Code:           plateauapi.AreaCode("13101"),
-					PrefectureID:   plateauapi.ID("p_13"),
-					PrefectureCode: plateauapi.AreaCode("13"),
-					CitygmlID:      lo.ToPtr(plateauapi.ID("cg_13101")),
+					ID:             "c_00000",
+					Name:           "hoge市",
+					Code:           plateauapi.AreaCode("00000"),
+					PrefectureID:   plateauapi.ID("p_01"),
+					PrefectureCode: plateauapi.AreaCode("01"),
+					CitygmlID:      lo.ToPtr(plateauapi.ID("cg_00000")),
 				},
 			},
 		},
@@ -89,30 +89,33 @@ func TestNewCache(t *testing.T) {
 					Order:         1,
 				},
 			},
+			plateauapi.DatasetTypeCategoryGeneric: []plateauapi.DatasetType{
+				sampleDataType,
+			},
 		},
 		Datasets: plateauapi.Datasets{
 			plateauapi.DatasetTypeCategoryPlateau: []plateauapi.Dataset{
 				&plateauapi.PlateauDataset{
-					ID:                 "d_13101_bldg",
-					Name:               "建築物モデル（東京都23区）",
+					ID:                 "d_00000_bldg",
+					Name:               "建築物モデル（hoge市）",
 					Year:               2022,
 					RegisterationYear:  2022,
-					OpenDataURL:        lo.ToPtr("https://www.geospatial.jp/ckan/dataset/plateau-13101-tokyo23ku-2022"),
+					OpenDataURL:        lo.ToPtr("https://www.geospatial.jp/ckan/dataset/plateau-00000-hoge-shi-2022"),
 					Description:        lo.ToPtr("bldg_desc"),
-					PrefectureID:       lo.ToPtr(plateauapi.ID("p_13")),
-					PrefectureCode:     lo.ToPtr(plateauapi.AreaCode("13")),
-					CityID:             lo.ToPtr(plateauapi.ID("c_13101")),
-					CityCode:           lo.ToPtr(plateauapi.AreaCode("13101")),
+					PrefectureID:       lo.ToPtr(plateauapi.ID("p_01")),
+					PrefectureCode:     lo.ToPtr(plateauapi.AreaCode("01")),
+					CityID:             lo.ToPtr(plateauapi.ID("c_00000")),
+					CityCode:           lo.ToPtr(plateauapi.AreaCode("00000")),
 					TypeID:             "dt_bldg_2",
 					TypeCode:           "bldg",
 					PlateauSpecMinorID: "ps_2.3",
 					Items: []*plateauapi.PlateauDatasetItem{
 						{
-							ID:       "di_13101_bldg_LOD1",
-							URL:      "https://example.com/13101_tokyo23ku_2022_3dtiles_0_bldg_lod1/tileset.json",
+							ID:       "di_00000_bldg_LOD1",
+							URL:      "https://example.com/00000_hoge-shi_2022_3dtiles_0_bldg_lod1/tileset.json",
 							Format:   plateauapi.DatasetFormatCesium3dtiles,
 							Name:     "LOD1",
-							ParentID: "d_13101_bldg",
+							ParentID: "d_00000_bldg",
 							Lod:      lo.ToPtr(1),
 							Texture:  lo.ToPtr(plateauapi.TextureTexture),
 						},
@@ -121,19 +124,19 @@ func TestNewCache(t *testing.T) {
 			},
 		},
 		CityGML: map[plateauapi.ID]*plateauapi.CityGMLDataset{
-			"cg_13101": {
-				ID:                 "cg_13101",
+			"cg_00000": {
+				ID:                 "cg_00000",
 				Year:               2022,
 				RegistrationYear:   2022,
-				PrefectureID:       "p_13",
-				PrefectureCode:     "13",
-				CityID:             "c_13101",
-				CityCode:           "13101",
+				PrefectureID:       "p_01",
+				PrefectureCode:     "01",
+				CityID:             "c_00000",
+				CityCode:           "00000",
 				PlateauSpecMinorID: "ps_2.3",
-				URL:                "https://example.com/13101_tokyo23ku_2022_citygml_op_2.zip",
+				URL:                "https://example.com/00000_hoge-shi_2022_citygml_op_2.zip",
 				FeatureTypes:       []string{"bldg", "dem"},
 				Admin: map[string]any{
-					"citygmlUrl":     []string{"https://example.com/13101_tokyo23ku_2022_citygml_op_2.zip"},
+					"citygmlUrl":     []string{"https://example.com/00000_hoge-shi_2022_citygml_op_2.zip"},
 					"maxlod":         []string{"maxlod2"},
 					"citygmlAssetId": "assetid2",
 				},

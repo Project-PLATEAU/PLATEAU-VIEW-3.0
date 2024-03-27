@@ -54,7 +54,12 @@ type ToPlateauDatasetsOptions struct {
 	Year        int
 }
 
-func (i *PlateauFeatureItem) toDatasets(opts ToPlateauDatasetsOptions) (res []plateauapi.Dataset, warning []string) {
+func (i *PlateauFeatureItem) toDatasets(opts ToPlateauDatasetsOptions) ([]plateauapi.Dataset, []string) {
+	res, w := i.toDatasetsRaw(opts)
+	return plateauapi.ToDatasets(res), w
+}
+
+func (i *PlateauFeatureItem) toDatasetsRaw(opts ToPlateauDatasetsOptions) (res []*plateauapi.PlateauDataset, warning []string) {
 	if !opts.Area.IsValid() {
 		warning = append(warning, fmt.Sprintf("plateau %s: invalid area", i.ID))
 		return
@@ -134,6 +139,7 @@ func seedToDataset(seed plateauDatasetSeed) (res *plateauapi.PlateauDataset, war
 		PlateauSpecMinorID: seed.Spec.ID,
 		River:              seed.River,
 		Admin:              seed.Admin,
+		Groups:             seed.Groups,
 		Items:              items,
 	}
 

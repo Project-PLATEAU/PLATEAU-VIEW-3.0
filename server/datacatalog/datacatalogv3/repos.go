@@ -12,12 +12,19 @@ import (
 	"github.com/reearth/reearthx/util"
 )
 
-func AdminContext(ctx context.Context, bypassAdminRemoval, includeBeta bool) context.Context {
+func AdminContext(ctx context.Context, bypassAdminRemoval, includeBeta, includeAlpha bool) context.Context {
 	if bypassAdminRemoval {
 		ctx = plateauapi.BypassAdminRemoval(ctx, true)
 	}
+	var stages []string
 	if includeBeta {
-		ctx = plateauapi.AllowAdminStages(ctx, []string{string(stageBeta)})
+		stages = append(stages, string(stageBeta))
+	}
+	if includeAlpha {
+		stages = append(stages, string(stageAlpha))
+	}
+	if len(stages) > 0 {
+		ctx = plateauapi.AllowAdminStages(ctx, stages)
 	}
 	return ctx
 }

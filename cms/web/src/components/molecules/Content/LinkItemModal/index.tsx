@@ -17,11 +17,11 @@ import useHooks from "./hooks";
 type StretchColumn = ProColumns<FormItem> & { minWidth: number };
 
 type Props = {
-  onChange?: (value: string) => void;
-  linkedItemsModalList?: FormItem[];
   visible?: boolean;
-  linkedItem?: string;
+  loading: boolean;
   correspondingFieldId: string;
+  linkedItemsModalList?: FormItem[];
+  linkedItem?: string;
   linkItemModalTitle?: string;
   linkItemModalTotalCount?: number;
   linkItemModalPage?: number;
@@ -30,10 +30,13 @@ type Props = {
   onLinkItemTableReload: () => void;
   onLinkItemTableChange: (page: number, pageSize: number) => void;
   onLinkItemModalCancel: () => void;
+  onChange?: (value: string) => void;
+  onCheckItemReference: (value: string, correspondingFieldId: string) => Promise<boolean>;
 };
 
 const LinkItemModal: React.FC<Props> = ({
   visible,
+  loading,
   correspondingFieldId,
   linkedItemsModalList,
   linkedItem,
@@ -46,11 +49,12 @@ const LinkItemModal: React.FC<Props> = ({
   onLinkItemTableChange,
   onLinkItemModalCancel,
   onChange,
+  onCheckItemReference,
 }) => {
   const [hoveredAssetId, setHoveredItemId] = useState<string>();
   const t = useT();
   const { confirm } = Modal;
-  const { value, pagination, handleInput, handleCheckItemReference } = useHooks(
+  const { value, pagination, handleInput } = useHooks(
     linkItemModalTotalCount,
     linkItemModalPage,
     linkItemModalPageSize,
@@ -72,8 +76,7 @@ const LinkItemModal: React.FC<Props> = ({
         return;
       }
 
-      const response = await handleCheckItemReference(item.id, correspondingFieldId);
-      const isReferenced = response?.data?.isItemReferenced;
+      const isReferenced = await onCheckItemReference(item.id, correspondingFieldId);
 
       if (isReferenced) {
         confirm({
@@ -92,7 +95,7 @@ const LinkItemModal: React.FC<Props> = ({
         onLinkItemModalCancel();
       }
     },
-    [confirm, correspondingFieldId, handleCheckItemReference, onChange, onLinkItemModalCancel, t],
+    [confirm, correspondingFieldId, onChange, onCheckItemReference, onLinkItemModalCancel, t],
   );
 
   const columns: StretchColumn[] = useMemo(
@@ -193,6 +196,7 @@ const LinkItemModal: React.FC<Props> = ({
         options={options}
         toolbar={toolbar}
         pagination={pagination}
+        loading={loading}
         onChange={pagination => {
           onLinkItemTableChange(pagination.current ?? 1, pagination.pageSize ?? 10);
         }}

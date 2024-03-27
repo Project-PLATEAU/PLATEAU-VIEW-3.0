@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useEffect, useState } from "react";
 
 import { DatasetTypesInput } from "../../base/catalog/__gen__/graphql";
 import { DATASET_TYPES } from "../../base/catalog/queries/datasetType";
@@ -17,10 +17,15 @@ export const useDatasetTypes = (input?: DatasetTypesInput, options?: Options) =>
     skip: options?.skip,
   });
 
-  const nextData = useMemo(
-    () => data?.datasetTypes.slice().sort((a, b) => a.order - b.order),
-    [data],
+  const [datasetTypes, setDatasetTypes] = useState(
+    data?.datasetTypes.slice().sort((a, b) => a.order - b.order),
   );
 
-  return { data: nextData, ...rest };
+  useEffect(() => {
+    if (data?.datasetTypes && !datasetTypes) {
+      setDatasetTypes(data.datasetTypes.slice().sort((a, b) => a.order - b.order));
+    }
+  }, [data?.datasetTypes, datasetTypes]);
+
+  return { data: datasetTypes, ...rest };
 };

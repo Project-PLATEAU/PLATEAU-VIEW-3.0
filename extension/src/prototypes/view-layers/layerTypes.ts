@@ -5,6 +5,7 @@ export const MY_DATA_LAYER = "MY_DATA_LAYER";
 export const STORY_LAYER = "STORY_LAYER";
 
 // Dataset layers
+export const AREA_LAYER = "AREA_LAYER";
 export const BORDER_LAYER = "BORDER_LAYER";
 export const BRIDGE_LAYER = "BRIDGE_LAYER";
 export const BUILDING_LAYER = "BUILDING_LAYER";
@@ -26,4 +27,5 @@ export const STATION_LAYER = "STATION_LAYER";
 export const TSUNAMI_RISK_LAYER = "TSUNAMI_RISK_LAYER";
 export const URBAN_PLANNING_LAYER = "URBAN_PLANNING_LAYER";
 export const USE_CASE_LAYER = "USE_CASE_LAYER";
+export const WATERWAY_LAYER = "WATERWAY_LAYER";
 export const VEGETATION_LAYER = "VEGETATION_LAYER";

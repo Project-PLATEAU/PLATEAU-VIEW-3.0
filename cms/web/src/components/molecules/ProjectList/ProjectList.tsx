@@ -4,15 +4,15 @@ import Button from "@reearth-cms/components/atoms/Button";
 import Icon from "@reearth-cms/components/atoms/Icon";
 import Loading from "@reearth-cms/components/atoms/Loading";
 import ProjectCard from "@reearth-cms/components/molecules/ProjectList/ProjectCard";
-import { Project as ProjectType } from "@reearth-cms/components/molecules/Workspace/types";
+import { Project } from "@reearth-cms/components/molecules/Workspace/types";
 import { useT } from "@reearth-cms/i18n";
 
-export interface Props {
+interface Props {
   className?: string;
-  projects?: ProjectType[];
+  projects?: Project[];
   loading?: boolean;
   onProjectModalOpen: () => void;
-  onProjectNavigation: (project: ProjectType) => void;
+  onProjectNavigation: (project: Project) => void;
 }
 
 const ProjectList: React.FC<Props> = ({
@@ -43,7 +43,7 @@ const ProjectList: React.FC<Props> = ({
         </EmptyListWrapper>
       ) : (
         <Content>
-          {projects.map((project: ProjectType) => (
+          {projects.map(project => (
             <ProjectCard
               key={project.id}
               project={project}

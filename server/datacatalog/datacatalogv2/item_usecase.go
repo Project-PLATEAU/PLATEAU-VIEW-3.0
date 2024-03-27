@@ -65,13 +65,14 @@ func (i UsecaseItem) DataCatalogs() []DataCatalogItem {
 			TypeEn:      folderEn,
 			Pref:        pref,
 			PrefCode:    prefCode,
-			City:        city,
-			CityCode:    cCode,
-			Ward:        ward,
-			WardCode:    wCode,
 			Description: i.Description,
 			Family:      "generic",
 			Edition:     "2022",
+			//
+			CityAdmin:     city,
+			CityCodeAdmin: cCode,
+			WardAdmin:     ward,
+			WardCodeAdmin: wCode,
 		}}
 	}
 
@@ -114,10 +115,6 @@ func (i UsecaseItem) DataCatalogs() []DataCatalogItem {
 		TypeEn:      tyen,
 		Pref:        pref,
 		PrefCode:    prefCode,
-		City:        city,
-		CityCode:    cCode,
-		Ward:        ward,
-		WardCode:    wCode,
 		Format:      f,
 		URL:         datacatalogutil.AssetURLFromFormat(u, f),
 		Description: i.Description,
@@ -131,5 +128,10 @@ func (i UsecaseItem) DataCatalogs() []DataCatalogItem {
 		Infobox:     i.Infobox,
 		Family:      "generic",
 		Edition:     "2022",
+		//
+		CityAdmin:     city,
+		CityCodeAdmin: cCode,
+		WardAdmin:     ward,
+		WardCodeAdmin: wCode,
 	}}
 }

@@ -10,6 +10,7 @@ import {
   StringOperator,
   MultipleOperator,
 } from "@reearth-cms/components/molecules/View/types";
+import { Member } from "@reearth-cms/components/molecules/Workspace/types";
 
 export type ColorType = "#BFBFBF" | "#52C41A" | "#FA8C16";
 export type StateType = "DRAFT" | "PUBLIC" | "REVIEW";
@@ -26,7 +27,7 @@ export type DropdownFilterType = {
   title: string;
   type: FilterType;
   typeProperty: { values?: string[]; tags?: { color: string; id: string; name: string }[] };
-  members: { user: { name: string } }[];
+  members: Member[];
   id: string;
   multiple: boolean;
   required: boolean;

@@ -110,12 +110,14 @@ var plateauFeatureTypes = []FeatureType{
 		Name: "都市計画決定情報モデル",
 	},
 	{
-		Code: "brid",
-		Name: "橋梁モデル",
+		Code:         "brid",
+		Name:         "橋梁モデル",
+		MVTLayerName: []string{"Bridge"},
 	},
 	{
-		Code: "tun",
-		Name: "トンネルモデル",
+		Code:         "tun",
+		Name:         "トンネルモデル",
+		MVTLayerName: []string{"Tunnel"},
 	},
 	{
 		Code:         "cons",

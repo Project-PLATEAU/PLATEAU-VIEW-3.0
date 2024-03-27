@@ -35,14 +35,24 @@ export const MainPanel: FC = () => {
   const handleResizeStop: ResizeCallback = useCallback(
     (_event, _direction, _element, delta) => {
       setMainWidth(prevValue => prevValue + delta.width);
+      setTimeout(() => {
+        isResizing.current = false;
+      }, 0);
     },
     [setMainWidth],
   );
+  const isResizing = useRef(false);
+  const handleResizeStart = useCallback(() => {
+    isResizing.current = true;
+  }, []);
 
   return (
     <AutoHeight>
-      <ResizeableWrapper defaultWidth={mainWidth} onResizeStop={handleResizeStop}>
-        <SearchAutocompletePanel>
+      <ResizeableWrapper
+        defaultWidth={mainWidth}
+        onResizeStart={handleResizeStart}
+        onResizeStop={handleResizeStop}>
+        <SearchAutocompletePanel isResizing={isResizing}>
           <LayerListComponent
             listRef={listRef}
             footer={`${layerAtoms.length}項目`}

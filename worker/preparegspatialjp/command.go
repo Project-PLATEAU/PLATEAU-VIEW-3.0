@@ -4,12 +4,12 @@ import (
 	"context"
 	"fmt"
 	"math/rand"
+	"os"
 	"path/filepath"
 	"time"
 
 	cms "github.com/reearth/reearth-cms-api/go"
 	"github.com/reearth/reearthx/log"
-	"github.com/samber/lo"
 )
 
 const tmpDirBase = "plateau-api-worker-tmp"
@@ -25,6 +25,7 @@ type Config struct {
 	SkipIndex   bool
 	SkipRelated bool
 	WetRun      bool
+	Clean       bool
 }
 
 type MergeContext struct {
@@ -35,8 +36,8 @@ type MergeContext struct {
 	WetRun          bool
 }
 
-func Command(conf *Config) (err error) {
-	if conf == nil || conf.SkipCityGML && conf.SkipPlateau && conf.SkipMaxLOD && conf.SkipRelated {
+func CommandSingle(conf *Config) (err error) {
+	if conf == nil || conf.SkipCityGML && conf.SkipPlateau && conf.SkipMaxLOD && conf.SkipRelated && conf.SkipIndex {
 		return fmt.Errorf("no command to run")
 	}
 
@@ -46,7 +47,7 @@ func Command(conf *Config) (err error) {
 		return fmt.Errorf("failed to initialize CMS client: %w", err)
 	}
 
-	// get items fron CNS
+	// get items fron CMS
 	log.Infofc(ctx, "getting item from CMS...")
 
 	cityItemRaw, err := cms.GetItem(ctx, conf.CityItemID, true)
@@ -62,19 +63,6 @@ func Command(conf *Config) (err error) {
 		return fmt.Errorf("invalid city item: %s", conf.CityItemID)
 	}
 
-	if cityItem.YearInt() == 0 {
-		return fmt.Errorf("invalid year: %s", cityItem.Year)
-	}
-
-	if cityItem.SpecVersionMajorInt() == 0 {
-		return fmt.Errorf("invalid spec version: %s", cityItem.Spec)
-	}
-
-	uc := GetUpdateCount(cityItem.CodeLists)
-	if uc == 0 {
-		return fmt.Errorf("invalid update count: %s", cityItem.CodeLists)
-	}
-
 	indexItemRaw, err := cms.GetItem(ctx, cityItem.GeospatialjpIndex, false)
 	if err != nil {
 		return fmt.Errorf("failed to get index item: %w", err)
@@ -83,7 +71,7 @@ func Command(conf *Config) (err error) {
 	indexItem := GspatialjpIndexItemFrom(indexItemRaw)
 	log.Infofc(ctx, "geospatialjp index item: %s", ppp.Sprint(indexItem))
 
-	gdataItemRaw, err := cms.GetItem(ctx, cityItem.GeospatialjpData, false)
+	gdataItemRaw, err := cms.GetItem(ctx, cityItem.GeospatialjpData, true)
 	if err != nil {
 		return fmt.Errorf("failed to get geospatialjp data item: %w", err)
 	}
@@ -103,7 +91,7 @@ func Command(conf *Config) (err error) {
 		}
 	}
 
-	if conf.SkipCityGML && conf.SkipPlateau && conf.SkipMaxLOD && conf.SkipRelated {
+	if conf.SkipCityGML && conf.SkipPlateau && conf.SkipMaxLOD && conf.SkipRelated && conf.SkipIndex {
 		return fmt.Errorf("no command to run")
 	}
 
@@ -119,9 +107,34 @@ func Command(conf *Config) (err error) {
 		WetRun:      conf.WetRun,
 	}
 
+	if cityItem.YearInt() == 0 {
+		cw.Commentf(ctx, "公開準備処理を開始できません。整備年度が不正です: %s", cityItem.Year)
+		return fmt.Errorf("invalid year: %s", cityItem.Year)
+	}
+
+	if cityItem.SpecVersionMajorInt() == 0 {
+		cw.Commentf(ctx, "公開準備処理を開始できません。仕様書バージョンが不正です: %s", cityItem.Spec)
+		return fmt.Errorf("invalid spec version: %s", cityItem.Spec)
+	}
+
+	uc := GetUpdateCount(cityItem.CodeLists)
+	if uc == 0 {
+		cw.Commentf(ctx, "公開準備処理を開始できません。codeListsのzipファイルの命名規則が不正のため版数を読み取れませんでした。もう一度ファイル名の命名規則を確認してください。_1_op_のような文字が必須です。: %s", cityItem.CodeLists)
+		return fmt.Errorf("invalid update count: %s", cityItem.CodeLists)
+	}
+
 	tmpDirName := fmt.Sprintf("%s-%d", time.Now().Format("20060102-150405"), rand.Intn(1000))
 	tmpDir := filepath.Join(tmpDirBase, tmpDirName)
 	log.Infofc(ctx, "tmp dir: %s", tmpDir)
+
+	if conf.Clean {
+		defer func() {
+			log.Infofc(ctx, "cleaning up tmp dir...: %s", tmpDir)
+			if err := os.RemoveAll(tmpDir); err != nil {
+				log.Warnf("failed to remove tmp dir: %s", err)
+			}
+		}()
+	}
 
 	log.Infofc(ctx, "getting all feature items...")
 	allFeatureItems, err := getAllFeatureItems(ctx, cms, cityItem)
@@ -132,9 +145,7 @@ func Command(conf *Config) (err error) {
 
 	log.Infofc(ctx, "feature items: %s", ppp.Sprint(allFeatureItems))
 
-	dic := mergeDics(lo.MapToSlice(allFeatureItems, func(k string, v FeatureItem) string {
-		return v.Dic
-	})...)
+	dic := mergeDics(allFeatureItems)
 	log.Infofc(ctx, "dic: %s", ppp.Sprint(dic))
 
 	mc := MergeContext{
@@ -156,6 +167,7 @@ func Command(conf *Config) (err error) {
 
 	var citygmlPath, plateauPath, relatedPath string
 
+	// related
 	if !conf.SkipRelated {
 		res, err := PrepareRelated(ctx, cw, mc)
 		if err != nil {
@@ -165,6 +177,15 @@ func Command(conf *Config) (err error) {
 		relatedPath = res
 	}
 
+	if relatedPath == "" && !conf.SkipIndex && gdataItem.RelatedURL != "" {
+		// download zip
+		relatedPath, err = downloadFileTo(ctx, gdataItem.RelatedURL, tmpDir)
+		if err != nil {
+			return fmt.Errorf("failed to download merged related: %w", err)
+		}
+	}
+
+	// citygml
 	if !conf.SkipCityGML {
 		res, err := PrepareCityGML(ctx, cw, mc)
 		if err != nil {
@@ -174,6 +195,15 @@ func Command(conf *Config) (err error) {
 		citygmlPath = res
 	}
 
+	if citygmlPath == "" && !conf.SkipIndex && gdataItem.CityGMLURL != "" {
+		// download zip
+		citygmlPath, err = downloadFileTo(ctx, gdataItem.CityGMLURL, tmpDir)
+		if err != nil {
+			return fmt.Errorf("failed to download merged citygml: %w", err)
+		}
+	}
+
+	// plateau
 	if !conf.SkipPlateau {
 		res, err := PreparePlateau(ctx, cw, mc)
 		if err != nil {
@@ -183,7 +213,15 @@ func Command(conf *Config) (err error) {
 		plateauPath = res
 	}
 
-	if !conf.SkipIndex && citygmlPath != "" && plateauPath != "" && relatedPath != "" {
+	if plateauPath == "" && !conf.SkipIndex && gdataItem.PlateauURL != "" {
+		// download zip
+		plateauPath, err = downloadFileTo(ctx, gdataItem.PlateauURL, tmpDir)
+		if err != nil {
+			return fmt.Errorf("failed to download merged plateau: %w", err)
+		}
+	}
+
+	if !conf.SkipIndex && citygmlPath != "" && plateauPath != "" {
 		if err := PrepareIndex(ctx, cw, &IndexSeed{
 			CityName:       cityItem.CityName,
 			CityCode:       cityItem.CityCode,
@@ -197,8 +235,11 @@ func Command(conf *Config) (err error) {
 		}); err != nil {
 			return err
 		}
+	} else {
+		log.Infofc(ctx, "skip index")
 	}
 
+	cw.Comment(ctx, "公開準備処理が完了しました。")
 	log.Infofc(ctx, "done")
 	return
 }

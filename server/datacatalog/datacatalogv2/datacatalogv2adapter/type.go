@@ -13,9 +13,13 @@ import (
 	"golang.org/x/exp/slices"
 )
 
+const hideTokyo23ku = true
+
 const usecaseID = "usecase"
 const globalID = "global"
 const registrationYear = 2022
+const tokyoCode = "13"
+const tokyo23kuCode = "13100"
 
 var floodingTypes = []string{"fld", "htd", "tnm", "ifld"}
 
@@ -131,10 +135,10 @@ func plateauDatasetFrom(d datacatalogv2.DataCatalogItem) *plateauapi.PlateauData
 		Description:        lo.ToPtr(d.Description),
 		PrefectureID:       prefectureIDFrom(d),
 		PrefectureCode:     prefectureCodeFrom(d),
-		CityID:             cityIDFrom(d),
-		CityCode:           cityCodeFrom(d),
-		WardID:             wardIDFrom(d),
-		WardCode:           wardCodeFrom(d),
+		CityID:             cityIDFrom(d, false),
+		CityCode:           cityCodeFrom(d, false),
+		WardID:             wardIDFrom(d, false),
+		WardCode:           wardCodeFrom(d, false),
 		Year:               d.Year,
 		RegisterationYear:  registrationYear,
 		TypeID:             datasetTypeIDFrom(d),
@@ -246,10 +250,10 @@ func relatedDatasetFrom(d datacatalogv2.DataCatalogItem) *plateauapi.RelatedData
 		OpenDataURL:       lo.EmptyableToPtr(d.OpenDataURL),
 		PrefectureID:      prefectureIDFrom(d),
 		PrefectureCode:    prefectureCodeFrom(d),
-		CityID:            cityIDFrom(d),
-		CityCode:          cityCodeFrom(d),
-		WardID:            wardIDFrom(d),
-		WardCode:          wardCodeFrom(d),
+		CityID:            cityIDFrom(d, false),
+		CityCode:          cityCodeFrom(d, false),
+		WardID:            wardIDFrom(d, false),
+		WardCode:          wardCodeFrom(d, false),
 		Year:              year,
 		RegisterationYear: registrationYear,
 		TypeID:            datasetTypeIDFrom(d),
@@ -296,10 +300,10 @@ func genericDatasetFrom(d datacatalogv2.DataCatalogItem) *plateauapi.GenericData
 		OpenDataURL:       lo.EmptyableToPtr(d.OpenDataURL),
 		PrefectureID:      prefectureIDFrom(d),
 		PrefectureCode:    prefectureCodeFrom(d),
-		CityID:            cityIDFrom(d),
-		CityCode:          cityCodeFrom(d),
-		WardID:            wardIDFrom(d),
-		WardCode:          wardCodeFrom(d),
+		CityID:            cityIDFrom(d, false),
+		CityCode:          cityCodeFrom(d, false),
+		WardID:            wardIDFrom(d, false),
+		WardCode:          wardCodeFrom(d, false),
 		Year:              d.Year,
 		RegisterationYear: registrationYear,
 		TypeID:            datasetTypeIDFrom(d),
@@ -348,6 +352,10 @@ func datasetFormatFrom(f string) plateauapi.DatasetFormat {
 	return ""
 }
 
+func isTokyo23ku(d datacatalogv2.DataCatalogItem) bool {
+	return d.PrefCode == tokyoCode && (d.CityCode == tokyo23kuCode || d.CityCodeAdmin == tokyo23kuCode || strings.HasSuffix(d.City, "区"))
+}
+
 func prefectureIDFrom(d datacatalogv2.DataCatalogItem) *plateauapi.ID {
 	if d.PrefCode == "" {
 		return nil
@@ -355,18 +363,36 @@ func prefectureIDFrom(d datacatalogv2.DataCatalogItem) *plateauapi.ID {
 	return lo.ToPtr(plateauapi.NewID(d.PrefCode, plateauapi.TypePrefecture))
 }
 
-func cityIDFrom(d datacatalogv2.DataCatalogItem) *plateauapi.ID {
-	if d.CityCode == "" {
+func cityIDFrom(d datacatalogv2.DataCatalogItem, force bool) *plateauapi.ID {
+	if !force && hideTokyo23ku && isTokyo23ku(d) {
+		return wardIDAsCityIDFrom(d)
+	}
+
+	cityCode := lo.FromPtr(cityCodeFrom(d, force)).String()
+	if cityCode == "" {
 		return nil
 	}
-	return lo.ToPtr(plateauapi.NewID(d.CityCode, plateauapi.TypeCity))
+	return lo.ToPtr(plateauapi.NewID(cityCode, plateauapi.TypeCity))
 }
 
-func wardIDFrom(d datacatalogv2.DataCatalogItem) *plateauapi.ID {
-	if d.WardCode == "" {
+func wardIDFrom(d datacatalogv2.DataCatalogItem, force bool) *plateauapi.ID {
+	if !force && hideTokyo23ku && isTokyo23ku(d) {
 		return nil
 	}
-	return lo.ToPtr(plateauapi.NewID(d.WardCode, plateauapi.TypeWard))
+
+	wardCode := lo.FromPtr(wardCodeFrom(d, force)).String()
+	if wardCode == "" {
+		return nil
+	}
+	return lo.ToPtr(plateauapi.NewID(wardCode, plateauapi.TypeWard))
+}
+
+func wardIDAsCityIDFrom(d datacatalogv2.DataCatalogItem) *plateauapi.ID {
+	wardCode := lo.FromPtr(wardCodeFrom(d, true)).String()
+	if wardCode == "" {
+		return nil
+	}
+	return lo.ToPtr(plateauapi.NewID(wardCode, plateauapi.TypeCity))
 }
 
 func prefectureCodeFrom(d datacatalogv2.DataCatalogItem) *plateauapi.AreaCode {
@@ -376,22 +402,42 @@ func prefectureCodeFrom(d datacatalogv2.DataCatalogItem) *plateauapi.AreaCode {
 	return lo.ToPtr(plateauapi.AreaCode(d.PrefCode))
 }
 
-func cityCodeFrom(d datacatalogv2.DataCatalogItem) *plateauapi.AreaCode {
-	if d.CityCode == "" {
+func cityCodeFrom(d datacatalogv2.DataCatalogItem, force bool) *plateauapi.AreaCode {
+	if !force && hideTokyo23ku && isTokyo23ku(d) {
+		return wardCodeFrom(d, true)
+	}
+
+	cityCode := d.CityCode
+	if cityCode == "" {
+		cityCode = d.CityCodeAdmin
+	}
+	if cityCode == "" {
 		return nil
 	}
-	return lo.ToPtr(plateauapi.AreaCode(d.CityCode))
+	return lo.ToPtr(plateauapi.AreaCode(cityCode))
 }
 
-func wardCodeFrom(d datacatalogv2.DataCatalogItem) *plateauapi.AreaCode {
-	if d.WardCode == "" {
+func wardCodeFrom(d datacatalogv2.DataCatalogItem, force bool) *plateauapi.AreaCode {
+	if !force && hideTokyo23ku && isTokyo23ku(d) {
 		return nil
 	}
-	return lo.ToPtr(plateauapi.AreaCode(d.WardCode))
+
+	wardCode := d.WardCode
+	if wardCode == "" {
+		wardCode = d.WardCodeAdmin
+	}
+	if wardCode == "" {
+		return nil
+	}
+	return lo.ToPtr(plateauapi.AreaCode(wardCode))
 }
 
 func datasetIDFrom(d datacatalogv2.DataCatalogItem) plateauapi.ID {
 	if d.Family == "plateau" || d.Family == "related" {
+		if d.ID != "" && d.Group != "" {
+			return newDatasetID(d.ID)
+		}
+
 		invalid := false
 		areaCode := d.WardCode
 		if areaCode == "" {
@@ -421,6 +467,10 @@ func newDatasetID(id string) plateauapi.ID {
 func datasetTypeIDFrom(d datacatalogv2.DataCatalogItem) plateauapi.ID {
 	code := datasetTypeCodeFrom(d)
 	if d.Family == "plateau" {
+		if d.Group != "" {
+			return plateauapi.NewID("sample", plateauapi.TypeDatasetType)
+		}
+
 		spec := d.Spec
 		if isEx(d) {
 			spec = "3.0"
@@ -432,6 +482,10 @@ func datasetTypeIDFrom(d datacatalogv2.DataCatalogItem) plateauapi.ID {
 
 func datasetTypeCodeFrom(d datacatalogv2.DataCatalogItem) string {
 	if d.Family == "plateau" {
+		if d.Group != "" {
+			return "sample"
+		}
+
 		if strings.HasPrefix(d.TypeEn, "urf_") {
 			return "urf"
 		}
@@ -477,11 +531,41 @@ func prefectureFrom(d datacatalogv2.DataCatalogItem) *plateauapi.Prefecture {
 	}
 }
 
-func cityFrom(d datacatalogv2.DataCatalogItem) *plateauapi.City {
-	id, code := cityIDFrom(d), cityCodeFrom(d)
+func cityFrom(d datacatalogv2.DataCatalogItem, force bool) *plateauapi.City {
+	planarCrsEpsgCode := lo.EmptyableToPtr(d.PRCS.EPSGCode())
+
+	cityCode := d.CityCode
+	if isTokyo23ku(d) {
+		cityCode = tokyo23kuCode
+	}
+
+	citygml := lo.ToPtr(plateauapi.CityGMLDatasetIDFrom(plateauapi.AreaCode(cityCode)))
+
+	if !force && hideTokyo23ku && isTokyo23ku(d) {
+		ward := wardFrom(d, true)
+		cityID := wardIDAsCityIDFrom(d)
+
+		if ward != nil && cityID != nil {
+			return &plateauapi.City{
+				ID:                *cityID,
+				Type:              plateauapi.AreaTypeCity,
+				Code:              ward.Code,
+				Name:              ward.Name,
+				PrefectureID:      ward.PrefectureID,
+				PrefectureCode:    ward.PrefectureCode,
+				PlanarCrsEpsgCode: planarCrsEpsgCode,
+				CitygmlID:         citygml,
+			}
+		}
+	}
+
+	id, code := cityIDFrom(d, force), cityCodeFrom(d, force)
 	if id == nil || code == nil {
 		return nil
 	}
+
+	codestr := code.String()
+	_ = codestr
 
 	return &plateauapi.City{
 		ID:                *id,
@@ -490,17 +574,25 @@ func cityFrom(d datacatalogv2.DataCatalogItem) *plateauapi.City {
 		Name:              d.City,
 		PrefectureID:      *prefectureIDFrom(d),
 		PrefectureCode:    *prefectureCodeFrom(d),
-		PlanarCrsEpsgCode: lo.EmptyableToPtr(d.PRCS.EPSGCode()),
-		CitygmlID:         lo.ToPtr(plateauapi.CityGMLDatasetIDFrom(plateauapi.AreaCode(d.CityCode))),
+		PlanarCrsEpsgCode: planarCrsEpsgCode,
+		CitygmlID:         citygml,
 	}
 }
 
-func citygmlFrom(d datacatalogv2.DataCatalogItem, i *fetcherPlateauItem2) *plateauapi.CityGMLDataset {
-	if i == nil || d.Spec == "" || !i.SDKPublic || i.CityGMLURL == "" || i.MaxLODURL == "" || len(i.FeatureTypes) == 0 {
+func tokyo23kuCityFrom(d datacatalogv2.DataCatalogItem) *plateauapi.City {
+	if !isTokyo23ku(d) {
 		return nil
 	}
 
-	id, code := cityIDFrom(d), cityCodeFrom(d)
+	return cityFrom(d, true)
+}
+
+func citygmlFrom(d datacatalogv2.DataCatalogItem, i *fetcherPlateauItem2) *plateauapi.CityGMLDataset {
+	if i == nil || d.Spec == "" || !i.SDKPublic || i.CityGMLURL == "" || i.MaxLODURL == "" || len(i.FeatureTypes) == 0 || isTokyo23ku(d) && d.CityCode != tokyo23kuCode {
+		return nil
+	}
+
+	id, code := cityIDFrom(d, true), cityCodeFrom(d, true)
 	if id == nil || code == nil {
 		return nil
 	}
@@ -524,13 +616,17 @@ func citygmlFrom(d datacatalogv2.DataCatalogItem, i *fetcherPlateauItem2) *plate
 	}
 }
 
-func wardFrom(d datacatalogv2.DataCatalogItem) *plateauapi.Ward {
-	id, code := wardIDFrom(d), wardCodeFrom(d)
+func wardFrom(d datacatalogv2.DataCatalogItem, force bool) *plateauapi.Ward {
+	if !force && hideTokyo23ku && isTokyo23ku(d) {
+		return nil
+	}
+
+	id, code := wardIDFrom(d, true), wardCodeFrom(d, true)
 	if id == nil || code == nil {
 		return nil
 	}
 
-	cityid, citycode := cityIDFrom(d), cityCodeFrom(d)
+	cityid, citycode := cityIDFrom(d, true), cityCodeFrom(d, true)
 	if cityid == nil || citycode == nil {
 		return nil
 	}
@@ -547,9 +643,14 @@ func wardFrom(d datacatalogv2.DataCatalogItem) *plateauapi.Ward {
 	}
 }
 
-func plateauDatasetTypeFrom(d datacatalogv2.DataCatalogItem) plateauapi.PlateauDatasetType {
+func plateauDatasetTypeFrom(d datacatalogv2.DataCatalogItem) *plateauapi.PlateauDatasetType {
 	if d.Family != "plateau" {
-		return plateauapi.PlateauDatasetType{}
+		return nil
+	}
+
+	code := datasetTypeCodeFrom(d)
+	if code == "sample" {
+		return nil
 	}
 
 	name := d.Type
@@ -562,12 +663,11 @@ func plateauDatasetTypeFrom(d datacatalogv2.DataCatalogItem) plateauapi.PlateauD
 	}
 
 	year, _ := strconv.Atoi(d.Edition)
-	code := datasetTypeCodeFrom(d)
 	order := slices.Index(types, code) + 1
 	if order <= 0 {
 		order = len(types) + 1
 	}
-	return plateauapi.PlateauDatasetType{
+	return &plateauapi.PlateauDatasetType{
 		ID:            datasetTypeIDFrom(d),
 		Name:          name,
 		Code:          code,
@@ -593,6 +693,17 @@ func relatedDatasetTypeFrom(d datacatalogv2.DataCatalogItem) plateauapi.RelatedD
 }
 
 func genericDatasetTypeFrom(d datacatalogv2.DataCatalogItem) plateauapi.GenericDatasetType {
+	if d.Family == "plateau" {
+		if code := datasetTypeCodeFrom(d); code == "sample" {
+			return plateauapi.GenericDatasetType{
+				ID:       datasetTypeIDFrom(d),
+				Name:     "サンプルデータ",
+				Code:     code,
+				Category: plateauapi.DatasetTypeCategoryGeneric,
+			}
+		}
+	}
+
 	if d.Family != "generic" {
 		return plateauapi.GenericDatasetType{}
 	}
@@ -621,6 +732,13 @@ func genericDatasetTypeFrom(d datacatalogv2.DataCatalogItem) plateauapi.GenericD
 		Code:     "usecase",
 		Category: plateauapi.DatasetTypeCategoryGeneric,
 	}
+}
+
+var sampleDataType = plateauapi.GenericDatasetType{
+	ID:       plateauapi.NewID("sample", plateauapi.TypeDatasetType),
+	Name:     "サンプル",
+	Code:     "sample",
+	Category: plateauapi.DatasetTypeCategoryGeneric,
 }
 
 func groupsFrom(d datacatalogv2.DataCatalogItem) []string {

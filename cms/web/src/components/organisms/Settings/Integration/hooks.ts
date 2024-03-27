@@ -51,7 +51,7 @@ export default (workspaceId?: string) => {
       )
       .filter(
         (integrationMember): integrationMember is IntegrationMember =>
-          !!integrationMember &&
+          !!integrationMember?.integration &&
           integrationMember.integration.name.toLowerCase().includes(searchTerm ?? ""),
       );
   }, [workspace, searchTerm]);
@@ -103,7 +103,7 @@ export default (workspaceId?: string) => {
       if (!workspaceId || !selectedIntegrationMember) return;
       const integration = await updateIntegrationToWorkspaceMutation({
         variables: {
-          integrationId: selectedIntegrationMember?.integration.id,
+          integrationId: selectedIntegrationMember?.integration?.id || "",
           workspaceId,
           role: role as GQLRole,
         },

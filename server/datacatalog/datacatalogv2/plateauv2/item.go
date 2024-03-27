@@ -50,4 +50,10 @@ type DataCatalogItem struct {
 	CityGMLFeatureTypes []string `json:"-"`
 	MaxLODURL           string   `json:"-"`
 	SDKPublic           bool     `json:"-"`
+	CityAdmin           string   `json:"-"`
+	CityEnAdmin         string   `json:"-"`
+	CityCodeAdmin       string   `json:"-"`
+	WardAdmin           string   `json:"-"`
+	WardEnAdmin         string   `json:"-"`
+	WardCodeAdmin       string   `json:"-"`
 }

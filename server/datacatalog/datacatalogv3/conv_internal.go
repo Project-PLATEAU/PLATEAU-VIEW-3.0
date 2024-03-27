@@ -87,9 +87,9 @@ func (c *internalContext) SetURL(t, cmsurl, ws, prj, modelID string) {
 	case "plateau":
 		c.plateauCMSURL = url
 	case "related":
-		c.plateauCMSURL = url
+		c.relatedCMSURL = url
 	case "generic":
-		c.plateauCMSURL = url
+		c.genericCMSURL = url
 	}
 }
 

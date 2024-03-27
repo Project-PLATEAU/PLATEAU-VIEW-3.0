@@ -1,14 +1,14 @@
 import { groupBy } from "lodash-es";
 import { FC, useMemo } from "react";
 
-import { DatasetFragmentFragment } from "../../../shared/graphql/types/catalog";
+import { DatasetItem } from "../utils/datasetGroups";
 
 import { DatasetFolderItem, FolderItem } from "./DatasetFolerItem";
 import { DatasetListItem } from "./DatasetListItem";
 
 type DatasetFolderListProps = {
   folderId: string;
-  datasets?: DatasetFragmentFragment[];
+  datasets?: DatasetItem[];
   level?: number;
 };
 
@@ -19,35 +19,43 @@ export const DatasetFolderList: FC<DatasetFolderListProps> = ({
 }) => {
   const folderList = useMemo(() => {
     const folders: FolderItem[] = [];
-    Object.entries(groupBy(datasets, d => d.name.split("/")[level])).forEach(([key, value]) => {
-      if (key !== "undefined") {
-        folders.push({
-          label: key,
-          subFolderId: `${folderId}:${key}${value.length === 1 ? `:${value[0].id}` : ""}`,
-          datasets: value.sort((a, b) => a.type.order - b.type.order),
-          folderDataset:
-            value.find(v => v.name.split("/")[level + 1] === undefined && v.items.length === 0) ??
-            undefined,
-        });
-      } else {
-        value.forEach((v, index) => {
-          if (v.items.length === 0) return;
+    Object.entries(groupBy(datasets, d => (d.folderPath ?? d.name).split("/")[level])).forEach(
+      ([key, value]) => {
+        if (key !== "undefined") {
           folders.push({
-            label: `${index}`,
-            subFolderId: `${folderId}:${v.id}}`,
-            datasets: [v],
+            label: key,
+            subFolderId: `${folderId}:${key}`,
+            datasets: value,
+            folderDataset:
+              value.find(
+                v =>
+                  (v.folderPath ?? v.name).split("/")[level + 1] === undefined &&
+                  v.items.length === 0,
+              ) ?? undefined,
+            isLastLevel:
+              value.length === 1 &&
+              (value[0].folderPath ?? value[0].name).split("/").length <= level + 1,
           });
-        });
-      }
-    });
+        } else {
+          value.forEach(v => {
+            if (v.items.length === 0) return;
+            folders.push({
+              label: (v.folderPath ?? v.name).split("/").pop() ?? v.name,
+              subFolderId: `${folderId}:${v.id}}`,
+              datasets: [v],
+              isLastLevel: true,
+            });
+          });
+        }
+      },
+    );
     return folders;
   }, [folderId, datasets, level]);
 
   return (
     <>
-      {Object.values(folderList).map(folder => {
-        if (folder.datasets.length === 1) {
-          const label = folder.datasets[0].name.split("/").pop();
+      {folderList.map(folder => {
+        if (folder.isLastLevel) {
           return (
             <DatasetListItem
               key={folder.datasets[0].id}
@@ -57,7 +65,7 @@ export const DatasetFolderList: FC<DatasetFolderListProps> = ({
                 folder.datasets[0].prefectureCode
               }
               dataset={folder.datasets[0]}
-              label={label}
+              label={folder.label}
               title={folder.datasets[0].name}
             />
           );

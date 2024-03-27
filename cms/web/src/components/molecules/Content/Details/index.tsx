@@ -17,6 +17,7 @@ import {
 } from "@reearth-cms/components/organisms/Project/Asset/AssetList/hooks";
 
 type Props = {
+  loadingReference: boolean;
   linkedItemsModalList?: FormItem[];
   showPublishAction?: boolean;
   requests: Request[];
@@ -102,9 +103,11 @@ type Props = {
   onAddItemToRequestModalOpen: () => void;
   onGetAsset: (assetId: string) => Promise<string | undefined>;
   onGroupGet: (id: string) => Promise<Group | undefined>;
+  onCheckItemReference: (value: string, correspondingFieldId: string) => Promise<boolean>;
 };
 
 const ContentDetailsMolecule: React.FC<Props> = ({
+  loadingReference,
   linkedItemsModalList,
   showPublishAction,
   requests,
@@ -173,6 +176,7 @@ const ContentDetailsMolecule: React.FC<Props> = ({
   onAssetTableChange,
   onGetAsset,
   onGroupGet,
+  onCheckItemReference,
 }) => {
   return (
     <ComplexInnerContents
@@ -199,6 +203,7 @@ const ContentDetailsMolecule: React.FC<Props> = ({
             onReferenceModelUpdate={onReferenceModelUpdate}
             onSearchTerm={onSearchTerm}
             onLinkItemTableChange={onLinkItemTableChange}
+            loadingReference={loadingReference}
             linkedItemsModalList={linkedItemsModalList}
             showPublishAction={showPublishAction}
             requests={requests}
@@ -254,6 +259,7 @@ const ContentDetailsMolecule: React.FC<Props> = ({
             workspaceUserMembers={workspaceUserMembers}
             onGetAsset={onGetAsset}
             onGroupGet={onGroupGet}
+            onCheckItemReference={onCheckItemReference}
           />
         )
       }

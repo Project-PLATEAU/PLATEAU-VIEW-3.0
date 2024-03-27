@@ -25,6 +25,7 @@ import {
   type ForwardedRef,
   type HTMLAttributes,
   type ReactNode,
+  MutableRefObject,
 } from "react";
 import invariant from "tiny-invariant";
 
@@ -124,7 +125,7 @@ function getOptionLabel(value: string | SearchOption): string {
 
 function renderGroup(params: AutocompleteRenderGroupParams): ReactNode {
   return [
-    <ListSubheader component="div">
+    <ListSubheader component="div" key={params.group}>
       {isSearchOptionType(params.group) ? groupNames[params.group] : params.group}
     </ListSubheader>,
     params.children,
@@ -174,6 +175,7 @@ export type SearchAutocompleteProps = Omit<AutocompleteProps, "renderInput"> & {
   endAdornment?: ReactNode;
   maxHeight?: number;
   filters?: string[];
+  isResizing?: MutableRefObject<boolean>;
   children?: ReactNode;
 };
 
@@ -187,6 +189,7 @@ export const SearchAutocomplete = forwardRef<HTMLInputElement, SearchAutocomplet
       maxHeight,
       options,
       filters,
+      isResizing,
       children,
       onChange,
       onInputChange,
@@ -206,10 +209,11 @@ export const SearchAutocomplete = forwardRef<HTMLInputElement, SearchAutocomplet
     );
     const handleBlur = useCallback(
       (event: FocusEvent<HTMLInputElement>) => {
+        if (isResizing?.current) return;
         setFocused(false);
         onBlur?.(event);
       },
-      [onBlur],
+      [isResizing, onBlur],
     );
 
     const renderInput = useCallback(

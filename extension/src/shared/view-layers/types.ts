@@ -1,4 +1,5 @@
 import {
+  AREA_LAYER,
   BORDER_LAYER,
   BRIDGE_LAYER,
   BUILDING_LAYER,
@@ -26,6 +27,7 @@ import {
   TSUNAMI_RISK_LAYER,
   URBAN_PLANNING_LAYER,
   USE_CASE_LAYER,
+  WATERWAY_LAYER,
   VEGETATION_LAYER,
 } from "../../prototypes/view-layers";
 import { PedestrianLayerModel } from "../../prototypes/view-layers/PedestrianLayer";
@@ -53,6 +55,7 @@ export interface LayerModelOverrides {
   [RIVER_FLOODING_RISK_LAYER]: FloodLayerModel; // RiverFloodingRiskLayerModel;
   [TSUNAMI_RISK_LAYER]: FloodLayerModel; // TsunamiRiskLayerModel
   // General
+  [AREA_LAYER]: GeneralLayerModel; // AreaLayerModel
   [BORDER_LAYER]: GeneralLayerModel; // BorderLayerModel
   [BRIDGE_LAYER]: GeneralLayerModel; // BridgeLayerModel;
   [CITY_FURNITURE_LAYER]: GeneralLayerModel; // CityFurnitureLayerModel
@@ -69,5 +72,6 @@ export interface LayerModelOverrides {
   [STATION_LAYER]: GeneralLayerModel; // StationLayerModel
   [URBAN_PLANNING_LAYER]: GeneralLayerModel; // UrbanPlanningLayerModel;
   [USE_CASE_LAYER]: GeneralLayerModel; // UseCaseLayerModel
+  [WATERWAY_LAYER]: GeneralLayerModel; // WaterWayLayerModel
   [VEGETATION_LAYER]: GeneralLayerModel; // VegetationLayerModel
 }

@@ -30,6 +30,7 @@ import {
 } from "../ui-components/icons";
 
 import {
+  AREA_LAYER,
   BORDER_LAYER,
   BRIDGE_LAYER,
   BUILDING_LAYER,
@@ -57,6 +58,7 @@ import {
   URBAN_PLANNING_LAYER,
   USE_CASE_LAYER,
   VEGETATION_LAYER,
+  WATERWAY_LAYER,
 } from "./layerTypes";
 
 export const layerTypeIcons: Record<LayerType, ComponentType<SvgIconProps>> = {
@@ -67,6 +69,7 @@ export const layerTypeIcons: Record<LayerType, ComponentType<SvgIconProps>> = {
   [STORY_LAYER]: StoryIcon,
 
   // Dataset layers
+  [AREA_LAYER]: UseCaseIcon,
   [BORDER_LAYER]: BorderIcon,
   [BRIDGE_LAYER]: BridgeIcon,
   [BUILDING_LAYER]: BuildingIcon,
@@ -89,4 +92,5 @@ export const layerTypeIcons: Record<LayerType, ComponentType<SvgIconProps>> = {
   [URBAN_PLANNING_LAYER]: UrbanPlanningIcon,
   [USE_CASE_LAYER]: UseCaseIcon,
   [VEGETATION_LAYER]: VegetationIcon,
+  [WATERWAY_LAYER]: UseCaseIcon,
 };

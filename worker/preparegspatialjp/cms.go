@@ -115,13 +115,16 @@ type GspatialjpDataItem struct {
 	CityGML            string   `json:"citygml,omitempty" cms:"citygml,asset"`
 	Plateau            string   `json:"plateau,omitempty" cms:"plateau,asset"`
 	Related            string   `json:"related,omitempty" cms:"related,asset"`
-	Generic            []string `json:"generic,omitempty" cms:"generic,asset"`
 	MaxLOD             string   `json:"maxlod,omitempty" cms:"maxlod,asset"`
 	Index              string   `json:"desc_index,omitempty" cms:"desc_index,markdown"`
 	MergeCityGMLStatus *cms.Tag `json:"merge_citygml_status" cms:"merge_citygml_status,tag,metadata"`
 	MergePlateauStatus *cms.Tag `json:"merge_plateau_status" cms:"merge_plateau_status,tag,metadata"`
 	MergeRelatedStatus *cms.Tag `json:"merge_related_status" cms:"merge_related_status,tag,metadata"`
 	MergeMaxLODStatus  *cms.Tag `json:"merge_maxlod_status" cms:"merge_maxlod_status,tag,metadata"`
+	// extra
+	CityGMLURL string `json:"citygmlUrl,omitempty" cms:"-"`
+	PlateauURL string `json:"plateauUrl,omitempty" cms:"-"`
+	RelatedURL string `json:"relatedUrl,omitempty" cms:"-"`
 }
 
 const idle = "未実行"
@@ -153,6 +156,26 @@ func (g *GspatialjpDataItem) ShouldMergeMaxLOD() bool {
 func GspatialjpDataItemFrom(item *cms.Item) (i *GspatialjpDataItem) {
 	i = &GspatialjpDataItem{}
 	item.Unmarshal(i)
+
+	citygml := item.FieldByKey("citygml").GetValue().Asset()
+	plateau := item.FieldByKey("plateau").GetValue().Asset()
+	related := item.FieldByKey("related").GetValue().Asset()
+
+	if citygml != nil {
+		i.CityGML = citygml.ID
+		i.CityGMLURL = citygml.URL
+	}
+
+	if plateau != nil {
+		i.Plateau = plateau.ID
+		i.PlateauURL = plateau.URL
+	}
+
+	if related != nil {
+		i.Related = related.ID
+		i.RelatedURL = related.URL
+	}
+
 	return
 }
 

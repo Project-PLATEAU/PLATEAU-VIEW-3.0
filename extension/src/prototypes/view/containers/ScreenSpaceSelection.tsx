@@ -13,13 +13,13 @@ import { toolAtom } from "../states/tool";
 const EVENTS_ON_SELECT_TOOL = {
   point: true,
   rectangle: true,
-  imagery: true,
+  select: true,
 };
 
 const EVENTS_ON_STORY_TOOL = {
   point: true,
   rectangle: false,
-  imagery: false,
+  select: false,
 };
 
 export type ScreenSpaceSelectionProps = Omit<PlateauScreenSpaceSelectionProps, "disabled">;

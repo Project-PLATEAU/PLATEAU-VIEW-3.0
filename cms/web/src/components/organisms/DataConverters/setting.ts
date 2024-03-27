@@ -1,7 +1,4 @@
-import {
-  IntegrationMember,
-  Integration,
-} from "@reearth-cms/components/molecules/Integration/types";
+import { Integration } from "@reearth-cms/components/molecules/Integration/types";
 import {
   WorkspaceSettings,
   Member,
@@ -71,13 +68,12 @@ export const fromGraphQLIntegration = (integration: GQLIntegration): Integration
   },
 });
 
-export const fromGraphQLWorkspace = (workspace?: GQLWorkspace): Workspace | undefined => {
-  if (!workspace) return;
+export const fromGraphQLWorkspace = (workspace: GQLWorkspace): Workspace => {
   return {
-    id: workspace?.id,
-    name: workspace?.name,
-    personal: workspace?.personal,
-    members: workspace?.members?.map(member => fromGraphQLMember(member)),
+    id: workspace.id,
+    name: workspace.name,
+    personal: workspace.personal,
+    members: workspace.members.map(member => fromGraphQLMember(member)),
   };
 };
 
@@ -87,10 +83,10 @@ export const fromGraphQLMember = (member: WorkspaceMember): Member => {
       return {
         id: member.integrationId,
         active: member.active,
-        integration: member.integration && fromGraphQLIntegration(member.integration),
+        integration: member.integration ? fromGraphQLIntegration(member.integration) : undefined,
         invitedById: member.invitedById,
         integrationRole: member.role,
-      } as IntegrationMember;
+      };
     case "WorkspaceUserMember":
     default:
       return {

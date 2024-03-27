@@ -136,8 +136,10 @@ type AreasInput struct {
 	AreaTypes []AreaType `json:"areaTypes,omitempty"`
 	// 検索文字列。複数指定するとAND条件で絞り込み検索が行えます。
 	SearchTokens []string `json:"searchTokens,omitempty"`
-	// 検索結果にその地域の親も含めるかどうか。デフォルトは false です。
+	// datasetTypes が指定された場合に、検索結果にその地域の親も含めるかどうか。デフォルトは false です。
 	IncludeParents *bool `json:"includeParents,omitempty"`
+	// parentCode が指定された場合に、その地域に間接的に属している地域も検索対象にするかどうか。デフォルトは false です。
+	Deep *bool `json:"deep,omitempty"`
 }
 
 // 市区町村
@@ -273,6 +275,8 @@ type DatasetsInput struct {
 	// デフォルトはfalseで、指定された地域に間接的に属するデータセットも全て検索します。
 	// 例えば、札幌市を対象にした場合、札幌市には中央区や北区といった区のデータセットも存在しますが、trueにすると札幌市のデータセットのみを返します。
 	Shallow *bool `json:"shallow,omitempty"`
+	// 特殊なグループを持つデータセットのみを検索対象にするかどうか。デフォルトはfalseです。
+	GroupedOnly *bool `json:"groupedOnly,omitempty"`
 }
 
 // ユースケースデータなどを含む、その他のデータセット。

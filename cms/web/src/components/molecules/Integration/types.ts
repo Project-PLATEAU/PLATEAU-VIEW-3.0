@@ -1,6 +1,6 @@
 export type IntegrationMember = {
   id: string;
-  integration: Integration;
+  integration?: Integration;
   integrationRole: Role;
   invitedById: string;
   active: boolean;

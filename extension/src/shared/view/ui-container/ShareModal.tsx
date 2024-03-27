@@ -18,11 +18,13 @@ const getHrefWithoutQuery = () => {
 
 const ShareModal: FC<Props> = ({ showShareModal, setShowShareModal }) => {
   const shareState = useSetAtom(shareAtom);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [isError, setIsError] = useState(false);
   const [shareId, setShareId] = useState("");
   useEffect(() => {
     const run = async () => {
       setLoading(true);
+      setIsError(false);
       await shareState();
       setShareId(
         await fetch(`${PLATEAU_API_URL}/share/${PROJECT_ID}`, {
@@ -33,8 +35,10 @@ const ShareModal: FC<Props> = ({ showShareModal, setShowShareModal }) => {
           body: JSON.stringify(await SHARED_STORE),
         })
           .then(r => (r.status === 200 ? r.json() : ""))
-          .catch(() => {}),
-      ); // TODO: Handle error
+          .catch(() => {
+            setIsError(true);
+          }),
+      );
       setLoading(false);
     };
     if (showShareModal) {
@@ -58,7 +62,7 @@ const ShareModal: FC<Props> = ({ showShareModal, setShowShareModal }) => {
       url={url}
       iframe={iframe}
       loading={loading}
-      isError={!loading && !shareId}
+      isError={isError}
     />
   );
 };

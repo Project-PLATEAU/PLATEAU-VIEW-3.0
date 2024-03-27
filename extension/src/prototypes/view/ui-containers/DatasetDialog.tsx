@@ -12,7 +12,6 @@ import {
 import { atom, useAtomValue, useSetAtom } from "jotai";
 import { useCallback, useMemo, type FC } from "react";
 
-import { useDatasetById } from "../../../shared/graphql";
 import { DatasetFragmentFragment } from "../../../shared/graphql/types/catalog";
 import { rootLayersLayersAtom } from "../../../shared/states/rootLayer";
 import { settingsAtom } from "../../../shared/states/setting";
@@ -72,13 +71,11 @@ export const DatasetDialog: FC<DatasetDialogProps> = ({
   isFolder,
   ...props
 }) => {
-  const { data } = useDatasetById(dataset.id);
-
   // TODO: Separate into hook
   const layer = useAtomValue(
     useMemo(
       () => atom(get => get(rootLayersLayersAtom).find(layer => layer.id === dataset.id)),
-      [dataset],
+      [dataset.id],
     ),
   );
 
@@ -90,7 +87,7 @@ export const DatasetDialog: FC<DatasetDialogProps> = ({
   const addLayer = useAddLayer();
   const removeLayer = useSetAtom(removeLayerAtom);
   const handleClick = useCallback(() => {
-    if (layerType == null || !data?.node) {
+    if (layerType == null || !dataset) {
       return;
     }
     if (layer == null) {
@@ -106,17 +103,7 @@ export const DatasetDialog: FC<DatasetDialogProps> = ({
     } else {
       removeLayer(layer.id);
     }
-  }, [
-    dataset,
-    data,
-    layer,
-    layerType,
-    addLayer,
-    removeLayer,
-    municipalityCode,
-    settings,
-    templates,
-  ]);
+  }, [dataset, layer, layerType, addLayer, removeLayer, municipalityCode, settings, templates]);
 
   return (
     <Dialog maxWidth="mobile" {...props}>
@@ -152,7 +139,7 @@ export const DatasetDialog: FC<DatasetDialogProps> = ({
       />
       <Divider />
       <DialogContent>
-        <StyledDialogContentText>{data?.node?.description}</StyledDialogContentText>
+        <StyledDialogContentText>{dataset.description}</StyledDialogContentText>
       </DialogContent>
     </Dialog>
   );

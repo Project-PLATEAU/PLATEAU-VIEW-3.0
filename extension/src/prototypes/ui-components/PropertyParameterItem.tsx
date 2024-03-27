@@ -59,6 +59,7 @@ export interface PropertySet {
   id?: string;
   name: string;
   values: string[] | number[] | PropertySet[];
+  path?: string[];
 }
 
 const StringValue: FC<{
@@ -149,7 +150,8 @@ const ObjectValue: FC<{
   path?: string[];
   featureType: string;
   ancestorsFeatureType?: string;
-}> = ({ id, name, values, level, path, featureType, ancestorsFeatureType }) => {
+  hasDefaultPath: boolean;
+}> = ({ id, name, values, level, path, featureType, ancestorsFeatureType, hasDefaultPath }) => {
   const properties = useMemo(() => {
     return intersection(...values.map(v => Object.keys(v ?? {})))
       .filter(name => !name.startsWith("_"))
@@ -179,7 +181,7 @@ const ObjectValue: FC<{
       name={name}
       properties={properties as PropertySet[]}
       level={level}
-      path={path ? [...path, ...(isNaN(Number(name)) ? [name] : [])] : []}
+      path={path ? [...path, ...(isNaN(Number(name)) && !hasDefaultPath ? [name] : [])] : []}
       featureType={featureType}
       ancestorsFeatureType={ancestorsFeatureType}
     />
@@ -201,7 +203,13 @@ const Property: FC<{
   path?: string[];
   featureType: string;
   ancestorsFeatureType?: string;
-}> = ({ property: { id, name, values }, level, path, featureType, ancestorsFeatureType }) => {
+}> = ({
+  property: { id, name, values, path: defaultPath },
+  level,
+  path,
+  featureType,
+  ancestorsFeatureType,
+}) => {
   const isPrimitive = ["string", "number"].includes(typeof values[0]);
   const hasAncestors = !!path?.includes(ancestorsKey);
   const actualName = `${hasAncestors ? ancestorsFeatureType : featureType}_${[
@@ -239,7 +247,8 @@ const Property: FC<{
       name={name}
       values={values as object[]}
       level={level}
-      path={path}
+      hasDefaultPath={!path && !!defaultPath}
+      path={path ?? defaultPath}
       featureType={featureType}
       ancestorsFeatureType={ancestorsFeatureType}
     />

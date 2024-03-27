@@ -5,6 +5,7 @@ import { expect, test } from "@reearth-cms/e2e/utils";
 test.beforeEach(async ({ reearth, page }) => {
   await reearth.goto("/", { waitUntil: "domcontentloaded" });
   await createWorkspace(page);
+  await page.getByText("Settings").click();
 });
 
 test.afterEach(async ({ page }) => {
@@ -12,8 +13,6 @@ test.afterEach(async ({ page }) => {
 });
 
 test("Tiles CRUD has succeeded", async ({ page }) => {
-  await page.getByText("Settings").click();
-
   await page.getByRole("button", { name: "plus Add new Tiles option" }).click();
   await page
     .locator("div")
@@ -65,8 +64,6 @@ test("Tiles CRUD has succeeded", async ({ page }) => {
 });
 
 test("Terrain on/off and CRUD has succeeded", async ({ page }) => {
-  await page.getByText("Settings").click();
-
   await expect(page.getByRole("switch")).toBeEnabled();
   await page.getByRole("switch").click();
   await expect(page.getByRole("switch")).toHaveAttribute("aria-checked", "true");
@@ -125,4 +122,73 @@ test("Terrain on/off and CRUD has succeeded", async ({ page }) => {
   await closeNotification(page);
   await expect(page.getByRole("switch")).toHaveAttribute("aria-checked", "false");
   await expect(page.getByRole("button", { name: "plus Add new Terrain option" })).not.toBeVisible();
+});
+
+test("Tiles reordering has succeeded", async ({ page }) => {
+  await page.getByRole("button", { name: "plus Add new Tiles option" }).click();
+  await page.getByRole("button", { name: "OK" }).click();
+  await page.getByRole("button", { name: "plus Add new Tiles option" }).click();
+  await page
+    .locator("div")
+    .filter({ hasText: /^Default$/ })
+    .nth(4)
+    .click();
+  await page.getByTitle("Labelled").click();
+  await page.getByRole("button", { name: "OK" }).click();
+  await expect(page.locator(".ant-card").nth(0)).toHaveText("DEFAULT");
+  await expect(page.locator(".ant-card").nth(1)).toHaveText("LABELLED");
+  await page.getByRole("button", { name: "Save" }).click();
+  await expect(page.getByRole("alert").last()).toContainText("Successfully updated");
+  await closeNotification(page);
+
+  await page
+    .locator(".ant-card")
+    .nth(0)
+    .locator(".grabbable")
+    .dragTo(page.locator(".ant-card").nth(1));
+  await expect(page.locator(".ant-card").nth(0)).toHaveText("LABELLED");
+  await expect(page.locator(".ant-card").nth(1)).toHaveText("DEFAULT");
+  await page.getByRole("button", { name: "Save" }).click();
+  await expect(page.getByRole("alert").last()).toContainText("Successfully updated");
+  await closeNotification(page);
+
+  await page.getByText("Home").click();
+  await page.getByText("Settings").click();
+  await expect(page.locator(".ant-card").nth(0)).toHaveText("LABELLED");
+  await expect(page.locator(".ant-card").nth(1)).toHaveText("DEFAULT");
+});
+
+test("Terrain reordering has succeeded", async ({ page }) => {
+  await page.getByRole("switch").click();
+  await page.getByRole("button", { name: "plus Add new Terrain option" }).click();
+  await page.getByRole("button", { name: "OK" }).click();
+  await page.getByRole("button", { name: "plus Add new Terrain option" }).click();
+  await page
+    .locator("div")
+    .filter({ hasText: /^Cesium World Terrain$/ })
+    .nth(4)
+    .click();
+  await page.getByTitle("ArcGIS Terrain").click();
+  await page.getByRole("button", { name: "OK" }).click();
+  await expect(page.locator(".ant-card").nth(0)).toHaveText("CESIUM_WORLD_TERRAIN");
+  await expect(page.locator(".ant-card").nth(1)).toHaveText("ARC_GIS_TERRAIN");
+  await page.getByRole("button", { name: "Save" }).click();
+  await expect(page.getByRole("alert").last()).toContainText("Successfully updated workspace!");
+  await closeNotification(page);
+
+  await page
+    .locator(".ant-card")
+    .nth(0)
+    .locator(".grabbable")
+    .dragTo(page.locator(".ant-card").nth(1));
+  await expect(page.locator(".ant-card").nth(0)).toHaveText("ARC_GIS_TERRAIN");
+  await expect(page.locator(".ant-card").nth(1)).toHaveText("CESIUM_WORLD_TERRAIN");
+  await page.getByRole("button", { name: "Save" }).click();
+  await expect(page.getByRole("alert").last()).toContainText("Successfully updated");
+  await closeNotification(page);
+
+  await page.getByText("Home").click();
+  await page.getByText("Settings").click();
+  await expect(page.locator(".ant-card").nth(0)).toHaveText("ARC_GIS_TERRAIN");
+  await expect(page.locator(".ant-card").nth(1)).toHaveText("CESIUM_WORLD_TERRAIN");
 });

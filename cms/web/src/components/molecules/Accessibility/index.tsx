@@ -9,7 +9,8 @@ import Input from "@reearth-cms/components/atoms/Input";
 import Select from "@reearth-cms/components/atoms/Select";
 import Switch from "@reearth-cms/components/atoms/Switch";
 import Table, { TableColumnsType } from "@reearth-cms/components/atoms/Table";
-import { PublicScope, Model } from "@reearth-cms/components/molecules/Accessibility/types";
+import { PublicScope } from "@reearth-cms/components/molecules/Accessibility/types";
+import { Model } from "@reearth-cms/components/molecules/Model/types";
 import { useT } from "@reearth-cms/i18n";
 
 type ModelDataType = {
@@ -112,7 +113,7 @@ const Accessibility: React.FC<Props> = ({
               <Switch
                 checked={m.public}
                 onChange={(publicState: boolean) =>
-                  handleUpdatedModels({ id: m.id, public: publicState, key: m.key })
+                  handleUpdatedModels({ ...m, public: publicState })
                 }
               />
             ),

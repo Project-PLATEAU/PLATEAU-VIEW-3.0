@@ -25,6 +25,7 @@ import {
 import { PlateauDatasetType } from "./plateau";
 
 export const datasetTypeIcons = {
+  [PlateauDatasetType.Area]: UseCaseIcon,
   [PlateauDatasetType.Border]: BorderIcon,
   [PlateauDatasetType.Bridge]: BridgeIcon,
   [PlateauDatasetType.Building]: BuildingIcon,
@@ -50,5 +51,6 @@ export const datasetTypeIcons = {
   [PlateauDatasetType.Sample]: UseCaseIcon,
   [PlateauDatasetType.Constructure]: UseCaseIcon,
   [PlateauDatasetType.Water]: UseCaseIcon,
+  [PlateauDatasetType.WaterWay]: UseCaseIcon,
   [PlateauDatasetType.Traffic]: UseCaseIcon,
 } as const;

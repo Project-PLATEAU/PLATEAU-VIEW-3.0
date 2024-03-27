@@ -115,7 +115,7 @@ func (m *Merger) Datasets(ctx context.Context, input *DatasetsInput) ([]Dataset,
 		return nil, err
 	}
 
-	return mergeResults(datasets, true), nil
+	return mergeResults(datasets, false), nil
 }
 
 func (m *Merger) PlateauSpecs(ctx context.Context) ([]*PlateauSpec, error) {
@@ -189,17 +189,31 @@ func getFlattenRepoResults[T any](repos []Repo, f func(r Repo) ([]T, error)) ([]
 	return lo.Flatten(res), nil
 }
 
-func mergeResults[T Node](results []T, sort bool) []T {
-	groups := lo.GroupBy(results, func(n T) string {
-		if vid := getVagueID(n); vid != "" {
-			return vid
-		}
-		return string(n.GetID())
-	})
+func mergeResults[T Node](results []T, sort bool) (res []T) {
+	groups := map[string][]T{}
+	groups2 := map[string][]T{}
+	keys := []string{}
 
-	res := make([]T, 0, len(groups))
-	for _, g := range groups {
-		res = append(res, getLatestYearNodes(g)...)
+	for _, n := range results {
+		vid := getVagueID(n)
+		if vid == "" {
+			vid = string(n.GetID())
+		}
+
+		if _, ok := groups[vid]; !ok {
+			keys = append(keys, vid)
+		}
+		groups[vid] = append(groups[vid], n)
+	}
+
+	for k, g := range groups {
+		groups2[k] = getLatestYearNodes(g)
+	}
+
+	for _, k := range keys {
+		if nodes, ok := groups2[k]; ok {
+			res = append(res, nodes...)
+		}
 	}
 
 	if sort {

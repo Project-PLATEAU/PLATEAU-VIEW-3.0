@@ -1,7 +1,8 @@
+import AddIcon from "@mui/icons-material/AddOutlined";
 import { Button, buttonClasses, styled, type ButtonProps } from "@mui/material";
 import { forwardRef } from "react";
 
-import { PrefixedAddSmallIcon, PrefixedCheckSmallIcon } from "./icons";
+import { PrefixedCheckSmallIcon } from "./icons";
 
 const StyledButton = styled(Button)(({ theme }) => ({
   flexGrow: 0,
@@ -31,7 +32,7 @@ export const ContextButton = forwardRef<HTMLButtonElement, ContextButtonProps>(
         selected ? (
           <PrefixedCheckSmallIcon color="primary" fontSize="small" />
         ) : (
-          <PrefixedAddSmallIcon color="action" fontSize="small" />
+          <AddIcon color="action" fontSize="small" />
         )
       }>
       {children}

@@ -24,6 +24,7 @@ type Props = {
   onChange?: (value: string) => void;
   order?: number;
   parentField: Field;
+  loadingReference: boolean;
   linkedItemsModalList?: FormItem[];
   linkItemModalTitle: string;
   formItemsData: FormItem[];
@@ -67,12 +68,14 @@ type Props = {
   disableMoveDown?: boolean;
   onGetAsset: (assetId: string) => Promise<string | undefined>;
   onGroupGet: (id: string) => Promise<Group | undefined>;
+  onCheckItemReference: (value: string, correspondingFieldId: string) => Promise<boolean>;
 };
 
 const GroupItem: React.FC<Props> = ({
   value,
   order,
   parentField,
+  loadingReference,
   linkedItemsModalList,
   linkItemModalTitle,
   formItemsData,
@@ -112,6 +115,7 @@ const GroupItem: React.FC<Props> = ({
   disableMoveDown,
   onGetAsset,
   onGroupGet,
+  onCheckItemReference,
 }) => {
   const { Panel } = Collapse;
 
@@ -226,6 +230,7 @@ const GroupItem: React.FC<Props> = ({
                   <ReferenceField
                     field={field}
                     itemGroupId={itemGroupId}
+                    loading={loadingReference}
                     linkedItemsModalList={linkedItemsModalList}
                     formItemsData={formItemsData}
                     linkItemModalTitle={linkItemModalTitle}
@@ -236,6 +241,7 @@ const GroupItem: React.FC<Props> = ({
                     onSearchTerm={onSearchTerm}
                     onLinkItemTableReload={onLinkItemTableReload}
                     onLinkItemTableChange={onLinkItemTableChange}
+                    onCheckItemReference={onCheckItemReference}
                   />
                 </StyledFormItemWrapper>
               );

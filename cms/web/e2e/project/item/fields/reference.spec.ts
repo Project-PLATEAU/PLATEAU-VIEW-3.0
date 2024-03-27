@@ -31,6 +31,15 @@ test("One-way reference field creating and updating has succeeded", async ({ pag
   await page.getByRole("button", { name: "OK" }).click();
   await expect(page.getByRole("alert").last()).toContainText("Successfully created field!");
   await closeNotification(page);
+  await page.getByRole("tab", { name: "Meta Data" }).click();
+  await page.locator("li").filter({ hasText: "Boolean" }).locator("div").first().click();
+  await page.getByLabel("Display name").click();
+  await page.getByLabel("Display name").fill("boolean");
+  await page.getByLabel("Settings").locator("#key").click();
+  await page.getByLabel("Settings").locator("#key").fill("boolean");
+  await page.getByRole("button", { name: "OK" }).click();
+  await expect(page.getByRole("alert").last()).toContainText("Successfully created field!");
+  await closeNotification(page);
   await page.getByText("Content").click();
   await page.getByRole("button", { name: "plus New Item" }).click();
   await page.getByLabel("text").click();
@@ -93,6 +102,8 @@ test("One-way reference field creating and updating has succeeded", async ({ pag
   await expect(page.getByText("ref description")).toBeVisible();
 
   await page.getByRole("button", { name: "Refer to item" }).click();
+  await expect(page.locator("tbody > tr:visible")).toHaveCount(2);
+
   await expect(page.getByText("text1")).toBeVisible();
   await expect(page.getByText("text2")).toBeVisible();
   await page.getByPlaceholder("input search text").click();

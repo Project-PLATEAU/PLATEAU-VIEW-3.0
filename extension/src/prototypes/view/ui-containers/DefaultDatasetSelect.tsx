@@ -5,6 +5,7 @@ import { memo, useCallback, useMemo, type FC } from "react";
 import invariant from "tiny-invariant";
 
 import { DatasetFragmentFragment } from "../../../shared/graphql/types/catalog";
+import { CITY_CODES_FOR_BUILDING_MODEL } from "../../../shared/plateau";
 import { rootLayersAtom } from "../../../shared/states/rootLayer";
 import { settingsAtom } from "../../../shared/states/setting";
 import { templatesAtom } from "../../../shared/states/template";
@@ -58,8 +59,6 @@ export const DefaultDatasetSelect: FC<DefaultDatasetSelectProps> = memo(
     // Assume that all the datasets share the same type.
     const layerType =
       datasetTypeLayers[datasets[0].type.code as PlateauDatasetType] ?? datasetTypeLayers.usecase;
-
-    invariant(layerType !== "BUILDING_LAYER", "Building layer is not supported.");
 
     const datasetIds = useMemo(() => datasets.map(d => d.id), [datasets]);
 
@@ -173,6 +172,30 @@ export const DefaultDatasetSelect: FC<DefaultDatasetSelectProps> = memo(
                 </SelectItem>
               ));
             }
+            return [
+              <SelectGroupItem key={index} size="small">
+                {dataset.name}
+              </SelectGroupItem>,
+              ...dataset.items.map(datum => (
+                <SelectItem
+                  key={datum.id}
+                  indent={1}
+                  value={serializeParams({
+                    datasetId: dataset.id,
+                    datumId: datum.id,
+                  })}>
+                  <Typography variant="body2">
+                    {datum.name}
+                    {showDataFormats ? ` (${datum.format})` : null}
+                  </Typography>
+                </SelectItem>
+              )),
+            ];
+          }
+          if (
+            dataset.type.code === PlateauDatasetType.Building &&
+            CITY_CODES_FOR_BUILDING_MODEL.includes(dataset.cityCode)
+          ) {
             return [
               <SelectGroupItem key={index} size="small">
                 {dataset.name}

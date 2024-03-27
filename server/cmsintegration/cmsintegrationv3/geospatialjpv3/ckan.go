@@ -21,6 +21,7 @@ func (s *handler) createOrUpdatePackage(ctx context.Context, seed PackageSeed) (
 	if pkg == nil {
 		newpkg := seed.ToNewPackage()
 		log.Infofc(ctx, "geospartialjp: package %s not found so new package will be created", pkgName)
+		log.Debugfc(ctx, "geospartialjp: package create: %s", ppp.Sprint(newpkg))
 
 		pkg2, err := s.ckan.CreatePackage(ctx, newpkg)
 		if err != nil {
@@ -30,17 +31,15 @@ func (s *handler) createOrUpdatePackage(ctx context.Context, seed PackageSeed) (
 	}
 
 	// update
-	if shouldUpdatePackage(pkg, seed) {
-		newpkg := seed.ToPackage()
-		newpkg.ID = pkg.ID
-		pkg2, err := s.ckan.PatchPackage(ctx, newpkg)
-		if err != nil {
-			return nil, false, fmt.Errorf("G空間情報センターにデータセット %s を更新できませんでした: %w", pkgName, err)
-		}
-		return &pkg2, false, nil
-	}
+	newpkg := seed.ToPackage()
+	newpkg.ID = pkg.ID
+	log.Debugfc(ctx, "geospartialjp: package update: %s", ppp.Sprint(newpkg))
 
-	return pkg, false, nil
+	pkg2, err := s.ckan.PatchPackage(ctx, newpkg)
+	if err != nil {
+		return nil, false, fmt.Errorf("G空間情報センターにデータセット %s を更新できませんでした: %w", pkgName, err)
+	}
+	return &pkg2, false, nil
 }
 
 func (s *handler) findPackage(ctx context.Context, pkgname PackageName) (_ *ckan.Package, n string, err error) {
@@ -61,10 +60,6 @@ func (s *handler) findPackage(ctx context.Context, pkgname PackageName) (_ *ckan
 	}
 
 	return nil, name, nil
-}
-
-func shouldUpdatePackage(pkg *ckan.Package, seed PackageSeed) bool {
-	return pkg.Notes != seed.Description || pkg.ThumbnailURL != seed.ThumbnailURL
 }
 
 type ResourceInfo struct {

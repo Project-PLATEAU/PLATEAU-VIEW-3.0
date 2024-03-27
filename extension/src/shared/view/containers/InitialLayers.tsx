@@ -1,4 +1,4 @@
-import { useAtomValue, useSetAtom } from "jotai";
+import { useAtom, useAtomValue, useSetAtom } from "jotai";
 import { useEffect, type FC, useMemo, useRef, useState } from "react";
 import format from "string-template";
 
@@ -33,7 +33,7 @@ import {
   createRootLayerForDatasetAtom,
   createRootLayerForLayerAtom,
 } from "../../view-layers/rootLayer";
-import { isAppReadyAtom } from "../state/app";
+import { isAppReadyAtom, isLayerInitializedAtom } from "../state/app";
 
 type InitialHeatmapLayerParams = {
   type: string;
@@ -102,7 +102,7 @@ export const InitialLayers: FC = () => {
   const [sharedRootLayers, setSharedRootLayers] = useState<SharedRootLayer[] | undefined>();
   const [isSharedDataLoaded, setIsSharedDataLoaded] = useState(false);
   const isAppReady = useAtomValue(isAppReadyAtom);
-  const isInitialized = useRef(false);
+  const [isLayerInitialized, setIsLayerInitialized] = useAtom(isLayerInitializedAtom);
 
   useEffect(() => {
     const run = async () => {
@@ -234,7 +234,7 @@ export const InitialLayers: FC = () => {
   const templatesRef = useRef(templates);
   templatesRef.current = templates;
   useEffect(() => {
-    if (query.loading || !isSharedDataLoaded || !isAppReady || isInitialized.current) return;
+    if (query.loading || !isSharedDataLoaded || !isAppReady || isLayerInitialized) return;
 
     const initialize = async () => {
       const sharedProjectIdUnknown =
@@ -298,7 +298,7 @@ export const InitialLayers: FC = () => {
       setReady(true);
     };
     initialize();
-    isInitialized.current = true;
+    setIsLayerInitialized(true);
   }, [
     addLayer,
     initialDatasets,
@@ -310,6 +310,8 @@ export const InitialLayers: FC = () => {
     isSharedDataLoaded,
     isAppReady,
     sharedRootLayers,
+    isLayerInitialized,
+    setIsLayerInitialized,
   ]);
 
   return null;

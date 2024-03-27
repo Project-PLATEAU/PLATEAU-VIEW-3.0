@@ -169,3 +169,7 @@ func (c *CMSWrapper) Comment(ctx context.Context, comment string) {
 		log.Errorfc(ctx, "failed to comment to %s: %v", c.CityItemID, err)
 	}
 }
+
+func (c *CMSWrapper) Commentf(ctx context.Context, f string, args ...any) {
+	c.Comment(ctx, fmt.Sprintf(f, args...))
+}

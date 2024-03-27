@@ -17,7 +17,7 @@ func generatePlateauIndexItem(seed *IndexSeed, name string, size uint64, f fs.FS
 
 	if err := fs.WalkDir(f, "", func(p string, d fs.DirEntry, err error) error {
 		base := path.Base(p)
-		_, name, _ := strings.Cut(base, "_op_")
+		_, name, _ := strings.Cut(base, "_citygml_")
 		if name == "" {
 			return nil
 		}

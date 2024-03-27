@@ -15,6 +15,7 @@ const modelPrefix = "plateau-"
 const cityModel = "city"
 const relatedModel = "related"
 const genericModel = "generic"
+const sampleModel = "sample"
 const geospatialjpDataModel = "geospatialjp-data"
 const defaultSpec = "第3.2版"
 
@@ -145,16 +146,23 @@ func (i *CityItem) IsPublicOrBeta() bool {
 }
 
 type PlateauFeatureItem struct {
-	ID      string                    `json:"id,omitempty" cms:"id"`
-	City    string                    `json:"city,omitempty" cms:"city,reference"`
-	CityGML string                    `json:"citygml,omitempty" cms:"citygml,-"`
-	Data    []string                  `json:"data,omitempty" cms:"data,-"`
-	Desc    string                    `json:"desc,omitempty" cms:"desc,textarea"`
-	Items   []PlateauFeatureItemDatum `json:"items,omitempty" cms:"items,group"`
-	Dic     string                    `json:"dic,omitempty" cms:"dic,textarea"`
-	MaxLOD  string                    `json:"maxlod,omitempty" cms:"maxlod,-"`
+	ID          string                    `json:"id,omitempty" cms:"id"`
+	City        string                    `json:"city,omitempty" cms:"city,reference"`
+	CityGML     string                    `json:"citygml,omitempty" cms:"citygml,-"`
+	Data        []string                  `json:"data,omitempty" cms:"data,-"`
+	Desc        string                    `json:"desc,omitempty" cms:"desc,textarea"`
+	Items       []PlateauFeatureItemDatum `json:"items,omitempty" cms:"items,group"`
+	Dic         string                    `json:"dic,omitempty" cms:"dic,textarea"`
+	Group       string                    `json:"group,omitempty" cms:"group,text"`
+	MaxLOD      string                    `json:"maxlod,omitempty" cms:"maxlod,-"`
+	FeatureType string                    `json:"feature_type,omitempty" cms:"feature_type,select"`
 	// metadata
-	Sample bool `json:"sample,omitempty" cms:"sample,bool,metadata"`
+	Sample bool     `json:"sample,omitempty" cms:"sample,bool,metadata"`
+	Status *cms.Tag `json:"status,omitempty" cms:"status,select,metadata"`
+}
+
+func (c *PlateauFeatureItem) IsBeta() bool {
+	return c.Status != nil && c.Status.Name == string(ManagementStatusReady)
 }
 
 func (c PlateauFeatureItem) ReadDic() (d Dic, _ error) {
@@ -166,11 +174,12 @@ func (c PlateauFeatureItem) ReadDic() (d Dic, _ error) {
 }
 
 type PlateauFeatureItemDatum struct {
-	ID   string   `json:"id,omitempty" cms:"id"`
-	Data []string `json:"data,omitempty" cms:"data,-"`
-	Name string   `json:"name,omitempty" cms:"name,text"`
-	Desc string   `json:"desc,omitempty" cms:"desc,textarea"`
-	Key  string   `json:"key,omitempty" cms:"key,text"`
+	ID    string   `json:"id,omitempty" cms:"id"`
+	Data  []string `json:"data,omitempty" cms:"data,-"`
+	Name  string   `json:"name,omitempty" cms:"name,text"`
+	Desc  string   `json:"desc,omitempty" cms:"desc,textarea"`
+	Key   string   `json:"key,omitempty" cms:"key,text"`
+	Group string   `json:"group,omitempty" cms:"group,text"`
 	// Simple indicates that this item should not use subcode and subname
 	Simple bool `json:"simple,omitempty" cms:"-"`
 }
@@ -232,7 +241,7 @@ type DicEntry struct {
 	Order             *int            `json:"order"`
 }
 
-func PlateauFeatureItemFrom(item *cms.Item) (i *PlateauFeatureItem) {
+func PlateauFeatureItemFrom(item *cms.Item, code string) (i *PlateauFeatureItem) {
 	i = &PlateauFeatureItem{}
 	item.Unmarshal(i)
 
@@ -241,6 +250,14 @@ func PlateauFeatureItemFrom(item *cms.Item) (i *PlateauFeatureItem) {
 	i.MaxLOD = valueToAssetURL(item.FieldByKey("maxlod").GetValue())
 	for ind, d := range i.Items {
 		i.Items[ind].Data = valueToAssetURLs(item.FieldByKeyAndGroup("data", d.ID).GetValue())
+	}
+	if i.FeatureType != "" {
+		// e.g. "建築物モデル（bldg）" -> Name="建築物モデル", FeatureType="bldg"
+		if _, ft := getLastBracketContent(i.FeatureType); ft != "" {
+			i.FeatureType = ft
+		}
+	} else {
+		i.FeatureType = code
 	}
 
 	return
@@ -292,7 +309,6 @@ type GenericItem struct {
 	// metadata
 	Status *cms.Tag `json:"status,omitempty" cms:"status,select,metadata"`
 	Public bool     `json:"public,omitempty" cms:"public,bool,metadata"`
-	UseAR  bool     `json:"use-ar,omitempty" cms:"use-ar,bool,metadata"`
 }
 
 func (c *GenericItem) Stage() stage {
@@ -322,7 +338,6 @@ func GenericItemFrom(item *cms.Item) (i *GenericItem) {
 	for ind, d := range i.Items {
 		i.Items[ind].Data = valueToAssetURL(item.FieldByKeyAndGroup("data", d.ID).GetValue())
 	}
-
 	return
 }
 
@@ -430,10 +445,11 @@ func geospatialjpURL(cityCode string, cityName string, year int) string {
 }
 
 type GeospatialjpDataItem struct {
-	ID      string `json:"id,omitempty" cms:"id"`
-	City    string `json:"city,omitempty" cms:"city,reference"`
-	CityGML string `json:"citygml,omitempty" cms:"citygml,asset"`
-	MaxLOD  string `json:"maxlod,omitempty" cms:"maxlod,asset"`
+	ID       string `json:"id,omitempty" cms:"id"`
+	City     string `json:"city,omitempty" cms:"city,reference"`
+	CityGML  string `json:"citygml,omitempty" cms:"citygml,asset"`
+	MaxLOD   string `json:"maxlod,omitempty" cms:"maxlod,asset"`
+	HasIndex bool   `json:"has_index,omitempty" cms:"-"`
 }
 
 func GeospatialjpDataItemFrom(item *cms.Item) *GeospatialjpDataItem {
@@ -442,6 +458,7 @@ func GeospatialjpDataItemFrom(item *cms.Item) *GeospatialjpDataItem {
 		City    string `json:"city,omitempty" cms:"city,reference"`
 		CityGML any    `json:"citygml,omitempty" cms:"citygml,asset"`
 		MaxLOD  any    `json:"maxlod,omitempty" cms:"maxlod,asset"`
+		Index   string `json:"desc_index,omitempty" cms:"desc_index,markdown"`
 	}
 
 	it := itemType{}
@@ -451,9 +468,10 @@ func GeospatialjpDataItemFrom(item *cms.Item) *GeospatialjpDataItem {
 	maxlod := anyToAssetURL(it.MaxLOD)
 
 	return &GeospatialjpDataItem{
-		ID:      it.ID,
-		City:    it.City,
-		CityGML: citygml,
-		MaxLOD:  maxlod,
+		ID:       it.ID,
+		City:     it.City,
+		CityGML:  citygml,
+		MaxLOD:   maxlod,
+		HasIndex: it.Index != "",
 	}
 }

@@ -1,10 +1,14 @@
+import { PublicScope } from "@reearth-cms/components/molecules/Accessibility/types";
 import { IntegrationMember } from "@reearth-cms/components/molecules/Integration/types";
 
 export type Project = {
   id: string;
   name: string;
   description?: string;
-  requestRoles?: Role[] | null;
+  alias?: string;
+  scope?: PublicScope;
+  assetPublic?: boolean;
+  requestRoles?: Role[];
 };
 
 export type User = {
@@ -31,8 +35,8 @@ export type MemberInput = {
 export type Role = "WRITER" | "READER" | "MAINTAINER" | "OWNER";
 
 export type Workspace = {
-  id?: string;
-  name?: string;
+  id: string;
+  name: string;
   personal?: boolean;
   members?: Member[];
 };

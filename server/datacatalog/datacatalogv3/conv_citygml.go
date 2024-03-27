@@ -1,6 +1,8 @@
 package datacatalogv3
 
 import (
+	"slices"
+
 	"github.com/eukarya-inc/reearth-plateauview/server/datacatalog/plateauapi"
 )
 
@@ -50,9 +52,9 @@ func toCityGMLs(all *AllData, regYear int) (map[plateauapi.ID]*plateauapi.CityGM
 	}
 
 	// add citygml urls for sample data
-	for _, data := range all.Plateau {
+	for ft, data := range all.Plateau {
 		for _, d := range data {
-			if !d.Sample || d.MaxLOD == "" || d.CityGML == "" {
+			if !d.Sample || d.MaxLOD == "" || d.CityGML == "" /*|| !d.IsBeta()*/ {
 				continue
 			}
 
@@ -66,16 +68,46 @@ func toCityGMLs(all *AllData, regYear int) (map[plateauapi.ID]*plateauapi.CityGM
 				continue
 			}
 
-			maxlod := citygml.Admin.(map[string]any)["maxlod"].([]string)
-			citygmlURL := citygml.Admin.(map[string]any)["citygmlUrl"].([]string)
-
-			maxlod = append(maxlod, d.MaxLOD)
-			citygmlURL = append(citygmlURL, d.CityGML)
-
-			citygml.Admin.(map[string]any)["maxlod"] = maxlod
-			citygml.Admin.(map[string]any)["citygmlUrl"] = citygmlURL
+			addCityGML(d.CityGML, d.MaxLOD, ft, citygml)
 		}
 	}
 
+	for _, d := range all.Sample {
+		if d.MaxLOD == "" || d.CityGML == "" {
+			continue
+		}
+
+		citygml := resCity[d.City]
+		if citygml == nil {
+			continue
+		}
+
+		city := cityMap[d.City]
+		if city == nil || !city.SDKPublic {
+			continue
+		}
+
+		addCityGML(d.CityGML, d.MaxLOD, d.FeatureType, citygml)
+	}
+
 	return res, nil
+}
+
+func addCityGML(citygmlURL, maxlodURL, featureType string, citygml *plateauapi.CityGMLDataset) {
+	if citygmlURL == "" || maxlodURL == "" {
+		return
+	}
+
+	baseCitygmlURL := citygml.Admin.(map[string]any)["citygmlUrl"].([]string)
+	baseMaxlod := citygml.Admin.(map[string]any)["maxlod"].([]string)
+
+	baseCitygmlURL = append(baseCitygmlURL, citygmlURL)
+	baseMaxlod = append(baseMaxlod, maxlodURL)
+
+	citygml.Admin.(map[string]any)["citygmlUrl"] = baseCitygmlURL
+	citygml.Admin.(map[string]any)["maxlod"] = baseMaxlod
+
+	if featureType != "" && !slices.Contains(citygml.FeatureTypes, featureType) {
+		citygml.FeatureTypes = append(citygml.FeatureTypes, featureType)
+	}
 }

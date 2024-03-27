@@ -125,15 +125,15 @@ export const LayerTilesetDrawClippingField: FC<LayerTilesetDrawClippingFieldProp
       if (toolType?.type !== "hand") {
         send({ type: "HAND" });
       }
-      handleSetColor("#00BEBE11");
-      handleDisableShadow(true);
-      handleEnableRelativeHeight(true);
       GroupedParameterItemRef.current?.closePopover();
       isDrawing.current = true;
 
-      // Need to delay the type set since tool type could be changed.
+      // Need to delay the option set since settings could be changed with type change.
       requestAnimationFrame(() => {
         requestAnimationFrame(() => {
+          handleDisableShadow(true);
+          handleEnableRelativeHeight(true);
+          handleSetColor("#00BEBE11");
           handleSetType(type);
         });
       });

@@ -4,6 +4,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	cms "github.com/reearth/reearth-cms-api/go"
 )
@@ -49,12 +50,13 @@ func FeatureItemFrom(item *cms.Item) (res FeatureItem, ok bool) {
 		MaxLOD  any             `cms:"maxlod"`
 		Dic     string          `cms:"dic"`
 		Sample  bool            `cms:"sample,bool,metadata"`
+		Skip    bool            `cms:"skip_geospatialjp,bool,metadata"`
 	}
 
 	fi := internalItem{}
 	item.Unmarshal(&fi)
 
-	if fi.Sample {
+	if fi.Sample || fi.Skip {
 		return
 	}
 
@@ -103,15 +105,16 @@ func FeatureItemFrom(item *cms.Item) (res FeatureItem, ok bool) {
 	return
 }
 
-func mergeDics(dics ...string) (res map[string]string) {
+func mergeDics(dics map[string]FeatureItem) (res map[string]map[string]string) {
 	type dicEntry struct {
 		Name        *StringOrNumber `json:"name"`
 		Code        *StringOrNumber `json:"code"`
 		Description string          `json:"description"`
 	}
 
-	res = map[string]string{}
-	for _, dic := range dics {
+	res = map[string]map[string]string{}
+	for ft, f := range dics {
+		dic := f.Dic
 		if dic == "" {
 			continue
 		}
@@ -127,13 +130,26 @@ func mergeDics(dics ...string) (res map[string]string) {
 					continue
 				}
 
-				if e.Name != nil {
-					res[e.Name.String()] = e.Description
+				key := e.Name.String()
+				if key == "" {
+					key = e.Code.String()
+				}
+				if key == "" {
+					continue
 				}
 
-				if e.Code != nil {
-					res[e.Code.String()] = e.Description
+				desc := e.Description
+				if ft == "fld" {
+					key = strings.TrimSuffix(key, "_l1")
+					key = strings.TrimSuffix(key, "_l2")
+					desc += "洪水浸水想定区域"
 				}
+
+				if res[ft] == nil {
+					res[ft] = map[string]string{}
+				}
+
+				res[ft][key] = desc
 			}
 		}
 	}

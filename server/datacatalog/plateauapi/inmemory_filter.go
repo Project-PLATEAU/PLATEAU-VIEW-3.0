@@ -9,7 +9,23 @@ import (
 	"golang.org/x/exp/slices"
 )
 
-const SpecVersion = "2.3"
+func AllParentAreaCodes(a Area) []AreaCode {
+	switch a2 := a.(type) {
+	case *City:
+		if a2 != nil {
+			return []AreaCode{a2.PrefectureCode}
+		}
+	case *Ward:
+		if a2 != nil {
+			return []AreaCode{a2.PrefectureCode, a2.CityCode}
+		}
+	case City:
+		return []AreaCode{a2.PrefectureCode}
+	case Ward:
+		return []AreaCode{a2.PrefectureCode, a2.CityCode}
+	}
+	return nil
+}
 
 func ParentAreaCode(a Area) AreaCode {
 	switch a2 := a.(type) {
@@ -61,10 +77,13 @@ func filterDataset(d Dataset, input DatasetsInput, stages []string) bool {
 		return false
 	}
 
-	text := []string{
-		d.GetName(),
-		lo.FromPtr(d.GetDescription()),
-	}
+	text := append(
+		[]string{
+			d.GetName(),
+			lo.FromPtr(d.GetDescription()),
+		},
+		d.GetGroups()...,
+	)
 	var spec string
 	switch d2 := d.(type) {
 	case *PlateauDataset:
@@ -98,6 +117,10 @@ func filterDataset(d Dataset, input DatasetsInput, stages []string) bool {
 		}) {
 			return false
 		}
+	}
+
+	if lo.FromPtr(input.GroupedOnly) && len(d.GetGroups()) == 0 {
+		return false
 	}
 
 	return true
@@ -273,10 +296,20 @@ func filterArea(area Area, input AreasInput) bool {
 	}
 
 	if input.ParentCode != nil {
-		pc := ParentAreaCode(area)
-		if pc != *input.ParentCode {
-			return false
+		var parentCodes []AreaCode
+
+		if input.Deep != nil && *input.Deep {
+			parentCodes = AllParentAreaCodes(area)
+		} else {
+			parentCodes = []AreaCode{ParentAreaCode(area)}
 		}
+
+		for _, pc := range parentCodes {
+			if pc != "" && pc == *input.ParentCode {
+				return true
+			}
+		}
+		return false
 	}
 
 	return true

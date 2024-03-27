@@ -73,13 +73,13 @@ func TestMerger_Nodes(t *testing.T) {
 }
 
 func TestMergeResults(t *testing.T) {
-	t.Run("ok", func(t *testing.T) {
+	t.Run("sort", func(t *testing.T) {
 		results1 := []*PlateauDatasetType{
+			{ID: "2", Year: 2021},
+			{ID: "3", Year: 2021},
 			{ID: "1", Year: 2020, Name: "a"},
 			{ID: "1", Year: 2020},
 			{ID: "2", Year: 2019},
-			{ID: "2", Year: 2021},
-			{ID: "3", Year: 2021},
 		}
 		expected1 := []*PlateauDatasetType{
 			{ID: "1", Year: 2020, Name: "a"},
@@ -90,9 +90,26 @@ func TestMergeResults(t *testing.T) {
 		assert.Equal(t, expected1, res1)
 	})
 
+	t.Run("without sort", func(t *testing.T) {
+		results1 := []*PlateauDatasetType{
+			{ID: "2", Year: 2021},
+			{ID: "3", Year: 2021},
+			{ID: "1", Year: 2020, Name: "a"},
+			{ID: "1", Year: 2020},
+			{ID: "2", Year: 2019},
+		}
+		expected1 := []*PlateauDatasetType{
+			{ID: "2", Year: 2021},
+			{ID: "3", Year: 2021},
+			{ID: "1", Year: 2020, Name: "a"},
+		}
+		res1 := mergeResults(results1, false)
+		assert.Equal(t, expected1, res1)
+	})
+
 	t.Run("empty", func(t *testing.T) {
 		results3 := []*PlateauDataset{}
-		expected3 := []*PlateauDataset{}
+		expected3 := []*PlateauDataset(nil)
 		res3 := mergeResults(results3, true)
 		assert.Equal(t, expected3, res3)
 	})

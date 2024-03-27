@@ -1,6 +1,7 @@
 import { PlateauDatasetType } from "./plateau";
 
 export const datasetTypeNames: Record<PlateauDatasetType, string> = {
+  [PlateauDatasetType.Area]: "区域",
   [PlateauDatasetType.Border]: "行政界",
   [PlateauDatasetType.Bridge]: "橋梁",
   [PlateauDatasetType.Building]: "建築物",
@@ -26,5 +27,6 @@ export const datasetTypeNames: Record<PlateauDatasetType, string> = {
   [PlateauDatasetType.Sample]: "その他",
   [PlateauDatasetType.Constructure]: "その他の構造物モデル",
   [PlateauDatasetType.Water]: "水辺モデル",
+  [PlateauDatasetType.WaterWay]: "航路",
   [PlateauDatasetType.Traffic]: "交通モデル",
 };

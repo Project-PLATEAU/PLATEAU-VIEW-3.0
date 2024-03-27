@@ -37,6 +37,8 @@ const Item = styled("div")({
   flexGrow: 1,
   flexShrink: 1,
   flexBasis: "50%",
+  border: 1,
+  borderStyle: "solid",
 });
 
 export interface ColorSetIconProps extends ComponentPropsWithRef<typeof Root> {
@@ -48,8 +50,15 @@ export const ColorSetIcon = forwardRef<HTMLDivElement, ColorSetIconProps>(
   ({ colors, selected, ...props }, ref) => (
     <Root ref={ref} {...props} selected={selected}>
       <Grid>
-        {colors.slice(0, 4).map(({ id, color }) => (
-          <Item key={id} style={{ backgroundColor: color }} />
+        {colors.slice(0, 4).map(({ id, color, strokeColor }) => (
+          <Item
+            key={id}
+            style={{
+              backgroundColor: color,
+              borderColor: strokeColor || "transparent",
+              borderWidth: colors.length > 1 ? (colors.length > 2 ? 1 : 2) : 3,
+            }}
+          />
         ))}
       </Grid>
     </Root>

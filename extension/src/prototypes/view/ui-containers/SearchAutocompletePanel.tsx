@@ -19,6 +19,7 @@ import {
   type FC,
   type MouseEvent,
   type ReactNode,
+  MutableRefObject,
 } from "react";
 
 import { CITY_NAME } from "../../../shared/constants";
@@ -79,9 +80,13 @@ function filterOptions(
 
 export interface SearchAutocompletePanelProps {
   children?: ReactNode;
+  isResizing?: MutableRefObject<boolean>;
 }
 
-export const SearchAutocompletePanel: FC<SearchAutocompletePanelProps> = ({ children }) => {
+export const SearchAutocompletePanel: FC<SearchAutocompletePanelProps> = ({
+  children,
+  isResizing,
+}) => {
   const textFieldRef = useRef<HTMLInputElement>(null);
   const [focused, setFocused] = useState(false);
   const handleFocus = useCallback(() => {
@@ -163,10 +168,11 @@ export const SearchAutocompletePanel: FC<SearchAutocompletePanelProps> = ({ chil
   });
 
   const handleClickAway = useCallback(() => {
+    if (isResizing?.current) return;
     setTimeout(() => {
       setFocused(false);
     }, 0);
-  }, []);
+  }, [isResizing]);
 
   const [tab, setTab] = useState<TabOption>("search");
   const deferredTab = useDeferredValue(tab);
@@ -194,7 +200,8 @@ export const SearchAutocompletePanel: FC<SearchAutocompletePanelProps> = ({ chil
           onInputChange={handleInputChange}
           endAdornment={
             <Shortcut variant="outlined" platform={platform} shortcutKey="K" commandKey />
-          }>
+          }
+          isResizing={isResizing}>
           <Divider />
           {!focused ? (
             children

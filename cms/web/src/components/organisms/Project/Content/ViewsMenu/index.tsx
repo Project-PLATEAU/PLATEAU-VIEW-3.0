@@ -1,5 +1,4 @@
 import React, { Dispatch, SetStateAction } from "react";
-import { useParams } from "react-router-dom";
 
 import ViewFormModal from "@reearth-cms/components/molecules/View/ViewFormModal";
 import ViewsMenuMolecule from "@reearth-cms/components/molecules/View/viewsMenu";
@@ -15,8 +14,6 @@ export type Props = {
 };
 
 const ViewsMenu: React.FC<Props> = ({ currentView, setCurrentView, onViewChange }) => {
-  const { modelId } = useParams();
-
   const {
     views,
     modalState,
@@ -28,10 +25,10 @@ const ViewsMenu: React.FC<Props> = ({ currentView, setCurrentView, onViewChange 
     submitting,
     handleViewModalReset,
     handleViewCreate,
-    handleViewRename,
     handleViewUpdate,
+    handleViewRename,
     handleViewDelete,
-  } = useHooks({ modelId, currentView, setCurrentView, onViewChange });
+  } = useHooks({ currentView, setCurrentView, onViewChange });
 
   return (
     <>

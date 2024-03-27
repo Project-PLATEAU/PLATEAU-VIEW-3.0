@@ -3,11 +3,11 @@ import { Schema, MetaDataSchema } from "@reearth-cms/components/molecules/Schema
 export type Model = {
   id: string;
   name: string;
-  description?: string;
+  description: string;
   key: string;
   schemaId: string;
   schema: Schema;
-  metadataSchema?: MetaDataSchema;
+  metadataSchema: MetaDataSchema;
   public: boolean;
   order?: number;
 };

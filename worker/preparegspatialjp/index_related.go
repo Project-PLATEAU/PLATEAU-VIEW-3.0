@@ -10,6 +10,10 @@ import (
 )
 
 func generateRelatedIndexItem(seed *IndexSeed, name string, size uint64, f fs.FS) (*IndexItem, error) {
+	if f == nil {
+		return nil, nil
+	}
+
 	items := []string{}
 
 	if err := fs.WalkDir(f, "", func(p string, d fs.DirEntry, err error) error {

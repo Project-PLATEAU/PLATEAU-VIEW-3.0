@@ -47,8 +47,8 @@ export const AppHeader: FC<Props> = ({ arURL }) => {
       <SettingsButton />
       <DateControlButton />
       <EnvironmentSelect />
-      <IconButton>
-        <PaperPlaneTilt onClick={() => setShowShareModal(true)} />
+      <IconButton onClick={() => setShowShareModal(true)}>
+        <PaperPlaneTilt />
       </IconButton>
       {isMobile && (
         <IconButton onClick={handleARButtonClick}>

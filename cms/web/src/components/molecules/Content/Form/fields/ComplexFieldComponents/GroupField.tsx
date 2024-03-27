@@ -15,6 +15,7 @@ import {
 interface GroupFieldProps {
   field: Field;
   form?: FormInstance<any>;
+  loadingReference: boolean;
   linkedItemsModalList?: FormItem[];
   linkItemModalTitle: string;
   formItemsData: FormItem[];
@@ -53,11 +54,13 @@ interface GroupFieldProps {
   setUploadModalVisibility: (visible: boolean) => void;
   onGetAsset: (assetId: string) => Promise<string | undefined>;
   onGroupGet: (id: string) => Promise<Group | undefined>;
+  onCheckItemReference: (value: string, correspondingFieldId: string) => Promise<boolean>;
 }
 
 const GroupField: React.FC<GroupFieldProps> = ({
   field,
   form,
+  loadingReference,
   linkedItemsModalList,
   linkItemModalTitle,
   formItemsData,
@@ -92,6 +95,7 @@ const GroupField: React.FC<GroupFieldProps> = ({
   setUploadModalVisibility,
   onGetAsset,
   onGroupGet,
+  onCheckItemReference,
 }) => {
   return (
     <Form.Item
@@ -102,6 +106,7 @@ const GroupField: React.FC<GroupFieldProps> = ({
         <MultiValueGroup
           parentField={field}
           form={form}
+          loadingReference={loadingReference}
           linkedItemsModalList={linkedItemsModalList}
           linkItemModalTitle={linkItemModalTitle}
           onSearchTerm={onSearchTerm}
@@ -136,10 +141,12 @@ const GroupField: React.FC<GroupFieldProps> = ({
           setUploadModalVisibility={setUploadModalVisibility}
           onGetAsset={onGetAsset}
           onGroupGet={onGroupGet}
+          onCheckItemReference={onCheckItemReference}
         />
       ) : (
         <GroupItem
           parentField={field}
+          loadingReference={loadingReference}
           linkedItemsModalList={linkedItemsModalList}
           linkItemModalTitle={linkItemModalTitle}
           onSearchTerm={onSearchTerm}
@@ -174,6 +181,7 @@ const GroupField: React.FC<GroupFieldProps> = ({
           setUploadModalVisibility={setUploadModalVisibility}
           onGetAsset={onGetAsset}
           onGroupGet={onGroupGet}
+          onCheckItemReference={onCheckItemReference}
         />
       )}
     </Form.Item>

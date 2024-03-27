@@ -3,7 +3,11 @@ import { intersectionBy, uniqBy } from "lodash-es";
 import { useMemo, type FC } from "react";
 
 import { useOptionalAtomValue } from "../../../shared/hooks";
-import { makePropertyForFeatureInspector } from "../../../shared/plateau/featureInspector";
+import {
+  ancestorsKey,
+  attributesKey,
+  makePropertyForFeatureInspector,
+} from "../../../shared/plateau/featureInspector";
 import { TILESET_FEATURE } from "../../../shared/reearth/layers";
 import { Feature } from "../../../shared/reearth/types/layer";
 import { findRootLayerAtom, rootLayersLayersAtom } from "../../../shared/states/rootLayer";
@@ -51,6 +55,10 @@ export const TileFeaturePropertiesSection: FC<TileFeaturePropertiesSectionProps>
   const tilesetProperties = useOptionalAtomValue(tilesetLayer?.propertiesAtom);
 
   const featureType = useMemo(() => layers[0].features[0]?.properties["feature_type"], [layers]);
+  const ancestorsFeatureType = useMemo(
+    () => layers[0].features[0]?.properties[attributesKey]?.[ancestorsKey]?.[0]?.["feature_type"],
+    [layers],
+  );
 
   const properties = useMemo(() => {
     // TODO: Replace properties by JSONPath
@@ -81,7 +89,11 @@ export const TileFeaturePropertiesSection: FC<TileFeaturePropertiesSectionProps>
 
   return (
     <ParameterList>
-      <PropertyParameterItem properties={properties} featureType={featureType} />
+      <PropertyParameterItem
+        properties={properties}
+        featureType={featureType}
+        ancestorsFeatureType={ancestorsFeatureType}
+      />
     </ParameterList>
   );
 };

@@ -1,4 +1,14 @@
-import { alpha, Button, Popover, styled, Divider, FormControlLabel, Switch } from "@mui/material";
+import {
+  alpha,
+  Button,
+  Popover,
+  styled,
+  Divider,
+  FormControlLabel,
+  Switch,
+  useMediaQuery,
+  useTheme,
+} from "@mui/material";
 import { useAtom, useAtomValue } from "jotai";
 import { bindPopover, bindTrigger, usePopupState } from "material-ui-popup-state/hooks";
 import { useCallback, useId, type FC, type ChangeEvent } from "react";
@@ -241,6 +251,9 @@ export const EnvironmentSelect: FC = () => {
     [setShowMapLabel],
   );
 
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("mobile"));
+
   return (
     <>
       <AppIconButton
@@ -250,7 +263,7 @@ export const EnvironmentSelect: FC = () => {
         {...bindTrigger(popupState)}>
         <MapIcon />
       </AppIconButton>
-      {selectedItem === "elevation" && <ElevationLegendButton />}
+      {selectedItem === "elevation" && !isMobile && <ElevationLegendButton />}
       <OverlayPopper {...popoverProps} inset={1.5}>
         <FloatingPanel>
           <Item item="light-map" selectedItem={selectedItem} onClick={handleLightMap} />

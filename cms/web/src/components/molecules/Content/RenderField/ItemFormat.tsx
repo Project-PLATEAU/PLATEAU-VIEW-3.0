@@ -25,11 +25,13 @@ type Props = {
 
 export const ItemFormat: React.FC<Props> = ({ item, field, update, index }) => {
   const [isEditable, setIsEditable] = useState(false);
+  const [itemState, setItemState] = useState(item);
 
   const handleUrlBlur = useCallback(
     (e: FocusEvent<HTMLInputElement>) => {
       if (e.target.value && !validateURL(e.target.value)) return;
       update?.(e.target.value, index);
+      setItemState(e.target.value);
       setIsEditable(false);
     },
     [index, update],
@@ -101,9 +103,9 @@ export const ItemFormat: React.FC<Props> = ({ item, field, update, index }) => {
       );
     case "URL":
       return update ? (
-        !item || isEditable ? (
+        !itemState || isEditable ? (
           <StyledInput
-            defaultValue={item}
+            defaultValue={itemState}
             placeholder="-"
             autoFocus={isEditable}
             onBlur={handleUrlBlur}
@@ -117,8 +119,8 @@ export const ItemFormat: React.FC<Props> = ({ item, field, update, index }) => {
             overlayInnerStyle={{ transform: "translateX(-40px)" }}
             title={<Icon color="#1890ff" icon={"edit"} onClick={() => setIsEditable(true)} />}>
             <UrlWrapper>
-              <a href={item} target="_blank" rel="noreferrer">
-                {item}
+              <a href={itemState} target="_blank" rel="noreferrer">
+                {itemState}
               </a>
             </UrlWrapper>
           </Tooltip>

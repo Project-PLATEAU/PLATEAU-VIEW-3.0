@@ -6,18 +6,18 @@ import ProjectCreationModal, {
 import WorkspaceCreationModal from "@reearth-cms/components/molecules/Common/WorkspaceCreationModal";
 import ProjectList from "@reearth-cms/components/molecules/ProjectList/ProjectList";
 import Greeting from "@reearth-cms/components/molecules/Workspace/Greeting";
-import { Project as ProjectType } from "@reearth-cms/components/molecules/Workspace/types";
+import { Project } from "@reearth-cms/components/molecules/Workspace/types";
 import WorkspaceHeader from "@reearth-cms/components/molecules/Workspace/WorkspaceHeader";
 
-export type Props = {
+type Props = {
   coverImageUrl?: string;
-  projects?: ProjectType[];
+  projects?: Project[];
   projectModal?: boolean;
   workspaceModal?: boolean;
   loadingProjects?: boolean;
   onProjectSearch: (value: string) => void;
   onProjectModalOpen: () => void;
-  onProjectNavigation: (project: ProjectType) => void;
+  onProjectNavigation: (project: Project) => void;
   onWorkspaceModalClose: () => void;
   onWorkspaceModalOpen: () => void;
   onWorkspaceCreate: (data: { name: string }) => Promise<void>;

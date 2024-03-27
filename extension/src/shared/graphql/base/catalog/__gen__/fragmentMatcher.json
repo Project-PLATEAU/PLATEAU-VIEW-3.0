@@ -22,6 +22,7 @@
     ],
     "Node": [
       "City",
+      "CityGMLDataset",
       "GenericDataset",
       "GenericDatasetItem",
       "GenericDatasetType",

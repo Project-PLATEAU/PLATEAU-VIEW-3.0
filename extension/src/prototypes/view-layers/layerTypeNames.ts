@@ -1,6 +1,7 @@
 import { type LayerType } from "../layers";
 
 import {
+  AREA_LAYER,
   BORDER_LAYER,
   BRIDGE_LAYER,
   BUILDING_LAYER,
@@ -28,6 +29,7 @@ import {
   URBAN_PLANNING_LAYER,
   USE_CASE_LAYER,
   VEGETATION_LAYER,
+  WATERWAY_LAYER,
 } from "./layerTypes";
 
 // Undefined means using the name from API.
@@ -39,6 +41,7 @@ export const layerTypeNames: Record<LayerType, string | undefined> = {
   [STORY_LAYER]: "ストーリー",
 
   // Dataset layers
+  [AREA_LAYER]: "区域",
   [BORDER_LAYER]: "行政界",
   [BRIDGE_LAYER]: "橋梁",
   [BUILDING_LAYER]: "建築物",
@@ -60,5 +63,6 @@ export const layerTypeNames: Record<LayerType, string | undefined> = {
   [TSUNAMI_RISK_LAYER]: "津波浸水想定区域",
   [URBAN_PLANNING_LAYER]: undefined,
   [VEGETATION_LAYER]: "植生",
+  [WATERWAY_LAYER]: "航路",
   [USE_CASE_LAYER]: undefined,
 };

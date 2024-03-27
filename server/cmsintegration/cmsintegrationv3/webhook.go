@@ -43,7 +43,7 @@ func WebhookHandler(conf Config) (cmswebhook.Handler, error) {
 
 		if modelName == relatedModel {
 			err = handleRelatedDataset(ctx, s, w)
-		} else if slices.Contains(featureTypes, modelName) {
+		} else if modelName == sampleModel || slices.Contains(featureTypes, modelName) {
 			err = sendRequestToFME(ctx, s, &conf, w)
 		}
 

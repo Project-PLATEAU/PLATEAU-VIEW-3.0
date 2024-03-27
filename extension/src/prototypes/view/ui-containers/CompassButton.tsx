@@ -21,10 +21,10 @@ export const CompassButton: FC = () => {
   }, [camera, camera?.heading, radianToDegree]);
 
   const handleClick = useCallback(() => {
-    if (window.reearth?.scene?.property?.camera?.camera)
-      flyTo(window.reearth.scene.property.camera.camera);
+    if (!camera) return;
+    flyTo({ ...camera, heading: 0 });
     if (autoRotateCamera) setAutoRotateCameraAtom(value => !value);
-  }, [autoRotateCamera, flyTo, setAutoRotateCameraAtom]);
+  }, [camera, autoRotateCamera, flyTo, setAutoRotateCameraAtom]);
 
   return (
     <AppIconButton title="コンパス" onClick={handleClick}>

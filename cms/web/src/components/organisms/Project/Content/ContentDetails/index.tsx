@@ -10,6 +10,7 @@ const ContentDetails: React.FC = () => {
   const t = useT();
 
   const {
+    loadingReference,
     linkedItemsModalList,
     showPublishAction,
     requests,
@@ -57,6 +58,7 @@ const ContentDetails: React.FC = () => {
     handleAddItemToRequestModalClose,
     handleAddItemToRequestModalOpen,
     handleGroupGet,
+    handleCheckItemReference,
   } = useHooks();
 
   const {
@@ -94,6 +96,7 @@ const ContentDetails: React.FC = () => {
       onLinkItemTableReload={handleLinkItemTableReload}
       onLinkItemTableChange={handleLinkItemTableChange}
       onReferenceModelUpdate={handleReferenceModelUpdate}
+      loadingReference={loadingReference}
       linkedItemsModalList={linkedItemsModalList}
       showPublishAction={showPublishAction}
       requests={requests}
@@ -172,6 +175,7 @@ const ContentDetails: React.FC = () => {
       workspaceUserMembers={workspaceUserMembers}
       onGetAsset={handleGetAsset}
       onGroupGet={handleGroupGet}
+      onCheckItemReference={handleCheckItemReference}
     />
   );
 };

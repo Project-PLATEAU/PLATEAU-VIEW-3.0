@@ -132,7 +132,7 @@ func TestInMemoryRepo_Areas(t *testing.T) {
 			},
 		},
 		{
-			name: "filter by prefectures",
+			name: "filter by prefectures without deep",
 			input: &AreasInput{
 				ParentCode:   lo.ToPtr(AreaCode("01")),
 				DatasetTypes: nil,
@@ -140,6 +140,20 @@ func TestInMemoryRepo_Areas(t *testing.T) {
 			},
 			want: []Area{
 				&City{Code: "01100", Name: "札幌市", PrefectureCode: "01"},
+			},
+		},
+		{
+			name: "filter by prefectures with deep",
+			input: &AreasInput{
+				ParentCode:   lo.ToPtr(AreaCode("01")),
+				DatasetTypes: nil,
+				SearchTokens: nil,
+				Deep:         lo.ToPtr(true),
+			},
+			want: []Area{
+				&City{Code: "01100", Name: "札幌市", PrefectureCode: "01"},
+				&Ward{Code: "01101", Name: "中央区", CityCode: "01100", PrefectureCode: "01"},
+				&Ward{Code: "01102", Name: "北区", CityCode: "01100", PrefectureCode: "01"},
 			},
 		},
 		{

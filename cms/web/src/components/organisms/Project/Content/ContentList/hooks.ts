@@ -34,6 +34,7 @@ import {
   Comment as GQLComment,
   useSearchItemQuery,
   Asset as GQLAsset,
+  useGetItemLazyQuery,
   useUpdateItemMutation,
   useCreateItemMutation,
   SchemaFieldType,
@@ -122,16 +123,25 @@ export default () => {
     selectedRowKeys: [],
   });
 
-  const [updateItemMutation] = useUpdateItemMutation({
-    refetchQueries: ["SearchItem"],
-  });
-
+  const [updateItemMutation] = useUpdateItemMutation();
+  const [getItem] = useGetItemLazyQuery({ fetchPolicy: "no-cache" });
   const [createNewItem] = useCreateItemMutation();
+
+  const metadataVersion = useMemo(() => new Map<string, string>(), []);
+  const metadataVersionSet = useCallback(
+    async (id: string) => {
+      const { data } = await getItem({ variables: { id } });
+      const item = fromGraphQLItem(data?.node as GQLItem);
+      if (item?.metadata.id) {
+        metadataVersion.set(item.metadata.id, item.metadata.version);
+      }
+    },
+    [getItem, metadataVersion],
+  );
 
   const handleMetaItemUpdate = useCallback(
     async (
       updateItemId: string,
-      version: string,
       key: string,
       value?: string | string[] | boolean | boolean[],
       index?: number,
@@ -155,9 +165,9 @@ export default () => {
         });
         const item = await updateItemMutation({
           variables: {
-            itemId: target.metadata?.id,
+            itemId: target.metadata.id,
             fields,
-            version,
+            version: metadataVersion.get(target.metadata.id) ?? target.metadata.version,
           },
         });
         if (item.errors || !item.data?.updateItem) {
@@ -197,10 +207,20 @@ export default () => {
           return;
         }
       }
-
+      metadataVersionSet(updateItemId);
       Notification.success({ message: t("Successfully updated Item!") });
     },
-    [createNewItem, currentModel, data?.searchItem.nodes, t, updateItemMutation],
+    [
+      createNewItem,
+      currentModel?.id,
+      currentModel?.metadataSchema?.fields,
+      currentModel?.metadataSchema?.id,
+      data?.searchItem.nodes,
+      metadataVersion,
+      metadataVersionSet,
+      t,
+      updateItemMutation,
+    ],
   );
 
   const fieldValueGet = useCallback((field: ItemField, item: Item) => {
@@ -330,7 +350,7 @@ export default () => {
         sortOrder: sortOrderGet(field.id),
         render: (el: any, record: ContentTableField) => {
           return renderField(el, field, (value?: string | string[] | boolean, index?: number) => {
-            handleMetaItemUpdate(record.id, record.version, field.id, value, index);
+            handleMetaItemUpdate(record.id, field.id, value, index);
           });
         },
       })) || [];

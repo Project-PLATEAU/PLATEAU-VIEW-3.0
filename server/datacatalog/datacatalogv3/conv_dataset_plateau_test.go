@@ -606,6 +606,7 @@ func TestPlateauDataset_ToDatasets_Veg(t *testing.T) {
 				}
 			]
 		}`,
+		Group: "group1/group2",
 	}
 
 	expected := []plateauapi.Dataset{
@@ -622,6 +623,7 @@ func TestPlateauDataset_ToDatasets_Veg(t *testing.T) {
 			TypeID:             plateauapi.NewID("veg", plateauapi.TypeDatasetType),
 			TypeCode:           "veg",
 			PlateauSpecMinorID: plateauapi.NewID("3.2", plateauapi.TypePlateauSpec),
+			Groups:             []string{"group1", "group2"},
 			Admin: map[string]any{
 				"stage": string(stageBeta),
 			},
@@ -705,7 +707,8 @@ func TestPlateauDataset_ToDatasets_Gen(t *testing.T) {
 				Data: []string{
 					"https://example.com/11111_bar-shi_city_2023_citygml_1_op_gen_99_mvt_lod0.zip",
 				},
-				Desc: "desc!",
+				Desc:  "desc!",
+				Group: "group",
 			},
 		},
 		Dic: `{
@@ -738,6 +741,7 @@ func TestPlateauDataset_ToDatasets_Gen(t *testing.T) {
 			Admin: map[string]any{
 				"stage": string(stageBeta),
 			},
+			Groups: []string{"group"},
 			Items: []*plateauapi.PlateauDatasetItem{
 				{
 					ID:     plateauapi.NewID("11111_gen_99", plateauapi.TypeDatasetItem),

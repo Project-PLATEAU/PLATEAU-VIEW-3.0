@@ -39,9 +39,20 @@ func newCache(items []datacatalogv2.DataCatalogItem, m map[string]*fetcherPlatea
 		}
 
 		if d.City != "" {
-			areaCode := plateauapi.AreaCode(d.CityCode)
-			if _, found := areas[areaCode]; !found {
-				if c := cityFrom(d); c != nil {
+			if c := tokyo23kuCityFrom(d); c != nil {
+				areaCode := plateauapi.AreaCode(c.Code)
+				if _, found := areas[areaCode]; !found {
+					if cache.Areas == nil {
+						cache.Areas = make(plateauapi.Areas)
+					}
+					cache.Areas.Append(plateauapi.AreaTypeCity, []plateauapi.Area{c})
+					areas[areaCode] = struct{}{}
+				}
+			}
+
+			if c := cityFrom(d, false); c != nil {
+				areaCode := plateauapi.AreaCode(c.Code)
+				if _, found := areas[areaCode]; !found {
 					if cache.Areas == nil {
 						cache.Areas = make(plateauapi.Areas)
 					}
@@ -52,9 +63,9 @@ func newCache(items []datacatalogv2.DataCatalogItem, m map[string]*fetcherPlatea
 		}
 
 		if d.Ward != "" {
-			areaCode := plateauapi.AreaCode(d.WardCode)
-			if _, found := areas[areaCode]; !found {
-				if w := wardFrom(d); w != nil {
+			if w := wardFrom(d, false); w != nil {
+				areaCode := plateauapi.AreaCode(w.Code)
+				if _, found := areas[areaCode]; !found {
 					if cache.Areas == nil {
 						cache.Areas = make(plateauapi.Areas)
 					}
@@ -64,51 +75,74 @@ func newCache(items []datacatalogv2.DataCatalogItem, m map[string]*fetcherPlatea
 			}
 		}
 
-		if ty := plateauDatasetTypeFrom(d); ty.ID != "" {
+		if ty := plateauDatasetTypeFrom(d); ty != nil {
+			if cache.DatasetTypes == nil {
+				cache.DatasetTypes = make(plateauapi.DatasetTypes)
+			}
+
 			if cache.DatasetTypes.DatasetType(ty.ID) == nil {
-				if cache.DatasetTypes == nil {
-					cache.DatasetTypes = make(plateauapi.DatasetTypes)
-				}
-				cache.DatasetTypes.Append(plateauapi.DatasetTypeCategoryPlateau, []plateauapi.DatasetType{&ty})
+				cache.DatasetTypes.Append(plateauapi.DatasetTypeCategoryPlateau, []plateauapi.DatasetType{ty})
 			}
 		}
 
 		if ty := relatedDatasetTypeFrom(d); ty.ID != "" {
+			if cache.DatasetTypes == nil {
+				cache.DatasetTypes = make(plateauapi.DatasetTypes)
+			}
+
 			if cache.DatasetTypes.DatasetType(ty.ID) == nil {
-				if cache.DatasetTypes == nil {
-					cache.DatasetTypes = make(plateauapi.DatasetTypes)
-				}
 				cache.DatasetTypes.Append(plateauapi.DatasetTypeCategoryRelated, []plateauapi.DatasetType{&ty})
 			}
 		}
 
 		if ty := genericDatasetTypeFrom(d); ty.ID != "" {
+			if cache.DatasetTypes == nil {
+				cache.DatasetTypes = make(plateauapi.DatasetTypes)
+			}
+
 			if cache.DatasetTypes.DatasetType(ty.ID) == nil {
-				if cache.DatasetTypes == nil {
-					cache.DatasetTypes = make(plateauapi.DatasetTypes)
-				}
 				cache.DatasetTypes.Append(plateauapi.DatasetTypeCategoryGeneric, []plateauapi.DatasetType{&ty})
 			}
 		}
+
+		cache.DatasetTypes.Append(plateauapi.DatasetTypeCategoryGeneric, []plateauapi.DatasetType{sampleDataType})
 
 		if d := plateauDatasetFrom(d); d != nil {
 			if cache.Datasets == nil {
 				cache.Datasets = make(plateauapi.Datasets)
 			}
-			cache.Datasets.Append(plateauapi.DatasetTypeCategoryPlateau, []plateauapi.Dataset{d})
+
+			if d.TypeCode == "sample" {
+				if cache.DatasetTypes == nil {
+					cache.DatasetTypes = make(plateauapi.DatasetTypes)
+				}
+
+				d2 := plateauapi.PlateauDatasetToGenericDataset(
+					d,
+					plateauapi.NewID("sample", plateauapi.TypeDatasetType),
+					"sample",
+					"",
+				)
+				cache.Datasets.Append(plateauapi.DatasetTypeCategoryGeneric, []plateauapi.Dataset{d2})
+			} else {
+				cache.Datasets.Append(plateauapi.DatasetTypeCategoryPlateau, []plateauapi.Dataset{d})
+			}
 		}
+
 		if d := relatedDatasetFrom(d); d != nil {
 			if cache.Datasets == nil {
 				cache.Datasets = make(plateauapi.Datasets)
 			}
 			cache.Datasets.Append(plateauapi.DatasetTypeCategoryRelated, []plateauapi.Dataset{d})
 		}
+
 		if d := genericDatasetFrom(d); d != nil {
 			if cache.Datasets == nil {
 				cache.Datasets = make(plateauapi.Datasets)
 			}
 			cache.Datasets.Append(plateauapi.DatasetTypeCategoryGeneric, []plateauapi.Dataset{d})
 		}
+
 		if !slices.Contains(cache.Years, d.Year) {
 			cache.Years = append(cache.Years, d.Year)
 		}

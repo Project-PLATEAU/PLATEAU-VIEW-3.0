@@ -4,6 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import Notification from "@reearth-cms/components/atoms/Notification";
 import { User } from "@reearth-cms/components/molecules/AccountSettings/types";
 import { Request } from "@reearth-cms/components/molecules/Request/types";
+import { UserMember } from "@reearth-cms/components/molecules/Workspace/types";
 import {
   useDeleteRequestMutation,
   useApproveRequestMutation,
@@ -44,7 +45,9 @@ export default () => {
   }, [userData]);
 
   const myRole = useMemo(
-    () => currentWorkspace?.members?.find(m => m.userId === me?.id)?.role,
+    () =>
+      currentWorkspace?.members?.find((m): m is UserMember => "userId" in m && m.userId === me?.id)
+        ?.role,
     [currentWorkspace?.members, me?.id],
   );
 

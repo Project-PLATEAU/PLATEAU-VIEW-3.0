@@ -41,7 +41,13 @@ func TestFilterDataset(t *testing.T) {
 			TypeCode: "emergency_route",
 		}, DatasetsInput{
 			IncludeTypes: []string{"emergency_route"},
-		}, []string{"beta"}))
+		}, nil))
+	})
+
+	t.Run("groupedOnly", func(t *testing.T) {
+		assert.False(t, filterDataset(PlateauDataset{}, DatasetsInput{
+			GroupedOnly: lo.ToPtr(true),
+		}, nil))
 	})
 }
 
@@ -117,6 +123,23 @@ func TestFilterArea(t *testing.T) {
 			area: Ward{Name: "Shinjuku", PrefectureCode: "13", CityCode: "13104"},
 			input: AreasInput{
 				SearchTokens: []string{},
+			},
+			expected: true,
+		},
+		{
+			name: "shallow",
+			area: Ward{Name: "Shinjuku", PrefectureCode: "13", CityCode: "13104"},
+			input: AreasInput{
+				ParentCode: lo.ToPtr(AreaCode("13")),
+			},
+			expected: false,
+		},
+		{
+			name: "deep",
+			area: Ward{Name: "Shinjuku", PrefectureCode: "13", CityCode: "13104"},
+			input: AreasInput{
+				ParentCode: lo.ToPtr(AreaCode("13")),
+				Deep:       lo.ToPtr(true),
 			},
 			expected: true,
 		},

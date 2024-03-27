@@ -1,15 +1,19 @@
-import { groupBy, unionBy } from "lodash-es";
+import { unionBy } from "lodash-es";
 import { bindPopover, bindTrigger, usePopupState } from "material-ui-popup-state/hooks";
 import { useCallback, useId, useMemo, useState, type FC, type MouseEvent } from "react";
 import invariant from "tiny-invariant";
 
 import { useAreaDatasets, useDatasetTypes } from "../../../shared/graphql";
+import { CITY_CODES_FOR_BUILDING_MODEL } from "../../../shared/plateau";
 import { Area } from "../../../shared/states/address";
 import { isNotNullish } from "../../type-helpers";
 import { AppBreadcrumbsItem, ContextBar, OverlayPopper } from "../../ui-components";
+import { isGenericDatasetType } from "../constants/generic";
 import { PlateauDatasetType } from "../constants/plateau";
+import { getDatasetGroups } from "../utils/datasetGroups";
 
 import { BuildingDatasetButtonSelect } from "./BuildingDatasetButtonSelect";
+import { DatasetTreeSelect } from "./DatasetTreeSelect";
 import { DefaultDatasetButton } from "./DefaultDatasetButton";
 import { DefaultDatasetSelect } from "./DefaultDatasetSelect";
 
@@ -30,23 +34,33 @@ export const LocationBreadcrumbItem: FC<LocationBreadcrumbItemProps> = ({ area }
     if (!datasets) {
       return;
     }
-    const groups = Object.entries(
-      groupBy(
-        datasets.filter(d =>
-          !d.cityCode
-            ? d.prefectureCode === area.code
-            : !d.wardCode
-            ? d.cityCode === area.code
-            : d.wardCode === area.code,
-        ),
-        d => d.type.name,
-      ),
-    );
 
-    return filteredDatasetTypeOrder
-      ?.map(orderedType => groups.find(([type]) => type === orderedType.name))
-      .filter(isNotNullish)
-      .map(([, datasets]) => datasets);
+    const { typicalTypeGroups, genericGroups, dataGroups } = getDatasetGroups({
+      datasets: datasets.filter(d =>
+        !d.cityCode
+          ? d.prefectureCode === area.code
+          : !d.wardCode ||
+            (d.type.code === PlateauDatasetType.Building &&
+              CITY_CODES_FOR_BUILDING_MODEL.includes(d.cityCode))
+          ? d.cityCode === area.code
+          : d.wardCode === area.code,
+      ),
+      areaCode: area.code,
+    });
+
+    return [
+      ...((typicalTypeGroups &&
+        filteredDatasetTypeOrder
+          ?.map(orderedType => typicalTypeGroups.find(({ label }) => label === orderedType.name))
+          .filter(isNotNullish)) ??
+        []),
+      ...(dataGroups ?? []),
+      ...((genericGroups &&
+        filteredDatasetTypeOrder
+          ?.map(orderedType => genericGroups.find(({ label }) => label === orderedType.name))
+          .filter(isNotNullish)) ??
+        []),
+    ];
   }, [query.data, area.code, filteredDatasetTypeOrder]);
 
   const [expanded, setExpanded] = useState(true);
@@ -97,7 +111,17 @@ export const LocationBreadcrumbItem: FC<LocationBreadcrumbItemProps> = ({ area }
       {hasDatasets && (
         <OverlayPopper {...popoverProps} inset={1.5} onClose={handleClose}>
           <ContextBar expanded={expanded} onCollapse={handleCollapse} onExpand={handleExpand}>
-            {datasetGroups.map(datasets => {
+            {datasetGroups.map(({ useTree, label, datasets }) => {
+              if (useTree) {
+                return (
+                  <DatasetTreeSelect
+                    key={label}
+                    label={label}
+                    datasets={datasets}
+                    municipalityCode={area.code}
+                  />
+                );
+              }
               if (datasets.length > 1) {
                 return (
                   <DefaultDatasetSelect
@@ -115,7 +139,7 @@ export const LocationBreadcrumbItem: FC<LocationBreadcrumbItemProps> = ({ area }
                   dataset={dataset}
                   municipalityCode={area.code}
                 />
-              ) : dataset.items.length === 1 ? (
+              ) : dataset.items.length === 1 && !isGenericDatasetType(dataset.type.code) ? (
                 <DefaultDatasetButton
                   key={dataset.id}
                   dataset={dataset}

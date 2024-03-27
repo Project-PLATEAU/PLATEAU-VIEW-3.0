@@ -3,21 +3,19 @@ import { Page } from "@playwright/test";
 import { closeNotification } from "@reearth-cms/e2e/common/notification";
 import { expect } from "@reearth-cms/e2e/utils";
 
-export async function createModel(page: Page) {
+export async function createModel(page: Page, name = "e2e model name", key = "e2e-model-key") {
   await page.getByText("Schema").first().click();
   await page.getByRole("button", { name: "plus Add" }).first().click();
   await page.getByLabel("Model name").click();
-  await page.getByLabel("Model name").fill("e2e model name");
+  await page.getByLabel("Model name").fill(name);
   await page.getByLabel("Model key").click();
-  await page.getByLabel("Model key").fill("e2e-model-key");
+  await page.getByLabel("Model key").fill(key);
   await page.getByRole("button", { name: "OK" }).click();
   await expect(page.getByRole("alert").last()).toContainText("Successfully created model!");
   await closeNotification(page);
-  await expect(page.getByTitle("e2e model name")).toBeVisible();
-  await expect(page.getByText("#e2e-model-key")).toBeVisible();
-  await expect(
-    page.getByRole("menuitem", { name: "e2e model name" }).locator("span"),
-  ).toBeVisible();
+  await expect(page.getByTitle(name, { exact: true })).toBeVisible();
+  await expect(page.getByText(`#${key}`)).toBeVisible();
+  await expect(page.getByRole("menuitem", { name }).locator("span")).toBeVisible();
 }
 
 const updateModelName = "new e2e model name";

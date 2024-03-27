@@ -220,7 +220,9 @@ export default (
     } else if (filter.type === "Person") {
       if (filter?.members?.length) {
         for (const member of Object.values(filter.members)) {
-          options.push({ value: member.user?.name, label: member.user?.name });
+          if ("user" in member) {
+            options.push({ value: member.user?.name, label: member.user?.name });
+          }
         }
       }
     } else if (filter.type === "Bool" || filter.type === "Checkbox") {

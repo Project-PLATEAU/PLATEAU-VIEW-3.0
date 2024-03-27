@@ -23,40 +23,22 @@ func echov3(conf Config, g *echo.Group) (func(ctx context.Context) error, error)
 		h.Middleware(),
 	)
 
-	// GraphQL playground (all)
+	// GraphQL playground
+	plateauapig.GET("/:pid/graphql", gqlPlaygroundHandler(conf.PlaygroundEndpoint, false))
 	plateauapig.GET("/graphql", gqlPlaygroundHandler(conf.PlaygroundEndpoint, false))
+	plateauapig.GET("/admin/graphql", gqlPlaygroundHandler(conf.PlaygroundEndpoint, true))
+	plateauapig.GET("/:pid/admin/graphql", gqlPlaygroundHandler(conf.PlaygroundEndpoint, true))
+
+	// GraphQL API
+	plateauapig.POST("/graphql", h.Handler(false))
+	plateauapig.POST("/:pid/graphql", h.Handler(false))
+	plateauapig.POST("/admin/graphql", h.Handler(true))
+	plateauapig.POST("/:pid/admin/graphql", h.Handler(true))
 
 	// CityGML files API
 	plateauapig.GET("/citygml/:citygmlid", h.CityGMLFiles(false))
-
-	// GraphQL playground (all, admin)
-	plateauapig.GET("/admin/graphql", gqlPlaygroundHandler(conf.PlaygroundEndpoint, true))
-
-	// CityGML files API (admin)
-	plateauapig.GET("/admin/citygml/:citygmlid", h.CityGMLFiles(true))
-
-	// GraphQL playground (project)
-	plateauapig.GET("/:pid/graphql", gqlPlaygroundHandler(conf.PlaygroundEndpoint, false))
-
-	// GraphQL playground (project, admin)
-	plateauapig.GET("/:pid/admin/graphql", gqlPlaygroundHandler(conf.PlaygroundEndpoint, true))
-
-	// GraphQL API (all)
-	plateauapig.POST("/graphql", h.Handler(false))
-
-	// GraphQL API (all, admin)
-	plateauapig.POST("/admin/graphql", h.Handler(true))
-
-	// GraphQL API (project)
-	plateauapig.POST("/:pid/graphql", h.Handler(false))
-
-	// CityGML files API
 	plateauapig.GET("/:pid/citygml/:citygmlid", h.CityGMLFiles(false))
-
-	// GraphQL API (project, admin)
-	plateauapig.POST("/:pid/admin/graphql", h.Handler(true))
-
-	// CityGML files API (admin)
+	plateauapig.GET("/admin/citygml/:citygmlid", h.CityGMLFiles(true))
 	plateauapig.GET("/:pid/admin/citygml/:citygmlid", h.CityGMLFiles(true))
 
 	// warning API
@@ -84,9 +66,14 @@ func gqlPlaygroundHandler(endpoint string, admin bool) echo.HandlerFunc {
 		}
 		p = append(p, "graphql")
 
+		endpoint := path.Join(p...)
+		if isAlpha(c) {
+			endpoint += "?alpha=true"
+		}
+
 		h := plateauapi.PlaygroundHandler(
 			"PLATEAU GraphQL API Playground",
-			path.Join(p...),
+			endpoint,
 		)
 		h.ServeHTTP(c.Response(), c.Request())
 		return nil

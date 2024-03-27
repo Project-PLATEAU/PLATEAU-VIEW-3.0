@@ -27,6 +27,7 @@ func prepareGspatialjp(conf *Config) {
 	flag.StringVar(&config.ProjectID, "project", "", "CMS project id")
 	flag.StringVar(&config.CityItemID, "city", "", "CMS city item id")
 	flag.BoolVar(&config.WetRun, "wetrun", false, "wet run")
+	flag.BoolVar(&config.Clean, "clean", false, "clean")
 	flag.BoolVar(&config.SkipCityGML, "skip-citygml", false, "skip citygml")
 	flag.BoolVar(&config.SkipPlateau, "skip-plateau", false, "skip plateau")
 	flag.BoolVar(&config.SkipMaxLOD, "skip-maxlod", false, "skip maxlod")

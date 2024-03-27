@@ -70,7 +70,7 @@ func (h *reposHandler) Handler(admin bool) echo.HandlerFunc {
 
 		srv := plateauapi.NewService(merged, plateauapi.FixedComplexityLimit(h.gqlComplexityLimit))
 
-		adminContext(c, admin, admin)
+		adminContext(c, admin, admin, admin && isAlpha(c))
 		srv.ServeHTTP(c.Response(), c.Request())
 		return nil
 	}
@@ -88,7 +88,7 @@ func (h *reposHandler) CityGMLFiles(admin bool) echo.HandlerFunc {
 			return err
 		}
 
-		adminContext(c, true, admin)
+		adminContext(c, true, admin, admin && isAlpha(c))
 		ctx := c.Request().Context()
 		maxlod, err := fetchCityGMLFiles(ctx, merged, cid)
 		if err != nil {
@@ -322,9 +322,9 @@ func isV3(md plateaucms.Metadata) bool {
 	return md.DataCatalogSchemaVersion == cmsSchemaVersion
 }
 
-func adminContext(c echo.Context, bypassAdminRemoval, includeBeta bool) {
+func adminContext(c echo.Context, bypassAdminRemoval, includeBeta, includeAlpha bool) {
 	ctx := c.Request().Context()
-	ctx = datacatalogv3.AdminContext(ctx, bypassAdminRemoval, includeBeta)
+	ctx = datacatalogv3.AdminContext(ctx, bypassAdminRemoval, includeBeta, includeAlpha)
 	c.SetRequest(c.Request().WithContext(ctx))
 }
 
@@ -348,4 +348,8 @@ func newFetcherV2(md plateaucms.Metadata) (*datacatalogv2adapter.Fetcher, error)
 	fetcher := datacatalogv2adapter.NewFetcher(baseFetcher, c, md.DataCatalogProjectAlias, opts)
 
 	return fetcher, nil
+}
+
+func isAlpha(c echo.Context) bool {
+	return c.Request().URL.Query().Has("alpha")
 }

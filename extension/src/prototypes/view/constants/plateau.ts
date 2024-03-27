@@ -1,4 +1,5 @@
 export enum PlateauDatasetType {
+  Area = "area",
   Border = "border",
   Bridge = "brid",
   Building = "bldg",
@@ -25,4 +26,5 @@ export enum PlateauDatasetType {
   Constructure = "cons",
   Water = "wtr",
   Traffic = "trk",
+  WaterWay = "wwy",
 }

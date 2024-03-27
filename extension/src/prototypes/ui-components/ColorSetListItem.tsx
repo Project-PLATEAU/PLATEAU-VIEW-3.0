@@ -17,21 +17,22 @@ const StyledIconButton = styled(IconButton)(({ theme }) => ({
   },
 }));
 
-const MainTrigger = styled("div")({
-  position: "absolute",
-  width: "100%",
-  height: "100%",
-  left: 0,
-  top: 0,
-  cursor: "pointer",
-});
-
-const FillColorButton = styled("div")(({ color }: { color: string }) => ({
+const CenterColorButton = styled("div")(({ color }: { color: string }) => ({
   position: "absolute",
   width: 10,
   height: 10,
+  top: "50%",
+  left: 3,
+  transform: "translateY(-5px)",
   cursor: "pointer",
   backgroundColor: color,
+}));
+
+const IconButtonWrapper = styled("div")(() => ({
+  position: "relative",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
 }));
 
 export interface ColorSetListItemProps {
@@ -67,15 +68,10 @@ export const ColorSetListItem: FC<ColorSetListItemProps> = ({
 
   useEffect(() => {
     if (color) {
+      setIndeterminateColor(color.color);
       setIndeterminateStrokeColor(color.strokeColor === "" ? color.color : color.strokeColor ?? "");
     }
   }, [color]);
-
-  useEffect(() => {
-    if (indeterminateColor && indeterminateColor !== color.color) {
-      setIndeterminateColor(color.color);
-    }
-  }, [color.color, indeterminateColor]);
 
   const hasStroke = useMemo(() => "strokeColor" in color, [color]);
 
@@ -136,13 +132,20 @@ export const ColorSetListItem: FC<ColorSetListItemProps> = ({
     <>
       <ListItem disableGutters>
         <Stack direction="row" spacing={0.5} alignItems="center">
-          <StyledIconButton>
-            <ColorIcon color={hasStroke ? indeterminateStrokeColor : indeterminateColor} />
-            <MainTrigger {...bindTrigger(hasStroke ? strokePopupState : popupState)} />
-            {hasStroke && (
-              <FillColorButton {...bindTrigger(popupState)} color={indeterminateColor} />
+          <IconButtonWrapper>
+            {hasStroke ? (
+              <>
+                <StyledIconButton {...bindTrigger(strokePopupState)}>
+                  <ColorIcon color="transparent" strokeColor={indeterminateStrokeColor} />
+                </StyledIconButton>
+                <CenterColorButton {...bindTrigger(popupState)} color={indeterminateColor} />
+              </>
+            ) : (
+              <StyledIconButton {...bindTrigger(popupState)}>
+                <ColorIcon color={indeterminateColor} />
+              </StyledIconButton>
             )}
-          </StyledIconButton>
+          </IconButtonWrapper>
           <Typography variant="body2">{color.name}</Typography>
         </Stack>
       </ListItem>

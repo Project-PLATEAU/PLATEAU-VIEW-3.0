@@ -211,13 +211,13 @@ export const AppOverlayLayout: FC<AppOverlayLayoutProps> = memo(
       invariant(rootRef.current != null);
       invariant(mainRef.current != null);
       setGridHeight(rootRef.current.getBoundingClientRect().height);
-      setMaxMainHeight(mainRef.current.getBoundingClientRect().height * (isMobile ? 0.75 : 1));
+      setMaxMainHeight(mainRef.current.getBoundingClientRect().height * (isMobile ? 0.5 : 1));
       const observerForRoot = new ResizeObserver(([entry]) => {
         setGridHeight(entry.contentRect.height);
       });
       observerForRoot.observe(rootRef.current);
       const observerForMain = new ResizeObserver(([entry]) => {
-        setMaxMainHeight(entry.contentRect.height * (isMobile ? 0.75 : 1));
+        setMaxMainHeight(entry.contentRect.height * (isMobile ? 0.5 : 1));
       });
       observerForMain.observe(mainRef.current);
       return () => {

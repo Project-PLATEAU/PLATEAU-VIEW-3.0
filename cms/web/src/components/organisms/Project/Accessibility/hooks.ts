@@ -1,7 +1,8 @@
 import { useCallback, useState, useEffect } from "react";
 
 import Notification from "@reearth-cms/components/atoms/Notification";
-import { PublicScope, Model } from "@reearth-cms/components/molecules/Accessibility/types";
+import { PublicScope } from "@reearth-cms/components/molecules/Accessibility/types";
+import { Model } from "@reearth-cms/components/molecules/Model/types";
 import { fromGraphQLModel } from "@reearth-cms/components/organisms/DataConverters/model";
 import {
   useUpdateModelMutation,

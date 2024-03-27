@@ -1,6 +1,6 @@
 import { PickedFeature } from "../../shared/reearth/types";
 
-export type ScreenSpaceSelectionEventType = "point" | "rectangle" | "imagery";
+export type ScreenSpaceSelectionEventType = "point" | "rectangle" | "select";
 export type ScreenSpaceSelectionEventAction = "replace" | "add" | "remove";
 
 interface ScreenSpaceSelectionEventBase {
@@ -31,7 +31,7 @@ export interface RectangleScreenSpaceSelectionEvent extends ScreenSpaceSelection
 }
 
 export interface ImageryScreenSpaceSelectionEvent extends ScreenSpaceSelectionEventBase {
-  type: "imagery";
+  type: "select";
   object: any;
 }
 
