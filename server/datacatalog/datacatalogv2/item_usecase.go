@@ -15,24 +15,25 @@ const folder = "フォルダ"
 const folderEn = "folder"
 
 type UsecaseItem struct {
-	ID          string           `json:"id,omitempty"`
-	Name        string           `json:"name,omitempty"`
-	Prefecture  string           `json:"prefecture,omitempty"`
-	CityName    string           `json:"city_name,omitempty"`
-	WardName    string           `json:"ward_name,omitempty"`
-	OpenDataURL string           `json:"opendata_url,omitempty"`
-	Description string           `json:"description,omitempty"`
-	Year        string           `json:"year,omitempty"`
-	Data        *cms.PublicAsset `json:"data,omitempty"`
-	DataFormat  string           `json:"data_format,omitempty"`
-	DataURL     string           `json:"data_url,omitempty"`
-	DataLayers  string           `json:"data_layer,omitempty"`
-	Config      string           `json:"config,omitempty"`
-	Order       *int             `json:"order,omitempty"`
-	Category    string           `json:"category,omitempty"`
-	Type        string           `json:"type,omitempty"`
-	TypeEn      string           `json:"type_en,omitempty"`
-	Infobox     bool             `json:"infobox,omitempty"`
+	ID              string           `json:"id,omitempty"`
+	Name            string           `json:"name,omitempty"`
+	Prefecture      string           `json:"prefecture,omitempty"`
+	CityName        string           `json:"city_name,omitempty"`
+	WardName        string           `json:"ward_name,omitempty"`
+	OpenDataURL     string           `json:"opendata_url,omitempty"`
+	Description     string           `json:"description,omitempty"`
+	Year            string           `json:"year,omitempty"`
+	Data            *cms.PublicAsset `json:"data,omitempty"`
+	DataFormat      string           `json:"data_format,omitempty"`
+	DataURL         string           `json:"data_url,omitempty"`
+	DataLayers      string           `json:"data_layer,omitempty"`
+	Config          string           `json:"config,omitempty"`
+	Order           *int             `json:"order,omitempty"`
+	Category        string           `json:"category,omitempty"`
+	Type            string           `json:"type,omitempty"`
+	TypeEn          string           `json:"type_en,omitempty"`
+	Infobox         bool             `json:"infobox,omitempty"`
+	hideCityAndWard bool             `json:"-"`
 }
 
 func (i UsecaseItem) GetCityName() string {
@@ -43,18 +44,36 @@ func (i UsecaseItem) DataCatalogs() []DataCatalogItem {
 	pref, prefCodeInt := normalizePref(i.Prefecture)
 	prefCode := jpareacode.FormatPrefectureCode(prefCodeInt)
 
-	var city, ward string
+	var cName, wName string
 	if i.WardName != "" {
-		city = i.CityName
-		ward = i.WardName
+		cName = i.CityName
+		wName = i.WardName
 	} else {
-		city, ward, _ = strings.Cut(i.CityName, "/")
+		cName, wName, _ = strings.Cut(i.CityName, "/")
 	}
 
-	cCode := datacatalogutil.CityCode("", city, "", prefCodeInt)
+	cCode := datacatalogutil.CityCode("", cName, "", prefCodeInt)
 	var wCode string
-	if ward != "" {
-		wCode = datacatalogutil.CityCode("", city, ward, prefCodeInt)
+	if wName != "" {
+		wCode = datacatalogutil.CityCode("", cName, wName, prefCodeInt)
+	}
+
+	var city, cityCode, cityAdmin, cityCodeAdmin string
+	if i.hideCityAndWard {
+		cityAdmin = cName
+		cityCodeAdmin = cCode
+	} else {
+		city = cName
+		cityCode = cCode
+	}
+
+	var ward, wardCode, wardAdmin, wardCodeAdmin string
+	if i.hideCityAndWard {
+		wardAdmin = wName
+		wardCodeAdmin = wCode
+	} else {
+		ward = wName
+		wardCode = wCode
 	}
 
 	if i.DataFormat == folder {
@@ -65,14 +84,18 @@ func (i UsecaseItem) DataCatalogs() []DataCatalogItem {
 			TypeEn:      folderEn,
 			Pref:        pref,
 			PrefCode:    prefCode,
+			City:        city,
+			CityCode:    cityCode,
+			Ward:        ward,
+			WardCode:    wardCode,
 			Description: i.Description,
 			Family:      "generic",
 			Edition:     "2022",
-			//
-			CityAdmin:     city,
-			CityCodeAdmin: cCode,
-			WardAdmin:     ward,
-			WardCodeAdmin: wCode,
+			// hidden fields
+			CityAdmin:     cityAdmin,
+			CityCodeAdmin: cityCodeAdmin,
+			WardAdmin:     wardAdmin,
+			WardCodeAdmin: wardCodeAdmin,
 		}}
 	}
 
@@ -115,6 +138,10 @@ func (i UsecaseItem) DataCatalogs() []DataCatalogItem {
 		TypeEn:      tyen,
 		Pref:        pref,
 		PrefCode:    prefCode,
+		City:        city,
+		CityCode:    cityCode,
+		Ward:        ward,
+		WardCode:    wardCode,
 		Format:      f,
 		URL:         datacatalogutil.AssetURLFromFormat(u, f),
 		Description: i.Description,
@@ -128,10 +155,10 @@ func (i UsecaseItem) DataCatalogs() []DataCatalogItem {
 		Infobox:     i.Infobox,
 		Family:      "generic",
 		Edition:     "2022",
-		//
-		CityAdmin:     city,
-		CityCodeAdmin: cCode,
-		WardAdmin:     ward,
-		WardCodeAdmin: wCode,
+		// hidden fields
+		CityAdmin:     cityAdmin,
+		CityCodeAdmin: cityCodeAdmin,
+		WardAdmin:     wardAdmin,
+		WardCodeAdmin: wardCodeAdmin,
 	}}
 }

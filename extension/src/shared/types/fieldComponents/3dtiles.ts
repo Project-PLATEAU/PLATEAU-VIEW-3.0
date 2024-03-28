@@ -104,6 +104,11 @@ export type TileSetDefaultMaterialField = FieldBase<{
   type: typeof TILESET_DISABLE_DEFAULT_MATERIAL;
 }>;
 
+export const TILESET_APPLY_EMPTY_SHC = "TILESET_APPLY_EMPTY_SHC";
+export type TilesetApplyEmptySHCField = FieldBase<{
+  type: typeof TILESET_APPLY_EMPTY_SHC;
+}>;
+
 export type TilesetFields =
   | TilesetBuildingModelColorField
   | TilesetFloodModelColorField
@@ -115,4 +120,5 @@ export type TilesetFields =
   | TilesetBuildingModelFilterField
   | TilesetFloodModelFilterField
   | TilesetWireframeField
-  | TileSetDefaultMaterialField;
+  | TileSetDefaultMaterialField
+  | TilesetApplyEmptySHCField;

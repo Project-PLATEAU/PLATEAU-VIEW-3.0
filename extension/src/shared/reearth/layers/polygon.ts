@@ -8,11 +8,10 @@ export type PolygonAppearances = Partial<Pick<LayerAppearanceTypes, "polygon" | 
 
 export type PolygonProps = {
   onLoad?: (layerId: string) => void;
-  visible?: boolean;
   appearances?: PolygonAppearances;
 };
 
-export const PolygonLayer: FC<PolygonProps> = ({ onLoad, visible, appearances }) => {
+export const PolygonLayer: FC<PolygonProps> = ({ onLoad, appearances }) => {
   const mergedAppearances: PolygonAppearances | undefined = useMemo(
     () => ({
       ...appearances,
@@ -33,7 +32,6 @@ export const PolygonLayer: FC<PolygonProps> = ({ onLoad, visible, appearances })
 
   useLayer({
     data,
-    visible,
     appearances: mergedAppearances,
     onLoad,
   });

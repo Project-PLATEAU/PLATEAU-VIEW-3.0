@@ -21,6 +21,7 @@ import {
   TILESET_WIREFRAME,
   TILESET_DISABLE_DEFAULT_MATERIAL,
   TILESET_DRAW_CLIPPING,
+  TILESET_APPLY_EMPTY_SHC,
 } from "../types/fieldComponents/3dtiles";
 import { OPACITY_FIELD } from "../types/fieldComponents/general";
 import { SearchedFeatures } from "../view-layers";
@@ -146,6 +147,8 @@ export const BuildingModelLayerContainer: FC<TilesetContainerProps> = ({
     TILESET_DISABLE_DEFAULT_MATERIAL,
   );
 
+  const applyEmptySHCAtom = useFindComponent(componentAtoms, TILESET_APPLY_EMPTY_SHC);
+
   const hiddenFeatures = useAtomValue(hiddenFeaturesAtom);
   const hiddenFeaturesConditions: ConditionsExpression = useMemo(
     () => ({
@@ -184,6 +187,7 @@ export const BuildingModelLayerContainer: FC<TilesetContainerProps> = ({
   const opacity = useOptionalAtomValue(opacityAtom);
   const wireframeView = useOptionalAtomValue(wireframeAtom);
   const disableDefaultMaterial = useOptionalAtomValue(disableDefaultMaterialAtom);
+  const applyEmptySHC = useOptionalAtomValue(applyEmptySHCAtom);
 
   const color = useEvaluateFeatureColor({
     colorProperty: buildingModelColorAtom ? colorProperty ?? undefined : undefined,
@@ -224,6 +228,7 @@ export const BuildingModelLayerContainer: FC<TilesetContainerProps> = ({
       experimental_clipping: { ...clippingBox, ...drawClipping },
       showWireframe: wireframeView?.value?.wireframe,
       disableIndexingFeature: isMobile,
+      ...(applyEmptySHC ? { sphericalHarmonicCoefficients: [] } : {}),
     }),
     [
       textured,
@@ -238,6 +243,7 @@ export const BuildingModelLayerContainer: FC<TilesetContainerProps> = ({
       wireframeView,
       disableDefaultMaterial,
       isMobile,
+      applyEmptySHC,
     ],
   );
 

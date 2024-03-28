@@ -51,7 +51,11 @@ func Echo(conf Config, g *echo.Group) error {
 		}
 
 		opts := FetcherDoOptions{}
-		if md.Name != "" {
+		if md.Name == "" {
+			// plateau project
+			opts.HideUsacaseCityAndWard = true
+		} else {
+			// other project
 			opts.Subproject = md.SubPorjectAlias
 			opts.CityName = md.Name
 		}

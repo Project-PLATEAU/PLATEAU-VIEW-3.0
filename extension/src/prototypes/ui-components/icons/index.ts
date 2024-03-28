@@ -65,3 +65,4 @@ export * from "./ShareLoading";
 export * from "./CameraIcon";
 export * from "./Compass";
 export * from "./ARIcon";
+export * from "./PencilIcon";

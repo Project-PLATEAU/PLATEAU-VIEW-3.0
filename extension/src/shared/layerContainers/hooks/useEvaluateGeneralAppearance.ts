@@ -10,6 +10,7 @@ import {
   TILESET_WIREFRAME,
   TILESET_DISABLE_DEFAULT_MATERIAL,
   TILESET_DRAW_CLIPPING,
+  TILESET_APPLY_EMPTY_SHC,
 } from "../../types/fieldComponents/3dtiles";
 import { OPACITY_FIELD, STYLE_CODE_FIELD } from "../../types/fieldComponents/general";
 import {
@@ -180,6 +181,9 @@ export const useEvaluateGeneralAppearance = ({
   const tilesetDisableDefaultMaterial = useOptionalAtomValue(
     useFindComponent(componentAtoms ?? [], TILESET_DISABLE_DEFAULT_MATERIAL),
   );
+  const tilesetApplyEmptySHC = useOptionalAtomValue(
+    useFindComponent(componentAtoms ?? [], TILESET_APPLY_EMPTY_SHC),
+  );
 
   // General
   const opacity = useOptionalAtomValue(useFindComponent(componentAtoms ?? [], OPACITY_FIELD));
@@ -316,6 +320,7 @@ export const useEvaluateGeneralAppearance = ({
           experimental_clipping: { ...clippingBox, ...drawClipping },
           disableSelection: clippingBox?.disabledSelection,
           showWireframe: tilesetWireframe?.value?.wireframe,
+          ...(tilesetApplyEmptySHC ? { sphericalHarmonicCoefficients: [] } : {}),
         },
         box: boxAppearance,
       }),
@@ -358,6 +363,7 @@ export const useEvaluateGeneralAppearance = ({
       drawClipping,
       tilesetWireframe?.value?.wireframe,
       tilesetDisableDefaultMaterial,
+      tilesetApplyEmptySHC,
       boxAppearance,
       opacity,
     ],

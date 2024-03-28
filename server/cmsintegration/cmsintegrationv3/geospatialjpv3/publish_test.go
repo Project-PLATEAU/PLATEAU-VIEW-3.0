@@ -3,6 +3,7 @@ package geospatialjpv3
 import (
 	"context"
 	"os"
+	"strings"
 	"testing"
 
 	"github.com/eukarya-inc/reearth-plateauview/server/cmsintegration/ckan"
@@ -10,16 +11,19 @@ import (
 	cms "github.com/reearth/reearth-cms-api/go"
 	"github.com/samber/lo"
 	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/require"
 )
 
 func TestPublish(t *testing.T) {
-	t.Skip()
+	cities := ""
+
+	if cities == "" {
+		t.Skip()
+	}
 
 	_ = godotenv.Load("../../../.env")
 
 	var (
-		indexItemID = ""
-		dataItemID  = ""
 		cmsURL      = os.Getenv("REEARTH_PLATEAUVIEW_CMS_BASEURL")
 		cmsToken    = os.Getenv("REEARTH_PLATEAUVIEW_CMS_TOKEN")
 		ckanOrg     = os.Getenv("REEARTH_PLATEAUVIEW_CKAN_ORG")
@@ -28,17 +32,6 @@ func TestPublish(t *testing.T) {
 	)
 
 	ctx := context.Background()
-
-	item := &CityItem{
-		CityCode:          "99999",
-		CityName:          "テスト市",
-		CityNameEn:        "test-shi",
-		Year:              "2023",
-		Spec:              "4",
-		GeospatialjpIndex: indexItemID,
-		GeospatialjpData:  dataItemID,
-	}
-
 	ckan, err := ckan.New(ckanBaseURL, ckanToken)
 	assert.NoError(t, err)
 
@@ -46,13 +39,26 @@ func TestPublish(t *testing.T) {
 	assert.NoError(t, err)
 
 	h := &handler{
-		cms:     cms,
-		ckan:    ckan,
-		ckanOrg: ckanOrg,
+		cms:      cms,
+		ckan:     ckan,
+		ckanOrg:  ckanOrg,
+		ckanBase: ckanBaseURL,
 	}
 
-	err = h.Publish(ctx, item)
-	assert.NoError(t, err)
+	for _, city := range strings.Split(cities, ",") {
+		t.Logf("Publishing %s", city)
+
+		item, err := cms.GetItem(ctx, city, false)
+		require.NoError(t, err)
+
+		cityItem := CityItemFrom(item)
+		if cityItem.CityName == "" {
+			continue
+		}
+
+		err = h.Publish(ctx, cityItem)
+		require.NoError(t, err)
+	}
 }
 
 func TestShouldReorder(t *testing.T) {

@@ -23,13 +23,11 @@ export interface Typegen0 {
     | "modal.active.pedestrian"
     | "modal.active.select"
     | "modal.active.sketch"
-    | "modal.active.story"
     | "modal.selected"
     | "modal.selected.hand"
     | "modal.selected.pedestrian"
     | "modal.selected.select"
     | "modal.selected.sketch"
-    | "modal.selected.story"
     | "momentary"
     | "momentary.active"
     | "momentary.active.hand"
@@ -43,8 +41,8 @@ export interface Typegen0 {
           | "active"
           | "selected"
           | {
-              active?: "hand" | "pedestrian" | "select" | "sketch" | "story";
-              selected?: "hand" | "pedestrian" | "select" | "sketch" | "story";
+              active?: "hand" | "pedestrian" | "select" | "sketch";
+              selected?: "hand" | "pedestrian" | "select" | "sketch";
             };
         momentary?:
           | "active"

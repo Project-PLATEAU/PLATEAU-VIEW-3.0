@@ -306,6 +306,7 @@ type GenericItem struct {
 	Items       []GenericItemDataset `json:"items,omitempty" cms:"items,group"`
 	OpenDataURL string               `json:"open_data_url,omitempty" cms:"open_data_url,url"`
 	Category    string               `json:"category,omitempty" cms:"category,select"`
+	Group       string               `json:"group,omitempty" cms:"group,text"`
 	// metadata
 	Status *cms.Tag `json:"status,omitempty" cms:"status,select,metadata"`
 	Public bool     `json:"public,omitempty" cms:"public,bool,metadata"`

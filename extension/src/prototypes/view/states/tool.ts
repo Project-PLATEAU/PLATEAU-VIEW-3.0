@@ -6,7 +6,7 @@ import { SketchGeometryType } from "../../sketch";
 
 import { createToolMachine, type ToolMachineState } from "./toolMachine";
 
-export type ToolType = "hand" | "select" | "sketch" | "story" | "pedestrian";
+export type ToolType = "hand" | "select" | "sketch" | "pedestrian";
 
 export interface Tool {
   type: ToolType;
@@ -30,8 +30,6 @@ export function getModalTool(state: ToolMachineState): Tool | undefined {
     ? "select"
     : matchModal("sketch", state)
     ? "sketch"
-    : matchModal("story", state)
-    ? "story"
     : matchModal("pedestrian", state)
     ? "pedestrian"
     : undefined;

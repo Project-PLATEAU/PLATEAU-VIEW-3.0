@@ -18,7 +18,6 @@ import {
 } from "../../../prototypes/view-layers";
 import { INITIAL_PEDESTRIAN_COORDINATES } from "../../constants";
 import { useDatasetsByIds } from "../../graphql";
-import { StoryCapture } from "../../layerContainers/story";
 import { Data, SketchFeature } from "../../reearth/types";
 import { getShareId, getSharedStoreValue } from "../../sharedAtoms";
 import { settingsAtom } from "../../states/setting";
@@ -28,6 +27,7 @@ import {
   getSharedRootLayersAtom,
 } from "../../states/share";
 import { templatesAtom } from "../../states/template";
+import { StoryCapture } from "../../view-layers";
 import {
   RootLayerForLayerAtomParams,
   createRootLayerForDatasetAtom,

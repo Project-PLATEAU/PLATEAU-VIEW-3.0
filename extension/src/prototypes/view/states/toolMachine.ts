@@ -4,7 +4,6 @@ export type EventObject =
   | { type: "SELECT" }
   | { type: "HAND" }
   | { type: "SKETCH" }
-  | { type: "STORY" }
   | { type: "PEDESTRIAN" }
   | { type: "MOUSE_UP" }
   | { type: "MOUSE_DOWN" }
@@ -43,11 +42,6 @@ export function createToolMachine() {
                   MOUSE_DOWN: "#tool.modal.active.sketch",
                 },
               },
-              story: {
-                on: {
-                  MOUSE_DOWN: "#tool.modal.active.story",
-                },
-              },
               pedestrian: {
                 on: {
                   MOUSE_DOWN: "#tool.modal.active.pedestrian",
@@ -62,7 +56,6 @@ export function createToolMachine() {
               SELECT: ".select",
               PEDESTRIAN: ".pedestrian",
               SKETCH: ".sketch",
-              STORY: ".story",
               PRESS_SPACE: "#tool.momentary.selected.hand",
               PRESS_COMMAND: "#tool.momentary.selected.select",
             },
@@ -74,7 +67,6 @@ export function createToolMachine() {
               select: {},
               pedestrian: {},
               sketch: {},
-              story: {},
             },
             on: {
               MOUSE_UP: "selected.history",

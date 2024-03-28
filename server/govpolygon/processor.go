@@ -37,6 +37,14 @@ func (p *Processor) ComputeGeoJSON(ctx context.Context, names []string) (*geojso
 }
 
 func computeGeojsonFeatures(features []*geojson.Feature, names []string) (*geojson.FeatureCollection, []string) {
+	if len(names) == 0 {
+		fc := geojson.NewFeatureCollection()
+		for _, f := range features {
+			fc.AddFeature(f)
+		}
+		return fc, nil
+	}
+
 	nameMap := map[string]struct{}{}
 	notfound := map[string]struct{}{}
 	citiesWithWards := map[string]struct{}{}

@@ -1,6 +1,6 @@
-import { FC, useEffect, useState } from "react";
+import { FC, useCallback, useState } from "react";
 
-import { useCamera } from "../../reearth/hooks";
+import { useCamera, useReEarthEvent } from "../../reearth/hooks";
 import { PolygonAppearances, PolygonLayer } from "../../reearth/layers";
 
 const CAMERA_ZOOM_LEVEL_HEIGHT = 300000;
@@ -15,28 +15,30 @@ const appererances: PolygonAppearances = {
   polygon: {
     classificationType: "terrain",
     fill: true,
-    fillColor: {
-      expression: "color('#00BEBE',0.2)",
-    },
+    fillColor: "rgba(0, 190, 190, 0.2)",
     heightReference: "clamp",
     hideIndicator: true,
-    selectedFeatureColor: {
-      expression: "color('#00BEBE',0.4)",
-    },
+    selectedFeatureColor: "rgba(0, 190, 190, 0.4)",
   },
 };
 const JapanPlateauPolygon: FC = () => {
   const { getCameraPosition } = useCamera();
-  const camera = getCameraPosition();
   const [visible, setVisible] = useState(false);
 
-  useEffect(() => {
+  const updateVisibility = useCallback(() => {
+    const camera = getCameraPosition();
     if (camera?.height && camera.height >= CAMERA_ZOOM_LEVEL_HEIGHT) {
       setVisible(true);
-    } else return setVisible(false);
-  }, [camera?.height]);
+    } else {
+      setVisible(false);
+    }
+  }, [getCameraPosition]);
 
-  return <PolygonLayer visible={visible} appearances={appererances} />;
+  useReEarthEvent("cameramove", updateVisibility);
+
+  if (!visible) return null;
+
+  return <PolygonLayer appearances={appererances} />;
 };
 
 export default JapanPlateauPolygon;

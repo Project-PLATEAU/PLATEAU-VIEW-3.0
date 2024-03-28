@@ -2,6 +2,7 @@ package datacatalogv3
 
 import (
 	"fmt"
+	"strings"
 
 	"github.com/eukarya-inc/reearth-plateauview/server/datacatalog/plateauapi"
 	"github.com/samber/lo"
@@ -48,6 +49,11 @@ func (i *GenericItem) toDatasets(area *areaContext, dts []plateauapi.DatasetType
 		}, true
 	})
 
+	var groups []string
+	if i.Group != "" {
+		groups = strings.Split(i.Group, "/")
+	}
+
 	res := plateauapi.GenericDataset{
 		ID:                id,
 		Name:              standardItemName(i.Name, "", area.Name()),
@@ -61,6 +67,7 @@ func (i *GenericItem) toDatasets(area *areaContext, dts []plateauapi.DatasetType
 		CityCode:          area.CityCode,
 		TypeID:            dt.GetID(),
 		TypeCode:          dt.GetCode(),
+		Groups:            groups,
 		Admin:             newAdmin(i.ID, i.Stage(), cmsurl, nil),
 		Items:             items,
 	}

@@ -9,17 +9,17 @@ import (
 
 func TestUsecaseItem_DataCatalogs(t *testing.T) {
 	assert.Equal(t, []DataCatalogItem{{
-		ID:        "id",
-		Type:      "ユースケース",
-		TypeEn:    "usecase",
-		URL:       "url",
-		Year:      2023,
-		RootType:  true,
-		Category:  "aaa",
-		Family:    "generic",
-		Edition:   "2022",
-		CityAdmin: "city",
-		WardAdmin: "ward",
+		ID:       "id",
+		Type:     "ユースケース",
+		TypeEn:   "usecase",
+		URL:      "url",
+		Year:     2023,
+		RootType: true,
+		Category: "aaa",
+		City:     "city",
+		Ward:     "ward",
+		Family:   "generic",
+		Edition:  "2022",
 	}}, UsecaseItem{
 		ID:       "id",
 		DataURL:  "url2",
@@ -35,14 +35,14 @@ func TestUsecaseItem_DataCatalogs(t *testing.T) {
 	}.DataCatalogs())
 
 	assert.Equal(t, []DataCatalogItem{{
-		ID:        "id",
-		Type:      "あああ",
-		TypeEn:    "あああ",
-		RootType:  true,
-		Category:  "ユースケース",
-		Family:    "generic",
-		Edition:   "2022",
-		CityAdmin: "city",
+		ID:       "id",
+		Type:     "あああ",
+		TypeEn:   "あああ",
+		RootType: true,
+		Category: "ユースケース",
+		City:     "city",
+		Family:   "generic",
+		Edition:  "2022",
 	}}, UsecaseItem{
 		ID:       "id",
 		Type:     "あああ",
@@ -50,14 +50,14 @@ func TestUsecaseItem_DataCatalogs(t *testing.T) {
 	}.DataCatalogs())
 
 	assert.Equal(t, []DataCatalogItem{{
-		ID:        "id",
-		Type:      "あああ",
-		TypeEn:    "aaa",
-		RootType:  true,
-		Category:  "cat",
-		Family:    "generic",
-		Edition:   "2022",
-		CityAdmin: "city",
+		ID:       "id",
+		Type:     "あああ",
+		TypeEn:   "aaa",
+		RootType: true,
+		Category: "cat",
+		City:     "city",
+		Family:   "generic",
+		Edition:  "2022",
 	}}, UsecaseItem{
 		ID:       "id",
 		Type:     "あああ",
@@ -80,10 +80,11 @@ func TestUsecaseItem_DataCatalogs(t *testing.T) {
 		WardAdmin:     "北区",
 		WardCodeAdmin: "27127",
 	}}, UsecaseItem{
-		ID:         "id",
-		Name:       "name",
-		Prefecture: "大阪府",
-		CityName:   "大阪市/北区",
-		DataFormat: "フォルダ",
+		ID:              "id",
+		Name:            "name",
+		Prefecture:      "大阪府",
+		CityName:        "大阪市/北区",
+		DataFormat:      "フォルダ",
+		hideCityAndWard: true,
 	}.DataCatalogs())
 }

@@ -10,7 +10,6 @@ const TOOL_TO_INTERACTIONMODE: Record<ToolType, InteractionModeType> = {
   hand: "move",
   select: "selection",
   sketch: "sketch",
-  story: "default", // TODO: Check later
   pedestrian: "move", // TODO: Check later
 };
 

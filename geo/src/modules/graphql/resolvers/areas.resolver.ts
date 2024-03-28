@@ -1,6 +1,7 @@
 /* eslint-disable node/no-unsupported-features/es-syntax */
 import { Args, Query, Resolver } from "@nestjs/graphql";
-import axios, { CanceledError } from "axios";
+import { CanceledError } from "axios";
+import { fetchArea } from "src/helpers";
 
 import { Areas, Area } from "../dto/areas";
 
@@ -67,17 +68,7 @@ export class AreasResolver {
     @Args("includeRadii", { defaultValue: false }) includeRadii: boolean,
   ): Promise<Areas> {
     try {
-      const { data } = await axios.get(
-        "https://mreversegeocoder.gsi.go.jp/reverse-geocoder/LonLatToAddress",
-        {
-          params: {
-            lon: longitude,
-            lat: latitude,
-          },
-        },
-      );
-      const municipalityCode = data.results?.muniCd;
-      const name = data.results?.lv01Nm;
+      const { municipalityCode, name } = (await fetchArea(longitude, latitude)) ?? {};
       if (typeof municipalityCode !== "string" || typeof name !== "string") {
         return undefined;
       }

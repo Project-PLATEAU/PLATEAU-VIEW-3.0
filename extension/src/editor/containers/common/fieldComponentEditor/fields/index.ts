@@ -1,6 +1,7 @@
 import { SettingComponent } from "../../../../../shared/api/types";
 import { ComponentBase } from "../../../../../shared/types/fieldComponents";
 
+import { EditorTilesetApplyEmptySHCField } from "./3dtiles/EditorTilesetApplyEmptySHCField";
 import { EditorTilesetBuildingModelColorField } from "./3dtiles/EditorTilesetBuildingModelColorField";
 import { EditorTilesetBuildingModelFilterField } from "./3dtiles/EditorTilesetBuildingModelFilterField";
 import { EditorTilesetClippingField } from "./3dtiles/EditorTilesetClippingField";
@@ -402,6 +403,11 @@ export const fields: {
     category: FIELD_CATEGORY_THREE_D_TILES,
     name: "Disable Default Material",
     Component: EditorDisableDefaultMaterialField,
+  },
+  TILESET_APPLY_EMPTY_SHC: {
+    category: FIELD_CATEGORY_THREE_D_TILES,
+    name: "Apply Empty SHC",
+    Component: EditorTilesetApplyEmptySHCField,
   },
 };
 

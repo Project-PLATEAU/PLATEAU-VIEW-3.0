@@ -19,6 +19,7 @@ import {
   TILESET_FLOOD_MODEL_COLOR,
   TILESET_FLOOD_MODEL_FILTER,
   TILESET_DISABLE_DEFAULT_MATERIAL,
+  TILESET_APPLY_EMPTY_SHC,
 } from "../types/fieldComponents/3dtiles";
 import { OPACITY_FIELD } from "../types/fieldComponents/general";
 import { hexToRGBArray } from "../utils";
@@ -130,6 +131,8 @@ export const FloodModelLayerContainer: FC<TilesetContainerProps> = ({
     TILESET_DISABLE_DEFAULT_MATERIAL,
   );
 
+  const applyEmptySHCAtom = useFindComponent(componentAtoms, TILESET_APPLY_EMPTY_SHC);
+
   // Field components
   const opacityAtom = useFindComponent(componentAtoms, OPACITY_FIELD);
   const floodModelColorAtom = useFindComponent(componentAtoms, TILESET_FLOOD_MODEL_COLOR);
@@ -139,6 +142,7 @@ export const FloodModelLayerContainer: FC<TilesetContainerProps> = ({
   );
 
   const disableDefaultMaterial = useOptionalAtomValue(disableDefaultMaterialAtom);
+  const applyEmptySHC = useOptionalAtomValue(applyEmptySHCAtom);
   const theme = useTheme();
 
   const primaryRGB = useMemo(() => hexToRGBArray(theme.palette.primary.main), [theme]);
@@ -172,8 +176,16 @@ export const FloodModelLayerContainer: FC<TilesetContainerProps> = ({
       },
       shadows: "disabled",
       selectedFeatureColor: theme.palette.primary.main,
+      ...(applyEmptySHC ? { sphericalHarmonicCoefficients: [] } : {}),
     }),
-    [color, colorProperty, theme.palette.primary.main, filter, disableDefaultMaterial],
+    [
+      color,
+      colorProperty,
+      theme.palette.primary.main,
+      filter,
+      disableDefaultMaterial,
+      applyEmptySHC,
+    ],
   );
 
   return (

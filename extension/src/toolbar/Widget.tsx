@@ -28,7 +28,6 @@ import JapanPlateauPolygon from "../shared/view/containers/JapanPlateauPolygon";
 import FeedBack from "../shared/view/ui-container/Feedback";
 import Help from "../shared/view/ui-container/Help";
 import MyData from "../shared/view/ui-container/MyData";
-import { StoryCreator } from "../shared/view/ui-container/story/StoryCreator";
 import { layerComponents } from "../shared/view-layers/layerComponents";
 
 import { InitializeApp } from "./containers/InitializeApp";
@@ -115,7 +114,6 @@ export const Widget: FC<Props> = memo(function WidgetPresenter({ widget, inEdito
         <Help />
         <AutoRotateCamera />
         <FeedBack />
-        <StoryCreator />
       </WidgetContext>
     </div>
   );

@@ -5,4 +5,3 @@ export * from "./pedestrian";
 export * from "./heatmap";
 export * from "./highlightPolygon";
 export * from "./polygon";
-export * from "./story";

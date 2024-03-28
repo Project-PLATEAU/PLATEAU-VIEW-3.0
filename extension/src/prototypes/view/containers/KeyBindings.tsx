@@ -63,10 +63,6 @@ export const KeyBindings: FC = () => {
           event.preventDefault();
           send({ type: "SKETCH" });
           return;
-        case "t":
-          event.preventDefault();
-          send({ type: "STORY" });
-          return;
         case "p":
           event.preventDefault();
           send({ type: "PEDESTRIAN" });

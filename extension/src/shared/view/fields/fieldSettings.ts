@@ -253,4 +253,5 @@ export const fieldSettings: {
     hasLayerUI: true,
   },
   TILESET_DISABLE_DEFAULT_MATERIAL: {},
+  TILESET_APPLY_EMPTY_SHC: {},
 };

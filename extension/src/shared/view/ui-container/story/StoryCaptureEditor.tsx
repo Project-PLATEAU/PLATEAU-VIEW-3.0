@@ -3,13 +3,13 @@ import { useCallback, useEffect, useState } from "react";
 
 import { CameraIcon } from "../../../../prototypes/ui-components";
 import { preventToolKeyDownAtom } from "../../../../prototypes/view/states/tool";
-import { StoryCapture } from "../../../layerContainers/story";
 import {
   ViewContentColumn,
   ViewDialog,
   ViewMarkdownEditor,
   ViewTextField,
 } from "../../../ui-components/common";
+import { StoryCapture } from "../../../view-layers";
 
 type StoryCaptureEditorProps = {
   open: boolean;

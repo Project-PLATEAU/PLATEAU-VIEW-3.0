@@ -4,7 +4,7 @@ import { type FC, useCallback } from "react";
 
 import ARModal from "../../../shared/view/ui-container/ARModal";
 import ShareModal from "../../../shared/view/ui-container/ShareModal";
-import { ARIcon, AppBar, PaperPlaneTilt, Space } from "../../ui-components";
+import { ARIcon, AppBar, AppIconButton, PaperPlaneTilt, Space } from "../../ui-components";
 import { hideAppOverlayAtom, showARModalAtom, showShareModalAtom } from "../states/app";
 
 import { CameraButtons } from "./CameraButtons";
@@ -13,6 +13,7 @@ import { EnvironmentSelect } from "./EnvironmentSelect";
 import { LocationBreadcrumbs } from "./LocationBreadcrumbs";
 import { MainMenuButton } from "./MainMenuButton";
 import { SettingsButton } from "./SettingsButton";
+import { StoryButton } from "./StoryButton";
 import { ToolButtons } from "./ToolButtons";
 
 type Props = {
@@ -47,9 +48,10 @@ export const AppHeader: FC<Props> = ({ arURL }) => {
       <SettingsButton />
       <DateControlButton />
       <EnvironmentSelect />
-      <IconButton onClick={() => setShowShareModal(true)}>
+      <StoryButton />
+      <AppIconButton title="シェア" onClick={() => setShowShareModal(true)}>
         <PaperPlaneTilt />
-      </IconButton>
+      </AppIconButton>
       {isMobile && (
         <IconButton onClick={handleARButtonClick}>
           <ARIcon />

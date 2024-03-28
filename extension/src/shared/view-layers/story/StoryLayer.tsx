@@ -1,5 +1,5 @@
-import { PrimitiveAtom, atom, useAtomValue, useSetAtom } from "jotai";
-import { FC, useCallback } from "react";
+import { PrimitiveAtom, atom } from "jotai";
+import { FC } from "react";
 
 import { LayerProps } from "../../../prototypes/layers";
 import {
@@ -8,8 +8,15 @@ import {
   ViewLayerModelParams,
   createViewLayerModel,
 } from "../../../prototypes/view-layers";
-import { StoryCapture, StoryLayerContainer } from "../../layerContainers/story";
+import { CameraPosition } from "../../reearth/types";
 import { LayerModel } from "../model";
+
+export type StoryCapture = {
+  id: string;
+  title?: string;
+  content?: string;
+  camera: CameraPosition;
+};
 
 export interface StoryLayerModelParams extends ViewLayerModelParams {
   title: string;
@@ -40,24 +47,6 @@ export function createStoryLayer(
   };
 }
 
-export const StoryLayer: FC<LayerProps<typeof STORY_LAYER>> = ({
-  hiddenAtom,
-  capturesAtom,
-  layerIdAtom,
-  ...props
-}) => {
-  const hidden = useAtomValue(hiddenAtom);
-
-  const setLayerId = useSetAtom(layerIdAtom);
-  const handleLoad = useCallback(
-    (layerId: string) => {
-      setLayerId(layerId);
-    },
-    [setLayerId],
-  );
-
-  if (hidden) {
-    return null;
-  }
-  return <StoryLayerContainer capturesAtom={capturesAtom} onLoad={handleLoad} {...props} />;
+export const StoryLayer: FC<LayerProps<typeof STORY_LAYER>> = () => {
+  return null;
 };

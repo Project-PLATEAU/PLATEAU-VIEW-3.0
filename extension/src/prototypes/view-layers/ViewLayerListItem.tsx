@@ -10,6 +10,7 @@ import { ColorMapIcon, ColorSetIcon, ImageIconSetIcon, LayerListItem } from "../
 import { CustomLegendSetIcon } from "../ui-components/CustomLegendSetIcon";
 
 import { layerTypeIcons } from "./layerTypeIcons";
+import { STORY_LAYER } from "./layerTypes";
 import {
   colorSchemeSelectionAtom,
   customLegendSchemeSelectionAtom,
@@ -53,8 +54,14 @@ export const ViewLayerListItem: FC<ViewLayerListItemProps> = memo(
     const layerCamera = useOptionalAtomValue(
       useMemo(() => ("cameraAtom" in props ? props.cameraAtom : undefined), [props]),
     );
+    const storyCamera = useOptionalAtomValue(
+      useMemo(() => ("capturesAtom" in props ? props.capturesAtom : undefined), [props]),
+    )?.[0]?.camera;
     const boundingSphere = useAtomValue(boundingSphereAtom);
     const handleMove = useCallback(() => {
+      if (type === STORY_LAYER) {
+        return storyCamera && flyToCamera(storyCamera);
+      }
       const camera = rootLayer?.general?.camera;
       if (camera) {
         return flyToCamera(camera);
@@ -68,7 +75,7 @@ export const ViewLayerListItem: FC<ViewLayerListItemProps> = memo(
       if (layerId) {
         return flyToLayerId(layerId);
       }
-    }, [layerId, rootLayer?.general?.camera, layerCamera, boundingSphere]);
+    }, [layerId, rootLayer?.general?.camera, layerCamera, boundingSphere, storyCamera, type]);
 
     const [hidden, setHidden] = useAtom(hiddenAtom);
     const handleToggleHidden = useCallback(() => {
@@ -157,7 +164,9 @@ export const ViewLayerListItem: FC<ViewLayerListItemProps> = memo(
         loading={loading}
         hidden={hidden}
         layerId={layerId}
+        layerType={type}
         boundingSphere={boundingSphere}
+        hasStoryCamera={!!storyCamera}
         accessory={
           colorMap != null ? (
             <Tooltip title={colorScheme?.name}>

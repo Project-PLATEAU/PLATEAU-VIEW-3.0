@@ -8,7 +8,9 @@ import {
 } from "react";
 
 import { XYZ } from "../../shared/reearth/types";
+import { LayerModelOverrides } from "../layers";
 import { useForkEventHandler } from "../react-helpers";
+import { STORY_LAYER } from "../view-layers";
 
 import { EntityTitleButton, type EntityTitleButtonProps } from "./EntityTitleButton";
 import { TrashSmallIcon } from "./icons/TrashSmallIcon";
@@ -17,7 +19,9 @@ import { VisibilityOnSmallIcon } from "./icons/VisibilityOnSmallIcon";
 
 import { AddressIcon } from "./index";
 
-const StyledEntityTitleButton = styled(EntityTitleButton)(({ theme }) => ({
+const StyledEntityTitleButton = styled(EntityTitleButton, {
+  shouldForwardProp: props => props !== "layerType" && props !== "hasStoryCamera",
+})(({ theme }) => ({
   paddingRight: theme.spacing(1),
 }));
 
@@ -33,6 +37,8 @@ interface HoverMenuProps {
   onMove?: () => void;
   boundingSphere?: XYZ | null;
   layerId?: string | null;
+  layerType?: keyof LayerModelOverrides;
+  hasStoryCamera?: boolean;
 }
 
 const HoverMenu: FC<HoverMenuProps> = ({
@@ -42,9 +48,12 @@ const HoverMenu: FC<HoverMenuProps> = ({
   onToggleHidden,
   onMove,
   layerId,
+  layerType,
   boundingSphere,
+  hasStoryCamera,
 }) => {
-  const isButtonDisabled = layerId == null && boundingSphere == null;
+  const isButtonDisabled =
+    layerId == null && boundingSphere == null && !(layerType === STORY_LAYER && hasStoryCamera);
   if (!hovered && !hidden) {
     return null;
   }
@@ -71,15 +80,20 @@ const HoverMenu: FC<HoverMenuProps> = ({
           </IconButton>
         </Tooltip>
       )}
-      <Tooltip title={hidden ? "表示" : "隠す"}>
-        <IconButton color="inherit" aria-label={hidden ? "表示" : "隠す"} onClick={onToggleHidden}>
-          {hidden ? (
-            <VisibilityOffSmallIcon fontSize="small" />
-          ) : (
-            <VisibilityOnSmallIcon fontSize="small" />
-          )}
-        </IconButton>
-      </Tooltip>
+      {layerType !== STORY_LAYER && (
+        <Tooltip title={hidden ? "表示" : "隠す"}>
+          <IconButton
+            color="inherit"
+            aria-label={hidden ? "表示" : "隠す"}
+            onClick={onToggleHidden}>
+            {hidden ? (
+              <VisibilityOffSmallIcon fontSize="small" />
+            ) : (
+              <VisibilityOnSmallIcon fontSize="small" />
+            )}
+          </IconButton>
+        </Tooltip>
+      )}
     </Stack>
   );
 };
@@ -97,7 +111,9 @@ export const LayerListItem: FC<LayerListItemProps> = ({
   onMouseLeave,
   onMove,
   layerId,
+  layerType,
   boundingSphere,
+  hasStoryCamera,
   ...props
 }) => {
   const [hovered, setHovered] = useState(false);
@@ -121,7 +137,9 @@ export const LayerListItem: FC<LayerListItemProps> = ({
           onToggleHidden={onToggleHidden}
           onMove={onMove}
           layerId={layerId}
+          layerType={layerType}
           boundingSphere={boundingSphere}
+          hasStoryCamera={hasStoryCamera}
         />
         {accessory}
       </Stack>

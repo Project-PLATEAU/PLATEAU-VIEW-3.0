@@ -30,8 +30,9 @@ type Fetcher struct {
 }
 
 type FetcherDoOptions struct {
-	Subproject string
-	CityName   string
+	Subproject             string
+	CityName               string
+	HideUsacaseCityAndWard bool
 }
 
 func NewFetcher(cmsbase string) (*Fetcher, error) {
@@ -77,7 +78,7 @@ func (f *Fetcher) Do(ctx context.Context, project string, opts FetcherDoOptions)
 		return f1.plateau(ctx, project)
 	})
 	res2 := lo.Async2(func() ([]UsecaseItem, error) {
-		return f2.usecase(ctx, project)
+		return f2.usecase(ctx, project, opts.HideUsacaseCityAndWard)
 	})
 	res3 := lo.Async2(func() ([]DatasetItem, error) {
 		return f3.dataset(ctx, project)
@@ -162,8 +163,14 @@ func (f *Fetcher) dataset(ctx context.Context, project string) ([]DatasetItem, e
 	return f.cmsd.GetAllItemsInParallel(ctx, project, ModelDataset, 10)
 }
 
-func (f *Fetcher) usecase(ctx context.Context, project string) ([]UsecaseItem, error) {
-	return f.cmsu.GetAllItemsInParallel(ctx, project, ModelUsecase, 10)
+func (f *Fetcher) usecase(ctx context.Context, project string, hideCityAndWard bool) ([]UsecaseItem, error) {
+	res, err := f.cmsu.GetAllItemsInParallel(ctx, project, ModelUsecase, 10)
+	if hideCityAndWard {
+		for i := range res {
+			res[i].hideCityAndWard = true
+		}
+	}
+	return res, err
 }
 
 func filterItemsByCityName[T ItemCommon](items []T, cityName string) []T {
