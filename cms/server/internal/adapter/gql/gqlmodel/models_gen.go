@@ -108,11 +108,11 @@ type AssetEdge struct {
 }
 
 type AssetFile struct {
-	Name        string       `json:"name"`
-	Size        int64        `json:"size"`
-	ContentType *string      `json:"contentType,omitempty"`
-	Path        string       `json:"path"`
-	Children    []*AssetFile `json:"children,omitempty"`
+	Name        string   `json:"name"`
+	Size        int64    `json:"size"`
+	ContentType *string  `json:"contentType,omitempty"`
+	Path        string   `json:"path"`
+	FilePaths   []string `json:"filePaths,omitempty"`
 }
 
 type AssetItem struct {

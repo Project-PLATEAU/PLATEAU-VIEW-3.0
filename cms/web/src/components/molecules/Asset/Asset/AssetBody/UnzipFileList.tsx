@@ -32,39 +32,75 @@ const UnzipFileList: React.FC<Props> = ({
   const [treeData, setTreeData] = useState<FileNode[]>([]);
 
   const getTreeData = useCallback(
-    (assetFile: AssetFile, parentKey?: string): FileNode[] =>
-      assetFile?.children?.map((file: AssetFile, index: number) => {
+    (file: AssetFile, parentKey?: string): FileNode[] =>
+      file.children?.map((child: AssetFile, index: number) => {
         let children: FileNode[] = [];
-        const key = parentKey ? parentKey + "-" + index.toString() : index.toString();
+        const key = parentKey ? `${parentKey}-${index}` : `${index}`;
 
-        if (file.children && file.children.length > 0) {
-          children = getTreeData(file, key);
+        if (child.children && child.children.length > 0) {
+          children = getTreeData(child, key);
         }
 
         return {
           title: (
             <>
-              {file.name}
+              {child.name}
               <CopyIcon
                 selected={selectedKeys[0] === key}
                 icon="copy"
                 onClick={() => {
-                  navigator.clipboard.writeText(assetBaseUrl + file.path);
+                  navigator.clipboard.writeText(assetBaseUrl + child.path);
                 }}
               />
             </>
           ),
           key: key,
           children: children,
-          file: file,
+          file: child,
         };
       }) || [],
     [selectedKeys, assetBaseUrl],
   );
 
+  const constructFileTree = useCallback(
+    (file?: AssetFile): FileNode[] => {
+      if (!file?.filePaths) return [];
+
+      const root: AssetFile = {
+        ...file,
+        path: "/",
+        children: [],
+      };
+
+      for (const filepath of file.filePaths) {
+        const parts = filepath.split("/");
+        let currentNode = root;
+
+        for (const part of parts.slice(1)) {
+          const existingNode = currentNode.children?.find(node => node.name === part);
+          if (!existingNode) {
+            const newNode: AssetFile = {
+              name: part,
+              path: `${currentNode.path}${part}${/\.[^.]+$/.test(part) ? "" : "/"}`,
+              children: [],
+            };
+
+            currentNode.children?.push(newNode);
+            currentNode = newNode;
+          } else {
+            currentNode = existingNode;
+          }
+        }
+      }
+
+      return getTreeData(root);
+    },
+    [getTreeData],
+  );
+
   useEffect(() => {
-    setTreeData(getTreeData(file));
-  }, [file, getTreeData]);
+    setTreeData(constructFileTree(file));
+  }, [file, constructFileTree]);
 
   const previewFile = useCallback(
     (file: AssetFile) => {

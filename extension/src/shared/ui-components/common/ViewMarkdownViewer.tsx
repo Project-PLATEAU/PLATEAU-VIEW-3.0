@@ -7,7 +7,11 @@ type ViewMarkdownViewerProps = {
 };
 
 export const ViewMarkdownViewer: FC<ViewMarkdownViewerProps> = ({ content }) => {
-  return <StyledMarkdown skipHtml>{content}</StyledMarkdown>;
+  return (
+    <StyledMarkdown skipHtml components={{ a: LinkRenderer }}>
+      {content}
+    </StyledMarkdown>
+  );
 };
 
 const StyledMarkdown = styled(Markdown)(({ theme }) => ({
@@ -46,3 +50,11 @@ const StyledMarkdown = styled(Markdown)(({ theme }) => ({
     margin: 0,
   },
 }));
+
+function LinkRenderer(props: any) {
+  return (
+    <a href={props.href} target="_blank" rel="noreferrer">
+      {props.children}
+    </a>
+  );
+}

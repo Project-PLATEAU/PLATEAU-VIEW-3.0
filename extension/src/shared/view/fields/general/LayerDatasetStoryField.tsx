@@ -44,7 +44,9 @@ export const LayerDatasetStoryField: FC<LayerDatasetStoryFieldProps> = ({ atoms 
   return component?.preset?.pages?.length > 0 ? (
     <ParameterList>
       <CommonContentWrapper>
-        <Markdown skipHtml>{component.preset.pages[currentPage].content}</Markdown>
+        <Markdown skipHtml components={{ a: LinkRenderer }}>
+          {component.preset.pages[currentPage].content}
+        </Markdown>
         <PaginationWrapper>
           <StyledPagination
             count={component.preset.pages.length}
@@ -60,3 +62,11 @@ export const LayerDatasetStoryField: FC<LayerDatasetStoryFieldProps> = ({ atoms 
     </ParameterList>
   ) : null;
 };
+
+function LinkRenderer(props: any) {
+  return (
+    <a href={props.href} target="_blank" rel="noreferrer">
+      {props.children}
+    </a>
+  );
+}

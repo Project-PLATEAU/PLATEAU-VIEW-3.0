@@ -13,7 +13,7 @@ import (
 	"golang.org/x/exp/slices"
 )
 
-const hideTokyo23ku = false
+const hideTokyo23ku = true
 
 const usecaseID = "usecase"
 const globalID = "global"

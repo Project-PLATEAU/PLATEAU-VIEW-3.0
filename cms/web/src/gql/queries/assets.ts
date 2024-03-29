@@ -54,7 +54,7 @@ export const GET_ASSET = gql`
 export const GET_ASSET_FILE = gql`
   query GetAssetFile($assetId: ID!) {
     assetFile(assetId: $assetId) {
-      ...assetFile10Fragment
+      ...assetFileFragment
     }
   }
 `;
@@ -126,8 +126,20 @@ export const DECOMPRESS_ASSET = gql`
 `;
 
 export const CREATE_ASSET_UPLOAD = gql`
-  mutation CreateAssetUpload($projectId: ID!, $filename: String!, $cursor: String!, $contentLength: Int!) {
-    createAssetUpload(input: { projectId: $projectId, filename: $filename, cursor: $cursor, contentLength: $contentLength }) {
+  mutation CreateAssetUpload(
+    $projectId: ID!
+    $filename: String!
+    $cursor: String!
+    $contentLength: Int!
+  ) {
+    createAssetUpload(
+      input: {
+        projectId: $projectId
+        filename: $filename
+        cursor: $cursor
+        contentLength: $contentLength
+      }
+    ) {
       url
       token
       contentType

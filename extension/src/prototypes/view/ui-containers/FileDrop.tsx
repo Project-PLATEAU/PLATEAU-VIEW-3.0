@@ -2,12 +2,14 @@ import { alpha, styled, useTheme } from "@mui/material";
 import { geojsonType } from "@turf/invariant";
 import { animate, motion, useMotionValue, useTransform, type MotionStyle } from "framer-motion";
 import { type Feature, type FeatureCollection, type MultiPolygon, type Polygon } from "geojson";
+import { useAtomValue } from "jotai";
 import { nanoid } from "nanoid";
 import { useEffect, useState, type FC } from "react";
 
 import { createRootLayerForLayerAtom } from "../../../shared/view-layers";
 import { LayerModelOverrides, useAddLayer } from "../../layers";
 import { SKETCH_LAYER } from "../../view-layers";
+import { showMyDataModalAtom } from "../states/app";
 
 const Root = styled(motion.div)({
   position: "absolute",
@@ -54,6 +56,8 @@ export const FileDrop: FC = () => {
 
   const addLayer = useAddLayer();
 
+  const showMyDataModal = useAtomValue(showMyDataModalAtom);
+
   useEffect(() => {
     let enterCount = 0;
 
@@ -73,6 +77,10 @@ export const FileDrop: FC = () => {
       event.preventDefault();
       enterCount = 0;
       setActive(false);
+
+      if (showMyDataModal) {
+        return;
+      }
 
       const item = event.dataTransfer?.items[0];
       if (item?.kind !== "file") {
@@ -122,7 +130,7 @@ export const FileDrop: FC = () => {
       document.removeEventListener("dragover", handleDragOver, false);
       document.removeEventListener("drop", handleDrop, false);
     };
-  }, [addLayer]);
+  }, [addLayer, showMyDataModal]);
 
   const style = useBackgroundStyle({ visible });
   return <Root style={style} />;

@@ -133,7 +133,7 @@ func ToAssetFile(a *asset.File) *AssetFile {
 		Size:        int64(a.Size()),
 		ContentType: lo.ToPtr(a.ContentType()),
 		Path:        a.Path(),
-		Children:    lo.Map(a.Children(), func(c *asset.File, _ int) *AssetFile { return ToAssetFile(c) }),
+		FilePaths:   a.FilePaths(),
 	}
 }
 

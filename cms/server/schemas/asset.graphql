@@ -26,7 +26,7 @@ type AssetFile {
   size: FileSize!
   contentType: String
   path: String!
-  children: [AssetFile!]
+  filePaths: [String!]
 }
 
 enum PreviewType {

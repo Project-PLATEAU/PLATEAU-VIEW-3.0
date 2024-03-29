@@ -32,7 +32,17 @@ export const LegendDescriptionSection: FC<LegendDescriptionSectionProps> = ({ va
 
   return legendDescription?.preset?.description ? (
     <CommonContentWrapper>
-      <Markdown skipHtml>{legendDescription?.preset?.description}</Markdown>
+      <Markdown skipHtml components={{ a: LinkRenderer }}>
+        {legendDescription?.preset?.description}
+      </Markdown>
     </CommonContentWrapper>
   ) : null;
 };
+
+function LinkRenderer(props: any) {
+  return (
+    <a href={props.href} target="_blank" rel="noreferrer">
+      {props.children}
+    </a>
+  );
+}

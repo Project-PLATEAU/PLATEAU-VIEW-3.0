@@ -1106,8 +1106,8 @@ bldg:Building_uro:bldgFacilityAttribute,{"description":"公害防止施設"}
 bldg:Building_uro:PortPollutionControlFacility,{"description":"公害防止施設"}
 bldg:Building_uro:bldgFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 bldg:Building_uro:PortPollutionControlFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-bldg:Building_uro:bldgFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-bldg:Building_uro:PortPollutionControlFacility_uro:facilityDetailType,{"description":"施設種類"}
+bldg:Building_uro:bldgFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+bldg:Building_uro:PortPollutionControlFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 bldg:Building_uro:bldgFacilityAttribute_uro:portName,{"description":"港湾名"}
 bldg:Building_uro:PortPollutionControlFacility_uro:portName,{"description":"港湾名"}
 bldg:Building_uro:bldgFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -3500,8 +3500,8 @@ luse:LandUse_uro:luseFacilityAttribute,{"description":"公害防止施設"}
 luse:LandUse_uro:PortPollutionControlFacility,{"description":"公害防止施設"}
 luse:LandUse_uro:luseFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 luse:LandUse_uro:PortPollutionControlFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-luse:LandUse_uro:luseFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-luse:LandUse_uro:PortPollutionControlFacility_uro:facilityDetailType,{"description":"施設種類"}
+luse:LandUse_uro:luseFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+luse:LandUse_uro:PortPollutionControlFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 luse:LandUse_uro:luseFacilityAttribute_uro:portName,{"description":"港湾名"}
 luse:LandUse_uro:PortPollutionControlFacility_uro:portName,{"description":"港湾名"}
 luse:LandUse_uro:luseFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -4556,8 +4556,8 @@ tran:Road_uro:tranFacilityAttribute,{"description":"公害防止施設"}
 tran:Road_uro:PortPollutionControlFacility,{"description":"公害防止施設"}
 tran:Road_uro:tranFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 tran:Road_uro:PortPollutionControlFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-tran:Road_uro:tranFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-tran:Road_uro:PortPollutionControlFacility_uro:facilityDetailType,{"description":"施設種類"}
+tran:Road_uro:tranFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+tran:Road_uro:PortPollutionControlFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 tran:Road_uro:tranFacilityAttribute_uro:portName,{"description":"港湾名"}
 tran:Road_uro:PortPollutionControlFacility_uro:portName,{"description":"港湾名"}
 tran:Road_uro:tranFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -5832,8 +5832,8 @@ tran:Railway_uro:tranFacilityAttribute,{"description":"公害防止施設"}
 tran:Railway_uro:PortPollutionControlFacility,{"description":"公害防止施設"}
 tran:Railway_uro:tranFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 tran:Railway_uro:PortPollutionControlFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-tran:Railway_uro:tranFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-tran:Railway_uro:PortPollutionControlFacility_uro:facilityDetailType,{"description":"施設種類"}
+tran:Railway_uro:tranFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+tran:Railway_uro:PortPollutionControlFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 tran:Railway_uro:tranFacilityAttribute_uro:portName,{"description":"港湾名"}
 tran:Railway_uro:PortPollutionControlFacility_uro:portName,{"description":"港湾名"}
 tran:Railway_uro:tranFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -7122,8 +7122,8 @@ tran:Track_uro:tranFacilityAttribute,{"description":"公害防止施設"}
 tran:Track_uro:PortPollutionControlFacility,{"description":"公害防止施設"}
 tran:Track_uro:tranFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 tran:Track_uro:PortPollutionControlFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-tran:Track_uro:tranFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-tran:Track_uro:PortPollutionControlFacility_uro:facilityDetailType,{"description":"施設種類"}
+tran:Track_uro:tranFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+tran:Track_uro:PortPollutionControlFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 tran:Track_uro:tranFacilityAttribute_uro:portName,{"description":"港湾名"}
 tran:Track_uro:PortPollutionControlFacility_uro:portName,{"description":"港湾名"}
 tran:Track_uro:tranFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -8374,8 +8374,8 @@ tran:Square_uro:tranFacilityAttribute,{"description":"公害防止施設"}
 tran:Square_uro:PortPollutionControlFacility,{"description":"公害防止施設"}
 tran:Square_uro:tranFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 tran:Square_uro:PortPollutionControlFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-tran:Square_uro:tranFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-tran:Square_uro:PortPollutionControlFacility_uro:facilityDetailType,{"description":"施設種類"}
+tran:Square_uro:tranFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+tran:Square_uro:PortPollutionControlFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 tran:Square_uro:tranFacilityAttribute_uro:portName,{"description":"港湾名"}
 tran:Square_uro:PortPollutionControlFacility_uro:portName,{"description":"港湾名"}
 tran:Square_uro:tranFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -9681,8 +9681,8 @@ uro:Waterway_uro:tranFacilityAttribute,{"description":"公害防止施設"}
 uro:Waterway_uro:PortPollutionControlFacility,{"description":"公害防止施設"}
 uro:Waterway_uro:tranFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 uro:Waterway_uro:PortPollutionControlFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-uro:Waterway_uro:tranFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-uro:Waterway_uro:PortPollutionControlFacility_uro:facilityDetailType,{"description":"施設種類"}
+uro:Waterway_uro:tranFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+uro:Waterway_uro:PortPollutionControlFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 uro:Waterway_uro:tranFacilityAttribute_uro:portName,{"description":"港湾名"}
 uro:Waterway_uro:PortPollutionControlFacility_uro:portName,{"description":"港湾名"}
 uro:Waterway_uro:tranFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -16266,8 +16266,8 @@ brid:Bridge_uro:bridFacilityAttribute,{"description":"公害防止施設"}
 brid:Bridge_uro:PortPollutionControlFacility,{"description":"公害防止施設"}
 brid:Bridge_uro:bridFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 brid:Bridge_uro:PortPollutionControlFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-brid:Bridge_uro:bridFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-brid:Bridge_uro:PortPollutionControlFacility_uro:facilityDetailType,{"description":"施設種類"}
+brid:Bridge_uro:bridFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+brid:Bridge_uro:PortPollutionControlFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 brid:Bridge_uro:bridFacilityAttribute_uro:portName,{"description":"港湾名"}
 brid:Bridge_uro:PortPollutionControlFacility_uro:portName,{"description":"港湾名"}
 brid:Bridge_uro:bridFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -17903,8 +17903,8 @@ tun:Tunnel_uro:tunFacilityAttribute,{"description":"公害防止施設"}
 tun:Tunnel_uro:PortPollutionControlFacility,{"description":"公害防止施設"}
 tun:Tunnel_uro:tunFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 tun:Tunnel_uro:PortPollutionControlFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-tun:Tunnel_uro:tunFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-tun:Tunnel_uro:PortPollutionControlFacility_uro:facilityDetailType,{"description":"施設種類"}
+tun:Tunnel_uro:tunFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+tun:Tunnel_uro:PortPollutionControlFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 tun:Tunnel_uro:tunFacilityAttribute_uro:portName,{"description":"港湾名"}
 tun:Tunnel_uro:PortPollutionControlFacility_uro:portName,{"description":"港湾名"}
 tun:Tunnel_uro:tunFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -19394,8 +19394,8 @@ uro:OtherConstruction_uro:consFacilityAttribute,{"description":"公害防止施�
 uro:OtherConstruction_uro:PortPollutionControlFacility,{"description":"公害防止施設"}
 uro:OtherConstruction_uro:consFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 uro:OtherConstruction_uro:PortPollutionControlFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-uro:OtherConstruction_uro:consFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-uro:OtherConstruction_uro:PortPollutionControlFacility_uro:facilityDetailType,{"description":"施設種類"}
+uro:OtherConstruction_uro:consFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+uro:OtherConstruction_uro:PortPollutionControlFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 uro:OtherConstruction_uro:consFacilityAttribute_uro:portName,{"description":"港湾名"}
 uro:OtherConstruction_uro:PortPollutionControlFacility_uro:portName,{"description":"港湾名"}
 uro:OtherConstruction_uro:consFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -20689,8 +20689,8 @@ frn:CityFurniture_uro:frnFacilityAttribute,{"description":"公害防止施設"}
 frn:CityFurniture_uro:PortPollutionControlFacility,{"description":"公害防止施設"}
 frn:CityFurniture_uro:frnFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 frn:CityFurniture_uro:PortPollutionControlFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-frn:CityFurniture_uro:frnFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-frn:CityFurniture_uro:PortPollutionControlFacility_uro:facilityDetailType,{"description":"施設種類"}
+frn:CityFurniture_uro:frnFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+frn:CityFurniture_uro:PortPollutionControlFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 frn:CityFurniture_uro:frnFacilityAttribute_uro:portName,{"description":"港湾名"}
 frn:CityFurniture_uro:PortPollutionControlFacility_uro:portName,{"description":"港湾名"}
 frn:CityFurniture_uro:frnFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -21761,8 +21761,8 @@ uro:WaterPipe_uro:frnFacilityAttribute,{"description":"公害防止施設"}
 uro:WaterPipe_uro:PortPollutionControlFacility,{"description":"公害防止施設"}
 uro:WaterPipe_uro:frnFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 uro:WaterPipe_uro:PortPollutionControlFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-uro:WaterPipe_uro:frnFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-uro:WaterPipe_uro:PortPollutionControlFacility_uro:facilityDetailType,{"description":"施設種類"}
+uro:WaterPipe_uro:frnFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+uro:WaterPipe_uro:PortPollutionControlFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 uro:WaterPipe_uro:frnFacilityAttribute_uro:portName,{"description":"港湾名"}
 uro:WaterPipe_uro:PortPollutionControlFacility_uro:portName,{"description":"港湾名"}
 uro:WaterPipe_uro:frnFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -22864,8 +22864,8 @@ uro:SewerPipe_uro:frnFacilityAttribute,{"description":"公害防止施設"}
 uro:SewerPipe_uro:PortPollutionControlFacility,{"description":"公害防止施設"}
 uro:SewerPipe_uro:frnFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 uro:SewerPipe_uro:PortPollutionControlFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-uro:SewerPipe_uro:frnFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-uro:SewerPipe_uro:PortPollutionControlFacility_uro:facilityDetailType,{"description":"施設種類"}
+uro:SewerPipe_uro:frnFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+uro:SewerPipe_uro:PortPollutionControlFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 uro:SewerPipe_uro:frnFacilityAttribute_uro:portName,{"description":"港湾名"}
 uro:SewerPipe_uro:PortPollutionControlFacility_uro:portName,{"description":"港湾名"}
 uro:SewerPipe_uro:frnFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -23969,8 +23969,8 @@ uro:ThermalPipe_uro:frnFacilityAttribute,{"description":"公害防止施設"}
 uro:ThermalPipe_uro:PortPollutionControlFacility,{"description":"公害防止施設"}
 uro:ThermalPipe_uro:frnFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 uro:ThermalPipe_uro:PortPollutionControlFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-uro:ThermalPipe_uro:frnFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-uro:ThermalPipe_uro:PortPollutionControlFacility_uro:facilityDetailType,{"description":"施設種類"}
+uro:ThermalPipe_uro:frnFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+uro:ThermalPipe_uro:PortPollutionControlFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 uro:ThermalPipe_uro:frnFacilityAttribute_uro:portName,{"description":"港湾名"}
 uro:ThermalPipe_uro:PortPollutionControlFacility_uro:portName,{"description":"港湾名"}
 uro:ThermalPipe_uro:frnFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -25072,8 +25072,8 @@ uro:OilGasCemicalPipe_uro:frnFacilityAttribute,{"description":"公害防止施�
 uro:OilGasCemicalPipe_uro:PortPollutionControlFacility,{"description":"公害防止施設"}
 uro:OilGasCemicalPipe_uro:frnFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 uro:OilGasCemicalPipe_uro:PortPollutionControlFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-uro:OilGasCemicalPipe_uro:frnFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-uro:OilGasCemicalPipe_uro:PortPollutionControlFacility_uro:facilityDetailType,{"description":"施設種類"}
+uro:OilGasCemicalPipe_uro:frnFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+uro:OilGasCemicalPipe_uro:PortPollutionControlFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 uro:OilGasCemicalPipe_uro:frnFacilityAttribute_uro:portName,{"description":"港湾名"}
 uro:OilGasCemicalPipe_uro:PortPollutionControlFacility_uro:portName,{"description":"港湾名"}
 uro:OilGasCemicalPipe_uro:frnFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -26175,8 +26175,8 @@ uro:Pipe_uro:frnFacilityAttribute,{"description":"公害防止施設"}
 uro:Pipe_uro:PortPollutionControlFacility,{"description":"公害防止施設"}
 uro:Pipe_uro:frnFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 uro:Pipe_uro:PortPollutionControlFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-uro:Pipe_uro:frnFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-uro:Pipe_uro:PortPollutionControlFacility_uro:facilityDetailType,{"description":"施設種類"}
+uro:Pipe_uro:frnFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+uro:Pipe_uro:PortPollutionControlFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 uro:Pipe_uro:frnFacilityAttribute_uro:portName,{"description":"港湾名"}
 uro:Pipe_uro:PortPollutionControlFacility_uro:portName,{"description":"港湾名"}
 uro:Pipe_uro:frnFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -27278,8 +27278,8 @@ uro:TelecommunicationsCable_uro:frnFacilityAttribute,{"description":"公害防�
 uro:TelecommunicationsCable_uro:PortPollutionControlFacility,{"description":"公害防止施設"}
 uro:TelecommunicationsCable_uro:frnFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 uro:TelecommunicationsCable_uro:PortPollutionControlFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-uro:TelecommunicationsCable_uro:frnFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-uro:TelecommunicationsCable_uro:PortPollutionControlFacility_uro:facilityDetailType,{"description":"施設種類"}
+uro:TelecommunicationsCable_uro:frnFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+uro:TelecommunicationsCable_uro:PortPollutionControlFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 uro:TelecommunicationsCable_uro:frnFacilityAttribute_uro:portName,{"description":"港湾名"}
 uro:TelecommunicationsCable_uro:PortPollutionControlFacility_uro:portName,{"description":"港湾名"}
 uro:TelecommunicationsCable_uro:frnFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -28381,8 +28381,8 @@ uro:ElectricityCable_uro:frnFacilityAttribute,{"description":"公害防止施設
 uro:ElectricityCable_uro:PortPollutionControlFacility,{"description":"公害防止施設"}
 uro:ElectricityCable_uro:frnFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 uro:ElectricityCable_uro:PortPollutionControlFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-uro:ElectricityCable_uro:frnFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-uro:ElectricityCable_uro:PortPollutionControlFacility_uro:facilityDetailType,{"description":"施設種類"}
+uro:ElectricityCable_uro:frnFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+uro:ElectricityCable_uro:PortPollutionControlFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 uro:ElectricityCable_uro:frnFacilityAttribute_uro:portName,{"description":"港湾名"}
 uro:ElectricityCable_uro:PortPollutionControlFacility_uro:portName,{"description":"港湾名"}
 uro:ElectricityCable_uro:frnFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -29484,8 +29484,8 @@ uro:Cable_uro:frnFacilityAttribute,{"description":"公害防止施設"}
 uro:Cable_uro:PortPollutionControlFacility,{"description":"公害防止施設"}
 uro:Cable_uro:frnFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 uro:Cable_uro:PortPollutionControlFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-uro:Cable_uro:frnFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-uro:Cable_uro:PortPollutionControlFacility_uro:facilityDetailType,{"description":"施設種類"}
+uro:Cable_uro:frnFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+uro:Cable_uro:PortPollutionControlFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 uro:Cable_uro:frnFacilityAttribute_uro:portName,{"description":"港湾名"}
 uro:Cable_uro:PortPollutionControlFacility_uro:portName,{"description":"港湾名"}
 uro:Cable_uro:frnFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -30587,8 +30587,8 @@ uro:Duct_uro:frnFacilityAttribute,{"description":"公害防止施設"}
 uro:Duct_uro:PortPollutionControlFacility,{"description":"公害防止施設"}
 uro:Duct_uro:frnFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 uro:Duct_uro:PortPollutionControlFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-uro:Duct_uro:frnFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-uro:Duct_uro:PortPollutionControlFacility_uro:facilityDetailType,{"description":"施設種類"}
+uro:Duct_uro:frnFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+uro:Duct_uro:PortPollutionControlFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 uro:Duct_uro:frnFacilityAttribute_uro:portName,{"description":"港湾名"}
 uro:Duct_uro:PortPollutionControlFacility_uro:portName,{"description":"港湾名"}
 uro:Duct_uro:frnFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -31687,8 +31687,8 @@ uro:Appurtenance_uro:frnFacilityAttribute,{"description":"公害防止施設"}
 uro:Appurtenance_uro:PortPollutionControlFacility,{"description":"公害防止施設"}
 uro:Appurtenance_uro:frnFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 uro:Appurtenance_uro:PortPollutionControlFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-uro:Appurtenance_uro:frnFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-uro:Appurtenance_uro:PortPollutionControlFacility_uro:facilityDetailType,{"description":"施設種類"}
+uro:Appurtenance_uro:frnFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+uro:Appurtenance_uro:PortPollutionControlFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 uro:Appurtenance_uro:frnFacilityAttribute_uro:portName,{"description":"港湾名"}
 uro:Appurtenance_uro:PortPollutionControlFacility_uro:portName,{"description":"港湾名"}
 uro:Appurtenance_uro:frnFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -32777,8 +32777,8 @@ uro:Manhole_uro:frnFacilityAttribute,{"description":"公害防止施設"}
 uro:Manhole_uro:PortPollutionControlFacility,{"description":"公害防止施設"}
 uro:Manhole_uro:frnFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 uro:Manhole_uro:PortPollutionControlFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-uro:Manhole_uro:frnFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-uro:Manhole_uro:PortPollutionControlFacility_uro:facilityDetailType,{"description":"施設種類"}
+uro:Manhole_uro:frnFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+uro:Manhole_uro:PortPollutionControlFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 uro:Manhole_uro:frnFacilityAttribute_uro:portName,{"description":"港湾名"}
 uro:Manhole_uro:PortPollutionControlFacility_uro:portName,{"description":"港湾名"}
 uro:Manhole_uro:frnFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -33872,8 +33872,8 @@ uro:Handhole_uro:frnFacilityAttribute,{"description":"公害防止施設"}
 uro:Handhole_uro:PortPollutionControlFacility,{"description":"公害防止施設"}
 uro:Handhole_uro:frnFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 uro:Handhole_uro:PortPollutionControlFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-uro:Handhole_uro:frnFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-uro:Handhole_uro:PortPollutionControlFacility_uro:facilityDetailType,{"description":"施設種類"}
+uro:Handhole_uro:frnFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+uro:Handhole_uro:PortPollutionControlFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 uro:Handhole_uro:frnFacilityAttribute_uro:portName,{"description":"港湾名"}
 uro:Handhole_uro:PortPollutionControlFacility_uro:portName,{"description":"港湾名"}
 uro:Handhole_uro:frnFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -35347,8 +35347,8 @@ uro:UndergroundBuilding_uro:bldgFacilityAttribute,{"description":"公害防止�
 uro:UndergroundBuilding_uro:PortPollutionControlFacility,{"description":"公害防止施設"}
 uro:UndergroundBuilding_uro:bldgFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 uro:UndergroundBuilding_uro:PortPollutionControlFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-uro:UndergroundBuilding_uro:bldgFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-uro:UndergroundBuilding_uro:PortPollutionControlFacility_uro:facilityDetailType,{"description":"施設種類"}
+uro:UndergroundBuilding_uro:bldgFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+uro:UndergroundBuilding_uro:PortPollutionControlFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 uro:UndergroundBuilding_uro:bldgFacilityAttribute_uro:portName,{"description":"港湾名"}
 uro:UndergroundBuilding_uro:PortPollutionControlFacility_uro:portName,{"description":"港湾名"}
 uro:UndergroundBuilding_uro:bldgFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -36376,8 +36376,8 @@ veg:SolitaryVegetationObject_uro:vegFacilityAttribute,{"description":"公害防�
 veg:SolitaryVegetationObject_uro:PortPollutionControlFacility,{"description":"公害防止施設"}
 veg:SolitaryVegetationObject_uro:vegFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 veg:SolitaryVegetationObject_uro:PortPollutionControlFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-veg:SolitaryVegetationObject_uro:vegFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-veg:SolitaryVegetationObject_uro:PortPollutionControlFacility_uro:facilityDetailType,{"description":"施設種類"}
+veg:SolitaryVegetationObject_uro:vegFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+veg:SolitaryVegetationObject_uro:PortPollutionControlFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 veg:SolitaryVegetationObject_uro:vegFacilityAttribute_uro:portName,{"description":"港湾名"}
 veg:SolitaryVegetationObject_uro:PortPollutionControlFacility_uro:portName,{"description":"港湾名"}
 veg:SolitaryVegetationObject_uro:vegFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -37443,8 +37443,8 @@ veg:PlantCover_uro:vegFacilityAttribute,{"description":"公害防止施設"}
 veg:PlantCover_uro:PortPollutionControlFacility,{"description":"公害防止施設"}
 veg:PlantCover_uro:vegFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 veg:PlantCover_uro:PortPollutionControlFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-veg:PlantCover_uro:vegFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-veg:PlantCover_uro:PortPollutionControlFacility_uro:facilityDetailType,{"description":"施設種類"}
+veg:PlantCover_uro:vegFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+veg:PlantCover_uro:PortPollutionControlFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 veg:PlantCover_uro:vegFacilityAttribute_uro:portName,{"description":"港湾名"}
 veg:PlantCover_uro:PortPollutionControlFacility_uro:portName,{"description":"港湾名"}
 veg:PlantCover_uro:vegFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -38532,8 +38532,8 @@ wtr:WaterBody_uro:wtrFacilityAttribute,{"description":"公害防止施設"}
 wtr:WaterBody_uro:PortPollutionControlFacility,{"description":"公害防止施設"}
 wtr:WaterBody_uro:wtrFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 wtr:WaterBody_uro:PortPollutionControlFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-wtr:WaterBody_uro:wtrFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-wtr:WaterBody_uro:PortPollutionControlFacility_uro:facilityDetailType,{"description":"施設種類"}
+wtr:WaterBody_uro:wtrFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+wtr:WaterBody_uro:PortPollutionControlFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 wtr:WaterBody_uro:wtrFacilityAttribute_uro:portName,{"description":"港湾名"}
 wtr:WaterBody_uro:PortPollutionControlFacility_uro:portName,{"description":"港湾名"}
 wtr:WaterBody_uro:wtrFacilityAttribute_uro:portStatus,{"description":"港格"}

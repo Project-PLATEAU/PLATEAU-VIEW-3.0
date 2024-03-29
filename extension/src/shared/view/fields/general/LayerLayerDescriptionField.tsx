@@ -16,8 +16,16 @@ export const LayerLayerDescriptionField: FC<LayerLayerDescriptionFieldProps> = (
   return component.preset?.description ? (
     <ParameterList>
       <CommonContentWrapper>
-        <Markdown skipHtml>{component.preset?.description}</Markdown>
+        <Markdown skipHtml components={{ a: LinkRenderer }}>{component.preset?.description}</Markdown>
       </CommonContentWrapper>
     </ParameterList>
   ) : null;
 };
+
+function LinkRenderer(props: any) {
+  return (
+    <a href={props.href} target="_blank" rel="noreferrer">
+      {props.children}
+    </a>
+  );
+}

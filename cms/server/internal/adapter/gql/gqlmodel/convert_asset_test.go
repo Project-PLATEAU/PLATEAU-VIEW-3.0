@@ -202,14 +202,14 @@ func TestConvertAsset_ToStatus(t *testing.T) {
 
 func TestConvertAsset_ToAssetFile(t *testing.T) {
 	c := []*asset.File{}
-	f1 := asset.NewFile().Name("aaa.jpg").Size(1000).ContentType("image/jpg").Path("/").Children(c).Build()
+	f1 := asset.NewFile().Name("aaa.jpg").Size(1000).ContentType("image/jpg").Path("/").Files(c).Build()
 
 	want1 := AssetFile{
 		Name:        "aaa.jpg",
 		Size:        int64(1000),
 		ContentType: lo.ToPtr("image/jpg"),
 		Path:        "/",
-		Children:    lo.Map(c, func(a *asset.File, _ int) *AssetFile { return ToAssetFile(a) }),
+		FilePaths:   f1.FilePaths(),
 	}
 
 	var f2 *asset.File = nil

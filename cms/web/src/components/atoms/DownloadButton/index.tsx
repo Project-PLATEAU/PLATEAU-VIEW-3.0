@@ -15,7 +15,7 @@ export type PreviewType =
   | "UNKNOWN";
 
 export type AssetFile = {
-  children?: AssetFile[];
+  filePaths?: string[];
   contentType?: string;
   name: string;
   path: string;
