@@ -1,10 +1,12 @@
 # PLATEAU VIEW 3.0
-
+![thumbnail](./docs/thumbnail.png)
 PLATEAU VIEW 3.0 は以下のシステムにより構成されます。
 
 - **PLATEAU CMS**: ビューワーに掲載する各種データの管理・配信を行う。
 - **PLATEAU Editor**: ビューワーの作成・公開をノーコードで行う。
 - **PLATEAU VIEW**: PLATEAUをはじめとする様々なデータセットの可視化が可能なWebアプリケーション。
+
+システムの詳細な仕様は、[PLATEAU VIEW構築マニュアル](https://www.mlit.go.jp/plateau/file/libraries/doc/plateau_doc_0009_ver04.pdf)を参照してください。
 
 ## フォルダ構成
 

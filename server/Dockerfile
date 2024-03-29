@@ -16,7 +16,7 @@ RUN apt-get update && apt-get install -y ca-certificates && apt-get clean && rm 
 
 COPY --from=build /app/server /app/reearth-plateauview
 COPY govpolygon/govpolygondata/ /app/govpolygondata/
-COPY PlateauView3.js* /app/
+COPY PlateauView3.js* reearth.yml* /app/
 
 WORKDIR /app
 

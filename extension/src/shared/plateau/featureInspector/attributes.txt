@@ -844,8 +844,8 @@ bldg:Building_uro:bldgFacilityAttribute,{"description":"航行補助施設"}
 bldg:Building_uro:NavigationAssistanceFacility,{"description":"航行補助施設"}
 bldg:Building_uro:bldgFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 bldg:Building_uro:NavigationAssistanceFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-bldg:Building_uro:bldgFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-bldg:Building_uro:NavigationAssistanceFacility_uro:facilityDetailType,{"description":"施設種類"}
+bldg:Building_uro:bldgFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+bldg:Building_uro:NavigationAssistanceFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 bldg:Building_uro:bldgFacilityAttribute_uro:portName,{"description":"港湾名"}
 bldg:Building_uro:NavigationAssistanceFacility_uro:portName,{"description":"港湾名"}
 bldg:Building_uro:bldgFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -912,8 +912,8 @@ bldg:Building_uro:bldgFacilityAttribute,{"description":"旅客施設"}
 bldg:Building_uro:PortPassengerFacility,{"description":"旅客施設"}
 bldg:Building_uro:bldgFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 bldg:Building_uro:PortPassengerFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-bldg:Building_uro:bldgFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-bldg:Building_uro:PortPassengerFacility_uro:facilityDetailType,{"description":"施設種類"}
+bldg:Building_uro:bldgFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+bldg:Building_uro:PortPassengerFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 bldg:Building_uro:bldgFacilityAttribute_uro:portName,{"description":"港湾名"}
 bldg:Building_uro:PortPassengerFacility_uro:portName,{"description":"港湾名"}
 bldg:Building_uro:bldgFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -982,8 +982,8 @@ bldg:Building_uro:bldgFacilityAttribute,{"description":"船舶役務用施設"}
 bldg:Building_uro:ShipServiceFacility,{"description":"船舶役務用施設"}
 bldg:Building_uro:bldgFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 bldg:Building_uro:ShipServiceFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-bldg:Building_uro:bldgFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-bldg:Building_uro:ShipServiceFacility_uro:facilityDetailType,{"description":"施設種類"}
+bldg:Building_uro:bldgFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+bldg:Building_uro:ShipServiceFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 bldg:Building_uro:bldgFacilityAttribute_uro:portName,{"description":"港湾名"}
 bldg:Building_uro:ShipServiceFacility_uro:portName,{"description":"港湾名"}
 bldg:Building_uro:bldgFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -1074,8 +1074,8 @@ bldg:Building_uro:bldgFacilityAttribute,{"description":"環境整備施設"}
 bldg:Building_uro:PortEnvironmentalImprovementFacility,{"description":"環境整備施設"}
 bldg:Building_uro:bldgFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 bldg:Building_uro:PortEnvironmentalImprovementFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-bldg:Building_uro:bldgFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-bldg:Building_uro:PortEnvironmentalImprovementFacility_uro:facilityDetailType,{"description":"施設種類"}
+bldg:Building_uro:bldgFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+bldg:Building_uro:PortEnvironmentalImprovementFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 bldg:Building_uro:bldgFacilityAttribute_uro:portName,{"description":"港湾名"}
 bldg:Building_uro:PortEnvironmentalImprovementFacility_uro:portName,{"description":"港湾名"}
 bldg:Building_uro:bldgFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -3238,8 +3238,8 @@ luse:LandUse_uro:luseFacilityAttribute,{"description":"航行補助施設"}
 luse:LandUse_uro:NavigationAssistanceFacility,{"description":"航行補助施設"}
 luse:LandUse_uro:luseFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 luse:LandUse_uro:NavigationAssistanceFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-luse:LandUse_uro:luseFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-luse:LandUse_uro:NavigationAssistanceFacility_uro:facilityDetailType,{"description":"施設種類"}
+luse:LandUse_uro:luseFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+luse:LandUse_uro:NavigationAssistanceFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 luse:LandUse_uro:luseFacilityAttribute_uro:portName,{"description":"港湾名"}
 luse:LandUse_uro:NavigationAssistanceFacility_uro:portName,{"description":"港湾名"}
 luse:LandUse_uro:luseFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -3306,8 +3306,8 @@ luse:LandUse_uro:luseFacilityAttribute,{"description":"旅客施設"}
 luse:LandUse_uro:PortPassengerFacility,{"description":"旅客施設"}
 luse:LandUse_uro:luseFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 luse:LandUse_uro:PortPassengerFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-luse:LandUse_uro:luseFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-luse:LandUse_uro:PortPassengerFacility_uro:facilityDetailType,{"description":"施設種類"}
+luse:LandUse_uro:luseFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+luse:LandUse_uro:PortPassengerFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 luse:LandUse_uro:luseFacilityAttribute_uro:portName,{"description":"港湾名"}
 luse:LandUse_uro:PortPassengerFacility_uro:portName,{"description":"港湾名"}
 luse:LandUse_uro:luseFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -3376,8 +3376,8 @@ luse:LandUse_uro:luseFacilityAttribute,{"description":"船舶役務用施設"}
 luse:LandUse_uro:ShipServiceFacility,{"description":"船舶役務用施設"}
 luse:LandUse_uro:luseFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 luse:LandUse_uro:ShipServiceFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-luse:LandUse_uro:luseFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-luse:LandUse_uro:ShipServiceFacility_uro:facilityDetailType,{"description":"施設種類"}
+luse:LandUse_uro:luseFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+luse:LandUse_uro:ShipServiceFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 luse:LandUse_uro:luseFacilityAttribute_uro:portName,{"description":"港湾名"}
 luse:LandUse_uro:ShipServiceFacility_uro:portName,{"description":"港湾名"}
 luse:LandUse_uro:luseFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -3468,8 +3468,8 @@ luse:LandUse_uro:luseFacilityAttribute,{"description":"環境整備施設"}
 luse:LandUse_uro:PortEnvironmentalImprovementFacility,{"description":"環境整備施設"}
 luse:LandUse_uro:luseFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 luse:LandUse_uro:PortEnvironmentalImprovementFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-luse:LandUse_uro:luseFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-luse:LandUse_uro:PortEnvironmentalImprovementFacility_uro:facilityDetailType,{"description":"施設種類"}
+luse:LandUse_uro:luseFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+luse:LandUse_uro:PortEnvironmentalImprovementFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 luse:LandUse_uro:luseFacilityAttribute_uro:portName,{"description":"港湾名"}
 luse:LandUse_uro:PortEnvironmentalImprovementFacility_uro:portName,{"description":"港湾名"}
 luse:LandUse_uro:luseFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -4294,8 +4294,8 @@ tran:Road_uro:tranFacilityAttribute,{"description":"航行補助施設"}
 tran:Road_uro:NavigationAssistanceFacility,{"description":"航行補助施設"}
 tran:Road_uro:tranFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 tran:Road_uro:NavigationAssistanceFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-tran:Road_uro:tranFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-tran:Road_uro:NavigationAssistanceFacility_uro:facilityDetailType,{"description":"施設種類"}
+tran:Road_uro:tranFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+tran:Road_uro:NavigationAssistanceFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 tran:Road_uro:tranFacilityAttribute_uro:portName,{"description":"港湾名"}
 tran:Road_uro:NavigationAssistanceFacility_uro:portName,{"description":"港湾名"}
 tran:Road_uro:tranFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -4362,8 +4362,8 @@ tran:Road_uro:tranFacilityAttribute,{"description":"旅客施設"}
 tran:Road_uro:PortPassengerFacility,{"description":"旅客施設"}
 tran:Road_uro:tranFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 tran:Road_uro:PortPassengerFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-tran:Road_uro:tranFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-tran:Road_uro:PortPassengerFacility_uro:facilityDetailType,{"description":"施設種類"}
+tran:Road_uro:tranFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+tran:Road_uro:PortPassengerFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 tran:Road_uro:tranFacilityAttribute_uro:portName,{"description":"港湾名"}
 tran:Road_uro:PortPassengerFacility_uro:portName,{"description":"港湾名"}
 tran:Road_uro:tranFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -4432,8 +4432,8 @@ tran:Road_uro:tranFacilityAttribute,{"description":"船舶役務用施設"}
 tran:Road_uro:ShipServiceFacility,{"description":"船舶役務用施設"}
 tran:Road_uro:tranFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 tran:Road_uro:ShipServiceFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-tran:Road_uro:tranFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-tran:Road_uro:ShipServiceFacility_uro:facilityDetailType,{"description":"施設種類"}
+tran:Road_uro:tranFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+tran:Road_uro:ShipServiceFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 tran:Road_uro:tranFacilityAttribute_uro:portName,{"description":"港湾名"}
 tran:Road_uro:ShipServiceFacility_uro:portName,{"description":"港湾名"}
 tran:Road_uro:tranFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -4524,8 +4524,8 @@ tran:Road_uro:tranFacilityAttribute,{"description":"環境整備施設"}
 tran:Road_uro:PortEnvironmentalImprovementFacility,{"description":"環境整備施設"}
 tran:Road_uro:tranFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 tran:Road_uro:PortEnvironmentalImprovementFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-tran:Road_uro:tranFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-tran:Road_uro:PortEnvironmentalImprovementFacility_uro:facilityDetailType,{"description":"施設種類"}
+tran:Road_uro:tranFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+tran:Road_uro:PortEnvironmentalImprovementFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 tran:Road_uro:tranFacilityAttribute_uro:portName,{"description":"港湾名"}
 tran:Road_uro:PortEnvironmentalImprovementFacility_uro:portName,{"description":"港湾名"}
 tran:Road_uro:tranFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -5570,8 +5570,8 @@ tran:Railway_uro:tranFacilityAttribute,{"description":"航行補助施設"}
 tran:Railway_uro:NavigationAssistanceFacility,{"description":"航行補助施設"}
 tran:Railway_uro:tranFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 tran:Railway_uro:NavigationAssistanceFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-tran:Railway_uro:tranFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-tran:Railway_uro:NavigationAssistanceFacility_uro:facilityDetailType,{"description":"施設種類"}
+tran:Railway_uro:tranFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+tran:Railway_uro:NavigationAssistanceFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 tran:Railway_uro:tranFacilityAttribute_uro:portName,{"description":"港湾名"}
 tran:Railway_uro:NavigationAssistanceFacility_uro:portName,{"description":"港湾名"}
 tran:Railway_uro:tranFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -5638,8 +5638,8 @@ tran:Railway_uro:tranFacilityAttribute,{"description":"旅客施設"}
 tran:Railway_uro:PortPassengerFacility,{"description":"旅客施設"}
 tran:Railway_uro:tranFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 tran:Railway_uro:PortPassengerFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-tran:Railway_uro:tranFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-tran:Railway_uro:PortPassengerFacility_uro:facilityDetailType,{"description":"施設種類"}
+tran:Railway_uro:tranFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+tran:Railway_uro:PortPassengerFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 tran:Railway_uro:tranFacilityAttribute_uro:portName,{"description":"港湾名"}
 tran:Railway_uro:PortPassengerFacility_uro:portName,{"description":"港湾名"}
 tran:Railway_uro:tranFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -5708,8 +5708,8 @@ tran:Railway_uro:tranFacilityAttribute,{"description":"船舶役務用施設"}
 tran:Railway_uro:ShipServiceFacility,{"description":"船舶役務用施設"}
 tran:Railway_uro:tranFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 tran:Railway_uro:ShipServiceFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-tran:Railway_uro:tranFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-tran:Railway_uro:ShipServiceFacility_uro:facilityDetailType,{"description":"施設種類"}
+tran:Railway_uro:tranFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+tran:Railway_uro:ShipServiceFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 tran:Railway_uro:tranFacilityAttribute_uro:portName,{"description":"港湾名"}
 tran:Railway_uro:ShipServiceFacility_uro:portName,{"description":"港湾名"}
 tran:Railway_uro:tranFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -5800,8 +5800,8 @@ tran:Railway_uro:tranFacilityAttribute,{"description":"環境整備施設"}
 tran:Railway_uro:PortEnvironmentalImprovementFacility,{"description":"環境整備施設"}
 tran:Railway_uro:tranFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 tran:Railway_uro:PortEnvironmentalImprovementFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-tran:Railway_uro:tranFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-tran:Railway_uro:PortEnvironmentalImprovementFacility_uro:facilityDetailType,{"description":"施設種類"}
+tran:Railway_uro:tranFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+tran:Railway_uro:PortEnvironmentalImprovementFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 tran:Railway_uro:tranFacilityAttribute_uro:portName,{"description":"港湾名"}
 tran:Railway_uro:PortEnvironmentalImprovementFacility_uro:portName,{"description":"港湾名"}
 tran:Railway_uro:tranFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -6860,8 +6860,8 @@ tran:Track_uro:tranFacilityAttribute,{"description":"航行補助施設"}
 tran:Track_uro:NavigationAssistanceFacility,{"description":"航行補助施設"}
 tran:Track_uro:tranFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 tran:Track_uro:NavigationAssistanceFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-tran:Track_uro:tranFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-tran:Track_uro:NavigationAssistanceFacility_uro:facilityDetailType,{"description":"施設種類"}
+tran:Track_uro:tranFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+tran:Track_uro:NavigationAssistanceFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 tran:Track_uro:tranFacilityAttribute_uro:portName,{"description":"港湾名"}
 tran:Track_uro:NavigationAssistanceFacility_uro:portName,{"description":"港湾名"}
 tran:Track_uro:tranFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -6928,8 +6928,8 @@ tran:Track_uro:tranFacilityAttribute,{"description":"旅客施設"}
 tran:Track_uro:PortPassengerFacility,{"description":"旅客施設"}
 tran:Track_uro:tranFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 tran:Track_uro:PortPassengerFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-tran:Track_uro:tranFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-tran:Track_uro:PortPassengerFacility_uro:facilityDetailType,{"description":"施設種類"}
+tran:Track_uro:tranFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+tran:Track_uro:PortPassengerFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 tran:Track_uro:tranFacilityAttribute_uro:portName,{"description":"港湾名"}
 tran:Track_uro:PortPassengerFacility_uro:portName,{"description":"港湾名"}
 tran:Track_uro:tranFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -6998,8 +6998,8 @@ tran:Track_uro:tranFacilityAttribute,{"description":"船舶役務用施設"}
 tran:Track_uro:ShipServiceFacility,{"description":"船舶役務用施設"}
 tran:Track_uro:tranFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 tran:Track_uro:ShipServiceFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-tran:Track_uro:tranFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-tran:Track_uro:ShipServiceFacility_uro:facilityDetailType,{"description":"施設種類"}
+tran:Track_uro:tranFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+tran:Track_uro:ShipServiceFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 tran:Track_uro:tranFacilityAttribute_uro:portName,{"description":"港湾名"}
 tran:Track_uro:ShipServiceFacility_uro:portName,{"description":"港湾名"}
 tran:Track_uro:tranFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -7090,8 +7090,8 @@ tran:Track_uro:tranFacilityAttribute,{"description":"環境整備施設"}
 tran:Track_uro:PortEnvironmentalImprovementFacility,{"description":"環境整備施設"}
 tran:Track_uro:tranFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 tran:Track_uro:PortEnvironmentalImprovementFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-tran:Track_uro:tranFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-tran:Track_uro:PortEnvironmentalImprovementFacility_uro:facilityDetailType,{"description":"施設種類"}
+tran:Track_uro:tranFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+tran:Track_uro:PortEnvironmentalImprovementFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 tran:Track_uro:tranFacilityAttribute_uro:portName,{"description":"港湾名"}
 tran:Track_uro:PortEnvironmentalImprovementFacility_uro:portName,{"description":"港湾名"}
 tran:Track_uro:tranFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -8112,8 +8112,8 @@ tran:Square_uro:tranFacilityAttribute,{"description":"航行補助施設"}
 tran:Square_uro:NavigationAssistanceFacility,{"description":"航行補助施設"}
 tran:Square_uro:tranFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 tran:Square_uro:NavigationAssistanceFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-tran:Square_uro:tranFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-tran:Square_uro:NavigationAssistanceFacility_uro:facilityDetailType,{"description":"施設種類"}
+tran:Square_uro:tranFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+tran:Square_uro:NavigationAssistanceFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 tran:Square_uro:tranFacilityAttribute_uro:portName,{"description":"港湾名"}
 tran:Square_uro:NavigationAssistanceFacility_uro:portName,{"description":"港湾名"}
 tran:Square_uro:tranFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -8180,8 +8180,8 @@ tran:Square_uro:tranFacilityAttribute,{"description":"旅客施設"}
 tran:Square_uro:PortPassengerFacility,{"description":"旅客施設"}
 tran:Square_uro:tranFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 tran:Square_uro:PortPassengerFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-tran:Square_uro:tranFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-tran:Square_uro:PortPassengerFacility_uro:facilityDetailType,{"description":"施設種類"}
+tran:Square_uro:tranFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+tran:Square_uro:PortPassengerFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 tran:Square_uro:tranFacilityAttribute_uro:portName,{"description":"港湾名"}
 tran:Square_uro:PortPassengerFacility_uro:portName,{"description":"港湾名"}
 tran:Square_uro:tranFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -8250,8 +8250,8 @@ tran:Square_uro:tranFacilityAttribute,{"description":"船舶役務用施設"}
 tran:Square_uro:ShipServiceFacility,{"description":"船舶役務用施設"}
 tran:Square_uro:tranFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 tran:Square_uro:ShipServiceFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-tran:Square_uro:tranFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-tran:Square_uro:ShipServiceFacility_uro:facilityDetailType,{"description":"施設種類"}
+tran:Square_uro:tranFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+tran:Square_uro:ShipServiceFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 tran:Square_uro:tranFacilityAttribute_uro:portName,{"description":"港湾名"}
 tran:Square_uro:ShipServiceFacility_uro:portName,{"description":"港湾名"}
 tran:Square_uro:tranFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -8342,8 +8342,8 @@ tran:Square_uro:tranFacilityAttribute,{"description":"環境整備施設"}
 tran:Square_uro:PortEnvironmentalImprovementFacility,{"description":"環境整備施設"}
 tran:Square_uro:tranFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 tran:Square_uro:PortEnvironmentalImprovementFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-tran:Square_uro:tranFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-tran:Square_uro:PortEnvironmentalImprovementFacility_uro:facilityDetailType,{"description":"施設種類"}
+tran:Square_uro:tranFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+tran:Square_uro:PortEnvironmentalImprovementFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 tran:Square_uro:tranFacilityAttribute_uro:portName,{"description":"港湾名"}
 tran:Square_uro:PortEnvironmentalImprovementFacility_uro:portName,{"description":"港湾名"}
 tran:Square_uro:tranFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -9419,8 +9419,8 @@ uro:Waterway_uro:tranFacilityAttribute,{"description":"航行補助施設"}
 uro:Waterway_uro:NavigationAssistanceFacility,{"description":"航行補助施設"}
 uro:Waterway_uro:tranFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 uro:Waterway_uro:NavigationAssistanceFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-uro:Waterway_uro:tranFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-uro:Waterway_uro:NavigationAssistanceFacility_uro:facilityDetailType,{"description":"施設種類"}
+uro:Waterway_uro:tranFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+uro:Waterway_uro:NavigationAssistanceFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 uro:Waterway_uro:tranFacilityAttribute_uro:portName,{"description":"港湾名"}
 uro:Waterway_uro:NavigationAssistanceFacility_uro:portName,{"description":"港湾名"}
 uro:Waterway_uro:tranFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -9487,8 +9487,8 @@ uro:Waterway_uro:tranFacilityAttribute,{"description":"旅客施設"}
 uro:Waterway_uro:PortPassengerFacility,{"description":"旅客施設"}
 uro:Waterway_uro:tranFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 uro:Waterway_uro:PortPassengerFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-uro:Waterway_uro:tranFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-uro:Waterway_uro:PortPassengerFacility_uro:facilityDetailType,{"description":"施設種類"}
+uro:Waterway_uro:tranFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+uro:Waterway_uro:PortPassengerFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 uro:Waterway_uro:tranFacilityAttribute_uro:portName,{"description":"港湾名"}
 uro:Waterway_uro:PortPassengerFacility_uro:portName,{"description":"港湾名"}
 uro:Waterway_uro:tranFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -9557,8 +9557,8 @@ uro:Waterway_uro:tranFacilityAttribute,{"description":"船舶役務用施設"}
 uro:Waterway_uro:ShipServiceFacility,{"description":"船舶役務用施設"}
 uro:Waterway_uro:tranFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 uro:Waterway_uro:ShipServiceFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-uro:Waterway_uro:tranFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-uro:Waterway_uro:ShipServiceFacility_uro:facilityDetailType,{"description":"施設種類"}
+uro:Waterway_uro:tranFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+uro:Waterway_uro:ShipServiceFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 uro:Waterway_uro:tranFacilityAttribute_uro:portName,{"description":"港湾名"}
 uro:Waterway_uro:ShipServiceFacility_uro:portName,{"description":"港湾名"}
 uro:Waterway_uro:tranFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -9649,8 +9649,8 @@ uro:Waterway_uro:tranFacilityAttribute,{"description":"環境整備施設"}
 uro:Waterway_uro:PortEnvironmentalImprovementFacility,{"description":"環境整備施設"}
 uro:Waterway_uro:tranFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 uro:Waterway_uro:PortEnvironmentalImprovementFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-uro:Waterway_uro:tranFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-uro:Waterway_uro:PortEnvironmentalImprovementFacility_uro:facilityDetailType,{"description":"施設種類"}
+uro:Waterway_uro:tranFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+uro:Waterway_uro:PortEnvironmentalImprovementFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 uro:Waterway_uro:tranFacilityAttribute_uro:portName,{"description":"港湾名"}
 uro:Waterway_uro:PortEnvironmentalImprovementFacility_uro:portName,{"description":"港湾名"}
 uro:Waterway_uro:tranFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -16004,8 +16004,8 @@ brid:Bridge_uro:bridFacilityAttribute,{"description":"航行補助施設"}
 brid:Bridge_uro:NavigationAssistanceFacility,{"description":"航行補助施設"}
 brid:Bridge_uro:bridFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 brid:Bridge_uro:NavigationAssistanceFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-brid:Bridge_uro:bridFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-brid:Bridge_uro:NavigationAssistanceFacility_uro:facilityDetailType,{"description":"施設種類"}
+brid:Bridge_uro:bridFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+brid:Bridge_uro:NavigationAssistanceFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 brid:Bridge_uro:bridFacilityAttribute_uro:portName,{"description":"港湾名"}
 brid:Bridge_uro:NavigationAssistanceFacility_uro:portName,{"description":"港湾名"}
 brid:Bridge_uro:bridFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -16072,8 +16072,8 @@ brid:Bridge_uro:bridFacilityAttribute,{"description":"旅客施設"}
 brid:Bridge_uro:PortPassengerFacility,{"description":"旅客施設"}
 brid:Bridge_uro:bridFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 brid:Bridge_uro:PortPassengerFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-brid:Bridge_uro:bridFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-brid:Bridge_uro:PortPassengerFacility_uro:facilityDetailType,{"description":"施設種類"}
+brid:Bridge_uro:bridFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+brid:Bridge_uro:PortPassengerFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 brid:Bridge_uro:bridFacilityAttribute_uro:portName,{"description":"港湾名"}
 brid:Bridge_uro:PortPassengerFacility_uro:portName,{"description":"港湾名"}
 brid:Bridge_uro:bridFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -16142,8 +16142,8 @@ brid:Bridge_uro:bridFacilityAttribute,{"description":"船舶役務用施設"}
 brid:Bridge_uro:ShipServiceFacility,{"description":"船舶役務用施設"}
 brid:Bridge_uro:bridFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 brid:Bridge_uro:ShipServiceFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-brid:Bridge_uro:bridFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-brid:Bridge_uro:ShipServiceFacility_uro:facilityDetailType,{"description":"施設種類"}
+brid:Bridge_uro:bridFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+brid:Bridge_uro:ShipServiceFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 brid:Bridge_uro:bridFacilityAttribute_uro:portName,{"description":"港湾名"}
 brid:Bridge_uro:ShipServiceFacility_uro:portName,{"description":"港湾名"}
 brid:Bridge_uro:bridFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -16234,8 +16234,8 @@ brid:Bridge_uro:bridFacilityAttribute,{"description":"環境整備施設"}
 brid:Bridge_uro:PortEnvironmentalImprovementFacility,{"description":"環境整備施設"}
 brid:Bridge_uro:bridFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 brid:Bridge_uro:PortEnvironmentalImprovementFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-brid:Bridge_uro:bridFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-brid:Bridge_uro:PortEnvironmentalImprovementFacility_uro:facilityDetailType,{"description":"施設種類"}
+brid:Bridge_uro:bridFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+brid:Bridge_uro:PortEnvironmentalImprovementFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 brid:Bridge_uro:bridFacilityAttribute_uro:portName,{"description":"港湾名"}
 brid:Bridge_uro:PortEnvironmentalImprovementFacility_uro:portName,{"description":"港湾名"}
 brid:Bridge_uro:bridFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -17641,8 +17641,8 @@ tun:Tunnel_uro:tunFacilityAttribute,{"description":"航行補助施設"}
 tun:Tunnel_uro:NavigationAssistanceFacility,{"description":"航行補助施設"}
 tun:Tunnel_uro:tunFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 tun:Tunnel_uro:NavigationAssistanceFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-tun:Tunnel_uro:tunFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-tun:Tunnel_uro:NavigationAssistanceFacility_uro:facilityDetailType,{"description":"施設種類"}
+tun:Tunnel_uro:tunFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+tun:Tunnel_uro:NavigationAssistanceFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 tun:Tunnel_uro:tunFacilityAttribute_uro:portName,{"description":"港湾名"}
 tun:Tunnel_uro:NavigationAssistanceFacility_uro:portName,{"description":"港湾名"}
 tun:Tunnel_uro:tunFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -17709,8 +17709,8 @@ tun:Tunnel_uro:tunFacilityAttribute,{"description":"旅客施設"}
 tun:Tunnel_uro:PortPassengerFacility,{"description":"旅客施設"}
 tun:Tunnel_uro:tunFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 tun:Tunnel_uro:PortPassengerFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-tun:Tunnel_uro:tunFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-tun:Tunnel_uro:PortPassengerFacility_uro:facilityDetailType,{"description":"施設種類"}
+tun:Tunnel_uro:tunFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+tun:Tunnel_uro:PortPassengerFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 tun:Tunnel_uro:tunFacilityAttribute_uro:portName,{"description":"港湾名"}
 tun:Tunnel_uro:PortPassengerFacility_uro:portName,{"description":"港湾名"}
 tun:Tunnel_uro:tunFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -17779,8 +17779,8 @@ tun:Tunnel_uro:tunFacilityAttribute,{"description":"船舶役務用施設"}
 tun:Tunnel_uro:ShipServiceFacility,{"description":"船舶役務用施設"}
 tun:Tunnel_uro:tunFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 tun:Tunnel_uro:ShipServiceFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-tun:Tunnel_uro:tunFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-tun:Tunnel_uro:ShipServiceFacility_uro:facilityDetailType,{"description":"施設種類"}
+tun:Tunnel_uro:tunFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+tun:Tunnel_uro:ShipServiceFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 tun:Tunnel_uro:tunFacilityAttribute_uro:portName,{"description":"港湾名"}
 tun:Tunnel_uro:ShipServiceFacility_uro:portName,{"description":"港湾名"}
 tun:Tunnel_uro:tunFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -17871,8 +17871,8 @@ tun:Tunnel_uro:tunFacilityAttribute,{"description":"環境整備施設"}
 tun:Tunnel_uro:PortEnvironmentalImprovementFacility,{"description":"環境整備施設"}
 tun:Tunnel_uro:tunFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 tun:Tunnel_uro:PortEnvironmentalImprovementFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-tun:Tunnel_uro:tunFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-tun:Tunnel_uro:PortEnvironmentalImprovementFacility_uro:facilityDetailType,{"description":"施設種類"}
+tun:Tunnel_uro:tunFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+tun:Tunnel_uro:PortEnvironmentalImprovementFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 tun:Tunnel_uro:tunFacilityAttribute_uro:portName,{"description":"港湾名"}
 tun:Tunnel_uro:PortEnvironmentalImprovementFacility_uro:portName,{"description":"港湾名"}
 tun:Tunnel_uro:tunFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -19132,8 +19132,8 @@ uro:OtherConstruction_uro:consFacilityAttribute,{"description":"航行補助施�
 uro:OtherConstruction_uro:NavigationAssistanceFacility,{"description":"航行補助施設"}
 uro:OtherConstruction_uro:consFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 uro:OtherConstruction_uro:NavigationAssistanceFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-uro:OtherConstruction_uro:consFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-uro:OtherConstruction_uro:NavigationAssistanceFacility_uro:facilityDetailType,{"description":"施設種類"}
+uro:OtherConstruction_uro:consFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+uro:OtherConstruction_uro:NavigationAssistanceFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 uro:OtherConstruction_uro:consFacilityAttribute_uro:portName,{"description":"港湾名"}
 uro:OtherConstruction_uro:NavigationAssistanceFacility_uro:portName,{"description":"港湾名"}
 uro:OtherConstruction_uro:consFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -19200,8 +19200,8 @@ uro:OtherConstruction_uro:consFacilityAttribute,{"description":"旅客施設"}
 uro:OtherConstruction_uro:PortPassengerFacility,{"description":"旅客施設"}
 uro:OtherConstruction_uro:consFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 uro:OtherConstruction_uro:PortPassengerFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-uro:OtherConstruction_uro:consFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-uro:OtherConstruction_uro:PortPassengerFacility_uro:facilityDetailType,{"description":"施設種類"}
+uro:OtherConstruction_uro:consFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+uro:OtherConstruction_uro:PortPassengerFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 uro:OtherConstruction_uro:consFacilityAttribute_uro:portName,{"description":"港湾名"}
 uro:OtherConstruction_uro:PortPassengerFacility_uro:portName,{"description":"港湾名"}
 uro:OtherConstruction_uro:consFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -19270,8 +19270,8 @@ uro:OtherConstruction_uro:consFacilityAttribute,{"description":"船舶役務用�
 uro:OtherConstruction_uro:ShipServiceFacility,{"description":"船舶役務用施設"}
 uro:OtherConstruction_uro:consFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 uro:OtherConstruction_uro:ShipServiceFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-uro:OtherConstruction_uro:consFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-uro:OtherConstruction_uro:ShipServiceFacility_uro:facilityDetailType,{"description":"施設種類"}
+uro:OtherConstruction_uro:consFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+uro:OtherConstruction_uro:ShipServiceFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 uro:OtherConstruction_uro:consFacilityAttribute_uro:portName,{"description":"港湾名"}
 uro:OtherConstruction_uro:ShipServiceFacility_uro:portName,{"description":"港湾名"}
 uro:OtherConstruction_uro:consFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -19362,8 +19362,8 @@ uro:OtherConstruction_uro:consFacilityAttribute,{"description":"環境整備施�
 uro:OtherConstruction_uro:PortEnvironmentalImprovementFacility,{"description":"環境整備施設"}
 uro:OtherConstruction_uro:consFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 uro:OtherConstruction_uro:PortEnvironmentalImprovementFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-uro:OtherConstruction_uro:consFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-uro:OtherConstruction_uro:PortEnvironmentalImprovementFacility_uro:facilityDetailType,{"description":"施設種類"}
+uro:OtherConstruction_uro:consFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+uro:OtherConstruction_uro:PortEnvironmentalImprovementFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 uro:OtherConstruction_uro:consFacilityAttribute_uro:portName,{"description":"港湾名"}
 uro:OtherConstruction_uro:PortEnvironmentalImprovementFacility_uro:portName,{"description":"港湾名"}
 uro:OtherConstruction_uro:consFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -20117,8 +20117,11 @@ frn:CityFurniture_frn:lod2Geometry,{"description":"lod2幾何"}
 frn:CityFurniture_frn:lod3Geometry,{"description":"lod3幾何"}
 frn:CityFurniture_frn:lod4Geometry,{"description":"lod4幾何"}
 frn:CityFurniture_uro:cityFurnitureDetailAttribute,{"description":"都市設備詳細情報"}
+frn:CityFurniture_uro:CityFurnitureDetailAttribute,{"description":"都市設備詳細情報"}
 frn:CityFurniture_uro:cityFurnitureDetailAttribute_uro:facilityType,{"description":"施設詳細区分"}
+frn:CityFurniture_uro:CityFurnitureDetailAttribute_uro:facilityType,{"description":"施設詳細区分"}
 frn:CityFurniture_uro:cityFurnitureDetailAttribute_uro:description,{"description":"施設内容"}
+frn:CityFurniture_uro:CityFurnitureDetailAttribute_uro:description,{"description":"施設内容"}
 frn:CityFurniture_uro:cityFurnitureDataQualityAttribute,{"description":"データ品質属性"}
 frn:CityFurniture_uro:CityFurnitureDataQualityAttribute,{"description":"データ品質属性"}
 frn:CityFurniture_uro:cityFurnitureDataQualityAttribute_uro:srcScale,{"description":"地図情報レベル"}
@@ -20424,8 +20427,8 @@ frn:CityFurniture_uro:frnFacilityAttribute,{"description":"航行補助施設"}
 frn:CityFurniture_uro:NavigationAssistanceFacility,{"description":"航行補助施設"}
 frn:CityFurniture_uro:frnFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 frn:CityFurniture_uro:NavigationAssistanceFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-frn:CityFurniture_uro:frnFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-frn:CityFurniture_uro:NavigationAssistanceFacility_uro:facilityDetailType,{"description":"施設種類"}
+frn:CityFurniture_uro:frnFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+frn:CityFurniture_uro:NavigationAssistanceFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 frn:CityFurniture_uro:frnFacilityAttribute_uro:portName,{"description":"港湾名"}
 frn:CityFurniture_uro:NavigationAssistanceFacility_uro:portName,{"description":"港湾名"}
 frn:CityFurniture_uro:frnFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -20492,8 +20495,8 @@ frn:CityFurniture_uro:frnFacilityAttribute,{"description":"旅客施設"}
 frn:CityFurniture_uro:PortPassengerFacility,{"description":"旅客施設"}
 frn:CityFurniture_uro:frnFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 frn:CityFurniture_uro:PortPassengerFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-frn:CityFurniture_uro:frnFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-frn:CityFurniture_uro:PortPassengerFacility_uro:facilityDetailType,{"description":"施設種類"}
+frn:CityFurniture_uro:frnFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+frn:CityFurniture_uro:PortPassengerFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 frn:CityFurniture_uro:frnFacilityAttribute_uro:portName,{"description":"港湾名"}
 frn:CityFurniture_uro:PortPassengerFacility_uro:portName,{"description":"港湾名"}
 frn:CityFurniture_uro:frnFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -20562,8 +20565,8 @@ frn:CityFurniture_uro:frnFacilityAttribute,{"description":"船舶役務用施設
 frn:CityFurniture_uro:ShipServiceFacility,{"description":"船舶役務用施設"}
 frn:CityFurniture_uro:frnFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 frn:CityFurniture_uro:ShipServiceFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-frn:CityFurniture_uro:frnFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-frn:CityFurniture_uro:ShipServiceFacility_uro:facilityDetailType,{"description":"施設種類"}
+frn:CityFurniture_uro:frnFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+frn:CityFurniture_uro:ShipServiceFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 frn:CityFurniture_uro:frnFacilityAttribute_uro:portName,{"description":"港湾名"}
 frn:CityFurniture_uro:ShipServiceFacility_uro:portName,{"description":"港湾名"}
 frn:CityFurniture_uro:frnFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -20654,8 +20657,8 @@ frn:CityFurniture_uro:frnFacilityAttribute,{"description":"環境整備施設"}
 frn:CityFurniture_uro:PortEnvironmentalImprovementFacility,{"description":"環境整備施設"}
 frn:CityFurniture_uro:frnFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 frn:CityFurniture_uro:PortEnvironmentalImprovementFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-frn:CityFurniture_uro:frnFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-frn:CityFurniture_uro:PortEnvironmentalImprovementFacility_uro:facilityDetailType,{"description":"施設種類"}
+frn:CityFurniture_uro:frnFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+frn:CityFurniture_uro:PortEnvironmentalImprovementFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 frn:CityFurniture_uro:frnFacilityAttribute_uro:portName,{"description":"港湾名"}
 frn:CityFurniture_uro:PortEnvironmentalImprovementFacility_uro:portName,{"description":"港湾名"}
 frn:CityFurniture_uro:frnFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -21186,8 +21189,11 @@ uro:WaterPipe_frn:lod2Geometry,{"description":"lod2幾何"}
 uro:WaterPipe_frn:lod3Geometry,{"description":"lod3幾何"}
 uro:WaterPipe_frn:lod4Geometry,{"description":"lod4幾何"}
 uro:WaterPipe_uro:cityFurnitureDetailAttribute,{"description":"都市設備詳細情報"}
+uro:WaterPipe_uro:CityFurnitureDetailAttribute,{"description":"都市設備詳細情報"}
 uro:WaterPipe_uro:cityFurnitureDetailAttribute_uro:facilityType,{"description":"施設詳細区分"}
+uro:WaterPipe_uro:CityFurnitureDetailAttribute_uro:facilityType,{"description":"施設詳細区分"}
 uro:WaterPipe_uro:cityFurnitureDetailAttribute_uro:description,{"description":"施設内容"}
+uro:WaterPipe_uro:CityFurnitureDetailAttribute_uro:description,{"description":"施設内容"}
 uro:WaterPipe_uro:cityFurnitureDataQualityAttribute,{"description":"データ品質属性"}
 uro:WaterPipe_uro:CityFurnitureDataQualityAttribute,{"description":"データ品質属性"}
 uro:WaterPipe_uro:cityFurnitureDataQualityAttribute_uro:srcScale,{"description":"地図情報レベル"}
@@ -21493,8 +21499,8 @@ uro:WaterPipe_uro:frnFacilityAttribute,{"description":"航行補助施設"}
 uro:WaterPipe_uro:NavigationAssistanceFacility,{"description":"航行補助施設"}
 uro:WaterPipe_uro:frnFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 uro:WaterPipe_uro:NavigationAssistanceFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-uro:WaterPipe_uro:frnFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-uro:WaterPipe_uro:NavigationAssistanceFacility_uro:facilityDetailType,{"description":"施設種類"}
+uro:WaterPipe_uro:frnFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+uro:WaterPipe_uro:NavigationAssistanceFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 uro:WaterPipe_uro:frnFacilityAttribute_uro:portName,{"description":"港湾名"}
 uro:WaterPipe_uro:NavigationAssistanceFacility_uro:portName,{"description":"港湾名"}
 uro:WaterPipe_uro:frnFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -21561,8 +21567,8 @@ uro:WaterPipe_uro:frnFacilityAttribute,{"description":"旅客施設"}
 uro:WaterPipe_uro:PortPassengerFacility,{"description":"旅客施設"}
 uro:WaterPipe_uro:frnFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 uro:WaterPipe_uro:PortPassengerFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-uro:WaterPipe_uro:frnFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-uro:WaterPipe_uro:PortPassengerFacility_uro:facilityDetailType,{"description":"施設種類"}
+uro:WaterPipe_uro:frnFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+uro:WaterPipe_uro:PortPassengerFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 uro:WaterPipe_uro:frnFacilityAttribute_uro:portName,{"description":"港湾名"}
 uro:WaterPipe_uro:PortPassengerFacility_uro:portName,{"description":"港湾名"}
 uro:WaterPipe_uro:frnFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -21631,8 +21637,8 @@ uro:WaterPipe_uro:frnFacilityAttribute,{"description":"船舶役務用施設"}
 uro:WaterPipe_uro:ShipServiceFacility,{"description":"船舶役務用施設"}
 uro:WaterPipe_uro:frnFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 uro:WaterPipe_uro:ShipServiceFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-uro:WaterPipe_uro:frnFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-uro:WaterPipe_uro:ShipServiceFacility_uro:facilityDetailType,{"description":"施設種類"}
+uro:WaterPipe_uro:frnFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+uro:WaterPipe_uro:ShipServiceFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 uro:WaterPipe_uro:frnFacilityAttribute_uro:portName,{"description":"港湾名"}
 uro:WaterPipe_uro:ShipServiceFacility_uro:portName,{"description":"港湾名"}
 uro:WaterPipe_uro:frnFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -21723,8 +21729,8 @@ uro:WaterPipe_uro:frnFacilityAttribute,{"description":"環境整備施設"}
 uro:WaterPipe_uro:PortEnvironmentalImprovementFacility,{"description":"環境整備施設"}
 uro:WaterPipe_uro:frnFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 uro:WaterPipe_uro:PortEnvironmentalImprovementFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-uro:WaterPipe_uro:frnFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-uro:WaterPipe_uro:PortEnvironmentalImprovementFacility_uro:facilityDetailType,{"description":"施設種類"}
+uro:WaterPipe_uro:frnFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+uro:WaterPipe_uro:PortEnvironmentalImprovementFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 uro:WaterPipe_uro:frnFacilityAttribute_uro:portName,{"description":"港湾名"}
 uro:WaterPipe_uro:PortEnvironmentalImprovementFacility_uro:portName,{"description":"港湾名"}
 uro:WaterPipe_uro:frnFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -22286,8 +22292,11 @@ uro:SewerPipe_frn:lod2Geometry,{"description":"lod2幾何"}
 uro:SewerPipe_frn:lod3Geometry,{"description":"lod3幾何"}
 uro:SewerPipe_frn:lod4Geometry,{"description":"lod4幾何"}
 uro:SewerPipe_uro:cityFurnitureDetailAttribute,{"description":"都市設備詳細情報"}
+uro:SewerPipe_uro:CityFurnitureDetailAttribute,{"description":"都市設備詳細情報"}
 uro:SewerPipe_uro:cityFurnitureDetailAttribute_uro:facilityType,{"description":"施設詳細区分"}
+uro:SewerPipe_uro:CityFurnitureDetailAttribute_uro:facilityType,{"description":"施設詳細区分"}
 uro:SewerPipe_uro:cityFurnitureDetailAttribute_uro:description,{"description":"施設内容"}
+uro:SewerPipe_uro:CityFurnitureDetailAttribute_uro:description,{"description":"施設内容"}
 uro:SewerPipe_uro:cityFurnitureDataQualityAttribute,{"description":"データ品質属性"}
 uro:SewerPipe_uro:CityFurnitureDataQualityAttribute,{"description":"データ品質属性"}
 uro:SewerPipe_uro:cityFurnitureDataQualityAttribute_uro:srcScale,{"description":"地図情報レベル"}
@@ -22593,8 +22602,8 @@ uro:SewerPipe_uro:frnFacilityAttribute,{"description":"航行補助施設"}
 uro:SewerPipe_uro:NavigationAssistanceFacility,{"description":"航行補助施設"}
 uro:SewerPipe_uro:frnFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 uro:SewerPipe_uro:NavigationAssistanceFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-uro:SewerPipe_uro:frnFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-uro:SewerPipe_uro:NavigationAssistanceFacility_uro:facilityDetailType,{"description":"施設種類"}
+uro:SewerPipe_uro:frnFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+uro:SewerPipe_uro:NavigationAssistanceFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 uro:SewerPipe_uro:frnFacilityAttribute_uro:portName,{"description":"港湾名"}
 uro:SewerPipe_uro:NavigationAssistanceFacility_uro:portName,{"description":"港湾名"}
 uro:SewerPipe_uro:frnFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -22661,8 +22670,8 @@ uro:SewerPipe_uro:frnFacilityAttribute,{"description":"旅客施設"}
 uro:SewerPipe_uro:PortPassengerFacility,{"description":"旅客施設"}
 uro:SewerPipe_uro:frnFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 uro:SewerPipe_uro:PortPassengerFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-uro:SewerPipe_uro:frnFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-uro:SewerPipe_uro:PortPassengerFacility_uro:facilityDetailType,{"description":"施設種類"}
+uro:SewerPipe_uro:frnFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+uro:SewerPipe_uro:PortPassengerFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 uro:SewerPipe_uro:frnFacilityAttribute_uro:portName,{"description":"港湾名"}
 uro:SewerPipe_uro:PortPassengerFacility_uro:portName,{"description":"港湾名"}
 uro:SewerPipe_uro:frnFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -22731,8 +22740,8 @@ uro:SewerPipe_uro:frnFacilityAttribute,{"description":"船舶役務用施設"}
 uro:SewerPipe_uro:ShipServiceFacility,{"description":"船舶役務用施設"}
 uro:SewerPipe_uro:frnFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 uro:SewerPipe_uro:ShipServiceFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-uro:SewerPipe_uro:frnFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-uro:SewerPipe_uro:ShipServiceFacility_uro:facilityDetailType,{"description":"施設種類"}
+uro:SewerPipe_uro:frnFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+uro:SewerPipe_uro:ShipServiceFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 uro:SewerPipe_uro:frnFacilityAttribute_uro:portName,{"description":"港湾名"}
 uro:SewerPipe_uro:ShipServiceFacility_uro:portName,{"description":"港湾名"}
 uro:SewerPipe_uro:frnFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -22823,8 +22832,8 @@ uro:SewerPipe_uro:frnFacilityAttribute,{"description":"環境整備施設"}
 uro:SewerPipe_uro:PortEnvironmentalImprovementFacility,{"description":"環境整備施設"}
 uro:SewerPipe_uro:frnFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 uro:SewerPipe_uro:PortEnvironmentalImprovementFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-uro:SewerPipe_uro:frnFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-uro:SewerPipe_uro:PortEnvironmentalImprovementFacility_uro:facilityDetailType,{"description":"施設種類"}
+uro:SewerPipe_uro:frnFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+uro:SewerPipe_uro:PortEnvironmentalImprovementFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 uro:SewerPipe_uro:frnFacilityAttribute_uro:portName,{"description":"港湾名"}
 uro:SewerPipe_uro:PortEnvironmentalImprovementFacility_uro:portName,{"description":"港湾名"}
 uro:SewerPipe_uro:frnFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -23388,8 +23397,11 @@ uro:ThermalPipe_frn:lod2Geometry,{"description":"lod2幾何"}
 uro:ThermalPipe_frn:lod3Geometry,{"description":"lod3幾何"}
 uro:ThermalPipe_frn:lod4Geometry,{"description":"lod4幾何"}
 uro:ThermalPipe_uro:cityFurnitureDetailAttribute,{"description":"都市設備詳細情報"}
+uro:ThermalPipe_uro:CityFurnitureDetailAttribute,{"description":"都市設備詳細情報"}
 uro:ThermalPipe_uro:cityFurnitureDetailAttribute_uro:facilityType,{"description":"施設詳細区分"}
+uro:ThermalPipe_uro:CityFurnitureDetailAttribute_uro:facilityType,{"description":"施設詳細区分"}
 uro:ThermalPipe_uro:cityFurnitureDetailAttribute_uro:description,{"description":"施設内容"}
+uro:ThermalPipe_uro:CityFurnitureDetailAttribute_uro:description,{"description":"施設内容"}
 uro:ThermalPipe_uro:cityFurnitureDataQualityAttribute,{"description":"データ品質属性"}
 uro:ThermalPipe_uro:CityFurnitureDataQualityAttribute,{"description":"データ品質属性"}
 uro:ThermalPipe_uro:cityFurnitureDataQualityAttribute_uro:srcScale,{"description":"地図情報レベル"}
@@ -23695,8 +23707,8 @@ uro:ThermalPipe_uro:frnFacilityAttribute,{"description":"航行補助施設"}
 uro:ThermalPipe_uro:NavigationAssistanceFacility,{"description":"航行補助施設"}
 uro:ThermalPipe_uro:frnFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 uro:ThermalPipe_uro:NavigationAssistanceFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-uro:ThermalPipe_uro:frnFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-uro:ThermalPipe_uro:NavigationAssistanceFacility_uro:facilityDetailType,{"description":"施設種類"}
+uro:ThermalPipe_uro:frnFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+uro:ThermalPipe_uro:NavigationAssistanceFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 uro:ThermalPipe_uro:frnFacilityAttribute_uro:portName,{"description":"港湾名"}
 uro:ThermalPipe_uro:NavigationAssistanceFacility_uro:portName,{"description":"港湾名"}
 uro:ThermalPipe_uro:frnFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -23763,8 +23775,8 @@ uro:ThermalPipe_uro:frnFacilityAttribute,{"description":"旅客施設"}
 uro:ThermalPipe_uro:PortPassengerFacility,{"description":"旅客施設"}
 uro:ThermalPipe_uro:frnFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 uro:ThermalPipe_uro:PortPassengerFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-uro:ThermalPipe_uro:frnFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-uro:ThermalPipe_uro:PortPassengerFacility_uro:facilityDetailType,{"description":"施設種類"}
+uro:ThermalPipe_uro:frnFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+uro:ThermalPipe_uro:PortPassengerFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 uro:ThermalPipe_uro:frnFacilityAttribute_uro:portName,{"description":"港湾名"}
 uro:ThermalPipe_uro:PortPassengerFacility_uro:portName,{"description":"港湾名"}
 uro:ThermalPipe_uro:frnFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -23833,8 +23845,8 @@ uro:ThermalPipe_uro:frnFacilityAttribute,{"description":"船舶役務用施設"}
 uro:ThermalPipe_uro:ShipServiceFacility,{"description":"船舶役務用施設"}
 uro:ThermalPipe_uro:frnFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 uro:ThermalPipe_uro:ShipServiceFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-uro:ThermalPipe_uro:frnFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-uro:ThermalPipe_uro:ShipServiceFacility_uro:facilityDetailType,{"description":"施設種類"}
+uro:ThermalPipe_uro:frnFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+uro:ThermalPipe_uro:ShipServiceFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 uro:ThermalPipe_uro:frnFacilityAttribute_uro:portName,{"description":"港湾名"}
 uro:ThermalPipe_uro:ShipServiceFacility_uro:portName,{"description":"港湾名"}
 uro:ThermalPipe_uro:frnFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -23925,8 +23937,8 @@ uro:ThermalPipe_uro:frnFacilityAttribute,{"description":"環境整備施設"}
 uro:ThermalPipe_uro:PortEnvironmentalImprovementFacility,{"description":"環境整備施設"}
 uro:ThermalPipe_uro:frnFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 uro:ThermalPipe_uro:PortEnvironmentalImprovementFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-uro:ThermalPipe_uro:frnFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-uro:ThermalPipe_uro:PortEnvironmentalImprovementFacility_uro:facilityDetailType,{"description":"施設種類"}
+uro:ThermalPipe_uro:frnFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+uro:ThermalPipe_uro:PortEnvironmentalImprovementFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 uro:ThermalPipe_uro:frnFacilityAttribute_uro:portName,{"description":"港湾名"}
 uro:ThermalPipe_uro:PortEnvironmentalImprovementFacility_uro:portName,{"description":"港湾名"}
 uro:ThermalPipe_uro:frnFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -24488,8 +24500,11 @@ uro:OilGasCemicalPipe_frn:lod2Geometry,{"description":"lod2幾何"}
 uro:OilGasCemicalPipe_frn:lod3Geometry,{"description":"lod3幾何"}
 uro:OilGasCemicalPipe_frn:lod4Geometry,{"description":"lod4幾何"}
 uro:OilGasCemicalPipe_uro:cityFurnitureDetailAttribute,{"description":"都市設備詳細情報"}
+uro:OilGasCemicalPipe_uro:CityFurnitureDetailAttribute,{"description":"都市設備詳細情報"}
 uro:OilGasCemicalPipe_uro:cityFurnitureDetailAttribute_uro:facilityType,{"description":"施設詳細区分"}
+uro:OilGasCemicalPipe_uro:CityFurnitureDetailAttribute_uro:facilityType,{"description":"施設詳細区分"}
 uro:OilGasCemicalPipe_uro:cityFurnitureDetailAttribute_uro:description,{"description":"施設内容"}
+uro:OilGasCemicalPipe_uro:CityFurnitureDetailAttribute_uro:description,{"description":"施設内容"}
 uro:OilGasCemicalPipe_uro:cityFurnitureDataQualityAttribute,{"description":"データ品質属性"}
 uro:OilGasCemicalPipe_uro:CityFurnitureDataQualityAttribute,{"description":"データ品質属性"}
 uro:OilGasCemicalPipe_uro:cityFurnitureDataQualityAttribute_uro:srcScale,{"description":"地図情報レベル"}
@@ -24795,8 +24810,8 @@ uro:OilGasCemicalPipe_uro:frnFacilityAttribute,{"description":"航行補助施�
 uro:OilGasCemicalPipe_uro:NavigationAssistanceFacility,{"description":"航行補助施設"}
 uro:OilGasCemicalPipe_uro:frnFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 uro:OilGasCemicalPipe_uro:NavigationAssistanceFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-uro:OilGasCemicalPipe_uro:frnFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-uro:OilGasCemicalPipe_uro:NavigationAssistanceFacility_uro:facilityDetailType,{"description":"施設種類"}
+uro:OilGasCemicalPipe_uro:frnFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+uro:OilGasCemicalPipe_uro:NavigationAssistanceFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 uro:OilGasCemicalPipe_uro:frnFacilityAttribute_uro:portName,{"description":"港湾名"}
 uro:OilGasCemicalPipe_uro:NavigationAssistanceFacility_uro:portName,{"description":"港湾名"}
 uro:OilGasCemicalPipe_uro:frnFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -24863,8 +24878,8 @@ uro:OilGasCemicalPipe_uro:frnFacilityAttribute,{"description":"旅客施設"}
 uro:OilGasCemicalPipe_uro:PortPassengerFacility,{"description":"旅客施設"}
 uro:OilGasCemicalPipe_uro:frnFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 uro:OilGasCemicalPipe_uro:PortPassengerFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-uro:OilGasCemicalPipe_uro:frnFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-uro:OilGasCemicalPipe_uro:PortPassengerFacility_uro:facilityDetailType,{"description":"施設種類"}
+uro:OilGasCemicalPipe_uro:frnFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+uro:OilGasCemicalPipe_uro:PortPassengerFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 uro:OilGasCemicalPipe_uro:frnFacilityAttribute_uro:portName,{"description":"港湾名"}
 uro:OilGasCemicalPipe_uro:PortPassengerFacility_uro:portName,{"description":"港湾名"}
 uro:OilGasCemicalPipe_uro:frnFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -24933,8 +24948,8 @@ uro:OilGasCemicalPipe_uro:frnFacilityAttribute,{"description":"船舶役務用�
 uro:OilGasCemicalPipe_uro:ShipServiceFacility,{"description":"船舶役務用施設"}
 uro:OilGasCemicalPipe_uro:frnFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 uro:OilGasCemicalPipe_uro:ShipServiceFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-uro:OilGasCemicalPipe_uro:frnFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-uro:OilGasCemicalPipe_uro:ShipServiceFacility_uro:facilityDetailType,{"description":"施設種類"}
+uro:OilGasCemicalPipe_uro:frnFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+uro:OilGasCemicalPipe_uro:ShipServiceFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 uro:OilGasCemicalPipe_uro:frnFacilityAttribute_uro:portName,{"description":"港湾名"}
 uro:OilGasCemicalPipe_uro:ShipServiceFacility_uro:portName,{"description":"港湾名"}
 uro:OilGasCemicalPipe_uro:frnFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -25025,8 +25040,8 @@ uro:OilGasCemicalPipe_uro:frnFacilityAttribute,{"description":"環境整備施�
 uro:OilGasCemicalPipe_uro:PortEnvironmentalImprovementFacility,{"description":"環境整備施設"}
 uro:OilGasCemicalPipe_uro:frnFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 uro:OilGasCemicalPipe_uro:PortEnvironmentalImprovementFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-uro:OilGasCemicalPipe_uro:frnFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-uro:OilGasCemicalPipe_uro:PortEnvironmentalImprovementFacility_uro:facilityDetailType,{"description":"施設種類"}
+uro:OilGasCemicalPipe_uro:frnFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+uro:OilGasCemicalPipe_uro:PortEnvironmentalImprovementFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 uro:OilGasCemicalPipe_uro:frnFacilityAttribute_uro:portName,{"description":"港湾名"}
 uro:OilGasCemicalPipe_uro:PortEnvironmentalImprovementFacility_uro:portName,{"description":"港湾名"}
 uro:OilGasCemicalPipe_uro:frnFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -25588,8 +25603,11 @@ uro:Pipe_frn:lod2Geometry,{"description":"lod2幾何"}
 uro:Pipe_frn:lod3Geometry,{"description":"lod3幾何"}
 uro:Pipe_frn:lod4Geometry,{"description":"lod4幾何"}
 uro:Pipe_uro:cityFurnitureDetailAttribute,{"description":"都市設備詳細情報"}
+uro:Pipe_uro:CityFurnitureDetailAttribute,{"description":"都市設備詳細情報"}
 uro:Pipe_uro:cityFurnitureDetailAttribute_uro:facilityType,{"description":"施設詳細区分"}
+uro:Pipe_uro:CityFurnitureDetailAttribute_uro:facilityType,{"description":"施設詳細区分"}
 uro:Pipe_uro:cityFurnitureDetailAttribute_uro:description,{"description":"施設内容"}
+uro:Pipe_uro:CityFurnitureDetailAttribute_uro:description,{"description":"施設内容"}
 uro:Pipe_uro:cityFurnitureDataQualityAttribute,{"description":"データ品質属性"}
 uro:Pipe_uro:CityFurnitureDataQualityAttribute,{"description":"データ品質属性"}
 uro:Pipe_uro:cityFurnitureDataQualityAttribute_uro:srcScale,{"description":"地図情報レベル"}
@@ -25895,8 +25913,8 @@ uro:Pipe_uro:frnFacilityAttribute,{"description":"航行補助施設"}
 uro:Pipe_uro:NavigationAssistanceFacility,{"description":"航行補助施設"}
 uro:Pipe_uro:frnFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 uro:Pipe_uro:NavigationAssistanceFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-uro:Pipe_uro:frnFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-uro:Pipe_uro:NavigationAssistanceFacility_uro:facilityDetailType,{"description":"施設種類"}
+uro:Pipe_uro:frnFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+uro:Pipe_uro:NavigationAssistanceFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 uro:Pipe_uro:frnFacilityAttribute_uro:portName,{"description":"港湾名"}
 uro:Pipe_uro:NavigationAssistanceFacility_uro:portName,{"description":"港湾名"}
 uro:Pipe_uro:frnFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -25963,8 +25981,8 @@ uro:Pipe_uro:frnFacilityAttribute,{"description":"旅客施設"}
 uro:Pipe_uro:PortPassengerFacility,{"description":"旅客施設"}
 uro:Pipe_uro:frnFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 uro:Pipe_uro:PortPassengerFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-uro:Pipe_uro:frnFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-uro:Pipe_uro:PortPassengerFacility_uro:facilityDetailType,{"description":"施設種類"}
+uro:Pipe_uro:frnFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+uro:Pipe_uro:PortPassengerFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 uro:Pipe_uro:frnFacilityAttribute_uro:portName,{"description":"港湾名"}
 uro:Pipe_uro:PortPassengerFacility_uro:portName,{"description":"港湾名"}
 uro:Pipe_uro:frnFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -26033,8 +26051,8 @@ uro:Pipe_uro:frnFacilityAttribute,{"description":"船舶役務用施設"}
 uro:Pipe_uro:ShipServiceFacility,{"description":"船舶役務用施設"}
 uro:Pipe_uro:frnFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 uro:Pipe_uro:ShipServiceFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-uro:Pipe_uro:frnFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-uro:Pipe_uro:ShipServiceFacility_uro:facilityDetailType,{"description":"施設種類"}
+uro:Pipe_uro:frnFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+uro:Pipe_uro:ShipServiceFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 uro:Pipe_uro:frnFacilityAttribute_uro:portName,{"description":"港湾名"}
 uro:Pipe_uro:ShipServiceFacility_uro:portName,{"description":"港湾名"}
 uro:Pipe_uro:frnFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -26125,8 +26143,8 @@ uro:Pipe_uro:frnFacilityAttribute,{"description":"環境整備施設"}
 uro:Pipe_uro:PortEnvironmentalImprovementFacility,{"description":"環境整備施設"}
 uro:Pipe_uro:frnFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 uro:Pipe_uro:PortEnvironmentalImprovementFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-uro:Pipe_uro:frnFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-uro:Pipe_uro:PortEnvironmentalImprovementFacility_uro:facilityDetailType,{"description":"施設種類"}
+uro:Pipe_uro:frnFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+uro:Pipe_uro:PortEnvironmentalImprovementFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 uro:Pipe_uro:frnFacilityAttribute_uro:portName,{"description":"港湾名"}
 uro:Pipe_uro:PortEnvironmentalImprovementFacility_uro:portName,{"description":"港湾名"}
 uro:Pipe_uro:frnFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -26688,8 +26706,11 @@ uro:TelecommunicationsCable_frn:lod2Geometry,{"description":"lod2幾何"}
 uro:TelecommunicationsCable_frn:lod3Geometry,{"description":"lod3幾何"}
 uro:TelecommunicationsCable_frn:lod4Geometry,{"description":"lod4幾何"}
 uro:TelecommunicationsCable_uro:cityFurnitureDetailAttribute,{"description":"都市設備詳細情報"}
+uro:TelecommunicationsCable_uro:CityFurnitureDetailAttribute,{"description":"都市設備詳細情報"}
 uro:TelecommunicationsCable_uro:cityFurnitureDetailAttribute_uro:facilityType,{"description":"施設詳細区分"}
+uro:TelecommunicationsCable_uro:CityFurnitureDetailAttribute_uro:facilityType,{"description":"施設詳細区分"}
 uro:TelecommunicationsCable_uro:cityFurnitureDetailAttribute_uro:description,{"description":"施設内容"}
+uro:TelecommunicationsCable_uro:CityFurnitureDetailAttribute_uro:description,{"description":"施設内容"}
 uro:TelecommunicationsCable_uro:cityFurnitureDataQualityAttribute,{"description":"データ品質属性"}
 uro:TelecommunicationsCable_uro:CityFurnitureDataQualityAttribute,{"description":"データ品質属性"}
 uro:TelecommunicationsCable_uro:cityFurnitureDataQualityAttribute_uro:srcScale,{"description":"地図情報レベル"}
@@ -26995,8 +27016,8 @@ uro:TelecommunicationsCable_uro:frnFacilityAttribute,{"description":"航行補�
 uro:TelecommunicationsCable_uro:NavigationAssistanceFacility,{"description":"航行補助施設"}
 uro:TelecommunicationsCable_uro:frnFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 uro:TelecommunicationsCable_uro:NavigationAssistanceFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-uro:TelecommunicationsCable_uro:frnFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-uro:TelecommunicationsCable_uro:NavigationAssistanceFacility_uro:facilityDetailType,{"description":"施設種類"}
+uro:TelecommunicationsCable_uro:frnFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+uro:TelecommunicationsCable_uro:NavigationAssistanceFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 uro:TelecommunicationsCable_uro:frnFacilityAttribute_uro:portName,{"description":"港湾名"}
 uro:TelecommunicationsCable_uro:NavigationAssistanceFacility_uro:portName,{"description":"港湾名"}
 uro:TelecommunicationsCable_uro:frnFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -27063,8 +27084,8 @@ uro:TelecommunicationsCable_uro:frnFacilityAttribute,{"description":"旅客施�
 uro:TelecommunicationsCable_uro:PortPassengerFacility,{"description":"旅客施設"}
 uro:TelecommunicationsCable_uro:frnFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 uro:TelecommunicationsCable_uro:PortPassengerFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-uro:TelecommunicationsCable_uro:frnFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-uro:TelecommunicationsCable_uro:PortPassengerFacility_uro:facilityDetailType,{"description":"施設種類"}
+uro:TelecommunicationsCable_uro:frnFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+uro:TelecommunicationsCable_uro:PortPassengerFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 uro:TelecommunicationsCable_uro:frnFacilityAttribute_uro:portName,{"description":"港湾名"}
 uro:TelecommunicationsCable_uro:PortPassengerFacility_uro:portName,{"description":"港湾名"}
 uro:TelecommunicationsCable_uro:frnFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -27133,8 +27154,8 @@ uro:TelecommunicationsCable_uro:frnFacilityAttribute,{"description":"船舶役�
 uro:TelecommunicationsCable_uro:ShipServiceFacility,{"description":"船舶役務用施設"}
 uro:TelecommunicationsCable_uro:frnFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 uro:TelecommunicationsCable_uro:ShipServiceFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-uro:TelecommunicationsCable_uro:frnFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-uro:TelecommunicationsCable_uro:ShipServiceFacility_uro:facilityDetailType,{"description":"施設種類"}
+uro:TelecommunicationsCable_uro:frnFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+uro:TelecommunicationsCable_uro:ShipServiceFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 uro:TelecommunicationsCable_uro:frnFacilityAttribute_uro:portName,{"description":"港湾名"}
 uro:TelecommunicationsCable_uro:ShipServiceFacility_uro:portName,{"description":"港湾名"}
 uro:TelecommunicationsCable_uro:frnFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -27225,8 +27246,8 @@ uro:TelecommunicationsCable_uro:frnFacilityAttribute,{"description":"環境整�
 uro:TelecommunicationsCable_uro:PortEnvironmentalImprovementFacility,{"description":"環境整備施設"}
 uro:TelecommunicationsCable_uro:frnFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 uro:TelecommunicationsCable_uro:PortEnvironmentalImprovementFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-uro:TelecommunicationsCable_uro:frnFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-uro:TelecommunicationsCable_uro:PortEnvironmentalImprovementFacility_uro:facilityDetailType,{"description":"施設種類"}
+uro:TelecommunicationsCable_uro:frnFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+uro:TelecommunicationsCable_uro:PortEnvironmentalImprovementFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 uro:TelecommunicationsCable_uro:frnFacilityAttribute_uro:portName,{"description":"港湾名"}
 uro:TelecommunicationsCable_uro:PortEnvironmentalImprovementFacility_uro:portName,{"description":"港湾名"}
 uro:TelecommunicationsCable_uro:frnFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -27788,8 +27809,11 @@ uro:ElectricityCable_frn:lod2Geometry,{"description":"lod2幾何"}
 uro:ElectricityCable_frn:lod3Geometry,{"description":"lod3幾何"}
 uro:ElectricityCable_frn:lod4Geometry,{"description":"lod4幾何"}
 uro:ElectricityCable_uro:cityFurnitureDetailAttribute,{"description":"都市設備詳細情報"}
+uro:ElectricityCable_uro:CityFurnitureDetailAttribute,{"description":"都市設備詳細情報"}
 uro:ElectricityCable_uro:cityFurnitureDetailAttribute_uro:facilityType,{"description":"施設詳細区分"}
+uro:ElectricityCable_uro:CityFurnitureDetailAttribute_uro:facilityType,{"description":"施設詳細区分"}
 uro:ElectricityCable_uro:cityFurnitureDetailAttribute_uro:description,{"description":"施設内容"}
+uro:ElectricityCable_uro:CityFurnitureDetailAttribute_uro:description,{"description":"施設内容"}
 uro:ElectricityCable_uro:cityFurnitureDataQualityAttribute,{"description":"データ品質属性"}
 uro:ElectricityCable_uro:CityFurnitureDataQualityAttribute,{"description":"データ品質属性"}
 uro:ElectricityCable_uro:cityFurnitureDataQualityAttribute_uro:srcScale,{"description":"地図情報レベル"}
@@ -28095,8 +28119,8 @@ uro:ElectricityCable_uro:frnFacilityAttribute,{"description":"航行補助施設
 uro:ElectricityCable_uro:NavigationAssistanceFacility,{"description":"航行補助施設"}
 uro:ElectricityCable_uro:frnFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 uro:ElectricityCable_uro:NavigationAssistanceFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-uro:ElectricityCable_uro:frnFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-uro:ElectricityCable_uro:NavigationAssistanceFacility_uro:facilityDetailType,{"description":"施設種類"}
+uro:ElectricityCable_uro:frnFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+uro:ElectricityCable_uro:NavigationAssistanceFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 uro:ElectricityCable_uro:frnFacilityAttribute_uro:portName,{"description":"港湾名"}
 uro:ElectricityCable_uro:NavigationAssistanceFacility_uro:portName,{"description":"港湾名"}
 uro:ElectricityCable_uro:frnFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -28163,8 +28187,8 @@ uro:ElectricityCable_uro:frnFacilityAttribute,{"description":"旅客施設"}
 uro:ElectricityCable_uro:PortPassengerFacility,{"description":"旅客施設"}
 uro:ElectricityCable_uro:frnFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 uro:ElectricityCable_uro:PortPassengerFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-uro:ElectricityCable_uro:frnFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-uro:ElectricityCable_uro:PortPassengerFacility_uro:facilityDetailType,{"description":"施設種類"}
+uro:ElectricityCable_uro:frnFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+uro:ElectricityCable_uro:PortPassengerFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 uro:ElectricityCable_uro:frnFacilityAttribute_uro:portName,{"description":"港湾名"}
 uro:ElectricityCable_uro:PortPassengerFacility_uro:portName,{"description":"港湾名"}
 uro:ElectricityCable_uro:frnFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -28233,8 +28257,8 @@ uro:ElectricityCable_uro:frnFacilityAttribute,{"description":"船舶役務用施
 uro:ElectricityCable_uro:ShipServiceFacility,{"description":"船舶役務用施設"}
 uro:ElectricityCable_uro:frnFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 uro:ElectricityCable_uro:ShipServiceFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-uro:ElectricityCable_uro:frnFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-uro:ElectricityCable_uro:ShipServiceFacility_uro:facilityDetailType,{"description":"施設種類"}
+uro:ElectricityCable_uro:frnFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+uro:ElectricityCable_uro:ShipServiceFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 uro:ElectricityCable_uro:frnFacilityAttribute_uro:portName,{"description":"港湾名"}
 uro:ElectricityCable_uro:ShipServiceFacility_uro:portName,{"description":"港湾名"}
 uro:ElectricityCable_uro:frnFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -28325,8 +28349,8 @@ uro:ElectricityCable_uro:frnFacilityAttribute,{"description":"環境整備施設
 uro:ElectricityCable_uro:PortEnvironmentalImprovementFacility,{"description":"環境整備施設"}
 uro:ElectricityCable_uro:frnFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 uro:ElectricityCable_uro:PortEnvironmentalImprovementFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-uro:ElectricityCable_uro:frnFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-uro:ElectricityCable_uro:PortEnvironmentalImprovementFacility_uro:facilityDetailType,{"description":"施設種類"}
+uro:ElectricityCable_uro:frnFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+uro:ElectricityCable_uro:PortEnvironmentalImprovementFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 uro:ElectricityCable_uro:frnFacilityAttribute_uro:portName,{"description":"港湾名"}
 uro:ElectricityCable_uro:PortEnvironmentalImprovementFacility_uro:portName,{"description":"港湾名"}
 uro:ElectricityCable_uro:frnFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -28888,8 +28912,11 @@ uro:Cable_frn:lod2Geometry,{"description":"lod2幾何"}
 uro:Cable_frn:lod3Geometry,{"description":"lod3幾何"}
 uro:Cable_frn:lod4Geometry,{"description":"lod4幾何"}
 uro:Cable_uro:cityFurnitureDetailAttribute,{"description":"都市設備詳細情報"}
+uro:Cable_uro:CityFurnitureDetailAttribute,{"description":"都市設備詳細情報"}
 uro:Cable_uro:cityFurnitureDetailAttribute_uro:facilityType,{"description":"施設詳細区分"}
+uro:Cable_uro:CityFurnitureDetailAttribute_uro:facilityType,{"description":"施設詳細区分"}
 uro:Cable_uro:cityFurnitureDetailAttribute_uro:description,{"description":"施設内容"}
+uro:Cable_uro:CityFurnitureDetailAttribute_uro:description,{"description":"施設内容"}
 uro:Cable_uro:cityFurnitureDataQualityAttribute,{"description":"データ品質属性"}
 uro:Cable_uro:CityFurnitureDataQualityAttribute,{"description":"データ品質属性"}
 uro:Cable_uro:cityFurnitureDataQualityAttribute_uro:srcScale,{"description":"地図情報レベル"}
@@ -29195,8 +29222,8 @@ uro:Cable_uro:frnFacilityAttribute,{"description":"航行補助施設"}
 uro:Cable_uro:NavigationAssistanceFacility,{"description":"航行補助施設"}
 uro:Cable_uro:frnFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 uro:Cable_uro:NavigationAssistanceFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-uro:Cable_uro:frnFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-uro:Cable_uro:NavigationAssistanceFacility_uro:facilityDetailType,{"description":"施設種類"}
+uro:Cable_uro:frnFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+uro:Cable_uro:NavigationAssistanceFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 uro:Cable_uro:frnFacilityAttribute_uro:portName,{"description":"港湾名"}
 uro:Cable_uro:NavigationAssistanceFacility_uro:portName,{"description":"港湾名"}
 uro:Cable_uro:frnFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -29263,8 +29290,8 @@ uro:Cable_uro:frnFacilityAttribute,{"description":"旅客施設"}
 uro:Cable_uro:PortPassengerFacility,{"description":"旅客施設"}
 uro:Cable_uro:frnFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 uro:Cable_uro:PortPassengerFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-uro:Cable_uro:frnFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-uro:Cable_uro:PortPassengerFacility_uro:facilityDetailType,{"description":"施設種類"}
+uro:Cable_uro:frnFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+uro:Cable_uro:PortPassengerFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 uro:Cable_uro:frnFacilityAttribute_uro:portName,{"description":"港湾名"}
 uro:Cable_uro:PortPassengerFacility_uro:portName,{"description":"港湾名"}
 uro:Cable_uro:frnFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -29333,8 +29360,8 @@ uro:Cable_uro:frnFacilityAttribute,{"description":"船舶役務用施設"}
 uro:Cable_uro:ShipServiceFacility,{"description":"船舶役務用施設"}
 uro:Cable_uro:frnFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 uro:Cable_uro:ShipServiceFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-uro:Cable_uro:frnFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-uro:Cable_uro:ShipServiceFacility_uro:facilityDetailType,{"description":"施設種類"}
+uro:Cable_uro:frnFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+uro:Cable_uro:ShipServiceFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 uro:Cable_uro:frnFacilityAttribute_uro:portName,{"description":"港湾名"}
 uro:Cable_uro:ShipServiceFacility_uro:portName,{"description":"港湾名"}
 uro:Cable_uro:frnFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -29425,8 +29452,8 @@ uro:Cable_uro:frnFacilityAttribute,{"description":"環境整備施設"}
 uro:Cable_uro:PortEnvironmentalImprovementFacility,{"description":"環境整備施設"}
 uro:Cable_uro:frnFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 uro:Cable_uro:PortEnvironmentalImprovementFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-uro:Cable_uro:frnFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-uro:Cable_uro:PortEnvironmentalImprovementFacility_uro:facilityDetailType,{"description":"施設種類"}
+uro:Cable_uro:frnFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+uro:Cable_uro:PortEnvironmentalImprovementFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 uro:Cable_uro:frnFacilityAttribute_uro:portName,{"description":"港湾名"}
 uro:Cable_uro:PortEnvironmentalImprovementFacility_uro:portName,{"description":"港湾名"}
 uro:Cable_uro:frnFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -29988,8 +30015,11 @@ uro:Duct_frn:lod2Geometry,{"description":"lod2幾何"}
 uro:Duct_frn:lod3Geometry,{"description":"lod3幾何"}
 uro:Duct_frn:lod4Geometry,{"description":"lod4幾何"}
 uro:Duct_uro:cityFurnitureDetailAttribute,{"description":"都市設備詳細情報"}
+uro:Duct_uro:CityFurnitureDetailAttribute,{"description":"都市設備詳細情報"}
 uro:Duct_uro:cityFurnitureDetailAttribute_uro:facilityType,{"description":"施設詳細区分"}
+uro:Duct_uro:CityFurnitureDetailAttribute_uro:facilityType,{"description":"施設詳細区分"}
 uro:Duct_uro:cityFurnitureDetailAttribute_uro:description,{"description":"施設内容"}
+uro:Duct_uro:CityFurnitureDetailAttribute_uro:description,{"description":"施設内容"}
 uro:Duct_uro:cityFurnitureDataQualityAttribute,{"description":"データ品質属性"}
 uro:Duct_uro:CityFurnitureDataQualityAttribute,{"description":"データ品質属性"}
 uro:Duct_uro:cityFurnitureDataQualityAttribute_uro:srcScale,{"description":"地図情報レベル"}
@@ -30295,8 +30325,8 @@ uro:Duct_uro:frnFacilityAttribute,{"description":"航行補助施設"}
 uro:Duct_uro:NavigationAssistanceFacility,{"description":"航行補助施設"}
 uro:Duct_uro:frnFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 uro:Duct_uro:NavigationAssistanceFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-uro:Duct_uro:frnFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-uro:Duct_uro:NavigationAssistanceFacility_uro:facilityDetailType,{"description":"施設種類"}
+uro:Duct_uro:frnFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+uro:Duct_uro:NavigationAssistanceFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 uro:Duct_uro:frnFacilityAttribute_uro:portName,{"description":"港湾名"}
 uro:Duct_uro:NavigationAssistanceFacility_uro:portName,{"description":"港湾名"}
 uro:Duct_uro:frnFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -30363,8 +30393,8 @@ uro:Duct_uro:frnFacilityAttribute,{"description":"旅客施設"}
 uro:Duct_uro:PortPassengerFacility,{"description":"旅客施設"}
 uro:Duct_uro:frnFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 uro:Duct_uro:PortPassengerFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-uro:Duct_uro:frnFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-uro:Duct_uro:PortPassengerFacility_uro:facilityDetailType,{"description":"施設種類"}
+uro:Duct_uro:frnFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+uro:Duct_uro:PortPassengerFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 uro:Duct_uro:frnFacilityAttribute_uro:portName,{"description":"港湾名"}
 uro:Duct_uro:PortPassengerFacility_uro:portName,{"description":"港湾名"}
 uro:Duct_uro:frnFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -30433,8 +30463,8 @@ uro:Duct_uro:frnFacilityAttribute,{"description":"船舶役務用施設"}
 uro:Duct_uro:ShipServiceFacility,{"description":"船舶役務用施設"}
 uro:Duct_uro:frnFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 uro:Duct_uro:ShipServiceFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-uro:Duct_uro:frnFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-uro:Duct_uro:ShipServiceFacility_uro:facilityDetailType,{"description":"施設種類"}
+uro:Duct_uro:frnFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+uro:Duct_uro:ShipServiceFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 uro:Duct_uro:frnFacilityAttribute_uro:portName,{"description":"港湾名"}
 uro:Duct_uro:ShipServiceFacility_uro:portName,{"description":"港湾名"}
 uro:Duct_uro:frnFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -30525,8 +30555,8 @@ uro:Duct_uro:frnFacilityAttribute,{"description":"環境整備施設"}
 uro:Duct_uro:PortEnvironmentalImprovementFacility,{"description":"環境整備施設"}
 uro:Duct_uro:frnFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 uro:Duct_uro:PortEnvironmentalImprovementFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-uro:Duct_uro:frnFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-uro:Duct_uro:PortEnvironmentalImprovementFacility_uro:facilityDetailType,{"description":"施設種類"}
+uro:Duct_uro:frnFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+uro:Duct_uro:PortEnvironmentalImprovementFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 uro:Duct_uro:frnFacilityAttribute_uro:portName,{"description":"港湾名"}
 uro:Duct_uro:PortEnvironmentalImprovementFacility_uro:portName,{"description":"港湾名"}
 uro:Duct_uro:frnFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -31085,8 +31115,11 @@ uro:Appurtenance_frn:lod2Geometry,{"description":"lod2幾何"}
 uro:Appurtenance_frn:lod3Geometry,{"description":"lod3幾何"}
 uro:Appurtenance_frn:lod4Geometry,{"description":"lod4幾何"}
 uro:Appurtenance_uro:cityFurnitureDetailAttribute,{"description":"都市設備詳細情報"}
+uro:Appurtenance_uro:CityFurnitureDetailAttribute,{"description":"都市設備詳細情報"}
 uro:Appurtenance_uro:cityFurnitureDetailAttribute_uro:facilityType,{"description":"施設詳細区分"}
+uro:Appurtenance_uro:CityFurnitureDetailAttribute_uro:facilityType,{"description":"施設詳細区分"}
 uro:Appurtenance_uro:cityFurnitureDetailAttribute_uro:description,{"description":"施設内容"}
+uro:Appurtenance_uro:CityFurnitureDetailAttribute_uro:description,{"description":"施設内容"}
 uro:Appurtenance_uro:cityFurnitureDataQualityAttribute,{"description":"データ品質属性"}
 uro:Appurtenance_uro:CityFurnitureDataQualityAttribute,{"description":"データ品質属性"}
 uro:Appurtenance_uro:cityFurnitureDataQualityAttribute_uro:srcScale,{"description":"地図情報レベル"}
@@ -31392,8 +31425,8 @@ uro:Appurtenance_uro:frnFacilityAttribute,{"description":"航行補助施設"}
 uro:Appurtenance_uro:NavigationAssistanceFacility,{"description":"航行補助施設"}
 uro:Appurtenance_uro:frnFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 uro:Appurtenance_uro:NavigationAssistanceFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-uro:Appurtenance_uro:frnFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-uro:Appurtenance_uro:NavigationAssistanceFacility_uro:facilityDetailType,{"description":"施設種類"}
+uro:Appurtenance_uro:frnFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+uro:Appurtenance_uro:NavigationAssistanceFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 uro:Appurtenance_uro:frnFacilityAttribute_uro:portName,{"description":"港湾名"}
 uro:Appurtenance_uro:NavigationAssistanceFacility_uro:portName,{"description":"港湾名"}
 uro:Appurtenance_uro:frnFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -31460,8 +31493,8 @@ uro:Appurtenance_uro:frnFacilityAttribute,{"description":"旅客施設"}
 uro:Appurtenance_uro:PortPassengerFacility,{"description":"旅客施設"}
 uro:Appurtenance_uro:frnFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 uro:Appurtenance_uro:PortPassengerFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-uro:Appurtenance_uro:frnFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-uro:Appurtenance_uro:PortPassengerFacility_uro:facilityDetailType,{"description":"施設種類"}
+uro:Appurtenance_uro:frnFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+uro:Appurtenance_uro:PortPassengerFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 uro:Appurtenance_uro:frnFacilityAttribute_uro:portName,{"description":"港湾名"}
 uro:Appurtenance_uro:PortPassengerFacility_uro:portName,{"description":"港湾名"}
 uro:Appurtenance_uro:frnFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -31530,8 +31563,8 @@ uro:Appurtenance_uro:frnFacilityAttribute,{"description":"船舶役務用施設"
 uro:Appurtenance_uro:ShipServiceFacility,{"description":"船舶役務用施設"}
 uro:Appurtenance_uro:frnFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 uro:Appurtenance_uro:ShipServiceFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-uro:Appurtenance_uro:frnFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-uro:Appurtenance_uro:ShipServiceFacility_uro:facilityDetailType,{"description":"施設種類"}
+uro:Appurtenance_uro:frnFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+uro:Appurtenance_uro:ShipServiceFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 uro:Appurtenance_uro:frnFacilityAttribute_uro:portName,{"description":"港湾名"}
 uro:Appurtenance_uro:ShipServiceFacility_uro:portName,{"description":"港湾名"}
 uro:Appurtenance_uro:frnFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -31622,8 +31655,8 @@ uro:Appurtenance_uro:frnFacilityAttribute,{"description":"環境整備施設"}
 uro:Appurtenance_uro:PortEnvironmentalImprovementFacility,{"description":"環境整備施設"}
 uro:Appurtenance_uro:frnFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 uro:Appurtenance_uro:PortEnvironmentalImprovementFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-uro:Appurtenance_uro:frnFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-uro:Appurtenance_uro:PortEnvironmentalImprovementFacility_uro:facilityDetailType,{"description":"施設種類"}
+uro:Appurtenance_uro:frnFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+uro:Appurtenance_uro:PortEnvironmentalImprovementFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 uro:Appurtenance_uro:frnFacilityAttribute_uro:portName,{"description":"港湾名"}
 uro:Appurtenance_uro:PortEnvironmentalImprovementFacility_uro:portName,{"description":"港湾名"}
 uro:Appurtenance_uro:frnFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -32172,8 +32205,11 @@ uro:Manhole_frn:lod2Geometry,{"description":"lod2幾何"}
 uro:Manhole_frn:lod3Geometry,{"description":"lod3幾何"}
 uro:Manhole_frn:lod4Geometry,{"description":"lod4幾何"}
 uro:Manhole_uro:cityFurnitureDetailAttribute,{"description":"都市設備詳細情報"}
+uro:Manhole_uro:CityFurnitureDetailAttribute,{"description":"都市設備詳細情報"}
 uro:Manhole_uro:cityFurnitureDetailAttribute_uro:facilityType,{"description":"施設詳細区分"}
+uro:Manhole_uro:CityFurnitureDetailAttribute_uro:facilityType,{"description":"施設詳細区分"}
 uro:Manhole_uro:cityFurnitureDetailAttribute_uro:description,{"description":"施設内容"}
+uro:Manhole_uro:CityFurnitureDetailAttribute_uro:description,{"description":"施設内容"}
 uro:Manhole_uro:cityFurnitureDataQualityAttribute,{"description":"データ品質属性"}
 uro:Manhole_uro:CityFurnitureDataQualityAttribute,{"description":"データ品質属性"}
 uro:Manhole_uro:cityFurnitureDataQualityAttribute_uro:srcScale,{"description":"地図情報レベル"}
@@ -32479,8 +32515,8 @@ uro:Manhole_uro:frnFacilityAttribute,{"description":"航行補助施設"}
 uro:Manhole_uro:NavigationAssistanceFacility,{"description":"航行補助施設"}
 uro:Manhole_uro:frnFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 uro:Manhole_uro:NavigationAssistanceFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-uro:Manhole_uro:frnFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-uro:Manhole_uro:NavigationAssistanceFacility_uro:facilityDetailType,{"description":"施設種類"}
+uro:Manhole_uro:frnFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+uro:Manhole_uro:NavigationAssistanceFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 uro:Manhole_uro:frnFacilityAttribute_uro:portName,{"description":"港湾名"}
 uro:Manhole_uro:NavigationAssistanceFacility_uro:portName,{"description":"港湾名"}
 uro:Manhole_uro:frnFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -32547,8 +32583,8 @@ uro:Manhole_uro:frnFacilityAttribute,{"description":"旅客施設"}
 uro:Manhole_uro:PortPassengerFacility,{"description":"旅客施設"}
 uro:Manhole_uro:frnFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 uro:Manhole_uro:PortPassengerFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-uro:Manhole_uro:frnFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-uro:Manhole_uro:PortPassengerFacility_uro:facilityDetailType,{"description":"施設種類"}
+uro:Manhole_uro:frnFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+uro:Manhole_uro:PortPassengerFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 uro:Manhole_uro:frnFacilityAttribute_uro:portName,{"description":"港湾名"}
 uro:Manhole_uro:PortPassengerFacility_uro:portName,{"description":"港湾名"}
 uro:Manhole_uro:frnFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -32617,8 +32653,8 @@ uro:Manhole_uro:frnFacilityAttribute,{"description":"船舶役務用施設"}
 uro:Manhole_uro:ShipServiceFacility,{"description":"船舶役務用施設"}
 uro:Manhole_uro:frnFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 uro:Manhole_uro:ShipServiceFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-uro:Manhole_uro:frnFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-uro:Manhole_uro:ShipServiceFacility_uro:facilityDetailType,{"description":"施設種類"}
+uro:Manhole_uro:frnFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+uro:Manhole_uro:ShipServiceFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 uro:Manhole_uro:frnFacilityAttribute_uro:portName,{"description":"港湾名"}
 uro:Manhole_uro:ShipServiceFacility_uro:portName,{"description":"港湾名"}
 uro:Manhole_uro:frnFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -32709,8 +32745,8 @@ uro:Manhole_uro:frnFacilityAttribute,{"description":"環境整備施設"}
 uro:Manhole_uro:PortEnvironmentalImprovementFacility,{"description":"環境整備施設"}
 uro:Manhole_uro:frnFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 uro:Manhole_uro:PortEnvironmentalImprovementFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-uro:Manhole_uro:frnFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-uro:Manhole_uro:PortEnvironmentalImprovementFacility_uro:facilityDetailType,{"description":"施設種類"}
+uro:Manhole_uro:frnFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+uro:Manhole_uro:PortEnvironmentalImprovementFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 uro:Manhole_uro:frnFacilityAttribute_uro:portName,{"description":"港湾名"}
 uro:Manhole_uro:PortEnvironmentalImprovementFacility_uro:portName,{"description":"港湾名"}
 uro:Manhole_uro:frnFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -33264,8 +33300,11 @@ uro:Handhole_frn:lod2Geometry,{"description":"lod2幾何"}
 uro:Handhole_frn:lod3Geometry,{"description":"lod3幾何"}
 uro:Handhole_frn:lod4Geometry,{"description":"lod4幾何"}
 uro:Handhole_uro:cityFurnitureDetailAttribute,{"description":"都市設備詳細情報"}
+uro:Handhole_uro:CityFurnitureDetailAttribute,{"description":"都市設備詳細情報"}
 uro:Handhole_uro:cityFurnitureDetailAttribute_uro:facilityType,{"description":"施設詳細区分"}
+uro:Handhole_uro:CityFurnitureDetailAttribute_uro:facilityType,{"description":"施設詳細区分"}
 uro:Handhole_uro:cityFurnitureDetailAttribute_uro:description,{"description":"施設内容"}
+uro:Handhole_uro:CityFurnitureDetailAttribute_uro:description,{"description":"施設内容"}
 uro:Handhole_uro:cityFurnitureDataQualityAttribute,{"description":"データ品質属性"}
 uro:Handhole_uro:CityFurnitureDataQualityAttribute,{"description":"データ品質属性"}
 uro:Handhole_uro:cityFurnitureDataQualityAttribute_uro:srcScale,{"description":"地図情報レベル"}
@@ -33571,8 +33610,8 @@ uro:Handhole_uro:frnFacilityAttribute,{"description":"航行補助施設"}
 uro:Handhole_uro:NavigationAssistanceFacility,{"description":"航行補助施設"}
 uro:Handhole_uro:frnFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 uro:Handhole_uro:NavigationAssistanceFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-uro:Handhole_uro:frnFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-uro:Handhole_uro:NavigationAssistanceFacility_uro:facilityDetailType,{"description":"施設種類"}
+uro:Handhole_uro:frnFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+uro:Handhole_uro:NavigationAssistanceFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 uro:Handhole_uro:frnFacilityAttribute_uro:portName,{"description":"港湾名"}
 uro:Handhole_uro:NavigationAssistanceFacility_uro:portName,{"description":"港湾名"}
 uro:Handhole_uro:frnFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -33639,8 +33678,8 @@ uro:Handhole_uro:frnFacilityAttribute,{"description":"旅客施設"}
 uro:Handhole_uro:PortPassengerFacility,{"description":"旅客施設"}
 uro:Handhole_uro:frnFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 uro:Handhole_uro:PortPassengerFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-uro:Handhole_uro:frnFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-uro:Handhole_uro:PortPassengerFacility_uro:facilityDetailType,{"description":"施設種類"}
+uro:Handhole_uro:frnFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+uro:Handhole_uro:PortPassengerFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 uro:Handhole_uro:frnFacilityAttribute_uro:portName,{"description":"港湾名"}
 uro:Handhole_uro:PortPassengerFacility_uro:portName,{"description":"港湾名"}
 uro:Handhole_uro:frnFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -33709,8 +33748,8 @@ uro:Handhole_uro:frnFacilityAttribute,{"description":"船舶役務用施設"}
 uro:Handhole_uro:ShipServiceFacility,{"description":"船舶役務用施設"}
 uro:Handhole_uro:frnFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 uro:Handhole_uro:ShipServiceFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-uro:Handhole_uro:frnFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-uro:Handhole_uro:ShipServiceFacility_uro:facilityDetailType,{"description":"施設種類"}
+uro:Handhole_uro:frnFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+uro:Handhole_uro:ShipServiceFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 uro:Handhole_uro:frnFacilityAttribute_uro:portName,{"description":"港湾名"}
 uro:Handhole_uro:ShipServiceFacility_uro:portName,{"description":"港湾名"}
 uro:Handhole_uro:frnFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -33801,8 +33840,8 @@ uro:Handhole_uro:frnFacilityAttribute,{"description":"環境整備施設"}
 uro:Handhole_uro:PortEnvironmentalImprovementFacility,{"description":"環境整備施設"}
 uro:Handhole_uro:frnFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 uro:Handhole_uro:PortEnvironmentalImprovementFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-uro:Handhole_uro:frnFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-uro:Handhole_uro:PortEnvironmentalImprovementFacility_uro:facilityDetailType,{"description":"施設種類"}
+uro:Handhole_uro:frnFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+uro:Handhole_uro:PortEnvironmentalImprovementFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 uro:Handhole_uro:frnFacilityAttribute_uro:portName,{"description":"港湾名"}
 uro:Handhole_uro:PortEnvironmentalImprovementFacility_uro:portName,{"description":"港湾名"}
 uro:Handhole_uro:frnFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -35046,8 +35085,8 @@ uro:UndergroundBuilding_uro:bldgFacilityAttribute,{"description":"航行補助�
 uro:UndergroundBuilding_uro:NavigationAssistanceFacility,{"description":"航行補助施設"}
 uro:UndergroundBuilding_uro:bldgFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 uro:UndergroundBuilding_uro:NavigationAssistanceFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-uro:UndergroundBuilding_uro:bldgFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-uro:UndergroundBuilding_uro:NavigationAssistanceFacility_uro:facilityDetailType,{"description":"施設種類"}
+uro:UndergroundBuilding_uro:bldgFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+uro:UndergroundBuilding_uro:NavigationAssistanceFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 uro:UndergroundBuilding_uro:bldgFacilityAttribute_uro:portName,{"description":"港湾名"}
 uro:UndergroundBuilding_uro:NavigationAssistanceFacility_uro:portName,{"description":"港湾名"}
 uro:UndergroundBuilding_uro:bldgFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -35114,8 +35153,8 @@ uro:UndergroundBuilding_uro:bldgFacilityAttribute,{"description":"旅客施設"}
 uro:UndergroundBuilding_uro:PortPassengerFacility,{"description":"旅客施設"}
 uro:UndergroundBuilding_uro:bldgFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 uro:UndergroundBuilding_uro:PortPassengerFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-uro:UndergroundBuilding_uro:bldgFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-uro:UndergroundBuilding_uro:PortPassengerFacility_uro:facilityDetailType,{"description":"施設種類"}
+uro:UndergroundBuilding_uro:bldgFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+uro:UndergroundBuilding_uro:PortPassengerFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 uro:UndergroundBuilding_uro:bldgFacilityAttribute_uro:portName,{"description":"港湾名"}
 uro:UndergroundBuilding_uro:PortPassengerFacility_uro:portName,{"description":"港湾名"}
 uro:UndergroundBuilding_uro:bldgFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -35184,8 +35223,8 @@ uro:UndergroundBuilding_uro:bldgFacilityAttribute,{"description":"船舶役務�
 uro:UndergroundBuilding_uro:ShipServiceFacility,{"description":"船舶役務用施設"}
 uro:UndergroundBuilding_uro:bldgFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 uro:UndergroundBuilding_uro:ShipServiceFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-uro:UndergroundBuilding_uro:bldgFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-uro:UndergroundBuilding_uro:ShipServiceFacility_uro:facilityDetailType,{"description":"施設種類"}
+uro:UndergroundBuilding_uro:bldgFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+uro:UndergroundBuilding_uro:ShipServiceFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 uro:UndergroundBuilding_uro:bldgFacilityAttribute_uro:portName,{"description":"港湾名"}
 uro:UndergroundBuilding_uro:ShipServiceFacility_uro:portName,{"description":"港湾名"}
 uro:UndergroundBuilding_uro:bldgFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -35276,8 +35315,8 @@ uro:UndergroundBuilding_uro:bldgFacilityAttribute,{"description":"環境整備�
 uro:UndergroundBuilding_uro:PortEnvironmentalImprovementFacility,{"description":"環境整備施設"}
 uro:UndergroundBuilding_uro:bldgFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 uro:UndergroundBuilding_uro:PortEnvironmentalImprovementFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-uro:UndergroundBuilding_uro:bldgFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-uro:UndergroundBuilding_uro:PortEnvironmentalImprovementFacility_uro:facilityDetailType,{"description":"施設種類"}
+uro:UndergroundBuilding_uro:bldgFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+uro:UndergroundBuilding_uro:PortEnvironmentalImprovementFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 uro:UndergroundBuilding_uro:bldgFacilityAttribute_uro:portName,{"description":"港湾名"}
 uro:UndergroundBuilding_uro:PortEnvironmentalImprovementFacility_uro:portName,{"description":"港湾名"}
 uro:UndergroundBuilding_uro:bldgFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -36075,8 +36114,8 @@ veg:SolitaryVegetationObject_uro:vegFacilityAttribute,{"description":"航行補�
 veg:SolitaryVegetationObject_uro:NavigationAssistanceFacility,{"description":"航行補助施設"}
 veg:SolitaryVegetationObject_uro:vegFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 veg:SolitaryVegetationObject_uro:NavigationAssistanceFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-veg:SolitaryVegetationObject_uro:vegFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-veg:SolitaryVegetationObject_uro:NavigationAssistanceFacility_uro:facilityDetailType,{"description":"施設種類"}
+veg:SolitaryVegetationObject_uro:vegFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+veg:SolitaryVegetationObject_uro:NavigationAssistanceFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 veg:SolitaryVegetationObject_uro:vegFacilityAttribute_uro:portName,{"description":"港湾名"}
 veg:SolitaryVegetationObject_uro:NavigationAssistanceFacility_uro:portName,{"description":"港湾名"}
 veg:SolitaryVegetationObject_uro:vegFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -36143,8 +36182,8 @@ veg:SolitaryVegetationObject_uro:vegFacilityAttribute,{"description":"旅客施�
 veg:SolitaryVegetationObject_uro:PortPassengerFacility,{"description":"旅客施設"}
 veg:SolitaryVegetationObject_uro:vegFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 veg:SolitaryVegetationObject_uro:PortPassengerFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-veg:SolitaryVegetationObject_uro:vegFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-veg:SolitaryVegetationObject_uro:PortPassengerFacility_uro:facilityDetailType,{"description":"施設種類"}
+veg:SolitaryVegetationObject_uro:vegFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+veg:SolitaryVegetationObject_uro:PortPassengerFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 veg:SolitaryVegetationObject_uro:vegFacilityAttribute_uro:portName,{"description":"港湾名"}
 veg:SolitaryVegetationObject_uro:PortPassengerFacility_uro:portName,{"description":"港湾名"}
 veg:SolitaryVegetationObject_uro:vegFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -36213,8 +36252,8 @@ veg:SolitaryVegetationObject_uro:vegFacilityAttribute,{"description":"船舶役�
 veg:SolitaryVegetationObject_uro:ShipServiceFacility,{"description":"船舶役務用施設"}
 veg:SolitaryVegetationObject_uro:vegFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 veg:SolitaryVegetationObject_uro:ShipServiceFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-veg:SolitaryVegetationObject_uro:vegFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-veg:SolitaryVegetationObject_uro:ShipServiceFacility_uro:facilityDetailType,{"description":"施設種類"}
+veg:SolitaryVegetationObject_uro:vegFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+veg:SolitaryVegetationObject_uro:ShipServiceFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 veg:SolitaryVegetationObject_uro:vegFacilityAttribute_uro:portName,{"description":"港湾名"}
 veg:SolitaryVegetationObject_uro:ShipServiceFacility_uro:portName,{"description":"港湾名"}
 veg:SolitaryVegetationObject_uro:vegFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -36305,8 +36344,8 @@ veg:SolitaryVegetationObject_uro:vegFacilityAttribute,{"description":"環境整�
 veg:SolitaryVegetationObject_uro:PortEnvironmentalImprovementFacility,{"description":"環境整備施設"}
 veg:SolitaryVegetationObject_uro:vegFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 veg:SolitaryVegetationObject_uro:PortEnvironmentalImprovementFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-veg:SolitaryVegetationObject_uro:vegFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-veg:SolitaryVegetationObject_uro:PortEnvironmentalImprovementFacility_uro:facilityDetailType,{"description":"施設種類"}
+veg:SolitaryVegetationObject_uro:vegFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+veg:SolitaryVegetationObject_uro:PortEnvironmentalImprovementFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 veg:SolitaryVegetationObject_uro:vegFacilityAttribute_uro:portName,{"description":"港湾名"}
 veg:SolitaryVegetationObject_uro:PortEnvironmentalImprovementFacility_uro:portName,{"description":"港湾名"}
 veg:SolitaryVegetationObject_uro:vegFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -37142,8 +37181,8 @@ veg:PlantCover_uro:vegFacilityAttribute,{"description":"航行補助施設"}
 veg:PlantCover_uro:NavigationAssistanceFacility,{"description":"航行補助施設"}
 veg:PlantCover_uro:vegFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 veg:PlantCover_uro:NavigationAssistanceFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-veg:PlantCover_uro:vegFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-veg:PlantCover_uro:NavigationAssistanceFacility_uro:facilityDetailType,{"description":"施設種類"}
+veg:PlantCover_uro:vegFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+veg:PlantCover_uro:NavigationAssistanceFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 veg:PlantCover_uro:vegFacilityAttribute_uro:portName,{"description":"港湾名"}
 veg:PlantCover_uro:NavigationAssistanceFacility_uro:portName,{"description":"港湾名"}
 veg:PlantCover_uro:vegFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -37210,8 +37249,8 @@ veg:PlantCover_uro:vegFacilityAttribute,{"description":"旅客施設"}
 veg:PlantCover_uro:PortPassengerFacility,{"description":"旅客施設"}
 veg:PlantCover_uro:vegFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 veg:PlantCover_uro:PortPassengerFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-veg:PlantCover_uro:vegFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-veg:PlantCover_uro:PortPassengerFacility_uro:facilityDetailType,{"description":"施設種類"}
+veg:PlantCover_uro:vegFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+veg:PlantCover_uro:PortPassengerFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 veg:PlantCover_uro:vegFacilityAttribute_uro:portName,{"description":"港湾名"}
 veg:PlantCover_uro:PortPassengerFacility_uro:portName,{"description":"港湾名"}
 veg:PlantCover_uro:vegFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -37280,8 +37319,8 @@ veg:PlantCover_uro:vegFacilityAttribute,{"description":"船舶役務用施設"}
 veg:PlantCover_uro:ShipServiceFacility,{"description":"船舶役務用施設"}
 veg:PlantCover_uro:vegFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 veg:PlantCover_uro:ShipServiceFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-veg:PlantCover_uro:vegFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-veg:PlantCover_uro:ShipServiceFacility_uro:facilityDetailType,{"description":"施設種類"}
+veg:PlantCover_uro:vegFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+veg:PlantCover_uro:ShipServiceFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 veg:PlantCover_uro:vegFacilityAttribute_uro:portName,{"description":"港湾名"}
 veg:PlantCover_uro:ShipServiceFacility_uro:portName,{"description":"港湾名"}
 veg:PlantCover_uro:vegFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -37372,8 +37411,8 @@ veg:PlantCover_uro:vegFacilityAttribute,{"description":"環境整備施設"}
 veg:PlantCover_uro:PortEnvironmentalImprovementFacility,{"description":"環境整備施設"}
 veg:PlantCover_uro:vegFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 veg:PlantCover_uro:PortEnvironmentalImprovementFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-veg:PlantCover_uro:vegFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-veg:PlantCover_uro:PortEnvironmentalImprovementFacility_uro:facilityDetailType,{"description":"施設種類"}
+veg:PlantCover_uro:vegFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+veg:PlantCover_uro:PortEnvironmentalImprovementFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 veg:PlantCover_uro:vegFacilityAttribute_uro:portName,{"description":"港湾名"}
 veg:PlantCover_uro:PortEnvironmentalImprovementFacility_uro:portName,{"description":"港湾名"}
 veg:PlantCover_uro:vegFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -38231,8 +38270,8 @@ wtr:WaterBody_uro:wtrFacilityAttribute,{"description":"航行補助施設"}
 wtr:WaterBody_uro:NavigationAssistanceFacility,{"description":"航行補助施設"}
 wtr:WaterBody_uro:wtrFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 wtr:WaterBody_uro:NavigationAssistanceFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-wtr:WaterBody_uro:wtrFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-wtr:WaterBody_uro:NavigationAssistanceFacility_uro:facilityDetailType,{"description":"施設種類"}
+wtr:WaterBody_uro:wtrFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+wtr:WaterBody_uro:NavigationAssistanceFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 wtr:WaterBody_uro:wtrFacilityAttribute_uro:portName,{"description":"港湾名"}
 wtr:WaterBody_uro:NavigationAssistanceFacility_uro:portName,{"description":"港湾名"}
 wtr:WaterBody_uro:wtrFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -38299,8 +38338,8 @@ wtr:WaterBody_uro:wtrFacilityAttribute,{"description":"旅客施設"}
 wtr:WaterBody_uro:PortPassengerFacility,{"description":"旅客施設"}
 wtr:WaterBody_uro:wtrFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 wtr:WaterBody_uro:PortPassengerFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-wtr:WaterBody_uro:wtrFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-wtr:WaterBody_uro:PortPassengerFacility_uro:facilityDetailType,{"description":"施設種類"}
+wtr:WaterBody_uro:wtrFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+wtr:WaterBody_uro:PortPassengerFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 wtr:WaterBody_uro:wtrFacilityAttribute_uro:portName,{"description":"港湾名"}
 wtr:WaterBody_uro:PortPassengerFacility_uro:portName,{"description":"港湾名"}
 wtr:WaterBody_uro:wtrFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -38369,8 +38408,8 @@ wtr:WaterBody_uro:wtrFacilityAttribute,{"description":"船舶役務用施設"}
 wtr:WaterBody_uro:ShipServiceFacility,{"description":"船舶役務用施設"}
 wtr:WaterBody_uro:wtrFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 wtr:WaterBody_uro:ShipServiceFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-wtr:WaterBody_uro:wtrFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-wtr:WaterBody_uro:ShipServiceFacility_uro:facilityDetailType,{"description":"施設種類"}
+wtr:WaterBody_uro:wtrFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+wtr:WaterBody_uro:ShipServiceFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 wtr:WaterBody_uro:wtrFacilityAttribute_uro:portName,{"description":"港湾名"}
 wtr:WaterBody_uro:ShipServiceFacility_uro:portName,{"description":"港湾名"}
 wtr:WaterBody_uro:wtrFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -38461,8 +38500,8 @@ wtr:WaterBody_uro:wtrFacilityAttribute,{"description":"環境整備施設"}
 wtr:WaterBody_uro:PortEnvironmentalImprovementFacility,{"description":"環境整備施設"}
 wtr:WaterBody_uro:wtrFacilityAttribute_uro:facilityId,{"description":"対象施設内での識別子"}
 wtr:WaterBody_uro:PortEnvironmentalImprovementFacility_uro:facilityId,{"description":"対象施設内での識別子"}
-wtr:WaterBody_uro:wtrFacilityAttribute_uro:facilityDetailType,{"description":"施設種類"}
-wtr:WaterBody_uro:PortEnvironmentalImprovementFacility_uro:facilityDetailType,{"description":"施設種類"}
+wtr:WaterBody_uro:wtrFacilityAttribute_uro:portFacilityDetailsType,{"description":"施設種類"}
+wtr:WaterBody_uro:PortEnvironmentalImprovementFacility_uro:portFacilityDetailsType,{"description":"施設種類"}
 wtr:WaterBody_uro:wtrFacilityAttribute_uro:portName,{"description":"港湾名"}
 wtr:WaterBody_uro:PortEnvironmentalImprovementFacility_uro:portName,{"description":"港湾名"}
 wtr:WaterBody_uro:wtrFacilityAttribute_uro:portStatus,{"description":"港格"}
@@ -39485,6 +39524,24 @@ tran:TrafficArea_uro:averageOutboundTravelSpeedNotCongestion,{"description":"非
 tran:TrafficArea_uro:observationPointName,{"description":"観測地点名"}
 tran:TrafficArea_uro:reference,{"description":"参照情報"}
 tran:TrafficArea_uro:surveyYear,{"description":"調査年","dataType":"gYear"}
+tran:AuxiliaryTrafficArea_uro:widthType,{"description":"幅員区分"}
+tran:AuxiliaryTrafficArea_uro:width,{"description":"幅員"}
+tran:AuxiliaryTrafficArea_uro:numberOfLanes,{"description":"車線数"}
+tran:AuxiliaryTrafficArea_uro:sectionType,{"description":"区間種別"}
+tran:AuxiliaryTrafficArea_uro:sectionID,{"description":"交通調査基本区間番号"}
+tran:AuxiliaryTrafficArea_uro:routeName,{"description":"事業者区分"}
+tran:AuxiliaryTrafficArea_uro:weekday12hourTrafficVolume,{"description":"平日12時間交通量"}
+tran:AuxiliaryTrafficArea_uro:weekday24hourTrafficVolume,{"description":"平日24時間交通量"}
+tran:AuxiliaryTrafficArea_uro:largeVehicleRate,{"description":"大型車混入率"}
+tran:AuxiliaryTrafficArea_uro:congestionRate,{"description":"混雑度"}
+tran:AuxiliaryTrafficArea_uro:averageTravelSpeedInCongestion,{"description":"混雑時平均旅行速度"}
+tran:AuxiliaryTrafficArea_uro:averageInboundTravelSpeedInCongestion,{"description":"混雑時平均旅行速度（上り）"}
+tran:AuxiliaryTrafficArea_uro:averageOutboundTravelSpeedInCongestion,{"description":"混雑時平均旅行速度（下り）"}
+tran:AuxiliaryTrafficArea_uro:averageInboundTravelSpeedNotCongestion,{"description":"非混雑時平均旅行速度（上り）"}
+tran:AuxiliaryTrafficArea_uro:averageOutboundTravelSpeedNotCongestion,{"description":"非混雑時平均旅行速度（下り）"}
+tran:AuxiliaryTrafficArea_uro:observationPointName,{"description":"観測地点名"}
+tran:AuxiliaryTrafficArea_uro:reference,{"description":"参照情報"}
+tran:AuxiliaryTrafficArea_uro:surveyYear,{"description":"調査年","dataType":"gYear"}
 bldg:BuildingPart_uro:buildingIDAttributeuro:BuildingIDAttribute_uro:buildingID,{"description":"建物ID"}
 bldg:BuildingPart_uro:buildingIDAttributeuro:BuildingIDAttribute_uro:branchID,{"description":"建物ID枝番"}
 bldg:BuildingPart_uro:buildingIDAttributeuro:BuildingIDAttribute_uro:partID,{"description":"建築物部分ID"}

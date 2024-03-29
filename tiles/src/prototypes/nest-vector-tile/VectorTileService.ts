@@ -105,7 +105,7 @@ export class VectorTileService {
       return undefined;
     }
 
-    const cache = await this.cacheService.findOne(this.options.path, coords);
+    const cache = await this.cacheService.findOne(this.options.path, coords, options);
     if (cache != null) {
       return cache;
     }

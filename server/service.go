@@ -167,6 +167,7 @@ func Embed(conf *Config) (*Service, error) {
 		Name: "embed",
 		Echo: func(g *echo.Group) error {
 			_ = putil.DeliverFile(g, "PlateauView3.js", "text/javascript")
+			_ = putil.DeliverFile(g, "reearth.yml", "application/yaml")
 			return nil
 		},
 	}, nil
