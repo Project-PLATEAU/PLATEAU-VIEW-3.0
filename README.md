@@ -8,6 +8,8 @@ PLATEAU VIEW 3.0 は以下のシステムにより構成されます。
 
 システムの詳細な仕様は、[PLATEAU VIEW構築マニュアル](https://www.mlit.go.jp/plateau/file/libraries/doc/plateau_doc_0009_ver04.pdf)を参照してください。
 
+また、本ソースコードはProject PLATEAUの令和5年度のユースケース開発業務の一部であるUC11「ストーリーテリング型 GIS を用いたエリアマネジメントの高度化」の成果物ソースコードでもあります。ストーリーテリング機能については、[storytelling.md](./docs/storytelling.md)を参照してください。
+
 ## フォルダ構成
 
 - [cms](cms): PLATEAU CMS（[Re:Earth CMS](https://github.com/reearth/reearth-cms)）
